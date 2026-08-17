@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>确认下单｜KJ Music Promotion</title>
+<style>
+:root{
+  --brand:#f04444;--ink:#17191d;--muted:#7d838d;--line:#e4e7eb;--soft:#f5f6f8;
+  --green:#16866f;--green-soft:#eef9f5;--dark:#111827;--white:#fff;--max:1180px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f6f8;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+button,input{font:inherit} button{cursor:pointer} a{text-decoration:none;color:inherit}
+.container{max-width:var(--max);margin:auto;padding:0 24px}
+.topbar{height:68px;background:#fff;border-bottom:1px solid #e7e9ed}
+.topbar-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:900}
+.brand small{display:block;font-size:9px;letter-spacing:.14em;color:#999fa8;margin-top:2px}
+.nav-back{font-size:13px;color:#69707a}
+
+.page{padding:38px 0 70px}
+.page-head{margin-bottom:22px}
+.page-head h1{font-size:34px;letter-spacing:-.035em;margin:0 0 8px}
+.page-head p{margin:0;color:var(--muted);font-size:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:20px;align-items:start}
+.left-col{display:grid;gap:16px}
+.card{background:#fff;border:1px solid #e4e7eb;border-radius:20px;padding:22px}
+.card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+.card-head h2{font-size:19px;margin:0 0 5px}
+.card-head p{font-size:12px;color:var(--muted);margin:0;line-height:1.55}
+.badge{display:inline-flex;padding:6px 9px;border-radius:999px;background:#f1f2f4;color:#666c75;font-size:10px;white-space:nowrap}
+.badge.red{background:#fff0ef;color:#b4312e}
+
+.song{display:flex;gap:13px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:15px;background:#fafbfc}
+.cover{width:54px;height:54px;border-radius:13px;background:linear-gradient(135deg,#ff6d64,#7556ff);color:#fff;display:grid;place-items:center;font-size:20px;flex:0 0 auto}
+.song-info{min-width:0;flex:1}
+.song-info strong{display:block;font-size:15px}
+.song-info span{display:block;color:#888f98;font-size:12px;margin-top:4px}
+
+.sku-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sku{border:1px solid #dde1e6;border-radius:15px;padding:15px;background:#fff;cursor:pointer;transition:.15s;position:relative;min-height:132px}
+.sku:hover{border-color:#c8ccd2}
+.sku.selected{border-color:#ffc6c1;background:#fff8f7;box-shadow:0 0 0 1px #ffc6c1 inset}
+.sku-tag{position:absolute;right:10px;top:10px;font-size:9px;padding:4px 6px;border-radius:999px;background:#fff0ef;color:#b4312e}
+.sku small{display:block;color:#8b919a;font-size:11px;margin-bottom:10px}
+.sku strong{display:block;font-size:20px;margin-bottom:10px}
+.sku .price{margin-top:auto;font-size:17px;font-weight:800}
+.sku .price span{font-size:10px;color:#9298a0;font-weight:500}
+
+.option-row{display:flex;gap:8px;flex-wrap:wrap}
+.option-chip{border:1px solid #dfe2e6;background:#fff;border-radius:999px;padding:9px 12px;font-size:12px;color:#5f656d}
+.option-chip.selected{border-color:#ffc6c1;background:#fff4f3;color:#b4312e;font-weight:700}
+
+.checkout{position:sticky;top:22px;background:#fff;border:1px solid #e4e7eb;border-radius:20px;overflow:hidden}
+.checkout-top{padding:22px 24px;border-bottom:1px solid #e8eaed}
+.checkout-title{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.checkout-title h2{font-size:18px;margin:0 0 5px}
+.checkout-title p{font-size:11px;color:#89909a;margin:0}
+.order-total{text-align:right}
+.order-total span{display:block;font-size:11px;color:#89909a;margin-bottom:5px}
+.order-total strong{font-size:30px;letter-spacing:-.03em}
+
+.checkout-body{padding:22px 24px}
+.balance-box{background:var(--green-soft);border:1px solid #cfe6dc;border-radius:16px;padding:17px}
+.balance-head{display:flex;justify-content:space-between;gap:18px;align-items:center}
+.balance-head strong{font-size:14px}
+.balance-head span{display:block;color:var(--green);font-size:12px;margin-top:5px}
+.toggle{width:46px;height:26px;border-radius:999px;border:0;background:#d7dadd;position:relative;flex:0 0 auto}
+.toggle:after{content:"";position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.16s;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.toggle.on{background:#218a73} .toggle.on:after{left:23px}
+.balance-desc{font-size:11px;color:#79868a;line-height:1.55;margin-top:14px}
+
+.bill{padding:15px 0 0}
+.bill-row{display:flex;justify-content:space-between;gap:20px;padding:8px 0;font-size:13px}
+.bill-row span{color:#878e97} .bill-row strong{font-size:13px}
+.bill-row.discount strong{color:var(--green)}
+.divider{height:1px;background:#e7e9ec;margin:8px 0 14px}
+.pay-due{display:flex;justify-content:space-between;gap:20px;align-items:flex-end}
+.pay-due span{font-size:12px;color:#8b919a}
+.pay-due strong{display:block;font-size:30px;letter-spacing:-.03em;margin-top:4px}
+.balance-after{font-size:11px;color:#8a9099;text-align:right}
+
+.buttons{display:grid;grid-template-columns:1fr 1.45fr;gap:10px;margin-top:18px}
+.btn{height:48px;border-radius:12px;font-weight:800}
+.btn.secondary{border:1px solid #dfe2e6;background:#fff;color:#222}
+.btn.primary{border:0;background:#111827;color:#fff}
+.btn.primary:hover{background:#0b1220}
+.footnote{text-align:center;color:#9aa0a8;font-size:10px;line-height:1.5;margin-top:14px}
+
+@media(max-width:980px){.layout{grid-template-columns:1fr}.checkout{position:static}}
+@media(max-width:800px){.sku-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.container{padding:0 16px}.sku-grid{grid-template-columns:repeat(2,1fr)}.buttons{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">KJ</span>
+      <span>看见音乐<small>KANJIAN MUSIC</small></span>
+    </a>
+    <a class="nav-back" href="music-promotion.html">返回音乐推广</a>
+  </div>
+</header>
+
+<main class="page">
+<div class="container">
+
+  <div class="page-head">
+    <h1>确认下单</h1>
+    <p>选择本次网易云音乐播放推广的投放档位，确认后完成下单。</p>
+  </div>
+
+  <div class="layout">
+    <section class="left-col">
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>推广歌曲</h2>
+            <p>本订单将用于以下歌曲。</p>
+          </div>
+          <span class="badge">已选择</span>
+        </div>
+
+        <div class="song">
+          <div class="cover">♪</div>
+          <div class="song-info">
+            <strong id="songName">夏夜的风</strong>
+            <span id="songMeta">林屿 · 网易云音乐</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>选择投放档位</h2>
+            <p>选择本次预算，对应查看预计播放量。</p>
+          </div>
+          <span class="badge red">网易云音乐播放推广</span>
+        </div>
+
+        <div class="sku-grid" id="skuGrid">
+
+          <div class="sku" data-price="39" data-play="600 次播放">
+            
+            <small>预计播放量</small>
+            <strong>600 次</strong>
+            <div class="price">¥39 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="69" data-play="1,320 次播放">
+            
+            <small>预计播放量</small>
+            <strong>1,320 次</strong>
+            <div class="price">¥69 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku selected" data-price="99" data-play="1,980 次播放">
+            <div class="sku-tag">推荐</div>
+            <small>预计播放量</small>
+            <strong>1,980 次</strong>
+            <div class="price">¥99 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="159" data-play="3,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>3,000 次</strong>
+            <div class="price">¥159 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="209" data-play="4,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>4,000 次</strong>
+            <div class="price">¥209 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="309" data-play="6,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>6,000 次</strong>
+            <div class="price">¥309 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="519" data-play="10,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>10,000 次</strong>
+            <div class="price">¥519 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="819" data-play="16,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>16,000 次</strong>
+            <div class="price">¥819 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="1219" data-play="24,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>24,000 次</strong>
+            <div class="price">¥1,219 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="1619" data-play="32,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>32,000 次</strong>
+            <div class="price">¥1,619 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="2019" data-play="40,000 次播放">
+            
+            <small>预计播放量</small>
+            <strong>40,000 次</strong>
+            <div class="price">¥2,019 <span>/ 次投放</span></div>
+          </div>
+
+          <div class="sku" data-price="2509" data-play="49,980 次播放">
+            
+            <small>预计播放量</small>
+            <strong>49,980 次</strong>
+            <div class="price">¥2,509 <span>/ 次投放</span></div>
+          </div>
+        </div>
+
+        <div style="font-size:11px;color:#969ca4;line-height:1.6;margin-top:14px">
+          页面展示的播放量为对应推广档位的预计效果，实际结果可能受歌曲、平台及执行情况影响。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>投放偏好</h2>
+            <p>可根据实际需求选择执行方式。</p>
+          </div>
+          <span class="badge">可选</span>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:750;margin-bottom:9px">投放节奏</div>
+          <div class="option-row" id="paceOptions">
+            <button class="option-chip selected">系统推荐</button>
+            <button class="option-chip">集中投放</button>
+            <button class="option-chip">分批投放</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;font-weight:750;margin-bottom:9px">开始时间</div>
+          <div class="option-row" id="timeOptions">
+            <button class="option-chip selected">支付后尽快开始</button>
+            <button class="option-chip">指定日期</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <aside class="checkout">
+      <div class="checkout-top">
+        <div class="checkout-title">
+          <div>
+            <h2>网易云音乐播放推广</h2>
+            <p id="orderDesc">预计 1,980 次播放 · 单曲推广</p>
+          </div>
+          <div class="order-total">
+            <span>订单金额</span>
+            <strong id="topAmount">¥99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-body">
+        <div class="balance-box">
+          <div class="balance-head">
+            <div>
+              <strong>使用可提现收益</strong>
+              <span>当前可用 ¥1,800</span>
+            </div>
+            <button class="toggle on" id="benefitToggle" aria-label="使用可提现收益"></button>
+          </div>
+          <div class="balance-desc">
+            系统默认优先使用当前可用收益。使用后，相应金额将从你的可提现收益中扣减。
+          </div>
+        </div>
+
+        <div class="bill">
+          <div class="bill-row">
+            <span>订单金额</span>
+            <strong id="billAmount">¥99</strong>
+          </div>
+          <div class="bill-row discount">
+            <span>使用可提现收益</span>
+            <strong id="billDeduct">- ¥99</strong>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="pay-due">
+            <div>
+              <span>仍需支付</span>
+              <strong id="payDue">¥0</strong>
+            </div>
+            <div class="balance-after" id="balanceAfter">使用后可提现收益 ¥1,701</div>
+          </div>
+
+          <div class="buttons">
+            <button class="btn secondary" id="noBenefitBtn">不使用收益，直接支付</button>
+            <button class="btn primary" id="submitBtn">确认并下单</button>
+          </div>
+
+          <div class="footnote">
+            使用收益前需完成一次安全验证。若后续支付失败或订单取消，本次占用的收益将自动恢复。
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+</div>
+</main>
+
+<script>
+const params = new URLSearchParams(location.search);
+const availableBenefit = 1800;
+let orderAmount = 99;
+let useBenefit = true;
+let projected = '1,980 次播放';
+
+const title = params.get('title') || '夏夜的风';
+const artist = params.get('artist') || '林屿';
+document.getElementById('songName').textContent = title;
+document.getElementById('songMeta').textContent = [artist,'网易云音乐'].filter(Boolean).join(' · ');
+
+function money(n){
+  return '¥' + Number(n).toLocaleString('zh-CN',{maximumFractionDigits:2});
+}
+
+function updateCheckout(){
+  const deduct = useBenefit ? Math.min(orderAmount, availableBenefit) : 0;
+  const due = Math.max(0, orderAmount - deduct);
+  const after = Math.max(0, availableBenefit - deduct);
+
+  document.getElementById('topAmount').textContent = money(orderAmount);
+  document.getElementById('billAmount').textContent = money(orderAmount);
+  document.getElementById('billDeduct').textContent = '- ' + money(deduct);
+  document.getElementById('payDue').textContent = money(due);
+  document.getElementById('balanceAfter').textContent = '使用后可提现收益 ' + money(after);
+  document.getElementById('orderDesc').textContent = '预计 ' + projected + ' · 单曲推广';
+  document.getElementById('benefitToggle').classList.toggle('on', useBenefit);
+
+  const submit = document.getElementById('submitBtn');
+  submit.textContent = due > 0 ? '确认并支付 ' + money(due) : '确认并下单';
+}
+
+document.querySelectorAll('.sku').forEach(el=>{
+  el.addEventListener('click',()=>{
+    document.querySelectorAll('.sku').forEach(x=>x.classList.remove('selected'));
+    el.classList.add('selected');
+    orderAmount = Number(el.dataset.price);
+    projected = el.dataset.play;
+    updateCheckout();
+  });
+});
+
+document.getElementById('benefitToggle').addEventListener('click',()=>{
+  useBenefit = !useBenefit;
+  updateCheckout();
+});
+
+document.getElementById('noBenefitBtn').addEventListener('click',()=>{
+  useBenefit = false;
+  updateCheckout();
+});
+
+document.querySelectorAll('#paceOptions .option-chip').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#paceOptions .option-chip').forEach(x=>x.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+document.querySelectorAll('#timeOptions .option-chip').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#timeOptions .option-chip').forEach(x=>x.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+
+document.getElementById('submitBtn').addEventListener('click',()=>{
+  const deduct = useBenefit ? Math.min(orderAmount, availableBenefit) : 0;
+  const due = Math.max(0, orderAmount - deduct);
+  alert('演示：订单金额 ' + money(orderAmount) + '，使用可提现收益 ' + money(deduct) + '，仍需支付 ' + money(due));
+});
+
+updateCheckout();
+</script>
+</body>
+</html>
