@@ -19,55 +19,29 @@
     <section class="pc-form-card">
       <div class="pc-form-card-head"><h2>类目信息</h2><p>用于后台管理和前台产品导航。</p></div>
       <div class="pc-form-body">
-        <div class="pc-form-row">
-          <div class="pc-form-label pc-required">类目名称</div>
-          <div class="pc-form-control"><input id="name" placeholder="例如：播放推广"><div class="pc-help">后台识别名称，建议简短、稳定。</div></div>
-        </div>
-        <div class="pc-form-row">
-          <div class="pc-form-label pc-required">类目标识</div>
-          <div class="pc-form-control"><input id="code" placeholder="例如：traffic"><div class="pc-help">建议使用英文小写和连字符；创建后尽量不要修改。</div></div>
-        </div>
-        <div class="pc-form-row">
-          <div class="pc-form-label">前台展示名称</div>
-          <div class="pc-form-control"><input id="displayName" placeholder="默认与类目名称一致"><div class="pc-help">如前台需要使用更用户化的文案，可单独填写。</div></div>
-        </div>
-        <div class="pc-form-row">
-          <div class="pc-form-label">类目说明</div>
-          <div class="pc-form-control"><textarea id="description" placeholder="简要说明这个类目承载哪些推广产品"></textarea></div>
-        </div>
-        <div class="pc-form-row">
-          <div class="pc-form-label pc-required">排序</div>
-          <div class="pc-form-control"><input id="sort" type="number" min="0" value="10"><div class="pc-help">数字越小越靠前。</div></div>
-        </div>
-        <div class="pc-form-row">
-          <div class="pc-form-label">状态</div>
-          <div class="pc-form-control"><div class="pc-switch-row"><button type="button" class="pc-switch" id="statusSwitch" aria-label="启用类目"></button><span id="statusText" style="font-size:13px;color:#4b5e75">启用</span></div><div class="pc-help">停用后，不影响历史订单；该类目及其产品可在前台隐藏。</div></div>
-        </div>
+        <div class="pc-form-row"><div class="pc-form-label pc-required">类目名称</div><div class="pc-form-control"><input id="name" placeholder="例如：播放推广"><div class="pc-help">后台识别名称，建议简短、稳定。</div></div></div>
+        <div class="pc-form-row"><div class="pc-form-label pc-required">类目标识</div><div class="pc-form-control"><input id="code" placeholder="例如：traffic"><div class="pc-help">建议使用英文小写和连字符；创建后尽量不要修改。</div></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">前台展示名称</div><div class="pc-form-control"><input id="displayName" placeholder="默认与类目名称一致"><div class="pc-help">如前台需要使用更用户化的文案，可单独填写。</div></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">类目说明</div><div class="pc-form-control"><textarea id="description" placeholder="简要说明这个类目承载哪些推广产品"></textarea></div></div>
+        <div class="pc-form-row"><div class="pc-form-label pc-required">排序</div><div class="pc-form-control"><input id="sort" type="number" min="0" value="10"><div class="pc-help">数字越小越靠前。</div></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">状态</div><div class="pc-form-control"><div class="pc-switch-row"><button type="button" class="pc-switch" id="statusSwitch" aria-label="启用类目"></button><span id="statusText" style="font-size:13px;color:#4b5e75">启用</span></div><div class="pc-help">停用后，不影响历史订单；该类目及其产品可在前台隐藏。</div></div></div>
       </div>
     </section>
 
     <aside class="pc-side-note">
       <h3>类目层只解决“怎么分组”</h3>
       <p>新增类目后，再进入类目详情创建 SPU。不要在这里维护具体 SKU 档位。</p>
-      <ul>
-        <li>Category：播放推广</li>
-        <li>SPU：网易云音乐播放推广</li>
-        <li>SKU：¥99 / 1,980 播放</li>
-        <li>Package：跨 SPU 组合多个 SKU</li>
-      </ul>
+      <ul><li>Category：播放推广</li><li>SPU：网易云音乐播放推广</li><li>SKU：¥99 / 1,980 播放</li><li>Package：跨 SPU 组合多个 SKU</li></ul>
     </aside>
   </div>
 
-  <div class="pc-form-actions">
-    <a class="pc-btn pc-btn-secondary" id="cancelBtn" href="product-categories.html">取消</a>
-    <button class="pc-btn pc-btn-primary" id="saveBtn" type="button">保存类目</button>
-  </div>
+  <div class="pc-form-actions"><a class="pc-btn pc-btn-secondary" id="cancelBtn" href="product-categories.html">取消</a><button class="pc-btn pc-btn-primary" id="saveBtn" type="button">保存类目</button></div>
 </template>
 <script src="../assets/js/admin-shell.js"></script>
 <script>
-const params=new URLSearchParams(location.search);const editing=params.get('mode')==='edit';
-if(editing){document.body.dataset.pageTitle='产品类目 / 编辑';document.getElementById('formTitle').textContent='编辑产品类目';document.getElementById('crumbText').textContent='编辑类目';document.getElementById('name').value='播放推广';document.getElementById('code').value='traffic';document.getElementById('displayName').value='播放推广';document.getElementById('description').value='面向网易云音乐、QQ / 酷狗 / 酷我等平台的歌曲播放量推广服务。';document.getElementById('sort').value='10';document.getElementById('cancelBtn').href='product-category-detail.html?id=traffic';}
-let enabled=true;document.getElementById('statusSwitch').addEventListener('click',()=>{enabled=!enabled;const sw=document.getElementById('statusSwitch');sw.style.background=enabled?'#3155ff':'#c8d0db';sw.style.setProperty('--off',enabled?'0':'1');sw.classList.toggle('is-off',!enabled);if(enabled){sw.style.background='#3155ff';sw.style.setProperty('opacity','1');sw.querySelector?.('span');}else{sw.style.background='#c8d0db';}document.getElementById('statusText').textContent=enabled?'启用':'停用';});
+const params=new URLSearchParams(location.search),editing=params.get('mode')==='edit';
+if(editing){document.querySelector('.admin-page-title').textContent='产品类目 / 编辑';document.getElementById('formTitle').textContent='编辑产品类目';document.getElementById('crumbText').textContent='编辑类目';document.getElementById('name').value='播放推广';document.getElementById('code').value='traffic';document.getElementById('displayName').value='播放推广';document.getElementById('description').value='面向网易云音乐、QQ / 酷狗 / 酷我等平台的歌曲播放量推广服务。';document.getElementById('sort').value='10';document.getElementById('cancelBtn').href='product-category-detail.html?id=traffic';}
+let enabled=true;document.getElementById('statusSwitch').addEventListener('click',()=>{enabled=!enabled;document.getElementById('statusSwitch').classList.toggle('is-off',!enabled);document.getElementById('statusText').textContent=enabled?'启用':'停用';});
 document.getElementById('saveBtn').addEventListener('click',()=>{const name=document.getElementById('name').value.trim(),code=document.getElementById('code').value.trim();if(!name||!code){alert('请先填写类目名称和类目标识');return;}alert(editing?'演示：类目已保存':'演示：类目已创建');location.href=editing?'product-category-detail.html?id='+encodeURIComponent(code):'product-categories.html';});
 </script>
 </body>
