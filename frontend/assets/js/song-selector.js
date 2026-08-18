@@ -25,7 +25,7 @@ function platformFor(url){const u=url.toLowerCase();return PLATFORMS.find(p=>p.m
 function html(){
  return `<div class="sp-choices">
    <button type="button" class="sp-choice active" data-sp-tab="external"><strong>粘贴歌曲链接</strong><span>支持主流流媒体平台，粘贴后自动识别歌曲信息</span></button>
-   <button type="button" class="sp-choice" data-sp-tab="library"><strong>从星球已发行歌曲中选择</strong><span>登录星球后，搜索并选择当前账号发行的歌曲</span></button>
+   <button type="button" class="sp-choice" data-sp-tab="library"><strong>从星球发行中选择歌曲</strong><span>登录星球发行后，搜索并选择当前账号发行的歌曲</span></button>
  </div>
  <div class="sp-pane active" data-sp-pane="external">
    <label class="sp-label">歌曲链接</label>
@@ -35,11 +35,11 @@ function html(){
    <div class="sp-result" data-sp-result><img class="sp-cover" data-sp-result-cover alt="歌曲封面"><div class="sp-meta"><strong data-sp-result-title></strong><span data-sp-result-artist></span><span class="sp-pill" data-sp-result-platform></span></div><button type="button" class="sp-mini" data-sp-use-link>使用这首歌</button></div>
  </div>
  <div class="sp-pane" data-sp-pane="library">
-   <div class="sp-login-card" data-sp-login-card><div><strong>登录星球，选择你已发行的歌曲</strong><p>登录后可以直接搜索当前账号在星球发行的歌曲，不需要再复制歌曲链接。</p></div><button type="button" class="sp-primary" data-sp-login>登录星球</button></div>
-   <div class="sp-library" data-sp-library><div class="sp-account"><span>已登录星球账号</span><strong data-sp-account>demo@kanjian.com</strong></div><div class="sp-searchbox"><span>⌕</span><input data-sp-search placeholder="搜索歌曲名或艺人"></div><div class="sp-dropdown" data-sp-dropdown></div><div class="sp-helper">输入关键词搜索；点击下拉结果即可选择歌曲。</div></div>
+   <div class="sp-login-card" data-sp-login-card><div><strong>登录星球发行，选择你已发行的歌曲</strong><p>登录后可以直接搜索当前账号通过星球发行的歌曲，不需要再复制歌曲链接。</p></div><button type="button" class="sp-primary" data-sp-login>登录星球发行</button></div>
+   <div class="sp-library" data-sp-library><div class="sp-account"><span>已登录星球发行账号</span><strong data-sp-account>demo@kanjian.com</strong></div><div class="sp-searchbox"><span>⌕</span><input data-sp-search placeholder="搜索歌曲名或艺人"></div><div class="sp-dropdown" data-sp-dropdown></div><div class="sp-helper">输入关键词搜索；点击下拉结果即可选择歌曲。</div></div>
  </div>
  <div class="sp-selected" data-sp-selected><img class="sp-cover" data-sp-selected-cover alt="已选择歌曲封面"><div class="sp-selected-copy"><strong data-sp-selected-title></strong><span data-sp-selected-info></span><span class="sp-pill">已选择</span></div><button type="button" class="sp-mini" data-sp-change>更换</button></div>
- <div class="sp-modal" data-sp-modal><div class="sp-dialog"><div class="sp-dialog-head"><div><h3>登录星球</h3><p>登录后即可选择你在星球发行的歌曲。本页面仅演示登录交互。</p></div><button type="button" class="sp-close" data-sp-close>×</button></div><div class="sp-form"><input data-sp-account-input placeholder="手机号或邮箱" value="demo@kanjian.com"><input data-sp-code-input placeholder="验证码" value="123456"><button type="button" class="sp-primary" data-sp-submit-login>登录并选择歌曲</button></div><div class="sp-demo">Demo：任意账号和验证码均可登录</div></div></div>`;
+ <div class="sp-modal" data-sp-modal><div class="sp-dialog"><div class="sp-dialog-head"><div><h3>登录星球发行</h3><p>登录后即可选择你通过星球发行的歌曲。本页面仅演示登录交互。</p></div><button type="button" class="sp-close" data-sp-close>×</button></div><div class="sp-form"><input data-sp-account-input placeholder="手机号或邮箱" value="demo@kanjian.com"><input data-sp-code-input placeholder="验证码" value="123456"><button type="button" class="sp-primary" data-sp-submit-login>登录并选择歌曲</button></div><div class="sp-demo">Demo：任意账号和验证码均可登录</div></div></div>`;
 }
 function mount(root,options={}){
  root.innerHTML=html();
