@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>产品详情｜星球发行 · 音乐推广 Admin</title>
+<link rel="stylesheet" href="../assets/css/admin-common.css">
+<link rel="stylesheet" href="../assets/css/products.css">
+</head>
+<body data-admin-page="products" data-page-title="产品列表 / 产品详情">
+<div id="admin-shell"></div>
+<template id="page-content">
+  <div class="pd-breadcrumb"><a href="products.html">产品列表</a><span>/</span><b>网易云音乐播放推广</b></div>
+
+  <section class="pd-detail-head">
+    <div class="pd-detail-main">
+      <div class="pd-detail-logo">云</div>
+      <div class="pd-detail-title">
+        <h1>网易云音乐播放推广</h1>
+        <div class="pd-detail-meta"><span class="pd-tag">播放推广</span><span class="pd-tag">网易云音乐</span><span class="pd-tag blue">上架中</span></div>
+      </div>
+    </div>
+    <div class="pd-detail-actions"><a class="pd-btn pd-btn-secondary" href="product-form.html?mode=edit&id=netease-play">编辑产品</a><button class="pd-btn pd-btn-danger" type="button" onclick="alert('演示：产品已下架')">下架产品</button></div>
+  </section>
+
+  <section class="pd-section">
+    <div class="pd-section-head"><div><h2>基本信息</h2></div></div>
+    <div class="pd-section-body">
+      <div class="pd-info-grid">
+        <div class="pd-info-item"><label>产品名称</label><div>网易云音乐播放推广</div></div>
+        <div class="pd-info-item"><label>所属类目</label><div>播放推广</div></div>
+        <div class="pd-info-item"><label>平台</label><div>网易云音乐</div></div>
+        <div class="pd-info-item"><label>产品标识</label><div>netease-play</div></div>
+        <div class="pd-info-item"><label>售卖方式</label><div>按固定档位</div></div>
+        <div class="pd-info-item"><label>购买对象</label><div>歌曲</div></div>
+        <div class="pd-info-item"><label>允许单独购买</label><div>是</div></div>
+        <div class="pd-info-item"><label>允许加入 Package</label><div>是</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section">
+    <div class="pd-section-head">
+      <div><h2>销售规格与价格</h2><p>不同价格档位共用当前产品的基础信息和履约方式。</p></div>
+      <button class="pd-btn pd-btn-primary" type="button" onclick="alert('演示：新增销售规格')">＋ 新增规格</button>
+    </div>
+    <div class="pd-table-wrap">
+      <table class="pd-spec-table">
+        <thead><tr><th>规格名称</th><th>目标播放</th><th>销售价</th><th>内部成本</th><th>服务费</th><th>单独销售</th><th>Package 可用</th><th>状态</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td class="pd-spec-name">600 播放</td><td>600 次</td><td class="pd-price">¥39</td><td>¥30</td><td>¥0</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">1,320 播放</td><td>1,320 次</td><td class="pd-price">¥69</td><td>¥66</td><td>¥0</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">1,980 播放</td><td>1,980 次</td><td class="pd-price">¥99</td><td>¥99</td><td>¥0</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">3,000 播放</td><td>3,000 次</td><td class="pd-price">¥159</td><td>¥150</td><td>¥0</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">4,000 播放</td><td>4,000 次</td><td class="pd-price">¥209</td><td>¥200</td><td>¥0</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">6,000 播放</td><td>6,000 次</td><td class="pd-price">¥309</td><td>¥300</td><td>¥0</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">10,000 播放</td><td>10,000 次</td><td class="pd-price">¥519</td><td>¥500</td><td>¥10</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">16,000 播放</td><td>16,000 次</td><td class="pd-price">¥819</td><td>¥800</td><td>¥10</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">24,000 播放</td><td>24,000 次</td><td class="pd-price">¥1,219</td><td>¥1,200</td><td>¥10</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">32,000 播放</td><td>32,000 次</td><td class="pd-price">¥1,619</td><td>¥1,600</td><td>¥10</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">40,000 播放</td><td>40,000 次</td><td class="pd-price">¥2,019</td><td>¥2,000</td><td>¥10</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+          <tr><td class="pd-spec-name">49,980 播放</td><td>49,980 次</td><td class="pd-price">¥2,509</td><td>¥2,499</td><td>¥10</td><td>是</td><td>是</td><td><span class="pd-status">上架</span></td><td class="pd-spec-actions"><a class="pd-link" href="#">编辑</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pd-section">
+    <div class="pd-section-head"><div><h2>履约信息</h2></div></div>
+    <div class="pd-section-body">
+      <div class="pd-info-grid">
+        <div class="pd-info-item"><label>交付单位</label><div>播放量</div></div>
+        <div class="pd-info-item"><label>执行方式</label><div>按所选档位执行</div></div>
+        <div class="pd-info-item"><label>预计开始</label><div>支付后尽快开始</div></div>
+        <div class="pd-info-item"><label>允许追加</label><div>是</div></div>
+      </div>
+    </div>
+  </section>
+</template>
+<script src="../assets/js/admin-shell.js"></script>
+</body>
+</html>
