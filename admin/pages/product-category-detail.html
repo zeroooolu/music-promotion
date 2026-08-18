@@ -10,64 +10,64 @@
 <body data-admin-page="categories" data-page-title="产品类目 / 详情">
 <div id="admin-shell"></div>
 <template id="page-content">
-  <div class="pc-breadcrumb"><a href="product-categories.html">产品类目</a><span>/</span><b>播放推广</b></div>
+  <div class="pc-breadcrumb"><a href="product-categories.html">产品类目</a><span>/</span><b id="breadcrumbName">类目详情</b></div>
 
   <section class="pc-detail-head">
     <div>
-      <div class="pc-detail-title"><h1>播放推广</h1><span class="pc-status">启用</span></div>
-      <div class="pc-detail-sub">类目标识：traffic · 用于承载各音乐平台的播放量推广 SPU。</div>
+      <div class="pc-detail-title"><h1 id="categoryName">—</h1><span class="pc-status" id="categoryStatus">启用</span></div>
+      <div class="pc-detail-sub">类目标识：<span id="categoryCode">—</span></div>
       <div class="pc-metric-strip">
-        <div class="pc-metric"><strong>2</strong><span>SPU 数量</span></div>
-        <div class="pc-metric"><strong>24</strong><span>SKU 数量</span></div>
-        <div class="pc-metric"><strong>24</strong><span>已上架 SKU</span></div>
+        <div class="pc-metric"><strong id="productCount">0</strong><span>产品数量</span></div>
+        <div class="pc-metric"><strong id="planCount">0</strong><span>方案数量</span></div>
       </div>
     </div>
-    <div style="display:flex;gap:10px"><a class="pc-btn pc-btn-secondary" href="product-categories.html">返回列表</a><a class="pc-btn pc-btn-primary" href="product-category-form.html?mode=edit&id=traffic">编辑类目</a></div>
+    <div style="display:flex;gap:10px"><a class="pc-btn pc-btn-secondary" href="product-categories.html">返回列表</a><a class="pc-btn pc-btn-primary" id="editLink" href="product-category-form.html?mode=edit">编辑类目</a></div>
   </section>
 
   <section class="pc-section">
     <div class="pc-section-head"><h2>基本信息</h2></div>
     <div class="pc-section-body">
       <div class="pc-info-grid">
-        <div class="pc-info-item"><label>类目名称</label><div>播放推广</div></div>
-        <div class="pc-info-item"><label>类目标识</label><div>traffic</div></div>
-        <div class="pc-info-item"><label>排序</label><div>10</div></div>
-        <div class="pc-info-item"><label>前台展示名称</label><div>播放推广</div></div>
-        <div class="pc-info-item"><label>状态</label><div><span class="pc-status">启用</span></div></div>
-        <div class="pc-info-item"><label>最后更新</label><div>2026-08-18 10:32</div></div>
-        <div class="pc-info-item" style="grid-column:1/-1"><label>类目说明</label><div>面向网易云音乐、QQ / 酷狗 / 酷我等平台的歌曲播放量推广服务。类目本身仅用于组织 SPU，不承载具体售价、目标播放量或履约参数。</div></div>
+        <div class="pc-info-item"><label>类目标识</label><div id="infoCode">—</div></div>
+        <div class="pc-info-item"><label>排序</label><div id="infoSort">—</div></div>
+        <div class="pc-info-item"><label>状态</label><div><span class="pc-status" id="infoStatus">启用</span></div></div>
+        <div class="pc-info-item"><label>最后更新</label><div id="infoUpdated">—</div></div>
       </div>
     </div>
   </section>
 
   <section class="pc-section">
-    <div class="pc-section-head"><div><h2>类目下的推广产品（SPU）</h2></div><button class="pc-btn pc-btn-primary" type="button" onclick="alert('下一步将单独设计 SPU 新增 / 编辑页面')">＋ 新增 SPU</button></div>
-    <div class="pc-table-wrap">
-      <table class="pc-table">
-        <thead><tr><th style="width:260px">SPU</th><th style="width:170px">平台</th><th>服务模型</th><th style="width:90px">SKU</th><th style="width:110px">前台状态</th><th style="width:150px">更新时间</th><th style="width:130px">操作</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><div class="pc-name">网易云音乐播放推广</div><div class="pc-code">netease-traffic</div></td>
-            <td><span class="pc-spu-platform"><span class="pc-platform-mark">云</span>网易云音乐</span></td>
-            <td>流量包型 · 固定价格 / 固定目标播放</td><td><span class="pc-count">12</span></td><td><span class="pc-status">已上架</span></td><td>2026-08-18 10:30</td>
-            <td><a class="pc-link" href="javascript:alert('SPU 详情页将在下一步设计')">查看</a><a class="pc-link" href="javascript:alert('SPU 编辑页将在下一步设计')">编辑</a></td>
-          </tr>
-          <tr>
-            <td><div class="pc-name">TME 播放推广</div><div class="pc-code">tme-traffic</div></td>
-            <td><span class="pc-spu-platform"><span class="pc-platform-mark">Q</span>QQ / 酷狗 / 酷我</span></td>
-            <td>流量包型 · 固定价格 / 固定目标播放</td><td><span class="pc-count">12</span></td><td><span class="pc-status">已上架</span></td><td>2026-08-18 10:21</td>
-            <td><a class="pc-link" href="javascript:alert('SPU 详情页将在下一步设计')">查看</a><a class="pc-link" href="javascript:alert('SPU 编辑页将在下一步设计')">编辑</a></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="pc-section-head"><h2>多语言名称</h2></div>
+    <div class="pc-section-body">
+      <div class="pc-info-grid" id="languageNames"></div>
     </div>
-  </section>
-
-  <section class="pc-section">
-    <div class="pc-section-head"><h2>结构说明</h2></div>
-    <div class="pc-section-body"><div class="pc-empty-note">类目只负责组织推广产品。具体平台、服务模型、SKU 规格、成本、售价和履约配置均在 SPU / SKU 层维护；Package 再跨 SPU 组合 SKU。</div></div>
   </section>
 </template>
 <script src="../assets/js/admin-shell.js"></script>
+<script src="../assets/js/product-category-data.js"></script>
+<script>
+const params=new URLSearchParams(location.search);
+const category=getProductCategory(params.get('id')||'traffic');
+const enabled=category.status==='on';
+const statusClass=enabled?'pc-status':'pc-status off';
+const statusText=enabled?'启用':'停用';
+
+document.getElementById('breadcrumbName').textContent=category.names.zhCN;
+document.getElementById('categoryName').textContent=category.names.zhCN;
+document.getElementById('categoryCode').textContent=category.id;
+document.getElementById('productCount').textContent=category.products;
+document.getElementById('planCount').textContent=category.plans;
+document.getElementById('categoryStatus').className=statusClass;
+document.getElementById('categoryStatus').textContent=statusText;
+document.getElementById('infoCode').textContent=category.id;
+document.getElementById('infoSort').textContent=category.sort;
+document.getElementById('infoUpdated').textContent=category.updated;
+document.getElementById('infoStatus').className=statusClass;
+document.getElementById('infoStatus').textContent=statusText;
+document.getElementById('editLink').href='product-category-form.html?mode=edit&id='+encodeURIComponent(category.id);
+document.getElementById('languageNames').innerHTML=PRODUCT_CATEGORY_LANGUAGES.map(language=>`
+  <div class="pc-info-item"><label>${language.label}</label><div>${category.names[language.key]||'—'}</div></div>
+`).join('');
+</script>
 </body>
 </html>
