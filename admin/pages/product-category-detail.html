@@ -37,9 +37,9 @@
   </section>
 
   <section class="pc-section">
-    <div class="pc-section-head"><h2>多语言名称</h2></div>
+    <div class="pc-section-head"><h2>多语言内容</h2></div>
     <div class="pc-section-body">
-      <div class="pc-info-grid" id="languageNames"></div>
+      <div id="languageContent"></div>
     </div>
   </section>
 </template>
@@ -65,8 +65,14 @@ document.getElementById('infoUpdated').textContent=category.updated;
 document.getElementById('infoStatus').className=statusClass;
 document.getElementById('infoStatus').textContent=statusText;
 document.getElementById('editLink').href='product-category-form.html?mode=edit&id='+encodeURIComponent(category.id);
-document.getElementById('languageNames').innerHTML=PRODUCT_CATEGORY_LANGUAGES.map(language=>`
-  <div class="pc-info-item"><label>${language.label}</label><div>${category.names[language.key]||'—'}</div></div>
+document.getElementById('languageContent').innerHTML=PRODUCT_CATEGORY_LANGUAGES.map((language,index)=>`
+  <div style="${index?'border-top:1px solid #edf0f4;padding-top:18px;margin-top:18px':''}">
+    <div style="font-size:12px;font-weight:600;color:#6f7d90;margin-bottom:12px">${language.label}</div>
+    <div class="pc-info-grid">
+      <div class="pc-info-item"><label>类目名称</label><div>${category.names[language.key]||'—'}</div></div>
+      <div class="pc-info-item" style="grid-column:span 2"><label>描述</label><div>${category.descriptions?.[language.key]||'—'}</div></div>
+    </div>
+  </div>
 `).join('');
 </script>
 </body>

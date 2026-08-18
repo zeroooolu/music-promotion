@@ -17,12 +17,22 @@
 
   <div class="pc-form-layout" style="grid-template-columns:1fr">
     <section class="pc-form-card">
-      <div class="pc-form-card-head"><h2>类目信息</h2></div>
+      <div class="pc-form-card-head"><h2>多语言内容</h2></div>
       <div class="pc-form-body">
-        <div class="pc-form-row"><div class="pc-form-label pc-required">简体中文</div><div class="pc-form-control"><input id="nameZhCN" placeholder="例如：播放推广"></div></div>
-        <div class="pc-form-row"><div class="pc-form-label">English</div><div class="pc-form-control"><input id="nameEn" placeholder="例如：Streaming Promotion"></div></div>
-        <div class="pc-form-row"><div class="pc-form-label">日本語</div><div class="pc-form-control"><input id="nameJa" placeholder="例：再生数プロモーション"></div></div>
-        <div class="pc-form-row"><div class="pc-form-label">繁體中文</div><div class="pc-form-control"><input id="nameZhTW" placeholder="例如：播放推廣"></div></div>
+        <div class="pc-form-row"><div class="pc-form-label pc-required">简体中文名称</div><div class="pc-form-control"><input id="nameZhCN" placeholder="例如：播放推广"></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">简体中文描述</div><div class="pc-form-control"><textarea id="descriptionZhCN" placeholder="请输入类目描述"></textarea></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">English Name</div><div class="pc-form-control"><input id="nameEn" placeholder="例如：Streaming Promotion"></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">English Description</div><div class="pc-form-control"><textarea id="descriptionEn" placeholder="Enter category description"></textarea></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">日本語名称</div><div class="pc-form-control"><input id="nameJa" placeholder="例：再生数プロモーション"></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">日本語説明</div><div class="pc-form-control"><textarea id="descriptionJa" placeholder="カテゴリの説明を入力"></textarea></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">繁體中文名稱</div><div class="pc-form-control"><input id="nameZhTW" placeholder="例如：播放推廣"></div></div>
+        <div class="pc-form-row"><div class="pc-form-label">繁體中文描述</div><div class="pc-form-control"><textarea id="descriptionZhTW" placeholder="請輸入類目描述"></textarea></div></div>
+      </div>
+    </section>
+
+    <section class="pc-form-card" style="margin-top:16px">
+      <div class="pc-form-card-head"><h2>基础设置</h2></div>
+      <div class="pc-form-body">
         <div class="pc-form-row"><div class="pc-form-label pc-required">类目标识</div><div class="pc-form-control"><input id="code" placeholder="例如：traffic"><div class="pc-help">英文小写，可使用连字符。</div></div></div>
         <div class="pc-form-row"><div class="pc-form-label pc-required">排序</div><div class="pc-form-control"><input id="sort" type="number" min="0" value="10"><div class="pc-help">数字越小越靠前。</div></div></div>
         <div class="pc-form-row"><div class="pc-form-label">状态</div><div class="pc-form-control"><div class="pc-switch-row"><button type="button" class="pc-switch" id="statusSwitch" aria-label="启用类目"></button><span id="statusText" style="font-size:13px;color:#4b5e75">启用</span></div></div></div>
@@ -38,11 +48,17 @@
 const params=new URLSearchParams(location.search);
 const editing=params.get('mode')==='edit';
 const category=editing?getProductCategory(params.get('id')||'traffic'):null;
-const fields={
+const nameFields={
   zhCN:document.getElementById('nameZhCN'),
   en:document.getElementById('nameEn'),
   ja:document.getElementById('nameJa'),
   zhTW:document.getElementById('nameZhTW')
+};
+const descriptionFields={
+  zhCN:document.getElementById('descriptionZhCN'),
+  en:document.getElementById('descriptionEn'),
+  ja:document.getElementById('descriptionJa'),
+  zhTW:document.getElementById('descriptionZhTW')
 };
 const code=document.getElementById('code');
 const sort=document.getElementById('sort');
@@ -54,7 +70,10 @@ if(editing){
   document.querySelector('.admin-page-title').textContent='产品类目 / 编辑';
   document.getElementById('formTitle').textContent='编辑产品类目';
   document.getElementById('crumbText').textContent='编辑类目';
-  PRODUCT_CATEGORY_LANGUAGES.forEach(language=>{fields[language.key].value=category.names[language.key]||'';});
+  PRODUCT_CATEGORY_LANGUAGES.forEach(language=>{
+    nameFields[language.key].value=category.names[language.key]||'';
+    descriptionFields[language.key].value=category.descriptions?.[language.key]||'';
+  });
   code.value=category.id;
   code.readOnly=true;
   code.style.background='#f7f8fa';
@@ -72,7 +91,7 @@ statusSwitch.addEventListener('click',()=>{
 });
 
 document.getElementById('saveBtn').addEventListener('click',()=>{
-  const zhCN=fields.zhCN.value.trim();
+  const zhCN=nameFields.zhCN.value.trim();
   const categoryCode=code.value.trim();
   if(!zhCN||!categoryCode){
     alert('请填写简体中文名称和类目标识');
