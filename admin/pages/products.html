@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>产品列表｜星球发行 · 音乐推广 Admin</title>
+<link rel="stylesheet" href="../assets/css/admin-common.css">
+<link rel="stylesheet" href="../assets/css/products.css">
+</head>
+<body data-admin-page="products" data-page-title="产品列表">
+<div id="admin-shell"></div>
+<template id="page-content">
+  <div class="page-header">
+    <div><h1>产品列表</h1><p>维护可在前台销售或用于 Package 组合的推广产品。</p></div>
+    <a class="pd-btn pd-btn-primary" href="product-form.html">＋ 新增产品</a>
+  </div>
+
+  <div class="pd-toolbar">
+    <div class="pd-filters">
+      <input class="pd-input" id="searchInput" placeholder="搜索产品名称 / 平台">
+      <select class="pd-select" id="categoryFilter"><option value="">全部类目</option><option>播放推广</option><option>歌单推广</option><option>内容推广</option><option>平台资源</option><option>场景服务</option></select>
+      <select class="pd-select" id="platformFilter"><option value="">全部平台</option><option>网易云音乐</option><option>TME</option><option>抖音</option><option>小红书</option><option>KTV</option><option>多平台</option></select>
+      <select class="pd-select" id="statusFilter"><option value="">全部状态</option><option>上架</option><option>下架</option></select>
+    </div>
+  </div>
+
+  <section class="pd-card">
+    <div class="pd-table-wrap">
+      <table class="pd-table" id="productTable">
+        <thead><tr><th>产品名称</th><th>所属类目</th><th>平台</th><th>销售规格</th><th>价格范围</th><th>售卖方式</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr data-category="播放推广" data-platform="网易云音乐" data-status="上架"><td><div class="pd-product"><div class="pd-logo">云</div><div><div class="pd-name">网易云音乐播放推广</div><div class="pd-code">netease-play</div></div></div></td><td>播放推广</td><td>网易云音乐</td><td><span class="pd-tag blue">12 个档位</span></td><td class="pd-price">¥39 – ¥2,509</td><td>按固定档位</td><td><span class="pd-status">上架</span></td><td class="pd-muted">今天 10:42</td><td><a class="pd-link" href="product-detail.html?id=netease-play">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=netease-play">编辑</a></td></tr>
+          <tr data-category="播放推广" data-platform="TME" data-status="上架"><td><div class="pd-product"><div class="pd-logo">Q</div><div><div class="pd-name">TME 播放推广</div><div class="pd-code">tme-play</div></div></div></td><td>播放推广</td><td>TME</td><td><span class="pd-tag blue">12 个档位</span></td><td class="pd-price">¥39 – ¥2,509</td><td>按固定档位</td><td><span class="pd-status">上架</span></td><td class="pd-muted">今天 10:35</td><td><a class="pd-link" href="product-detail.html?id=tme-play">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=tme-play">编辑</a></td></tr>
+          <tr data-category="歌单推广" data-platform="网易云音乐" data-status="上架"><td><div class="pd-product"><div class="pd-logo">云</div><div><div class="pd-name">网易云歌单矩阵</div><div class="pd-code">netease-playlist</div></div></div></td><td>歌单推广</td><td>网易云音乐</td><td><span class="pd-tag">4 个套餐</span></td><td class="pd-price">¥1,000 – ¥18,000</td><td>按套餐</td><td><span class="pd-status">上架</span></td><td class="pd-muted">昨天 18:20</td><td><a class="pd-link" href="product-detail.html?id=netease-playlist">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=netease-playlist">编辑</a></td></tr>
+          <tr data-category="歌单推广" data-platform="TME" data-status="上架"><td><div class="pd-product"><div class="pd-logo">Q</div><div><div class="pd-name">QQ 音乐歌单矩阵</div><div class="pd-code">qq-playlist</div></div></div></td><td>歌单推广</td><td>TME</td><td><span class="pd-tag">3 个套餐</span></td><td class="pd-price">¥4,000 – ¥10,000</td><td>按套餐</td><td><span class="pd-status">上架</span></td><td class="pd-muted">昨天 17:54</td><td><a class="pd-link" href="product-detail.html?id=qq-playlist">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=qq-playlist">编辑</a></td></tr>
+          <tr data-category="歌单推广" data-platform="TME" data-status="上架"><td><div class="pd-product"><div class="pd-logo">K</div><div><div class="pd-name">酷狗歌单矩阵</div><div class="pd-code">kugou-playlist</div></div></div></td><td>歌单推广</td><td>TME</td><td><span class="pd-tag">3 个套餐</span></td><td class="pd-price">¥6,000 – ¥24,000</td><td>按套餐</td><td><span class="pd-status">上架</span></td><td class="pd-muted">昨天 17:22</td><td><a class="pd-link" href="product-detail.html?id=kugou-playlist">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=kugou-playlist">编辑</a></td></tr>
+          <tr data-category="内容推广" data-platform="抖音" data-status="上架"><td><div class="pd-product"><div class="pd-logo">抖</div><div><div class="pd-name">抖音内容推广</div><div class="pd-code">douyin-content</div></div></div></td><td>内容推广</td><td>抖音</td><td><span class="pd-tag">6 种账号/内容</span></td><td class="pd-price">¥600 起</td><td>按数量</td><td><span class="pd-status">上架</span></td><td class="pd-muted">08-17 16:10</td><td><a class="pd-link" href="product-detail.html?id=douyin-content">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=douyin-content">编辑</a></td></tr>
+          <tr data-category="内容推广" data-platform="小红书" data-status="上架"><td><div class="pd-product"><div class="pd-logo">红</div><div><div class="pd-name">小红书达人推广</div><div class="pd-code">xiaohongshu-creator</div></div></div></td><td>内容推广</td><td>小红书</td><td><span class="pd-tag">6 个账号等级</span></td><td class="pd-price">¥400 / 条起</td><td>按数量</td><td><span class="pd-status">上架</span></td><td class="pd-muted">08-17 15:46</td><td><a class="pd-link" href="product-detail.html?id=xiaohongshu-creator">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=xiaohongshu-creator">编辑</a></td></tr>
+          <tr data-category="平台资源" data-platform="多平台" data-status="上架"><td><div class="pd-product"><div class="pd-logo">资</div><div><div class="pd-name">音乐平台推荐位代申请</div><div class="pd-code">platform-application</div></div></div></td><td>平台资源</td><td>多平台</td><td><span class="pd-tag">1 个服务方案</span></td><td class="pd-price">¥2,000</td><td>一次性服务</td><td><span class="pd-status">上架</span></td><td class="pd-muted">08-16 14:18</td><td><a class="pd-link" href="product-detail.html?id=platform-application">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=platform-application">编辑</a></td></tr>
+          <tr data-category="场景服务" data-platform="KTV" data-status="上架"><td><div class="pd-product"><div class="pd-logo">KTV</div><div><div class="pd-name">KTV 制作上架</div><div class="pd-code">ktv-publish</div></div></div></td><td>场景服务</td><td>KTV</td><td><span class="pd-tag">1 个标准服务</span></td><td class="pd-price">按服务定价</td><td>一次性服务</td><td><span class="pd-status">上架</span></td><td class="pd-muted">08-16 11:30</td><td><a class="pd-link" href="product-detail.html?id=ktv-publish">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=ktv-publish">编辑</a></td></tr>
+          <tr data-category="平台资源" data-platform="TME" data-status="下架"><td><div class="pd-product"><div class="pd-logo">榜</div><div><div class="pd-name">QQ 音乐热度推广</div><div class="pd-code">qq-chart</div></div></div></td><td>平台资源</td><td>TME</td><td><span class="pd-tag">3 个档位</span></td><td class="pd-price">¥10,000 – ¥20,000</td><td>按目标档位</td><td><span class="pd-status off">下架</span></td><td class="pd-muted">08-15 19:04</td><td><a class="pd-link" href="product-detail.html?id=qq-chart">查看</a><a class="pd-link" href="product-form.html?mode=edit&id=qq-chart">编辑</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pd-pagination"><span id="resultCount">共 10 个产品</span><div class="pd-pages"><span class="pd-page active">1</span></div></div>
+  </section>
+</template>
+<script src="../assets/js/admin-shell.js"></script>
+<script>
+const search=document.getElementById('searchInput'),category=document.getElementById('categoryFilter'),platform=document.getElementById('platformFilter'),status=document.getElementById('statusFilter');
+function filterRows(){const q=search.value.trim().toLowerCase();let count=0;document.querySelectorAll('#productTable tbody tr').forEach(row=>{const text=row.textContent.toLowerCase();const visible=(!q||text.includes(q))&&(!category.value||row.dataset.category===category.value)&&(!platform.value||row.dataset.platform===platform.value)&&(!status.value||row.dataset.status===status.value);row.style.display=visible?'':'none';if(visible)count++;});document.getElementById('resultCount').textContent='共 '+count+' 个产品';}
+[search,category,platform,status].forEach(el=>el.addEventListener(el.tagName==='INPUT'?'input':'change',filterRows));
+</script>
+</body>
+</html>
