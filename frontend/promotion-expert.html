@@ -1,489 +1,66 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>获取专属推广方案｜KJ Music Promotion</title>
+<link rel="stylesheet" href="assets/css/song-selector.css">
 <style>
-:root{
-  --brand:#f04444;--brand-dark:#d83939;--ink:#171717;--muted:#707177;--line:#e8e8eb;
-  --soft:#f7f7f8;--soft-red:#fff5f4;--dark:#151619;--white:#fff;--ok:#12805c;
-  --shadow:0 16px 46px rgba(0,0,0,.08);--max:1080px
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:#fff;color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif
-}
-a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.container{max-width:var(--max);margin:auto;padding:0 24px}
-
-.nav{
-  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
-  backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.06)
-}
-.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:850}
-.brand-mark{
-  width:36px;height:36px;border-radius:11px;background:var(--brand);color:#fff;
-  display:grid;place-items:center;font-weight:900
-}
-.brand small{display:block;font-size:9px;letter-spacing:.16em;color:#92939a;margin-top:2px}
-.menu{display:flex;gap:30px;font-size:14px;color:#55565b}
-.menu a.active,.menu a:hover{color:#111;font-weight:750}
-.actions{display:flex;gap:10px;align-items:center}
-.primary,.secondary{
-  display:inline-flex;align-items:center;justify-content:center;border-radius:13px;
-  font-weight:750;padding:12px 18px
-}
-.primary{border:0;background:var(--brand);color:#fff}
-.primary:hover{background:var(--brand-dark)}
-.secondary{border:1px solid #dedee1;background:#fff;color:#222}
-
-.hero{padding:58px 0 28px;background:linear-gradient(180deg,#fff,#fff8f7)}
-.crumb{font-size:12px;color:#92939a;margin-bottom:18px}
-.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:start}
-.hero h1{font-size:46px;line-height:1.08;letter-spacing:-.045em;margin:0 0 14px}
-.hero p{font-size:16px;line-height:1.75;color:var(--muted);max-width:720px;margin:0}
-.expert-card{
-  background:var(--dark);color:#fff;border-radius:22px;padding:22px
-}
-.expert-tag{
-  display:inline-flex;padding:6px 9px;border-radius:999px;background:#26272c;
-  color:#ff9a94;font-size:11px;font-weight:800;margin-bottom:15px
-}
-.expert-card h3{font-size:20px;margin:0 0 9px}
-.expert-card p{font-size:13px;line-height:1.6;color:#aeb0b5;margin:0 0 16px}
-.expert-points{display:grid;gap:9px}
-.expert-point{display:flex;gap:9px;font-size:13px;color:#ddd}
-.expert-point span:first-child{color:#ffaaa5}
-
-.main{padding:36px 0 80px}
-.layout{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
-.panel{
-  border:1px solid var(--line);border-radius:20px;background:#fff;padding:22px
-}
-.panel + .panel{margin-top:16px}
-.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
-.panel-head h2{font-size:21px;margin:0 0 6px}
-.panel-head p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
-.badge{
-  display:inline-flex;border-radius:999px;background:#f4f4f5;color:#666;
-  padding:6px 9px;font-size:11px;white-space:nowrap
-}
-.badge.accent{background:#fff0ef;color:#b52e2a}
-
-.song-summary{
-  border:1px solid var(--line);border-radius:15px;padding:14px;
-  display:flex;align-items:center;gap:13px;background:#fafafa
-}
-.cover{
-  width:54px;height:54px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,#ff6c62,#7655ff);color:#fff;font-size:21px
-}
-.song-meta{min-width:0;flex:1}
-.song-meta strong{display:block;font-size:15px}
-.song-meta span{display:block;color:#898a90;font-size:12px;margin-top:4px}
-.song-actions{display:flex;gap:8px}
-.mini-btn{
-  border:1px solid #dedee1;background:#fff;border-radius:10px;padding:8px 10px;
-  font-size:12px;font-weight:700
-}
-
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field label{display:block;font-size:12px;font-weight:750;margin-bottom:7px}
-.field input,.field select,.field textarea{
-  width:100%;border:1px solid #dedee1;border-radius:12px;background:#fff;
-  padding:11px 12px;outline:none;color:#222
-}
-.field textarea{min-height:92px;resize:vertical;line-height:1.55}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#aaa}
-.field small{display:block;color:#999aa0;font-size:11px;line-height:1.5;margin-top:6px}
-
-.goal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.goal-option{
-  border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;
-  cursor:pointer;display:flex;gap:11px;align-items:flex-start;transition:.16s
-}
-.goal-option:hover{background:#fafafa}
-.goal-option.selected{border-color:#ffc6c1;background:#fff8f7}
-.goal-icon{
-  width:38px;height:38px;border-radius:11px;background:#f4f4f5;
-  display:grid;place-items:center;flex:0 0 auto
-}
-.goal-option strong{display:block;font-size:14px;margin-bottom:4px}
-.goal-option span{font-size:12px;color:#7f8086;line-height:1.45}
-
-.budget-list{display:flex;gap:8px;flex-wrap:wrap}
-.budget-chip{
-  border:1px solid #dedee1;background:#fff;border-radius:999px;
-  padding:9px 12px;font-size:12px;color:#555
-}
-.budget-chip.selected{border-color:#ffc6c1;background:#fff1ef;color:#b52e2a;font-weight:750}
-
-.market-list{display:flex;gap:8px;flex-wrap:wrap}
-.market-chip{
-  border:1px solid #dedee1;background:#fff;border-radius:999px;
-  padding:9px 12px;font-size:12px;color:#555
-}
-.market-chip.selected{border-color:#cfd0d5;background:#f5f5f6;color:#111;font-weight:750}
-
-.side-card{
-  position:sticky;top:94px;border:1px solid var(--line);border-radius:18px;
-  padding:20px;background:#fff
-}
-.side-card h3{font-size:17px;margin:0 0 14px}
-.summary-row{
-  display:flex;justify-content:space-between;gap:14px;padding:9px 0;
-  border-bottom:1px solid #f0f0f2;font-size:12px
-}
-.summary-row span{color:#83848a}
-.summary-row strong{text-align:right;font-size:12px}
-.summary-row:last-of-type{border-bottom:0}
-.promise{
-  margin:16px 0;background:#fafafa;border:1px solid var(--line);border-radius:12px;
-  padding:12px;font-size:11px;color:#7e7f85;line-height:1.6
-}
-.side-card .primary{width:100%}
-.side-card .secondary{width:100%;margin-top:8px}
-.helper{font-size:11px;color:#98999e;line-height:1.5;margin-top:10px}
-
-.success{
-  display:none;border:1px solid #cfe8dd;background:#f7fffb;border-radius:20px;padding:34px;text-align:center
-}
-.success.show{display:block}
-.success-icon{
-  width:54px;height:54px;border-radius:999px;background:#e4f5ed;color:var(--ok);
-  display:grid;place-items:center;font-size:25px;margin:0 auto 16px
-}
-.success h2{font-size:24px;margin:0 0 8px}
-.success p{font-size:14px;line-height:1.65;color:#6f7177;max-width:620px;margin:0 auto 20px}
-
-footer{border-top:1px solid var(--line);padding:32px 0 44px;color:#777;font-size:13px}
-.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-
-@media(max-width:900px){
-  .menu{display:none}.hero-grid,.layout{grid-template-columns:1fr}
-  .side-card{position:static}
-}
-@media(max-width:680px){
-  .container{padding:0 18px}.hero h1{font-size:36px}.grid-2,.goal-grid{grid-template-columns:1fr}
-  .song-summary{align-items:flex-start}.song-actions{flex-direction:column}
-}
+:root{--brand:#f04444;--brand-dark:#d83939;--ink:#171717;--muted:#707177;--line:#e8e8eb;--dark:#151619;--ok:#12805c;--max:1080px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}.container{max-width:var(--max);margin:auto;padding:0 24px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.06)}.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;font-weight:850}.brand-mark{width:36px;height:36px;border-radius:11px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:900}.brand small{display:block;font-size:9px;letter-spacing:.16em;color:#92939a;margin-top:2px}.menu{display:flex;gap:30px;font-size:14px;color:#55565b}.menu a.active,.menu a:hover{color:#111;font-weight:750}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;font-weight:750;padding:12px 18px}.primary{border:0;background:var(--brand);color:#fff}.primary:hover{background:var(--brand-dark)}.secondary{border:1px solid #dedee1;background:#fff;color:#222}
+.hero{padding:58px 0 28px;background:linear-gradient(180deg,#fff,#fff8f7)}.crumb{font-size:12px;color:#92939a;margin-bottom:18px}.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:start}.hero h1{font-size:46px;line-height:1.08;letter-spacing:-.045em;margin:0 0 14px}.hero p{font-size:16px;line-height:1.75;color:var(--muted);max-width:720px;margin:0}.expert-card{background:var(--dark);color:#fff;border-radius:22px;padding:22px}.expert-tag{display:inline-flex;padding:6px 9px;border-radius:999px;background:#26272c;color:#ff9a94;font-size:11px;font-weight:800;margin-bottom:15px}.expert-card h3{font-size:20px;margin:0 0 9px}.expert-card p{font-size:13px;line-height:1.6;color:#aeb0b5;margin:0 0 16px}.expert-points{display:grid;gap:9px}.expert-point{display:flex;gap:9px;font-size:13px;color:#ddd}.expert-point span:first-child{color:#ffaaa5}
+.main{padding:36px 0 80px}.layout{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}.panel{border:1px solid var(--line);border-radius:20px;background:#fff;padding:22px}.panel+.panel{margin-top:16px}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}.panel-head h2{font-size:21px;margin:0 0 6px}.panel-head p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}.badge{display:inline-flex;border-radius:999px;background:#f4f4f5;color:#666;padding:6px 9px;font-size:11px;white-space:nowrap}.badge.accent{background:#fff0ef;color:#b52e2a}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;font-size:12px;font-weight:750;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid #dedee1;border-radius:12px;background:#fff;padding:11px 12px;outline:none;color:#222}.field textarea{min-height:92px;resize:vertical;line-height:1.55}.field input:focus,.field select:focus,.field textarea:focus{border-color:#aaa}.field small{display:block;color:#999aa0;font-size:11px;line-height:1.5;margin-top:6px}
+.goal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.goal-option{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;cursor:pointer;display:flex;gap:11px;align-items:flex-start;transition:.16s}.goal-option:hover{background:#fafafa}.goal-option.selected{border-color:#ffc6c1;background:#fff8f7}.goal-icon{width:38px;height:38px;border-radius:11px;background:#f4f4f5;display:grid;place-items:center;flex:0 0 auto}.goal-option strong{display:block;font-size:14px;margin-bottom:4px}.goal-option span{font-size:12px;color:#7f8086;line-height:1.45}.budget-list,.market-list{display:flex;gap:8px;flex-wrap:wrap}.budget-chip,.market-chip{border:1px solid #dedee1;background:#fff;border-radius:999px;padding:9px 12px;font-size:12px;color:#555}.budget-chip.selected{border-color:#ffc6c1;background:#fff1ef;color:#b52e2a;font-weight:750}.market-chip.selected{border-color:#cfd0d5;background:#f5f5f6;color:#111;font-weight:750}
+.side-card{position:sticky;top:94px;border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff}.side-card h3{font-size:17px;margin:0 0 14px}.summary-row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid #f0f0f2;font-size:12px}.summary-row span{color:#83848a}.summary-row strong{text-align:right;font-size:12px;max-width:160px}.summary-row:last-of-type{border-bottom:0}.promise{margin:16px 0;background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:11px;color:#7e7f85;line-height:1.6}.side-card .primary,.side-card .secondary{width:100%}.side-card .secondary{margin-top:8px}.helper{font-size:11px;color:#98999e;line-height:1.5;margin-top:10px}.success{display:none;border:1px solid #cfe8dd;background:#f7fffb;border-radius:20px;padding:34px;text-align:center}.success.show{display:block}.success-icon{width:54px;height:54px;border-radius:999px;background:#e4f5ed;color:var(--ok);display:grid;place-items:center;font-size:25px;margin:0 auto 16px}.success h2{font-size:24px;margin:0 0 8px}.success p{font-size:14px;line-height:1.65;color:#6f7177;max-width:620px;margin:0 auto 20px}footer{border-top:1px solid var(--line);padding:32px 0 44px;color:#777;font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:900px){.menu{display:none}.hero-grid,.layout{grid-template-columns:1fr}.side-card{position:static}}@media(max-width:680px){.container{padding:0 18px}.hero h1{font-size:36px}.grid-2,.goal-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<header class="nav"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">KJ</span><span>看见音乐<small>KANJIAN MUSIC</small></span></a><nav class="menu"><a href="index.html">首页</a><a class="active" href="music-promotion.html">音乐推广</a><a href="#">订单</a></nav><div><a class="secondary" href="#">登录</a></div></div></header>
+<section class="hero"><div class="container"><div class="crumb">音乐推广 / 专属推广方案</div><div class="hero-grid"><div><h1>让专属音乐推广专家<br>帮你制定推广方案</h1><p>不知道该选播放推广、歌单、短视频还是海外投放？告诉我们歌曲、推广目标和预算，音乐推广专家会结合你的发行阶段和目标市场，帮你规划更合适的推广组合。</p></div><aside class="expert-card"><div class="expert-tag">专属音乐推广专家</div><h3>适合这些情况</h3><p>如果你不是只想买一个标准套餐，而是需要更完整的推广思路，这个入口更适合你。</p><div class="expert-points"><div class="expert-point"><span>✓</span><span>重点新歌发行推广</span></div><div class="expert-point"><span>✓</span><span>多个平台组合推广</span></div><div class="expert-point"><span>✓</span><span>预算较高，希望分阶段执行</span></div><div class="expert-point"><span>✓</span><span>不知道应该优先做哪种推广</span></div></div></aside></div></div></section>
 
-<header class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">KJ</span>
-      <span>看见音乐<small>KANJIAN MUSIC</small></span>
-    </a>
-    <nav class="menu">
-      <a href="index.html">首页</a>
-      <a class="active" href="music-promotion.html">音乐推广</a>
-      <a href="#">订单</a>
-    </nav>
-    <div class="actions">
-      <a class="secondary" href="#">登录</a>
-    </div>
-  </div>
-</header>
+<main class="main"><div class="container">
+<div id="formArea" class="layout"><section>
+  <div class="panel"><div class="panel-head"><div><h2>1. 你想推广哪首歌？</h2><p>可以粘贴外部流媒体歌曲链接，也可以登录星球，从已经发行的歌曲中选择。</p></div><span class="badge accent">歌曲</span></div><div class="song-picker" id="songPicker"></div></div>
 
-<section class="hero">
-  <div class="container">
-    <div class="crumb">音乐推广 / 专属推广方案</div>
-    <div class="hero-grid">
-      <div>
-        <h1>让专属音乐推广专家<br>帮你制定推广方案</h1>
-        <p>不知道该选播放推广、歌单、短视频还是海外投放？告诉我们歌曲、推广目标和预算，音乐推广专家会结合你的发行阶段和目标市场，帮你规划更合适的推广组合。</p>
-      </div>
-      <aside class="expert-card">
-        <div class="expert-tag">专属音乐推广专家</div>
-        <h3>适合这些情况</h3>
-        <p>如果你不是只想买一个标准套餐，而是需要更完整的推广思路，这个入口更适合你。</p>
-        <div class="expert-points">
-          <div class="expert-point"><span>✓</span><span>重点新歌发行推广</span></div>
-          <div class="expert-point"><span>✓</span><span>多个平台组合推广</span></div>
-          <div class="expert-point"><span>✓</span><span>预算较高，希望分阶段执行</span></div>
-          <div class="expert-point"><span>✓</span><span>不知道应该优先做哪种推广</span></div>
-        </div>
-      </aside>
-    </div>
+  <div class="panel"><div class="panel-head"><div><h2>2. 你最希望这次推广解决什么？</h2><p>先选择一个最重要的目标，专家会再根据实际情况组合其他推广方式。</p></div><span class="badge">推广目标</span></div><div class="goal-grid" id="goalGrid">
+    <div class="goal-option selected" data-value="增加歌曲播放"><div class="goal-icon">🎧</div><div><strong>增加歌曲播放</strong><span>新歌起量、持续增加平台播放与曝光</span></div></div>
+    <div class="goal-option" data-value="进入更多歌单"><div class="goal-icon">♫</div><div><strong>进入更多歌单</strong><span>通过歌单矩阵获得持续曝光与收听机会</span></div></div>
+    <div class="goal-option" data-value="短视频 / 内容传播"><div class="goal-icon">📱</div><div><strong>短视频 / 内容传播</strong><span>抖音、小红书、达人和 UGC 内容传播</span></div></div>
+    <div class="goal-option" data-value="海外推广"><div class="goal-icon">🌍</div><div><strong>海外推广</strong><span>Spotify、YouTube 等海外真实广告投放</span></div></div>
+    <div class="goal-option" data-value="提升热度 / 冲榜"><div class="goal-icon">🏆</div><div><strong>提升热度 / 冲榜</strong><span>已有基础数据，希望进一步放大歌曲表现</span></div></div>
+    <div class="goal-option" data-value="还不确定"><div class="goal-icon">✨</div><div><strong>还不确定</strong><span>让推广专家先根据歌曲帮你判断</span></div></div>
+  </div></div>
+
+  <div class="panel"><div class="panel-head"><div><h2>3. 告诉我们预算和市场</h2><p>不需要非常精确，先给一个大致范围即可。</p></div><span class="badge">推广条件</span></div>
+    <div class="field" style="margin-bottom:16px"><label>本次推广预算</label><div class="budget-list" id="budgetList"><button type="button" class="budget-chip" data-value="¥1,000 以下">¥1,000 以下</button><button type="button" class="budget-chip selected" data-value="¥1,000 - 5,000">¥1,000 - 5,000</button><button type="button" class="budget-chip" data-value="¥5,000 - 20,000">¥5,000 - 20,000</button><button type="button" class="budget-chip" data-value="¥20,000 以上">¥20,000 以上</button><button type="button" class="budget-chip" data-value="暂不确定">暂不确定</button></div></div>
+    <div class="field"><label>主要推广市场</label><div class="market-list" id="marketList"><button type="button" class="market-chip selected" data-value="中国大陆">中国大陆</button><button type="button" class="market-chip" data-value="港澳台">港澳台</button><button type="button" class="market-chip" data-value="东南亚">东南亚</button><button type="button" class="market-chip" data-value="欧美">欧美</button><button type="button" class="market-chip" data-value="全球">全球</button></div></div>
   </div>
+
+  <div class="panel"><div class="panel-head"><div><h2>4. 再告诉我们一点歌曲情况</h2><p>这些信息能帮助专家判断推广节奏和优先渠道。</p></div><span class="badge">歌曲情况</span></div><div class="grid-2">
+    <div class="field"><label for="releaseStage">歌曲发行阶段</label><select id="releaseStage"><option>准备发行</option><option selected>刚发行 7 天内</option><option>发行 1 个月内</option><option>已发行较长时间</option></select></div>
+    <div class="field"><label for="musicStyle">歌曲风格</label><input id="musicStyle" placeholder="例如：流行 / 说唱 / 民谣 / 电子"></div>
+    <div class="field"><label for="currentData">当前数据情况</label><input id="currentData" placeholder="例如：网易云 2 万播放，抖音已有少量使用"><small>不清楚可以留空。</small></div>
+    <div class="field"><label for="releaseDate">预计 / 实际发行时间</label><input id="releaseDate" type="date"></div>
+  </div><div class="field" style="margin-top:14px"><label for="notes">还有什么希望专家知道？</label><textarea id="notes" placeholder="例如：希望先做抖音内容传播，再带动网易云和 QQ 音乐播放；或者希望重点面向东南亚推广。"></textarea></div></div>
+
+  <div class="panel"><div class="panel-head"><div><h2>5. 留下联系方式</h2><p>推广专家会通过你选择的方式联系你。</p></div><span class="badge">联系方式</span></div><div class="grid-2"><div class="field"><label for="contactName">怎么称呼你</label><input id="contactName" placeholder="姓名 / 艺名"></div><div class="field"><label for="contactType">联系偏好</label><select id="contactType"><option>微信</option><option>手机号</option><option>邮箱</option></select></div><div class="field" style="grid-column:1/-1"><label for="contactValue">联系方式</label><input id="contactValue" placeholder="微信号 / 手机号 / 邮箱"></div></div></div>
 </section>
 
-<main class="main">
-<div class="container">
-
-  <div id="formArea" class="layout">
-    <section>
-
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>1. 你想推广哪首歌？</h2>
-            <p>如果是从推广流程进入，歌曲会自动带入；也可以重新选择。</p>
-          </div>
-          <span class="badge accent">歌曲</span>
-        </div>
-
-        <div class="song-summary">
-          <div class="cover">♪</div>
-          <div class="song-meta">
-            <strong id="songTitle">夏夜的风</strong>
-            <span id="songInfo">林屿 · 看见音乐 · 已发行</span>
-          </div>
-          <div class="song-actions">
-            <button type="button" class="mini-btn" id="changeSong">重新选歌</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>2. 你最希望这次推广解决什么？</h2>
-            <p>先选择一个最重要的目标，专家会再根据实际情况组合其他推广方式。</p>
-          </div>
-          <span class="badge">推广目标</span>
-        </div>
-
-        <div class="goal-grid" id="goalGrid">
-          <div class="goal-option selected" data-value="增加歌曲播放">
-            <div class="goal-icon">🎧</div>
-            <div><strong>增加歌曲播放</strong><span>新歌起量、持续增加平台播放与曝光</span></div>
-          </div>
-          <div class="goal-option" data-value="进入更多歌单">
-            <div class="goal-icon">♫</div>
-            <div><strong>进入更多歌单</strong><span>通过歌单矩阵获得持续曝光与收听机会</span></div>
-          </div>
-          <div class="goal-option" data-value="短视频 / 内容传播">
-            <div class="goal-icon">📱</div>
-            <div><strong>短视频 / 内容传播</strong><span>抖音、小红书、达人和 UGC 内容传播</span></div>
-          </div>
-          <div class="goal-option" data-value="海外推广">
-            <div class="goal-icon">🌍</div>
-            <div><strong>海外推广</strong><span>Spotify、YouTube 等海外真实广告投放</span></div>
-          </div>
-          <div class="goal-option" data-value="提升热度 / 冲榜">
-            <div class="goal-icon">🏆</div>
-            <div><strong>提升热度 / 冲榜</strong><span>已有基础数据，希望进一步放大歌曲表现</span></div>
-          </div>
-          <div class="goal-option" data-value="还不确定">
-            <div class="goal-icon">✨</div>
-            <div><strong>还不确定</strong><span>让推广专家先根据歌曲帮你判断</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>3. 告诉我们预算和市场</h2>
-            <p>不需要非常精确，先给一个大致范围即可。</p>
-          </div>
-          <span class="badge">推广条件</span>
-        </div>
-
-        <div class="field" style="margin-bottom:16px">
-          <label>本次推广预算</label>
-          <div class="budget-list" id="budgetList">
-            <button type="button" class="budget-chip" data-value="¥1,000 以下">¥1,000 以下</button>
-            <button type="button" class="budget-chip selected" data-value="¥1,000 - 5,000">¥1,000 - 5,000</button>
-            <button type="button" class="budget-chip" data-value="¥5,000 - 20,000">¥5,000 - 20,000</button>
-            <button type="button" class="budget-chip" data-value="¥20,000 以上">¥20,000 以上</button>
-            <button type="button" class="budget-chip" data-value="暂不确定">暂不确定</button>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>主要推广市场</label>
-          <div class="market-list" id="marketList">
-            <button type="button" class="market-chip selected" data-value="中国大陆">中国大陆</button>
-            <button type="button" class="market-chip" data-value="港澳台">港澳台</button>
-            <button type="button" class="market-chip" data-value="东南亚">东南亚</button>
-            <button type="button" class="market-chip" data-value="欧美">欧美</button>
-            <button type="button" class="market-chip" data-value="全球">全球</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>4. 再告诉我们一点歌曲情况</h2>
-            <p>这些信息能帮助专家判断推广节奏和优先渠道。</p>
-          </div>
-          <span class="badge">歌曲情况</span>
-        </div>
-
-        <div class="grid-2">
-          <div class="field">
-            <label for="releaseStage">歌曲发行阶段</label>
-            <select id="releaseStage">
-              <option>准备发行</option>
-              <option selected>刚发行 7 天内</option>
-              <option>发行 1 个月内</option>
-              <option>已发行较长时间</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="musicStyle">歌曲风格</label>
-            <input id="musicStyle" placeholder="例如：流行 / 说唱 / 民谣 / 电子">
-          </div>
-          <div class="field">
-            <label for="currentData">当前数据情况</label>
-            <input id="currentData" placeholder="例如：网易云 2 万播放，抖音已有少量使用">
-            <small>不清楚可以留空。</small>
-          </div>
-          <div class="field">
-            <label for="releaseDate">预计 / 实际发行时间</label>
-            <input id="releaseDate" type="date">
-          </div>
-        </div>
-
-        <div class="field" style="margin-top:14px">
-          <label for="notes">还有什么希望专家知道？</label>
-          <textarea id="notes" placeholder="例如：这首歌准备重点推广，希望先做抖音内容传播，再带动网易云和 QQ 音乐播放；或者希望重点面向东南亚推广。"></textarea>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>5. 留下联系方式</h2>
-            <p>推广专家会通过你选择的方式联系你。</p>
-          </div>
-          <span class="badge">联系方式</span>
-        </div>
-
-        <div class="grid-2">
-          <div class="field">
-            <label for="contactName">怎么称呼你</label>
-            <input id="contactName" placeholder="姓名 / 艺名">
-          </div>
-          <div class="field">
-            <label for="contactType">联系偏好</label>
-            <select id="contactType">
-              <option>微信</option>
-              <option>手机号</option>
-              <option>邮箱</option>
-            </select>
-          </div>
-          <div class="field" style="grid-column:1/-1">
-            <label for="contactValue">联系方式</label>
-            <input id="contactValue" placeholder="微信号 / 手机号 / 邮箱">
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <aside class="side-card">
-      <h3>你的推广需求</h3>
-      <div class="summary-row"><span>歌曲</span><strong id="sumSong">夏夜的风</strong></div>
-      <div class="summary-row"><span>主要目标</span><strong id="sumGoal">增加歌曲播放</strong></div>
-      <div class="summary-row"><span>预算</span><strong id="sumBudget">¥1,000 - 5,000</strong></div>
-      <div class="summary-row"><span>市场</span><strong id="sumMarket">中国大陆</strong></div>
-      <div class="summary-row"><span>方案类型</span><strong>专属专家定制</strong></div>
-
-      <div class="promise">
-        提交后不是立即购买。推广专家会先根据歌曲、预算和目标整理推广建议，再与你确认具体平台、执行节奏和费用。
-      </div>
-
-      <button type="button" class="primary" id="submitBtn">提交并获取专属推广方案 →</button>
-      <button type="button" class="secondary" id="backBtn">返回标准推广方案</button>
-      <div class="helper">Demo 页面仅演示产品流程，不会真实提交任何信息。</div>
-    </aside>
-  </div>
-
-  <section class="success" id="success">
-    <div class="success-icon">✓</div>
-    <h2>推广需求已提交</h2>
-    <p>我们已经记录了你的歌曲、推广目标、预算和市场。下一步由专属音乐推广专家根据这些信息整理推广建议，再与你确认具体方案。</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <a class="primary" href="#">查看我的推广需求</a>
-      <a class="secondary" href="music-promotion.html">继续推广其他歌曲</a>
-    </div>
-  </section>
-
+<aside class="side-card"><h3>你的推广需求</h3><div class="summary-row"><span>歌曲</span><strong id="sumSong">尚未选择</strong></div><div class="summary-row"><span>主要目标</span><strong id="sumGoal">增加歌曲播放</strong></div><div class="summary-row"><span>预算</span><strong id="sumBudget">¥1,000 - 5,000</strong></div><div class="summary-row"><span>市场</span><strong id="sumMarket">中国大陆</strong></div><div class="summary-row"><span>方案类型</span><strong>专属专家定制</strong></div><div class="promise">提交后不是立即购买。推广专家会先根据歌曲、预算和目标整理推广建议，再与你确认具体平台、执行节奏和费用。</div><button type="button" class="primary" id="submitBtn">提交并获取专属推广方案 →</button><button type="button" class="secondary" id="backBtn">返回标准推广方案</button><div class="helper">Demo 页面仅演示产品流程，不会真实提交任何信息。</div></aside>
 </div>
-</main>
 
-<footer>
-  <div class="container foot">
-    <div>© 2026 KANJIAN MUSIC · KJ Music Promotion</div>
-    <div>音乐推广 · 订单 · 帮助中心</div>
-  </div>
-</footer>
-
+<section class="success" id="success"><div class="success-icon">✓</div><h2>推广需求已提交</h2><p>我们已经记录了你的歌曲、推广目标、预算和市场。下一步由专属音乐推广专家根据这些信息整理推广建议，再与你确认具体方案。</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="primary" href="#">查看我的推广需求</a><a class="secondary" href="music-promotion.html">继续推广其他歌曲</a></div></section>
+</div></main>
+<footer><div class="container foot"><div>© 2026 KANJIAN MUSIC · KJ Music Promotion</div><div>音乐推广 · 订单 · 帮助中心</div></div></footer>
+<script src="assets/js/song-selector.js"></script>
 <script>
-const params = new URLSearchParams(location.search);
-const title = params.get('title') || '夏夜的风';
-const artist = params.get('artist') || '林屿';
-const platform = params.get('platform') || '看见音乐';
-
-document.getElementById('songTitle').textContent = title;
-document.getElementById('songInfo').textContent = [artist, platform, '已发行'].filter(Boolean).join(' · ');
-document.getElementById('sumSong').textContent = title;
-
-let selectedGoal = '增加歌曲播放';
-let selectedBudget = '¥1,000 - 5,000';
-let selectedMarket = '中国大陆';
-
-document.querySelectorAll('.goal-option').forEach(el => {
-  el.addEventListener('click', () => {
-    document.querySelectorAll('.goal-option').forEach(x => x.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedGoal = el.dataset.value;
-    document.getElementById('sumGoal').textContent = selectedGoal;
-  });
-});
-
-document.querySelectorAll('.budget-chip').forEach(el => {
-  el.addEventListener('click', () => {
-    document.querySelectorAll('.budget-chip').forEach(x => x.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedBudget = el.dataset.value;
-    document.getElementById('sumBudget').textContent = selectedBudget;
-  });
-});
-
-document.querySelectorAll('.market-chip').forEach(el => {
-  el.addEventListener('click', () => {
-    document.querySelectorAll('.market-chip').forEach(x => x.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedMarket = el.dataset.value;
-    document.getElementById('sumMarket').textContent = selectedMarket;
-  });
-});
-
-document.getElementById('changeSong').addEventListener('click', () => {
-  location.href = 'music-promotion.html';
-});
-
-document.getElementById('backBtn').addEventListener('click', () => {
-  if (history.length > 1) history.back();
-  else location.href = 'promotion-step3.html';
-});
-
-document.getElementById('submitBtn').addEventListener('click', () => {
-  const contact = document.getElementById('contactValue').value.trim();
-  if (!contact) {
-    alert('请先填写联系方式，方便推广专家与你沟通。');
-    document.getElementById('contactValue').focus();
-    return;
-  }
-  document.getElementById('formArea').style.display = 'none';
-  document.getElementById('success').classList.add('show');
-  window.scrollTo({top:0, behavior:'smooth'});
-});
+const params=new URLSearchParams(location.search);let selectedSong=null;let selectedGoal='增加歌曲播放';let selectedBudget='¥1,000 - 5,000';let selectedMarket='中国大陆';
+const picker=document.getElementById('songPicker');picker.addEventListener('songselected',e=>{selectedSong=e.detail;document.getElementById('sumSong').textContent=selectedSong.title;});picker.addEventListener('songcleared',()=>{selectedSong=null;document.getElementById('sumSong').textContent='尚未选择';});
+const initialTitle=params.get('title');const initial=initialTitle?{title:initialTitle,artist:params.get('artist')||'',platform:params.get('platform')||'已选择歌曲',source:params.get('source')||'flow'}:null;picker.__songPicker=KJSongPicker.mount(picker,{initial});
+document.querySelectorAll('.goal-option').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.goal-option').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedGoal=el.dataset.value;document.getElementById('sumGoal').textContent=selectedGoal;}));
+document.querySelectorAll('.budget-chip').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.budget-chip').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedBudget=el.dataset.value;document.getElementById('sumBudget').textContent=selectedBudget;}));
+document.querySelectorAll('.market-chip').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.market-chip').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedMarket=el.dataset.value;document.getElementById('sumMarket').textContent=selectedMarket;}));
+document.getElementById('backBtn').addEventListener('click',()=>location.href='music-promotion.html');
+document.getElementById('submitBtn').addEventListener('click',()=>{if(!selectedSong){alert('请先选择需要推广的歌曲。');picker.scrollIntoView({behavior:'smooth',block:'center'});return;}const contact=document.getElementById('contactValue').value.trim();if(!contact){alert('请先填写联系方式，方便推广专家与你沟通。');document.getElementById('contactValue').focus();return;}document.getElementById('formArea').style.display='none';document.getElementById('success').classList.add('show');window.scrollTo({top:0,behavior:'smooth'});});
 </script>
-
-</body>
-</html>
+</body></html>
