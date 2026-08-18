@@ -20,7 +20,7 @@
 
 <main class="main"><div class="container">
 <div id="formArea" class="layout"><section>
-  <div class="panel"><div class="panel-head"><div><h2>1. 你想推广哪首歌？</h2><p>可以粘贴外部流媒体歌曲链接，也可以登录星球，从已经发行的歌曲中选择。</p></div><span class="badge accent">歌曲</span></div><div class="song-picker" id="songPicker"></div></div>
+  <div class="panel"><div class="panel-head"><div><h2>1. 你想推广哪首歌？</h2><p>可以粘贴外部流媒体歌曲链接，也可以登录星球发行，从已经发行的歌曲中选择。</p></div><span class="badge accent">歌曲</span></div><div class="song-picker" id="songPicker"></div></div>
 
   <div class="panel"><div class="panel-head"><div><h2>2. 你最希望这次推广解决什么？</h2><p>先选择一个最重要的目标，专家会再根据实际情况组合其他推广方式。</p></div><span class="badge">推广目标</span></div><div class="goal-grid" id="goalGrid">
     <div class="goal-option selected" data-value="增加歌曲播放"><div class="goal-icon">🎧</div><div><strong>增加歌曲播放</strong><span>新歌起量、持续增加平台播放与曝光</span></div></div>
@@ -41,9 +41,13 @@
     <div class="field"><label for="musicStyle">歌曲风格</label><input id="musicStyle" placeholder="例如：流行 / 说唱 / 民谣 / 电子"></div>
     <div class="field"><label for="currentData">当前数据情况</label><input id="currentData" placeholder="例如：网易云 2 万播放，抖音已有少量使用"><small>不清楚可以留空。</small></div>
     <div class="field"><label for="releaseDate">预计 / 实际发行时间</label><input id="releaseDate" type="date"></div>
-  </div><div class="field" style="margin-top:14px"><label for="notes">还有什么希望专家知道？</label><textarea id="notes" placeholder="例如：希望先做抖音内容传播，再带动网易云和 QQ 音乐播放；或者希望重点面向东南亚推广。"></textarea></div></div>
+  </div><div class="field" style="margin-top:14px"><label for="notes">还有什么希望专家知道？</label><textarea id="notes" placeholder="例如：这首歌准备重点推广，希望先做抖音内容传播，再带动网易云和 QQ 音乐播放；或者希望重点面向东南亚推广。"></textarea></div></div>
 
-  <div class="panel"><div class="panel-head"><div><h2>5. 留下联系方式</h2><p>推广专家会通过你选择的方式联系你。</p></div><span class="badge">联系方式</span></div><div class="grid-2"><div class="field"><label for="contactName">怎么称呼你</label><input id="contactName" placeholder="姓名 / 艺名"></div><div class="field"><label for="contactType">联系偏好</label><select id="contactType"><option>微信</option><option>手机号</option><option>邮箱</option></select></div><div class="field" style="grid-column:1/-1"><label for="contactValue">联系方式</label><input id="contactValue" placeholder="微信号 / 手机号 / 邮箱"></div></div></div>
+  <div class="panel"><div class="panel-head"><div><h2>5. 留下联系方式</h2><p>推广专家会通过你选择的方式联系你。</p></div><span class="badge">联系方式</span></div><div class="grid-2">
+    <div class="field"><label for="contactName">怎么称呼你</label><input id="contactName" placeholder="姓名 / 艺名"></div>
+    <div class="field"><label for="contactType">联系偏好</label><select id="contactType"><option>微信</option><option>手机号</option><option>邮箱</option></select></div>
+    <div class="field" style="grid-column:1/-1"><label for="contactValue">联系方式</label><input id="contactValue" placeholder="微信号 / 手机号 / 邮箱"></div>
+  </div></div>
 </section>
 
 <aside class="side-card"><h3>你的推广需求</h3><div class="summary-row"><span>歌曲</span><strong id="sumSong">尚未选择</strong></div><div class="summary-row"><span>主要目标</span><strong id="sumGoal">增加歌曲播放</strong></div><div class="summary-row"><span>预算</span><strong id="sumBudget">¥1,000 - 5,000</strong></div><div class="summary-row"><span>市场</span><strong id="sumMarket">中国大陆</strong></div><div class="summary-row"><span>方案类型</span><strong>专属专家定制</strong></div><div class="promise">提交后不是立即购买。推广专家会先根据歌曲、预算和目标整理推广建议，再与你确认具体平台、执行节奏和费用。</div><button type="button" class="primary" id="submitBtn">提交并获取专属推广方案 →</button><button type="button" class="secondary" id="backBtn">返回标准推广方案</button><div class="helper">Demo 页面仅演示产品流程，不会真实提交任何信息。</div></aside>
@@ -51,6 +55,7 @@
 
 <section class="success" id="success"><div class="success-icon">✓</div><h2>推广需求已提交</h2><p>我们已经记录了你的歌曲、推广目标、预算和市场。下一步由专属音乐推广专家根据这些信息整理推广建议，再与你确认具体方案。</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="primary" href="#">查看我的推广需求</a><a class="secondary" href="music-promotion.html">继续推广其他歌曲</a></div></section>
 </div></main>
+
 <footer><div class="container foot"><div>© 2026 KANJIAN MUSIC · KJ Music Promotion</div><div>音乐推广 · 订单 · 帮助中心</div></div></footer>
 <script src="assets/js/song-selector.js"></script>
 <script>
