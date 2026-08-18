@@ -5,15 +5,71 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>产品类目｜星球发行 · 音乐推广 Admin</title>
 <link rel="stylesheet" href="../assets/css/admin-common.css">
+<link rel="stylesheet" href="../assets/css/product-categories.css">
 </head>
 <body data-admin-page="categories" data-page-title="产品类目">
 <div id="admin-shell"></div>
 <template id="page-content">
   <div class="page-header">
-    <div><h1>产品类目</h1><p>音乐推广产品类目管理。</p></div>
+    <div><h1>产品类目</h1><p>管理音乐推广产品的一级类目。具体推广产品（SPU）和规格档位（SKU）在类目详情中维护。</p></div>
+    <a class="pc-btn pc-btn-primary" href="product-category-form.html">＋ 新增类目</a>
   </div>
-  <section class="placeholder-card"><div><strong>产品类目页面待设计</strong><span>当前仅建立公共后台结构与页面入口。</span></div></section>
+
+  <div class="pc-toolbar">
+    <div class="pc-filters">
+      <input class="pc-input" id="categorySearch" placeholder="搜索类目名称 / 标识">
+      <select class="pc-select" id="statusFilter"><option value="all">全部状态</option><option value="on">启用</option><option value="off">停用</option></select>
+      <button class="pc-btn pc-btn-secondary" id="resetBtn" type="button">重置</button>
+    </div>
+    <div style="font-size:12px;color:#93a0b0">共 5 个类目</div>
+  </div>
+
+  <section class="pc-card">
+    <div class="pc-table-wrap">
+      <table class="pc-table" id="categoryTable">
+        <thead><tr><th style="width:210px">类目名称</th><th>类目说明</th><th style="width:100px">SPU</th><th style="width:100px">SKU</th><th style="width:90px">排序</th><th style="width:100px">状态</th><th style="width:150px">更新时间</th><th style="width:150px">操作</th></tr></thead>
+        <tbody>
+          <tr data-status="on" data-search="播放推广 traffic">
+            <td><div class="pc-name">播放推广</div><div class="pc-code">traffic</div></td>
+            <td><div class="pc-desc">面向网易云音乐、QQ / 酷狗 / 酷我等平台的歌曲播放量推广服务。</div></td>
+            <td><span class="pc-count">2</span></td><td><span class="pc-count">24</span></td><td>10</td><td><span class="pc-status">启用</span></td><td>2026-08-18 10:32</td>
+            <td><a class="pc-link" href="product-category-detail.html?id=traffic">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=traffic">编辑</a></td>
+          </tr>
+          <tr data-status="on" data-search="歌单推广 playlist">
+            <td><div class="pc-name">歌单推广</div><div class="pc-code">playlist</div></td>
+            <td><div class="pc-desc">音乐平台歌单、歌单矩阵及相关歌单资源推广服务。</div></td>
+            <td><span class="pc-count">3</span></td><td><span class="pc-count">12</span></td><td>20</td><td><span class="pc-status">启用</span></td><td>2026-08-18 10:18</td>
+            <td><a class="pc-link" href="product-category-detail.html?id=playlist">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=playlist">编辑</a></td>
+          </tr>
+          <tr data-status="on" data-search="内容推广 content">
+            <td><div class="pc-name">内容推广</div><div class="pc-code">content</div></td>
+            <td><div class="pc-desc">抖音、小红书等内容平台的账号矩阵、KOC / KOL 及内容传播服务。</div></td>
+            <td><span class="pc-count">2</span></td><td><span class="pc-count">13</span></td><td>30</td><td><span class="pc-status">启用</span></td><td>2026-08-17 17:46</td>
+            <td><a class="pc-link" href="product-category-detail.html?id=content">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=content">编辑</a></td>
+          </tr>
+          <tr data-status="on" data-search="平台资源 platform-resource">
+            <td><div class="pc-name">平台资源</div><div class="pc-code">platform-resource</div></td>
+            <td><div class="pc-desc">平台推荐位申请、打榜及需要人工沟通确认的专项平台资源服务。</div></td>
+            <td><span class="pc-count">2</span></td><td><span class="pc-count">10</span></td><td>40</td><td><span class="pc-status">启用</span></td><td>2026-08-17 16:20</td>
+            <td><a class="pc-link" href="product-category-detail.html?id=platform-resource">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=platform-resource">编辑</a></td>
+          </tr>
+          <tr data-status="off" data-search="场景服务 scene-service ktv">
+            <td><div class="pc-name">场景服务</div><div class="pc-code">scene-service</div></td>
+            <td><div class="pc-desc">KTV 制作上架等一次性交付型音乐场景服务。</div></td>
+            <td><span class="pc-count">1</span></td><td><span class="pc-count">1</span></td><td>50</td><td><span class="pc-status off">停用</span></td><td>2026-08-16 14:08</td>
+            <td><a class="pc-link" href="product-category-detail.html?id=scene-service">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=scene-service">编辑</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc-pagination"><span>显示 1–5，共 5 条</span><div class="pc-pages"><span class="pc-page">‹</span><span class="pc-page active">1</span><span class="pc-page">›</span></div></div>
+  </section>
 </template>
 <script src="../assets/js/admin-shell.js"></script>
+<script>
+const search=document.getElementById('categorySearch'),status=document.getElementById('statusFilter');
+function apply(){const q=(search.value||'').trim().toLowerCase();document.querySelectorAll('#categoryTable tbody tr').forEach(row=>{const hit=!q||row.dataset.search.toLowerCase().includes(q);const ok=status.value==='all'||row.dataset.status===status.value;row.style.display=hit&&ok?'':'none';});}
+search.addEventListener('input',apply);status.addEventListener('change',apply);document.getElementById('resetBtn').addEventListener('click',()=>{search.value='';status.value='all';apply();});
+</script>
 </body>
 </html>
