@@ -6,31 +6,275 @@
 <title>新增 / 编辑产品｜星球发行 · 音乐推广 Admin</title>
 <link rel="stylesheet" href="../assets/css/admin-common.css">
 <link rel="stylesheet" href="../assets/css/products.css">
+<style>
+[hidden]{display:none!important}
+.pd-sale-mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pd-sale-mode-card{position:relative;min-height:118px;border:1px solid #dfe5ec;background:#fff;border-radius:6px;padding:17px 16px 15px 44px;text-align:left;cursor:pointer;transition:.15s}
+.pd-sale-mode-card:hover{border-color:#9cacf9;background:#fafbff}
+.pd-sale-mode-card.active{border-color:#3155ff;background:#f6f8ff;box-shadow:0 0 0 1px rgba(49,85,255,.08)}
+.pd-sale-mode-radio{position:absolute;left:16px;top:19px;width:16px;height:16px;border:1px solid #c8d1de;border-radius:50%;background:#fff}
+.pd-sale-mode-card.active .pd-sale-mode-radio{border:5px solid #3155ff}
+.pd-sale-mode-card strong{display:block;color:#314258;font-size:14px;margin-bottom:7px}
+.pd-sale-mode-card small{display:block;color:#64758b;font-size:12px;line-height:1.5}
+.pd-sale-mode-card em{display:block;color:#9aa5b4;font-size:11px;font-style:normal;margin-top:8px}
+.pd-card-title-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pd-package-table-wrap{overflow:auto;border:1px solid #e5e9ef;border-radius:5px}
+.pd-package-editor{width:100%;border-collapse:collapse;min-width:760px}
+.pd-package-editor th{height:40px;background:#fafbfc;border-bottom:1px solid #e7ebf0;padding:0 10px;text-align:left;font-size:11px;color:#78869a}
+.pd-package-editor td{padding:9px 10px;border-bottom:1px solid #edf0f4}
+.pd-package-editor tr:last-child td{border-bottom:0}
+.pd-package-editor input{width:100%;height:34px;border:1px solid #dfe5ec;border-radius:4px;padding:0 9px;font-size:12px;color:#3d4f66;outline:none}
+.pd-package-editor input:focus{border-color:#7c94ff;box-shadow:0 0 0 2px rgba(49,85,255,.08)}
+.pd-table-money{display:grid;grid-template-columns:24px 1fr;align-items:center;border:1px solid #dfe5ec;border-radius:4px;overflow:hidden;background:#fff}
+.pd-table-money span{height:32px;display:grid;place-items:center;background:#fafbfc;color:#8794a5;font-size:11px;border-right:1px solid #e6eaf0}
+.pd-table-money input{border:0;border-radius:0;height:32px;box-shadow:none!important}
+.pd-row-remove{border:0;background:transparent;color:#d65252;font-size:11px;cursor:pointer}
+.pd-row-remove:disabled{color:#bcc5d1;cursor:not-allowed}
+.pd-help-top{margin-top:10px}
+.pd-config-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+.pd-config-field.full{grid-column:1/-1}
+.pd-config-field label{display:block;font-size:12px;color:#52637a;margin-bottom:7px}
+.pd-config-field input,.pd-config-field select,.pd-config-field textarea{width:100%;border:1px solid #dfe5ec;border-radius:4px;background:#fff;padding:9px 10px;font-size:13px;color:#3d4f66;outline:none}
+.pd-config-field input,.pd-config-field select{height:38px}
+.pd-config-field textarea{min-height:76px;resize:vertical}
+.pd-config-field input:focus,.pd-config-field select:focus,.pd-config-field textarea:focus{border-color:#7c94ff;box-shadow:0 0 0 2px rgba(49,85,255,.08)}
+.pd-inline-unit{display:grid;grid-template-columns:34px 1fr}
+.pd-inline-unit span{height:38px;display:grid;place-items:center;background:#fafbfc;border:1px solid #dfe5ec;border-right:0;border-radius:4px 0 0 4px;color:#8794a5}
+.pd-inline-unit input{border-radius:0 4px 4px 0}
+.pd-input-suffix{display:grid;grid-template-columns:1fr 50px}
+.pd-input-suffix input{border-radius:4px 0 0 4px}
+.pd-input-suffix span{height:38px;border:1px solid #dfe5ec;border-left:0;border-radius:0 4px 4px 0;background:#fafbfc;display:flex;align-items:center;justify-content:center;color:#8794a5;font-size:12px}
+.pd-range-inputs{display:grid;grid-template-columns:1fr 20px 1fr;align-items:center}
+.pd-range-inputs span{text-align:center;color:#9aa5b4}
+.pd-sale-preview{display:flex;align-items:center;gap:12px;margin-top:18px;padding:12px 14px;background:#f7f9fc;border:1px solid #e8ecf2;border-radius:4px;font-size:12px}
+.pd-sale-preview span{color:#8794a5}
+.pd-sale-preview strong{color:#314258;margin-right:16px}
+.pd-option-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.pd-option-tabs button{height:36px;padding:0 13px;border:1px solid #dfe5ec;background:#fff;border-radius:4px;color:#607187;font-size:12px;cursor:pointer}
+.pd-option-tabs button.active{border-color:#3155ff;background:#eef2ff;color:#3155ff;font-weight:600}
+.pd-split-fields{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+.pd-split-fields.compact{grid-template-columns:140px 140px;max-width:290px}
+@media(max-width:760px){
+  .pd-sale-mode-grid,.pd-config-grid{grid-template-columns:1fr}
+  .pd-config-field.full{grid-column:auto}
+  .pd-card-title-row{align-items:flex-start;flex-direction:column}
+}
+</style>
 </head>
 <body data-admin-page="products" data-page-title="产品列表 / 新增">
 <div id="admin-shell"></div>
 <template id="page-content">
   <div class="pd-breadcrumb"><a href="products.html">产品列表</a><span>/</span><b id="crumbText">新增产品</b></div>
-  <div class="page-header"><div><h1 id="formTitle">新增产品</h1><p>维护产品基础信息、售卖方式和前台展示内容。</p></div></div>
+  <div class="page-header">
+    <div>
+      <h1 id="formTitle">新增产品</h1>
+      <p>先选择产品怎么卖，再维护对应的价格、服务结果和履约信息。</p>
+    </div>
+  </div>
 
   <div class="pd-form-layout">
     <div>
       <section class="pd-form-card">
         <div class="pd-form-card-head"><h2>基本信息</h2></div>
         <div class="pd-form-body">
-          <div class="pd-form-row"><div class="pd-form-label pd-required">所属类目</div><div class="pd-form-control"><select id="category"><option value="">请选择</option><option>播放推广</option><option>歌单推广</option><option>内容推广</option><option>平台资源</option><option>场景服务</option></select></div></div>
-          <div class="pd-form-row"><div class="pd-form-label pd-required">产品名称</div><div class="pd-form-control"><input id="name" placeholder="例如：网易云音乐播放推广"></div></div>
-          <div class="pd-form-row"><div class="pd-form-label pd-required">产品标识</div><div class="pd-form-control"><input id="code" placeholder="例如：netease-play"><div class="pd-help">建议使用英文小写与连字符，创建后尽量不要修改。</div></div></div>
-          <div class="pd-form-row"><div class="pd-form-label pd-required">平台</div><div class="pd-form-control"><select id="platform"><option value="">请选择</option><option>网易云音乐</option><option>TME</option><option>QQ音乐</option><option>酷狗音乐</option><option>酷我音乐</option><option>抖音</option><option>小红书</option><option>Spotify</option><option>YouTube</option><option>KTV</option><option>多平台</option></select></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">购买对象</div><div class="pd-form-control"><select id="target"><option>歌曲</option><option>视频 / MV</option><option>发行项目</option></select></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">内部备注</div><div class="pd-form-control"><textarea id="internalNote" placeholder="仅后台可见"></textarea></div></div>
+          <div class="pd-form-row">
+            <div class="pd-form-label pd-required">所属类目</div>
+            <div class="pd-form-control"><select id="category"><option value="">请选择</option></select></div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label pd-required">产品名称</div>
+            <div class="pd-form-control"><input id="name" placeholder="例如：网易云音乐播放推广"></div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label pd-required">产品标识</div>
+            <div class="pd-form-control"><input id="code" placeholder="例如：netease-play"><div class="pd-help">建议使用英文小写与连字符，创建后尽量不要修改。</div></div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label pd-required">平台</div>
+            <div class="pd-form-control">
+              <select id="platform">
+                <option value="">请选择</option>
+                <option>网易云音乐</option><option>TME</option><option>QQ音乐</option><option>酷狗音乐</option><option>酷我音乐</option>
+                <option>汽水音乐</option><option>抖音</option><option>小红书</option><option>Spotify</option><option>YouTube</option>
+                <option>KTV</option><option>多平台</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label">购买对象</div>
+            <div class="pd-form-control">
+              <select id="target"><option>歌曲</option><option>视频 / MV</option><option>艺人 / 账号</option><option>发行项目</option><option>其他</option></select>
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label">内部备注</div>
+            <div class="pd-form-control"><textarea id="internalNote" placeholder="仅后台可见，例如供应侧执行要求、资源限制等"></textarea></div>
+          </div>
         </div>
       </section>
 
       <section class="pd-form-card">
-        <div class="pd-form-card-head"><h2>售卖设置</h2></div>
+        <div class="pd-form-card-head">
+          <h2>怎么售卖？</h2>
+          <p>售卖方式只决定价格如何形成；服务结果和履约周期在下方独立设置。</p>
+        </div>
         <div class="pd-form-body">
-          <div class="pd-form-row"><div class="pd-form-label pd-required">售卖方式</div><div class="pd-form-control"><select id="saleMode"><option>按固定档位</option><option>按数量</option><option>按套餐</option><option>一次性服务</option><option>按目标档位</option><option>人工报价</option></select></div></div>
+          <div class="pd-sale-mode-grid" id="saleModeGrid">
+            <button class="pd-sale-mode-card active" type="button" data-sale-mode="fixed">
+              <span class="pd-sale-mode-radio"></span>
+              <strong>固定套餐</strong>
+              <small>一个或多个固定价格档位</small>
+              <em>适合播放量、歌单、打榜、KTV</em>
+            </button>
+            <button class="pd-sale-mode-card" type="button" data-sale-mode="quantity">
+              <span class="pd-sale-mode-radio"></span>
+              <strong>按数量购买</strong>
+              <small>按份数或数量直接计算价格</small>
+              <em>适合评论、收藏、关注、账号投放</em>
+            </button>
+            <button class="pd-sale-mode-card" type="button" data-sale-mode="budget">
+              <span class="pd-sale-mode-radio"></span>
+              <strong>按预算投放</strong>
+              <small>用户输入预算，结果按条件预估</small>
+              <em>适合 Spotify、YouTube 广告</em>
+            </button>
+            <button class="pd-sale-mode-card" type="button" data-sale-mode="quote">
+              <span class="pd-sale-mode-radio"></span>
+              <strong>询价</strong>
+              <small>展示起售价或价格区间，人工确认</small>
+              <em>适合 KOL、浮动资源报价</em>
+            </button>
+          </div>
+          <input type="hidden" id="saleMode" value="fixed">
+        </div>
+      </section>
+
+      <section class="pd-form-card pd-sale-config" id="fixedConfig">
+        <div class="pd-form-card-head">
+          <div class="pd-card-title-row">
+            <div><h2>固定套餐</h2><p>每个套餐维护独立的售价、成本和服务结果。</p></div>
+            <button class="pd-btn pd-btn-secondary" id="addPackageBtn" type="button">＋ 添加套餐</button>
+          </div>
+        </div>
+        <div class="pd-form-body">
+          <div class="pd-package-table-wrap">
+            <table class="pd-package-editor">
+              <thead><tr><th>套餐名称</th><th>服务结果</th><th>售价</th><th>成本</th><th>服务费</th><th></th></tr></thead>
+              <tbody id="packageRows"></tbody>
+            </table>
+          </div>
+          <div class="pd-help pd-help-top">只有一个套餐时，前台可直接展示单一价格，不需要让用户额外选择“套餐”。</div>
+        </div>
+      </section>
+
+      <section class="pd-form-card pd-sale-config" id="quantityConfig" hidden>
+        <div class="pd-form-card-head"><h2>按数量购买</h2><p>设置一个标准计价单位，系统按购买份数自动计算总价。</p></div>
+        <div class="pd-form-body">
+          <div class="pd-config-grid">
+            <div class="pd-config-field"><label>每份数量</label><input id="quantityPerUnit" type="number" min="1" value="1000"></div>
+            <div class="pd-config-field"><label>数量单位</label><select id="quantityUnit"><option>个</option><option>条</option><option>次</option><option>账号</option><option>播放</option><option>收藏</option></select></div>
+            <div class="pd-config-field"><label>每份售价</label><div class="pd-inline-unit"><span>¥</span><input id="quantityPrice" type="number" min="0" value="300"></div></div>
+            <div class="pd-config-field"><label>每份成本</label><div class="pd-inline-unit"><span>¥</span><input id="quantityCost" type="number" min="0" value="260"></div></div>
+            <div class="pd-config-field"><label>最低购买份数</label><input id="quantityMin" type="number" min="1" value="1"></div>
+            <div class="pd-config-field"><label>每次增加</label><div class="pd-input-suffix"><input id="quantityStep" type="number" min="1" value="1"><span>份</span></div></div>
+            <div class="pd-config-field"><label>最大购买份数</label><input id="quantityMax" type="number" min="1" placeholder="不填则不限制"></div>
+          </div>
+          <div class="pd-sale-preview" id="quantityPreview"></div>
+        </div>
+      </section>
+
+      <section class="pd-form-card pd-sale-config" id="budgetConfig" hidden>
+        <div class="pd-form-card-head"><h2>按预算投放</h2><p>用户购买的是投放预算，播放、收听或观看结果仅作为预估。</p></div>
+        <div class="pd-form-body">
+          <div class="pd-config-grid">
+            <div class="pd-config-field"><label>结算币种</label><select id="budgetCurrency"><option value="USD">USD 美元</option><option value="CNY">CNY 人民币</option></select></div>
+            <div class="pd-config-field"><label>最低预算</label><input id="budgetMin" type="number" min="0" value="250"></div>
+            <div class="pd-config-field"><label>计费指标</label><input id="billingMetric" placeholder="例如：CPC / CPS / CPV" value="CPS"></div>
+            <div class="pd-config-field"><label>预算步长</label><input id="budgetStep" type="number" min="1" value="50"></div>
+            <div class="pd-config-field full"><label>支持市场 / 地区</label><input id="budgetMarkets" value="欧美、东南亚、拉美"></div>
+            <div class="pd-config-field"><label>参考结果名称</label><input id="budgetResultName" value="真实收听"></div>
+            <div class="pd-config-field"><label>参考结果单位</label><input id="budgetResultUnit" value="Stream"></div>
+            <div class="pd-config-field"><label>参考预算</label><div class="pd-inline-unit"><span>¥</span><input id="budgetReference" type="number" value="10000"></div></div>
+            <div class="pd-config-field"><label>预估结果范围</label><div class="pd-range-inputs"><input id="budgetResultMin" type="number" value="10000"><span>–</span><input id="budgetResultMax" type="number" value="15000"></div></div>
+          </div>
+          <div class="pd-help pd-help-top">前台应明确标注为预估结果，实际效果受地区、素材、竞价和转化率影响。</div>
+        </div>
+      </section>
+
+      <section class="pd-form-card pd-sale-config" id="quoteConfig" hidden>
+        <div class="pd-form-card-head"><h2>询价设置</h2><p>用于最终成交价需要人工确认的产品。</p></div>
+        <div class="pd-form-body">
+          <div class="pd-config-grid">
+            <div class="pd-config-field"><label>价格展示</label>
+              <select id="quoteDisplay">
+                <option value="range">显示价格区间</option>
+                <option value="from">显示起售价</option>
+                <option value="quote">仅显示“询价”</option>
+                <option value="hidden">不显示价格</option>
+              </select>
+            </div>
+            <div class="pd-config-field"><label>计价单位</label><input id="quoteUnit" value="条"></div>
+            <div class="pd-config-field" id="quoteMinPriceField"><label>最低参考价</label><div class="pd-inline-unit"><span>¥</span><input id="quoteMinPrice" type="number" value="2000"></div></div>
+            <div class="pd-config-field" id="quoteMaxPriceField"><label>最高参考价</label><div class="pd-inline-unit"><span>¥</span><input id="quoteMaxPrice" type="number" value="6000"></div></div>
+            <div class="pd-config-field"><label>最低起投数量</label><input id="quoteMinQuantity" type="number" min="1" value="1"></div>
+            <div class="pd-config-field full"><label>报价说明</label><textarea id="quoteNote" placeholder="例如：根据账号粉丝量、内容形式和档期确认最终价格">根据账号粉丝量、内容形式和档期确认最终价格。</textarea></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pd-form-card">
+        <div class="pd-form-card-head"><h2>服务结果</h2><p>结果承诺与售卖方式分开维护。</p></div>
+        <div class="pd-form-body">
+          <div class="pd-form-row">
+            <div class="pd-form-label pd-required">结果类型</div>
+            <div class="pd-form-control">
+              <div class="pd-option-tabs" id="resultTypeTabs">
+                <button type="button" class="active" data-value="fixed">固定结果</button>
+                <button type="button" data-value="guaranteed">保底结果</button>
+                <button type="button" data-value="estimated">预估结果</button>
+                <button type="button" data-value="none">不承诺结果</button>
+              </div>
+              <input type="hidden" id="resultType" value="fixed">
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label">结果指标</div>
+            <div class="pd-form-control"><div class="pd-split-fields"><input id="resultMetric" placeholder="例如：播放量"><input id="resultUnit" placeholder="单位，例如：次"></div><div class="pd-help">固定套餐可在每个套餐里维护不同结果数量；这里用于定义统一的指标名称和单位。</div></div>
+          </div>
+          <div class="pd-form-row" id="resultNoteRow">
+            <div class="pd-form-label">结果说明</div>
+            <div class="pd-form-control"><textarea id="resultNote" placeholder="例如：实际结果可能因平台流量、地区和素材表现产生波动"></textarea></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pd-form-card">
+        <div class="pd-form-card-head"><h2>履约设置</h2></div>
+        <div class="pd-form-body">
+          <div class="pd-form-row">
+            <div class="pd-form-label">履约周期</div>
+            <div class="pd-form-control">
+              <div class="pd-option-tabs" id="deliveryTypeTabs">
+                <button type="button" class="active" data-value="single">单次</button>
+                <button type="button" data-value="period">固定周期</button>
+              </div>
+              <input type="hidden" id="deliveryType" value="single">
+            </div>
+          </div>
+          <div class="pd-form-row" id="deliveryPeriodRow" hidden>
+            <div class="pd-form-label">周期</div>
+            <div class="pd-form-control"><div class="pd-split-fields compact"><input id="deliveryDuration" type="number" min="1" value="30"><select id="deliveryUnit"><option>天</option><option>周</option><option>个月</option></select></div></div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-label">允许追加购买</div>
+            <div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="repeatSwitch" type="button"></button><span id="repeatText">是</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pd-form-card">
+        <div class="pd-form-card-head"><h2>销售状态</h2></div>
+        <div class="pd-form-body">
           <div class="pd-form-row"><div class="pd-form-label">允许单独购买</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="directSwitch" type="button"></button><span id="directText">是</span></div></div></div>
           <div class="pd-form-row"><div class="pd-form-label">允许加入 Package</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="packageSwitch" type="button"></button><span id="packageText">是</span></div></div></div>
           <div class="pd-form-row"><div class="pd-form-label">排序</div><div class="pd-form-control"><input id="sort" type="number" min="0" value="10"><div class="pd-help">数字越小越靠前。</div></div></div>
@@ -41,31 +285,262 @@
       <section class="pd-form-card">
         <div class="pd-form-card-head"><h2>前台展示内容</h2><p>用于用户侧产品介绍，可分别维护主要语言。</p></div>
         <div class="pd-form-body">
-          <div class="pd-language-tabs"><button class="pd-language-tab active" data-lang="zh" type="button">简体中文</button><button class="pd-language-tab" data-lang="en" type="button">English</button><button class="pd-language-tab" data-lang="ja" type="button">日本語</button><button class="pd-language-tab" data-lang="zh-Hant" type="button">繁體中文</button></div>
+          <div class="pd-language-tabs">
+            <button class="pd-language-tab active" data-lang="zh" type="button">简体中文</button>
+            <button class="pd-language-tab" data-lang="en" type="button">English</button>
+            <button class="pd-language-tab" data-lang="ja" type="button">日本語</button>
+            <button class="pd-language-tab" data-lang="zh-Hant" type="button">繁體中文</button>
+          </div>
           <div class="pd-form-row"><div class="pd-form-label">展示名称</div><div class="pd-form-control"><input id="displayName" placeholder="用户侧看到的产品名称"></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">一句话介绍</div><div class="pd-form-control"><input id="summary" placeholder="例如：按预算提升歌曲在网易云音乐内的播放与曝光"></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">一句话介绍</div><div class="pd-form-control"><input id="summary" placeholder="例如：选择固定档位提升歌曲播放量"></div></div>
           <div class="pd-form-row"><div class="pd-form-label">产品介绍</div><div class="pd-form-control"><textarea id="description" placeholder="用于产品详情和服务说明"></textarea></div></div>
         </div>
       </section>
     </div>
 
     <aside>
-      <div class="pd-side-card"><h3>产品状态</h3><div class="pd-side-row"><span>当前状态</span><strong id="sideStatus">上架</strong></div><div class="pd-side-row"><span>销售规格</span><strong id="sideSpecs">保存后维护</strong></div><div class="pd-side-row"><span>Package</span><strong>可引用销售规格</strong></div></div>
-      <div class="pd-side-card"><h3>销售规格</h3><p class="pd-note">产品保存后，可在产品详情中维护价格档位、交付数量、内部成本以及是否允许单独销售。</p></div>
+      <div class="pd-side-card">
+        <h3>配置摘要</h3>
+        <div class="pd-side-row"><span>售卖方式</span><strong id="sideSaleMode">固定套餐</strong></div>
+        <div class="pd-side-row"><span>价格配置</span><strong id="sidePrice">1 个套餐</strong></div>
+        <div class="pd-side-row"><span>服务结果</span><strong id="sideResult">固定结果</strong></div>
+        <div class="pd-side-row"><span>履约周期</span><strong id="sideDelivery">单次</strong></div>
+        <div class="pd-side-row"><span>当前状态</span><strong id="sideStatus">上架</strong></div>
+      </div>
+      <div class="pd-side-card">
+        <h3>售卖方式说明</h3>
+        <p class="pd-note" id="sideSaleHelp">用于一个或多个已经确定价格的套餐。只有一个套餐时也使用固定套餐。</p>
+      </div>
     </aside>
   </div>
 
-  <div class="pd-form-actions"><a class="pd-btn pd-btn-secondary" id="cancelBtn" href="products.html">取消</a><button class="pd-btn pd-btn-primary" id="saveBtn" type="button">保存产品</button></div>
+  <div class="pd-form-actions">
+    <a class="pd-btn pd-btn-secondary" id="cancelBtn" href="products.html">取消</a>
+    <button class="pd-btn pd-btn-primary" id="saveBtn" type="button">保存产品</button>
+  </div>
 </template>
+
 <script src="../assets/js/admin-shell.js"></script>
+<script src="../assets/js/product-category-data.js"></script>
 <script>
-const params=new URLSearchParams(location.search),editing=params.get('mode')==='edit';
-if(editing){document.getElementById('formTitle').textContent='编辑产品';document.getElementById('crumbText').textContent='编辑产品';document.body.dataset.pageTitle='产品列表 / 编辑';document.getElementById('category').value='播放推广';document.getElementById('name').value='网易云音乐播放推广';document.getElementById('code').value='netease-play';document.getElementById('platform').value='网易云音乐';document.getElementById('target').value='歌曲';document.getElementById('saleMode').value='按固定档位';document.getElementById('sort').value='10';document.getElementById('displayName').value='网易云音乐播放推广';document.getElementById('summary').value='按预算提升歌曲在网易云音乐内的播放与曝光';document.getElementById('description').value='选择已发行歌曲和推广档位，根据所选预算执行对应规模的网易云音乐播放推广。';document.getElementById('internalNote').value='供应侧按档位执行，可多次追加。';document.getElementById('sideSpecs').textContent='12 个档位';document.getElementById('cancelBtn').href='product-detail.html?id=netease-play';}
-function bindSwitch(id,textId,onText,offText,side){let on=true;const sw=document.getElementById(id),text=document.getElementById(textId);sw.addEventListener('click',()=>{on=!on;sw.classList.toggle('off',!on);text.textContent=on?onText:offText;if(side)document.getElementById(side).textContent=text.textContent;});}
-bindSwitch('directSwitch','directText','是','否');bindSwitch('packageSwitch','packageText','是','否');bindSwitch('statusSwitch','statusText','上架','下架','sideStatus');
-const langData={zh:{name:'网易云音乐播放推广',summary:'按预算提升歌曲在网易云音乐内的播放与曝光',desc:'选择已发行歌曲和推广档位，根据所选预算执行对应规模的网易云音乐播放推广。'},en:{name:'NetEase Cloud Music Promotion',summary:'Increase plays and exposure on NetEase Cloud Music',desc:'Choose a released track and promotion tier to run a play-focused campaign on NetEase Cloud Music.'},ja:{name:'NetEase Cloud Music プロモーション',summary:'予算に応じて再生数と露出を増やします',desc:'配信済みの楽曲とプロモーション枠を選択し、NetEase Cloud Music 内で再生プロモーションを実施します。'},'zh-Hant':{name:'網易雲音樂播放推廣',summary:'按預算提升歌曲在網易雲音樂內的播放與曝光',desc:'選擇已發行歌曲和推廣檔位，根據所選預算執行相應規模的網易雲音樂播放推廣。'}};let currentLang='zh';
-document.querySelectorAll('.pd-language-tab').forEach(tab=>tab.addEventListener('click',()=>{langData[currentLang]={name:document.getElementById('displayName').value,summary:document.getElementById('summary').value,desc:document.getElementById('description').value};currentLang=tab.dataset.lang;document.querySelectorAll('.pd-language-tab').forEach(x=>x.classList.remove('active'));tab.classList.add('active');const d=langData[currentLang]||{};document.getElementById('displayName').value=d.name||'';document.getElementById('summary').value=d.summary||'';document.getElementById('description').value=d.desc||'';}));
-document.getElementById('saveBtn').addEventListener('click',()=>{const category=document.getElementById('category').value,name=document.getElementById('name').value.trim(),code=document.getElementById('code').value.trim(),platform=document.getElementById('platform').value;if(!category||!name||!code||!platform){alert('请填写所属类目、产品名称、产品标识和平台');return;}alert(editing?'演示：产品已保存':'演示：产品已创建');location.href=editing?'product-detail.html?id='+encodeURIComponent(code):'products.html';});
+const params=new URLSearchParams(location.search);
+const editing=params.get('mode')==='edit';
+const $=id=>document.getElementById(id);
+
+const saleModeMeta={
+  fixed:{label:'固定套餐',help:'用于一个或多个已经确定价格的套餐。只有一个套餐时也使用固定套餐。'},
+  quantity:{label:'按数量购买',help:'维护每份数量和每份价格，用户选择购买份数后自动计算总价。'},
+  budget:{label:'按预算投放',help:'用户输入投放预算，服务结果按地区、竞价和素材表现进行预估。'},
+  quote:{label:'询价',help:'用于最终成交价格需要人工确认的 KOL、媒体账号或浮动资源。'}
+};
+const resultTypeMeta={fixed:'固定结果',guaranteed:'保底结果',estimated:'预估结果',none:'不承诺结果'};
+
+let packages=[
+  {name:'标准套餐',result:'',price:'',cost:'',fee:'0'}
+];
+
+function initCategories(){
+  const category=$('category');
+  if(window.PRODUCT_CATEGORIES){
+    category.innerHTML='<option value="">请选择</option>'+PRODUCT_CATEGORIES
+      .filter(item=>item.status==='on')
+      .map(item=>`<option value="${item.names.zhCN}">${item.names.zhCN}</option>`).join('');
+  }else{
+    category.innerHTML='<option value="">请选择</option><option>播放推广</option><option>歌单推广</option><option>内容推广</option><option>平台资源</option><option>场景服务</option>';
+  }
+}
+
+function renderPackages(){
+  $('packageRows').innerHTML=packages.map((item,index)=>`
+    <tr>
+      <td><input data-package="${index}" data-field="name" value="${item.name}" placeholder="例如：600 播放"></td>
+      <td><input data-package="${index}" data-field="result" value="${item.result}" placeholder="例如：600 次"></td>
+      <td><div class="pd-table-money"><span>¥</span><input data-package="${index}" data-field="price" type="number" min="0" value="${item.price}"></div></td>
+      <td><div class="pd-table-money"><span>¥</span><input data-package="${index}" data-field="cost" type="number" min="0" value="${item.cost}"></div></td>
+      <td><div class="pd-table-money"><span>¥</span><input data-package="${index}" data-field="fee" type="number" min="0" value="${item.fee}"></div></td>
+      <td><button class="pd-row-remove" type="button" data-remove-package="${index}" ${packages.length===1?'disabled':''}>删除</button></td>
+    </tr>`).join('');
+  document.querySelectorAll('[data-package]').forEach(input=>input.addEventListener('input',()=>{
+    const index=Number(input.dataset.package);
+    packages[index][input.dataset.field]=input.value;
+    updateSummary();
+  }));
+  document.querySelectorAll('[data-remove-package]').forEach(btn=>btn.addEventListener('click',()=>{
+    if(packages.length===1)return;
+    packages.splice(Number(btn.dataset.removePackage),1);
+    renderPackages();
+    updateSummary();
+  }));
+  updateSummary();
+}
+
+function setSaleMode(mode){
+  $('saleMode').value=mode;
+  document.querySelectorAll('[data-sale-mode]').forEach(card=>card.classList.toggle('active',card.dataset.saleMode===mode));
+  ['fixed','quantity','budget','quote'].forEach(key=>{
+    const panel=$(key+'Config');
+    if(panel)panel.hidden=key!==mode;
+  });
+  if(mode==='budget')setResultType('estimated');
+  $('sideSaleMode').textContent=saleModeMeta[mode].label;
+  $('sideSaleHelp').textContent=saleModeMeta[mode].help;
+  updateSummary();
+}
+
+function setResultType(value){
+  $('resultType').value=value;
+  document.querySelectorAll('#resultTypeTabs button').forEach(btn=>btn.classList.toggle('active',btn.dataset.value===value));
+  $('sideResult').textContent=resultTypeMeta[value];
+  $('resultNoteRow').hidden=value==='fixed';
+}
+
+function setDeliveryType(value){
+  $('deliveryType').value=value;
+  document.querySelectorAll('#deliveryTypeTabs button').forEach(btn=>btn.classList.toggle('active',btn.dataset.value===value));
+  $('deliveryPeriodRow').hidden=value!=='period';
+  updateSummary();
+}
+
+function updateQuoteFields(){
+  const value=$('quoteDisplay').value;
+  $('quoteMinPriceField').hidden=value==='quote'||value==='hidden';
+  $('quoteMaxPriceField').hidden=value!=='range';
+  updateSummary();
+}
+
+function updateQuantityPreview(){
+  const count=Number($('quantityPerUnit').value||0);
+  const unit=$('quantityUnit').value;
+  const price=Number($('quantityPrice').value||0);
+  const min=Number($('quantityMin').value||1);
+  $('quantityPreview').innerHTML=`<span>用户最低购买</span><strong>${(count*min).toLocaleString('zh-CN')} ${unit}</strong><span>最低价格</span><strong>¥${(price*min).toLocaleString('zh-CN')}</strong>`;
+}
+
+function updateSummary(){
+  const mode=$('saleMode').value;
+  if(mode==='fixed'){
+    const prices=packages.map(item=>Number(item.price)).filter(Boolean);
+    $('sidePrice').textContent=packages.length+' 个套餐'+(prices.length?` · ¥${Math.min(...prices).toLocaleString('zh-CN')}${prices.length>1?' 起':''}`:'');
+  }else if(mode==='quantity'){
+    $('sidePrice').textContent=`¥${Number($('quantityPrice').value||0).toLocaleString('zh-CN')} / 份`;
+    updateQuantityPreview();
+  }else if(mode==='budget'){
+    const symbol=$('budgetCurrency').value==='USD'?'$':'¥';
+    $('sidePrice').textContent=`${symbol}${Number($('budgetMin').value||0).toLocaleString('zh-CN')} 起投`;
+  }else{
+    const display=$('quoteDisplay').value;
+    if(display==='range')$('sidePrice').textContent=`¥${Number($('quoteMinPrice').value||0).toLocaleString('zh-CN')} – ¥${Number($('quoteMaxPrice').value||0).toLocaleString('zh-CN')}`;
+    else if(display==='from')$('sidePrice').textContent=`¥${Number($('quoteMinPrice').value||0).toLocaleString('zh-CN')} 起`;
+    else $('sidePrice').textContent='询价';
+  }
+  $('sideDelivery').textContent=$('deliveryType').value==='single'?'单次':`${$('deliveryDuration').value||30}${$('deliveryUnit').value}`;
+}
+
+function bindSwitch(id,textId,onText,offText,side){
+  let on=true;
+  const sw=$(id),text=$(textId);
+  sw.addEventListener('click',()=>{
+    on=!on;
+    sw.classList.toggle('off',!on);
+    text.textContent=on?onText:offText;
+    if(side)$(side).textContent=text.textContent;
+  });
+}
+
+function loadEditDemo(){
+  document.getElementById('formTitle').textContent='编辑产品';
+  document.getElementById('crumbText').textContent='编辑产品';
+  document.body.dataset.pageTitle='产品列表 / 编辑';
+  $('category').value='播放推广';
+  $('name').value='网易云音乐播放推广';
+  $('code').value='netease-play';
+  $('platform').value='网易云音乐';
+  $('target').value='歌曲';
+  $('sort').value='10';
+  $('displayName').value='网易云音乐播放推广';
+  $('summary').value='选择固定套餐提升歌曲在网易云音乐内的播放量';
+  $('description').value='选择已发行歌曲和推广套餐，根据所选套餐执行对应规模的网易云音乐播放推广。';
+  $('internalNote').value='供应侧按套餐执行，可多次追加。';
+  $('resultMetric').value='播放量';
+  $('resultUnit').value='次';
+  setResultType('guaranteed');
+  setDeliveryType('single');
+  setSaleMode('fixed');
+  packages=[
+    {name:'600 播放',result:'600 次',price:'39',cost:'30',fee:'0'},
+    {name:'1,320 播放',result:'1,320 次',price:'69',cost:'66',fee:'0'},
+    {name:'1,980 播放',result:'1,980 次',price:'99',cost:'99',fee:'0'},
+    {name:'3,000 播放',result:'3,000 次',price:'159',cost:'150',fee:'0'},
+    {name:'4,000 播放',result:'4,000 次',price:'209',cost:'200',fee:'0'},
+    {name:'6,000 播放',result:'6,000 次',price:'309',cost:'300',fee:'0'},
+    {name:'10,000 播放',result:'10,000 次',price:'519',cost:'500',fee:'10'},
+    {name:'16,000 播放',result:'16,000 次',price:'819',cost:'800',fee:'10'},
+    {name:'24,000 播放',result:'24,000 次',price:'1219',cost:'1200',fee:'10'},
+    {name:'32,000 播放',result:'32,000 次',price:'1619',cost:'1600',fee:'10'},
+    {name:'40,000 播放',result:'40,000 次',price:'2019',cost:'2000',fee:'10'},
+    {name:'49,980 播放',result:'49,980 次',price:'2509',cost:'2499',fee:'10'}
+  ];
+  renderPackages();
+  $('cancelBtn').href='product-detail.html?id=netease-play';
+}
+
+initCategories();
+renderPackages();
+
+document.querySelectorAll('[data-sale-mode]').forEach(card=>card.addEventListener('click',()=>setSaleMode(card.dataset.saleMode)));
+$('addPackageBtn').addEventListener('click',()=>{packages.push({name:'',result:'',price:'',cost:'',fee:'0'});renderPackages();});
+document.querySelectorAll('#resultTypeTabs button').forEach(btn=>btn.addEventListener('click',()=>setResultType(btn.dataset.value)));
+document.querySelectorAll('#deliveryTypeTabs button').forEach(btn=>btn.addEventListener('click',()=>setDeliveryType(btn.dataset.value)));
+
+['quantityPerUnit','quantityUnit','quantityPrice','quantityMin','quantityStep','quantityMax','budgetCurrency','budgetMin','budgetStep','quoteMinPrice','quoteMaxPrice','deliveryDuration','deliveryUnit']
+  .forEach(id=>$(id).addEventListener('input',updateSummary));
+$('quoteDisplay').addEventListener('change',updateQuoteFields);
+
+bindSwitch('directSwitch','directText','是','否');
+bindSwitch('packageSwitch','packageText','是','否');
+bindSwitch('repeatSwitch','repeatText','是','否');
+bindSwitch('statusSwitch','statusText','上架','下架','sideStatus');
+
+const langData={
+  zh:{name:'网易云音乐播放推广',summary:'选择固定套餐提升歌曲在网易云音乐内的播放量',desc:'选择已发行歌曲和推广套餐，根据所选套餐执行对应规模的网易云音乐播放推广。'},
+  en:{name:'NetEase Cloud Music Promotion',summary:'Choose a fixed package to increase song plays',desc:'Choose a released track and promotion package to run a play-focused campaign on NetEase Cloud Music.'},
+  ja:{name:'NetEase Cloud Music プロモーション',summary:'固定パッケージを選択して再生数を増やします',desc:'配信済みの楽曲とプロモーションパッケージを選択し、再生数プロモーションを実施します。'},
+  'zh-Hant':{name:'網易雲音樂播放推廣',summary:'選擇固定套餐提升歌曲播放量',desc:'選擇已發行歌曲和推廣套餐，根據所選套餐執行相應規模的網易雲音樂播放推廣。'}
+};
+let currentLang='zh';
+document.querySelectorAll('.pd-language-tab').forEach(tab=>tab.addEventListener('click',()=>{
+  langData[currentLang]={name:$('displayName').value,summary:$('summary').value,desc:$('description').value};
+  currentLang=tab.dataset.lang;
+  document.querySelectorAll('.pd-language-tab').forEach(x=>x.classList.remove('active'));
+  tab.classList.add('active');
+  const d=langData[currentLang]||{};
+  $('displayName').value=d.name||'';
+  $('summary').value=d.summary||'';
+  $('description').value=d.desc||'';
+}));
+
+$('saveBtn').addEventListener('click',()=>{
+  const category=$('category').value;
+  const name=$('name').value.trim();
+  const code=$('code').value.trim();
+  const platform=$('platform').value;
+  if(!category||!name||!code||!platform){
+    alert('请填写所属类目、产品名称、产品标识和平台');
+    return;
+  }
+  if($('saleMode').value==='fixed'&&packages.some(item=>!item.name||!item.price)){
+    alert('请完整填写固定套餐的套餐名称和售价');
+    return;
+  }
+  alert(editing?'演示：产品已保存':'演示：产品已创建');
+  location.href=editing?'product-detail.html?id='+encodeURIComponent(code):'products.html';
+});
+
+setSaleMode('fixed');
+setResultType('fixed');
+setDeliveryType('single');
+updateQuoteFields();
+if(editing)loadEditDemo();
 </script>
 </body>
 </html>

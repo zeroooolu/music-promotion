@@ -20,7 +20,10 @@
         <div class="pd-detail-meta"><span class="pd-tag">播放推广</span><span class="pd-tag">网易云音乐</span><span class="pd-tag blue">上架中</span></div>
       </div>
     </div>
-    <div class="pd-detail-actions"><a class="pd-btn pd-btn-secondary" href="product-form.html?mode=edit&id=netease-play">编辑产品</a><button class="pd-btn pd-btn-danger" type="button" onclick="alert('演示：产品已下架')">下架产品</button></div>
+    <div class="pd-detail-actions">
+      <a class="pd-btn pd-btn-secondary" href="product-form.html?mode=edit&id=netease-play">编辑产品</a>
+      <button class="pd-btn pd-btn-danger" type="button" onclick="alert('演示：产品已下架')">下架产品</button>
+    </div>
   </section>
 
   <section class="pd-section">
@@ -31,7 +34,7 @@
         <div class="pd-info-item"><label>所属类目</label><div>播放推广</div></div>
         <div class="pd-info-item"><label>平台</label><div>网易云音乐</div></div>
         <div class="pd-info-item"><label>产品标识</label><div>netease-play</div></div>
-        <div class="pd-info-item"><label>售卖方式</label><div>按固定档位</div></div>
+        <div class="pd-info-item"><label>售卖方式</label><div>固定套餐</div></div>
         <div class="pd-info-item"><label>购买对象</label><div>歌曲</div></div>
         <div class="pd-info-item"><label>允许单独购买</label><div>是</div></div>
         <div class="pd-info-item"><label>允许加入 Package</label><div>是</div></div>
@@ -41,110 +44,55 @@
 
   <section class="pd-section">
     <div class="pd-section-head">
-      <div><h2>销售规格与价格</h2><p>维护这个产品可销售的价格档位。</p></div>
-      <button class="pd-btn pd-btn-primary" id="addSpecBtn" type="button">＋ 新增规格</button>
+      <div><h2>固定套餐与价格</h2><p>当前产品通过固定套餐售卖，每个套餐维护独立价格和服务结果。</p></div>
+      <a class="pd-btn pd-btn-primary" href="product-form.html?mode=edit&id=netease-play">编辑套餐</a>
     </div>
     <div class="pd-table-wrap">
       <table class="pd-spec-table">
-        <thead><tr><th>规格名称</th><th>目标播放</th><th>销售价</th><th>内部成本</th><th>服务费</th><th>状态</th><th>操作</th></tr></thead>
+        <thead><tr><th>套餐名称</th><th>服务结果</th><th>销售价</th><th>内部成本</th><th>服务费</th><th>状态</th></tr></thead>
         <tbody id="specTableBody"></tbody>
       </table>
     </div>
   </section>
 
   <section class="pd-section">
-    <div class="pd-section-head"><div><h2>履约信息</h2></div></div>
+    <div class="pd-section-head"><div><h2>服务与履约</h2></div></div>
     <div class="pd-section-body">
       <div class="pd-info-grid">
-        <div class="pd-info-item"><label>交付单位</label><div>播放量</div></div>
-        <div class="pd-info-item"><label>执行方式</label><div>按所选档位执行</div></div>
-        <div class="pd-info-item"><label>预计开始</label><div>支付后尽快开始</div></div>
-        <div class="pd-info-item"><label>允许追加</label><div>是</div></div>
+        <div class="pd-info-item"><label>结果类型</label><div>保底结果</div></div>
+        <div class="pd-info-item"><label>结果指标</label><div>播放量 · 次</div></div>
+        <div class="pd-info-item"><label>履约周期</label><div>单次</div></div>
+        <div class="pd-info-item"><label>允许追加购买</label><div>是</div></div>
       </div>
     </div>
   </section>
-
-  <div class="pd-spec-modal" id="specModal" aria-hidden="true">
-    <div class="pd-spec-dialog" id="specDialog" role="dialog" aria-modal="true" aria-labelledby="specModalTitle">
-      <div class="pd-spec-dialog-head">
-        <div><h2 id="specModalTitle">新增销售规格</h2><p>网易云音乐播放推广 · 交付单位：播放量</p></div>
-        <button class="pd-spec-close" id="closeSpecBtn" type="button" aria-label="关闭">×</button>
-      </div>
-      <div class="pd-spec-dialog-body">
-        <div class="pd-spec-group">
-          <div class="pd-spec-group-title">规格信息</div>
-          <div class="pd-spec-grid">
-            <div class="pd-spec-field"><label class="required" for="specName">规格名称</label><input id="specName" placeholder="例如：5,000 播放"></div>
-            <div class="pd-spec-field"><label for="specCode">规格标识</label><input id="specCode" placeholder="例如：netease-play-5000"></div>
-            <div class="pd-spec-field"><label class="required" for="specTarget">目标播放量</label><div class="pd-spec-input-unit"><input id="specTarget" type="number" min="1" placeholder="5000"><span>次播放</span></div></div>
-            <div class="pd-spec-field"><label for="specStatus">状态</label><select id="specStatus"><option value="active">上架</option><option value="inactive">下架</option></select></div>
-          </div>
-        </div>
-
-        <div class="pd-spec-group">
-          <div class="pd-spec-group-title">价格与成本</div>
-          <div class="pd-spec-grid">
-            <div class="pd-spec-field"><label class="required" for="specPrice">销售价</label><div class="pd-spec-input-unit"><input id="specPrice" type="number" min="0" step="0.01" placeholder="259"><span>人民币 ¥</span></div></div>
-            <div class="pd-spec-field"><label for="specCost">内部成本</label><div class="pd-spec-input-unit"><input id="specCost" type="number" min="0" step="0.01" placeholder="250"><span>人民币 ¥</span></div></div>
-            <div class="pd-spec-field"><label for="specFee">服务费</label><div class="pd-spec-input-unit"><input id="specFee" type="number" min="0" step="0.01" value="0"><span>人民币 ¥</span></div></div>
-            <div class="pd-spec-field"><label>毛利预览</label><div class="pd-spec-margin-preview"><div><span>预计毛利</span><strong id="marginAmount">¥0</strong></div><div><span>毛利率</span><strong id="marginRate">0%</strong></div></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="pd-spec-dialog-foot">
-        <button class="pd-btn pd-btn-danger pd-spec-delete" id="deleteSpecBtn" type="button">删除规格</button>
-        <div class="pd-spec-foot-right"><button class="pd-btn pd-btn-secondary" id="cancelSpecBtn" type="button">取消</button><button class="pd-btn pd-btn-primary" id="saveSpecBtn" type="button">保存规格</button></div>
-      </div>
-    </div>
-  </div>
-  <div class="pd-toast" id="specToast">规格已保存</div>
 </template>
 <script src="../assets/js/admin-shell.js"></script>
 <script>
 const specs=[
-{id:'spec-600',name:'600 播放',code:'netease-play-600',target:600,price:39,cost:30,fee:0,status:'active'},
-{id:'spec-1320',name:'1,320 播放',code:'netease-play-1320',target:1320,price:69,cost:66,fee:0,status:'active'},
-{id:'spec-1980',name:'1,980 播放',code:'netease-play-1980',target:1980,price:99,cost:99,fee:0,status:'active'},
-{id:'spec-3000',name:'3,000 播放',code:'netease-play-3000',target:3000,price:159,cost:150,fee:0,status:'active'},
-{id:'spec-4000',name:'4,000 播放',code:'netease-play-4000',target:4000,price:209,cost:200,fee:0,status:'active'},
-{id:'spec-6000',name:'6,000 播放',code:'netease-play-6000',target:6000,price:309,cost:300,fee:0,status:'active'},
-{id:'spec-10000',name:'10,000 播放',code:'netease-play-10000',target:10000,price:519,cost:500,fee:10,status:'active'},
-{id:'spec-16000',name:'16,000 播放',code:'netease-play-16000',target:16000,price:819,cost:800,fee:10,status:'active'},
-{id:'spec-24000',name:'24,000 播放',code:'netease-play-24000',target:24000,price:1219,cost:1200,fee:10,status:'active'},
-{id:'spec-32000',name:'32,000 播放',code:'netease-play-32000',target:32000,price:1619,cost:1600,fee:10,status:'active'},
-{id:'spec-40000',name:'40,000 播放',code:'netease-play-40000',target:40000,price:2019,cost:2000,fee:10,status:'active'},
-{id:'spec-49980',name:'49,980 播放',code:'netease-play-49980',target:49980,price:2509,cost:2499,fee:10,status:'active'}
+{name:'600 播放',result:'600 次',price:39,cost:30,fee:0,status:'active'},
+{name:'1,320 播放',result:'1,320 次',price:69,cost:66,fee:0,status:'active'},
+{name:'1,980 播放',result:'1,980 次',price:99,cost:99,fee:0,status:'active'},
+{name:'3,000 播放',result:'3,000 次',price:159,cost:150,fee:0,status:'active'},
+{name:'4,000 播放',result:'4,000 次',price:209,cost:200,fee:0,status:'active'},
+{name:'6,000 播放',result:'6,000 次',price:309,cost:300,fee:0,status:'active'},
+{name:'10,000 播放',result:'10,000 次',price:519,cost:500,fee:10,status:'active'},
+{name:'16,000 播放',result:'16,000 次',price:819,cost:800,fee:10,status:'active'},
+{name:'24,000 播放',result:'24,000 次',price:1219,cost:1200,fee:10,status:'active'},
+{name:'32,000 播放',result:'32,000 次',price:1619,cost:1600,fee:10,status:'active'},
+{name:'40,000 播放',result:'40,000 次',price:2019,cost:2000,fee:10,status:'active'},
+{name:'49,980 播放',result:'49,980 次',price:2509,cost:2499,fee:10,status:'active'}
 ];
-let editingId=null;
-const $=id=>document.getElementById(id);
 const fmt=n=>Number(n||0).toLocaleString('zh-CN',{maximumFractionDigits:2});
-function renderSpecs(){
-  $('specTableBody').innerHTML=specs.map(s=>`<tr data-id="${s.id}"><td class="pd-spec-name">${s.name}</td><td>${fmt(s.target)} 次</td><td class="pd-price">¥${fmt(s.price)}</td><td>¥${fmt(s.cost)}</td><td>¥${fmt(s.fee)}</td><td><span class="pd-status${s.status==='active'?'':' off'}">${s.status==='active'?'上架':'下架'}</span></td><td class="pd-spec-actions"><button class="pd-btn-text pd-link" type="button" data-edit="${s.id}">编辑</button></td></tr>`).join('');
-  document.querySelectorAll('[data-edit]').forEach(btn=>btn.addEventListener('click',()=>openSpec('edit',btn.dataset.edit)));
-}
-function setField(id,value){$(id).value=value??'';}
-function updateMargin(){const price=Number($('specPrice').value||0),cost=Number($('specCost').value||0);const margin=price-cost;const rate=price>0?margin/price*100:0;$('marginAmount').textContent=(margin<0?'- ':'')+'¥'+fmt(Math.abs(margin));$('marginRate').textContent=rate.toFixed(1)+'%';}
-function openSpec(mode,id){
-  editingId=mode==='edit'?id:null;
-  const editing=mode==='edit';
-  $('specDialog').classList.toggle('editing',editing);
-  $('specModalTitle').textContent=editing?'编辑销售规格':'新增销售规格';
-  if(editing){const s=specs.find(x=>x.id===id);if(!s)return;setField('specName',s.name);setField('specCode',s.code);setField('specTarget',s.target);setField('specPrice',s.price);setField('specCost',s.cost);setField('specFee',s.fee);setField('specStatus',s.status);}
-  else{setField('specName','');setField('specCode','');setField('specTarget','');setField('specPrice','');setField('specCost','');setField('specFee',0);setField('specStatus','active');}
-  updateMargin();$('specModal').classList.add('open');$('specModal').setAttribute('aria-hidden','false');setTimeout(()=>$('specName').focus(),20);
-}
-function closeSpec(){$('specModal').classList.remove('open');$('specModal').setAttribute('aria-hidden','true');editingId=null;}
-function showToast(text){$('specToast').textContent=text;$('specToast').classList.add('show');setTimeout(()=>$('specToast').classList.remove('show'),1600);}
-function readSpec(){const target=Number($('specTarget').value),price=Number($('specPrice').value),cost=Number($('specCost').value||0),fee=Number($('specFee').value||0);return{name:$('specName').value.trim(),code:$('specCode').value.trim()||('netease-play-'+target),target,price,cost,fee,status:$('specStatus').value};}
-$('addSpecBtn').addEventListener('click',()=>openSpec('add'));
-$('closeSpecBtn').addEventListener('click',closeSpec);$('cancelSpecBtn').addEventListener('click',closeSpec);
-$('specModal').addEventListener('click',e=>{if(e.target===$('specModal'))closeSpec();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('specModal').classList.contains('open'))closeSpec();});
-['specPrice','specCost','specFee'].forEach(id=>$(id).addEventListener('input',updateMargin));
-$('specTarget').addEventListener('input',()=>{if(!editingId&&!$('specName').value.trim()&&$('specTarget').value){$('specName').value=Number($('specTarget').value).toLocaleString('zh-CN')+' 播放';}});
-$('saveSpecBtn').addEventListener('click',()=>{const value=readSpec();if(!value.name||!value.target||!value.price){alert('请填写规格名称、目标播放量和销售价');return;}if(editingId){const index=specs.findIndex(x=>x.id===editingId);specs[index]={...specs[index],...value};showToast('规格已更新');}else{specs.push({id:'spec-'+Date.now(),...value});showToast('规格已新增');}renderSpecs();closeSpec();});
-$('deleteSpecBtn').addEventListener('click',()=>{if(!editingId)return;const s=specs.find(x=>x.id===editingId);if(!confirm('确认删除规格「'+s.name+'」？'))return;const index=specs.findIndex(x=>x.id===editingId);specs.splice(index,1);renderSpecs();closeSpec();showToast('规格已删除');});
-renderSpecs();
+document.getElementById('specTableBody').innerHTML=specs.map(item=>`
+<tr>
+<td class="pd-spec-name">${item.name}</td>
+<td>${item.result}</td>
+<td class="pd-price">¥${fmt(item.price)}</td>
+<td>¥${fmt(item.cost)}</td>
+<td>¥${fmt(item.fee)}</td>
+<td><span class="pd-status${item.status==='active'?'':' off'}">${item.status==='active'?'上架':'下架'}</span></td>
+</tr>`).join('');
 </script>
 </body>
 </html>
