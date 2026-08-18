@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>新增 / 编辑产品｜星球发行 · 音乐推广 Admin</title>
+<link rel="stylesheet" href="../assets/css/admin-common.css">
+<link rel="stylesheet" href="../assets/css/products.css">
+</head>
+<body data-admin-page="products" data-page-title="产品列表 / 新增">
+<div id="admin-shell"></div>
+<template id="page-content">
+  <div class="pd-breadcrumb"><a href="products.html">产品列表</a><span>/</span><b id="crumbText">新增产品</b></div>
+  <div class="page-header"><div><h1 id="formTitle">新增产品</h1><p>维护产品基础信息、售卖方式和前台展示内容。</p></div></div>
+
+  <div class="pd-form-layout">
+    <div>
+      <section class="pd-form-card">
+        <div class="pd-form-card-head"><h2>基本信息</h2></div>
+        <div class="pd-form-body">
+          <div class="pd-form-row"><div class="pd-form-label pd-required">所属类目</div><div class="pd-form-control"><select id="category"><option value="">请选择</option><option>播放推广</option><option>歌单推广</option><option>内容推广</option><option>平台资源</option><option>场景服务</option></select></div></div>
+          <div class="pd-form-row"><div class="pd-form-label pd-required">产品名称</div><div class="pd-form-control"><input id="name" placeholder="例如：网易云音乐播放推广"></div></div>
+          <div class="pd-form-row"><div class="pd-form-label pd-required">产品标识</div><div class="pd-form-control"><input id="code" placeholder="例如：netease-play"><div class="pd-help">建议使用英文小写与连字符，创建后尽量不要修改。</div></div></div>
+          <div class="pd-form-row"><div class="pd-form-label pd-required">平台</div><div class="pd-form-control"><select id="platform"><option value="">请选择</option><option>网易云音乐</option><option>TME</option><option>QQ音乐</option><option>酷狗音乐</option><option>酷我音乐</option><option>抖音</option><option>小红书</option><option>Spotify</option><option>YouTube</option><option>KTV</option><option>多平台</option></select></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">购买对象</div><div class="pd-form-control"><select id="target"><option>歌曲</option><option>视频 / MV</option><option>发行项目</option></select></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">内部备注</div><div class="pd-form-control"><textarea id="internalNote" placeholder="仅后台可见"></textarea></div></div>
+        </div>
+      </section>
+
+      <section class="pd-form-card">
+        <div class="pd-form-card-head"><h2>售卖设置</h2></div>
+        <div class="pd-form-body">
+          <div class="pd-form-row"><div class="pd-form-label pd-required">售卖方式</div><div class="pd-form-control"><select id="saleMode"><option>按固定档位</option><option>按数量</option><option>按套餐</option><option>一次性服务</option><option>按目标档位</option><option>人工报价</option></select></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">允许单独购买</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="directSwitch" type="button"></button><span id="directText">是</span></div></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">允许加入 Package</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="packageSwitch" type="button"></button><span id="packageText">是</span></div></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">排序</div><div class="pd-form-control"><input id="sort" type="number" min="0" value="10"><div class="pd-help">数字越小越靠前。</div></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">状态</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="statusSwitch" type="button"></button><span id="statusText">上架</span></div></div></div>
+        </div>
+      </section>
+
+      <section class="pd-form-card">
+        <div class="pd-form-card-head"><h2>前台展示内容</h2><p>用于用户侧产品介绍，可分别维护主要语言。</p></div>
+        <div class="pd-form-body">
+          <div class="pd-language-tabs"><button class="pd-language-tab active" data-lang="zh" type="button">简体中文</button><button class="pd-language-tab" data-lang="en" type="button">English</button><button class="pd-language-tab" data-lang="ja" type="button">日本語</button><button class="pd-language-tab" data-lang="zh-Hant" type="button">繁體中文</button></div>
+          <div class="pd-form-row"><div class="pd-form-label">展示名称</div><div class="pd-form-control"><input id="displayName" placeholder="用户侧看到的产品名称"></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">一句话介绍</div><div class="pd-form-control"><input id="summary" placeholder="例如：按预算提升歌曲在网易云音乐内的播放与曝光"></div></div>
+          <div class="pd-form-row"><div class="pd-form-label">产品介绍</div><div class="pd-form-control"><textarea id="description" placeholder="用于产品详情和服务说明"></textarea></div></div>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="pd-side-card"><h3>产品状态</h3><div class="pd-side-row"><span>当前状态</span><strong id="sideStatus">上架</strong></div><div class="pd-side-row"><span>销售规格</span><strong id="sideSpecs">保存后维护</strong></div><div class="pd-side-row"><span>Package</span><strong>可引用销售规格</strong></div></div>
+      <div class="pd-side-card"><h3>销售规格</h3><p class="pd-note">产品保存后，可在产品详情中维护价格档位、交付数量、内部成本以及是否允许单独销售。</p></div>
+    </aside>
+  </div>
+
+  <div class="pd-form-actions"><a class="pd-btn pd-btn-secondary" id="cancelBtn" href="products.html">取消</a><button class="pd-btn pd-btn-primary" id="saveBtn" type="button">保存产品</button></div>
+</template>
+<script src="../assets/js/admin-shell.js"></script>
+<script>
+const params=new URLSearchParams(location.search),editing=params.get('mode')==='edit';
+if(editing){document.getElementById('formTitle').textContent='编辑产品';document.getElementById('crumbText').textContent='编辑产品';document.body.dataset.pageTitle='产品列表 / 编辑';document.getElementById('category').value='播放推广';document.getElementById('name').value='网易云音乐播放推广';document.getElementById('code').value='netease-play';document.getElementById('platform').value='网易云音乐';document.getElementById('target').value='歌曲';document.getElementById('saleMode').value='按固定档位';document.getElementById('sort').value='10';document.getElementById('displayName').value='网易云音乐播放推广';document.getElementById('summary').value='按预算提升歌曲在网易云音乐内的播放与曝光';document.getElementById('description').value='选择已发行歌曲和推广档位，根据所选预算执行对应规模的网易云音乐播放推广。';document.getElementById('internalNote').value='供应侧按档位执行，可多次追加。';document.getElementById('sideSpecs').textContent='12 个档位';document.getElementById('cancelBtn').href='product-detail.html?id=netease-play';}
+function bindSwitch(id,textId,onText,offText,side){let on=true;const sw=document.getElementById(id),text=document.getElementById(textId);sw.addEventListener('click',()=>{on=!on;sw.classList.toggle('off',!on);text.textContent=on?onText:offText;if(side)document.getElementById(side).textContent=text.textContent;});}
+bindSwitch('directSwitch','directText','是','否');bindSwitch('packageSwitch','packageText','是','否');bindSwitch('statusSwitch','statusText','上架','下架','sideStatus');
+const langData={zh:{name:'网易云音乐播放推广',summary:'按预算提升歌曲在网易云音乐内的播放与曝光',desc:'选择已发行歌曲和推广档位，根据所选预算执行对应规模的网易云音乐播放推广。'},en:{name:'NetEase Cloud Music Promotion',summary:'Increase plays and exposure on NetEase Cloud Music',desc:'Choose a released track and promotion tier to run a play-focused campaign on NetEase Cloud Music.'},ja:{name:'NetEase Cloud Music プロモーション',summary:'予算に応じて再生数と露出を増やします',desc:'配信済みの楽曲とプロモーション枠を選択し、NetEase Cloud Music 内で再生プロモーションを実施します。'},'zh-Hant':{name:'網易雲音樂播放推廣',summary:'按預算提升歌曲在網易雲音樂內的播放與曝光',desc:'選擇已發行歌曲和推廣檔位，根據所選預算執行相應規模的網易雲音樂播放推廣。'}};let currentLang='zh';
+document.querySelectorAll('.pd-language-tab').forEach(tab=>tab.addEventListener('click',()=>{langData[currentLang]={name:document.getElementById('displayName').value,summary:document.getElementById('summary').value,desc:document.getElementById('description').value};currentLang=tab.dataset.lang;document.querySelectorAll('.pd-language-tab').forEach(x=>x.classList.remove('active'));tab.classList.add('active');const d=langData[currentLang]||{};document.getElementById('displayName').value=d.name||'';document.getElementById('summary').value=d.summary||'';document.getElementById('description').value=d.desc||'';}));
+document.getElementById('saveBtn').addEventListener('click',()=>{const category=document.getElementById('category').value,name=document.getElementById('name').value.trim(),code=document.getElementById('code').value.trim(),platform=document.getElementById('platform').value;if(!category||!name||!code||!platform){alert('请填写所属类目、产品名称、产品标识和平台');return;}alert(editing?'演示：产品已保存':'演示：产品已创建');location.href=editing?'product-detail.html?id='+encodeURIComponent(code):'products.html';});
+</script>
+</body>
+</html>
