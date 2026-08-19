@@ -1,6 +1,16 @@
+window.PROMOTION_GOALS = [
+  { id: 'plays', name: '增加歌曲播放' },
+  { id: 'playlist', name: '进入更多歌单' },
+  { id: 'social', name: '短视频 / 内容传播' },
+  { id: 'global', name: '推广到海外' },
+  { id: 'chart', name: '提升热度 / 冲榜' },
+  { id: 'ktv', name: '上架到 KTV' }
+];
+
 window.PRODUCT_CATEGORIES = [
   {
     id: 'traffic',
+    goalId: 'plays',
     names: {
       zhCN: '播放推广',
       en: 'Streaming Promotion',
@@ -17,10 +27,11 @@ window.PRODUCT_CATEGORIES = [
     plans: 24,
     sort: 10,
     status: 'on',
-    updated: '2026-08-18 11:35'
+    updated: '2026-08-19 17:14'
   },
   {
     id: 'playlist',
+    goalId: 'playlist',
     names: {
       zhCN: '歌单推广',
       en: 'Playlist Promotion',
@@ -37,10 +48,11 @@ window.PRODUCT_CATEGORIES = [
     plans: 12,
     sort: 20,
     status: 'on',
-    updated: '2026-08-18 10:18'
+    updated: '2026-08-19 17:14'
   },
   {
     id: 'content',
+    goalId: 'social',
     names: {
       zhCN: '内容推广',
       en: 'Content Promotion',
@@ -57,10 +69,11 @@ window.PRODUCT_CATEGORIES = [
     plans: 13,
     sort: 30,
     status: 'on',
-    updated: '2026-08-17 17:46'
+    updated: '2026-08-19 17:14'
   },
   {
     id: 'platform-resource',
+    goalId: 'chart',
     names: {
       zhCN: '平台资源',
       en: 'Platform Resources',
@@ -77,10 +90,11 @@ window.PRODUCT_CATEGORIES = [
     plans: 10,
     sort: 40,
     status: 'on',
-    updated: '2026-08-17 16:20'
+    updated: '2026-08-19 17:14'
   },
   {
     id: 'scene-service',
+    goalId: 'ktv',
     names: {
       zhCN: '场景服务',
       en: 'Music Scene Services',
@@ -97,7 +111,7 @@ window.PRODUCT_CATEGORIES = [
     plans: 1,
     sort: 50,
     status: 'off',
-    updated: '2026-08-16 14:08'
+    updated: '2026-08-19 17:14'
   }
 ];
 
@@ -107,6 +121,10 @@ window.PRODUCT_CATEGORY_LANGUAGES = [
   { key: 'ja', label: '日本語', shortLabel: '日本語' },
   { key: 'zhTW', label: '繁體中文', shortLabel: '繁中' }
 ];
+
+window.getPromotionGoal = function getPromotionGoal(id) {
+  return window.PROMOTION_GOALS.find(goal => goal.id === id) || null;
+};
 
 window.getProductCategory = function getProductCategory(id) {
   return window.PRODUCT_CATEGORIES.find(category => category.id === id) || window.PRODUCT_CATEGORIES[0];
