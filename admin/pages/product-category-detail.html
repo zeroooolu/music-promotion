@@ -15,7 +15,6 @@
   <section class="pc-detail-head">
     <div>
       <div class="pc-detail-title"><h1 id="categoryName">—</h1><span class="pc-status" id="categoryStatus">启用</span></div>
-      <div class="pc-detail-sub">类目标识：<span id="categoryCode">—</span></div>
       <div style="margin-top:10px"><span class="pc-goal-tag" id="categoryGoal">—</span></div>
       <div class="pc-metric-strip">
         <div class="pc-metric"><strong id="productCount">0</strong><span>产品数量</span></div>
@@ -30,7 +29,6 @@
     <div class="pc-section-body">
       <div class="pc-info-grid">
         <div class="pc-info-item"><label>推广目标</label><div id="infoGoal">—</div></div>
-        <div class="pc-info-item"><label>类目标识</label><div id="infoCode">—</div></div>
         <div class="pc-info-item"><label>排序</label><div id="infoSort">—</div></div>
         <div class="pc-info-item"><label>状态</label><div><span class="pc-status" id="infoStatus">启用</span></div></div>
         <div class="pc-info-item"><label>最后更新</label><div id="infoUpdated">—</div></div>
@@ -57,14 +55,12 @@ const statusText=enabled?'启用':'停用';
 
 document.getElementById('breadcrumbName').textContent=category.names.zhCN;
 document.getElementById('categoryName').textContent=category.names.zhCN;
-document.getElementById('categoryCode').textContent=category.id;
 document.getElementById('categoryGoal').textContent=goal?.name||'未设置';
 document.getElementById('productCount').textContent=category.products;
 document.getElementById('planCount').textContent=category.plans;
 document.getElementById('categoryStatus').className=statusClass;
 document.getElementById('categoryStatus').textContent=statusText;
 document.getElementById('infoGoal').innerHTML=goal?`<span class="pc-goal-tag">${goal.name}</span>`:'—';
-document.getElementById('infoCode').textContent=category.id;
 document.getElementById('infoSort').textContent=category.sort;
 document.getElementById('infoUpdated').textContent=category.updated;
 document.getElementById('infoStatus').className=statusClass;
