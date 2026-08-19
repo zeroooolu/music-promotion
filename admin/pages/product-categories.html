@@ -17,7 +17,7 @@
 
   <div class="pc-toolbar">
     <div class="pc-filters">
-      <input class="pc-input" id="categorySearch" placeholder="搜索类目名称 / 描述 / 标识 / 推广目标">
+      <input class="pc-input" id="categorySearch" placeholder="搜索类目名称 / 推广目标">
       <select class="pc-select" id="goalFilter"><option value="all">全部推广目标</option></select>
       <select class="pc-select" id="statusFilter"><option value="all">全部状态</option><option value="on">启用</option><option value="off">停用</option></select>
       <button class="pc-btn pc-btn-secondary" id="resetBtn" type="button">重置</button>
@@ -28,7 +28,7 @@
   <section class="pc-card">
     <div class="pc-table-wrap">
       <table class="pc-table" id="categoryTable">
-        <thead><tr><th style="width:190px">类目名称</th><th style="width:150px">推广目标</th><th>描述</th><th style="width:150px">多语言</th><th style="width:70px">产品</th><th style="width:70px">方案</th><th style="width:70px">排序</th><th style="width:80px">状态</th><th style="width:145px">更新时间</th><th style="width:140px">操作</th></tr></thead>
+        <thead><tr><th style="width:220px">类目名称</th><th style="width:170px">推广目标</th><th style="width:170px">多语言</th><th style="width:80px">产品</th><th style="width:80px">方案</th><th style="width:90px">状态</th><th style="width:150px">更新时间</th><th style="width:150px">操作</th></tr></thead>
         <tbody id="categoryRows"></tbody>
       </table>
     </div>
@@ -56,7 +56,7 @@ function render(){
   const q=(search.value||'').trim().toLowerCase();
   const filtered=PRODUCT_CATEGORIES.filter(category=>{
     const goal=getPromotionGoal(category.goalId);
-    const searchable=[category.id,goal?.name||'',...Object.values(category.names),...Object.values(category.descriptions||{})].join(' ').toLowerCase();
+    const searchable=[goal?.name||'',...Object.values(category.names)].join(' ').toLowerCase();
     const hit=!q||searchable.includes(q);
     const goalHit=goalFilter.value==='all'||category.goalId===goalFilter.value;
     const statusHit=status.value==='all'||category.status===status.value;
@@ -67,13 +67,11 @@ function render(){
     const goal=getPromotionGoal(category.goalId);
     return `
     <tr>
-      <td><div class="pc-name">${category.names.zhCN}</div><div class="pc-code">${category.id} · ${category.names.en}</div></td>
+      <td><div class="pc-name">${category.names.zhCN}</div><div class="pc-code">${category.names.en||'—'}</div></td>
       <td>${goal?`<span class="pc-goal-tag">${goal.name}</span>`:'—'}</td>
-      <td><div class="pc-desc">${category.descriptions?.zhCN||'—'}</div></td>
       <td>${languageSummary(category)}</td>
       <td><span class="pc-count">${category.products}</span></td>
       <td><span class="pc-count">${category.plans}</span></td>
-      <td>${category.sort}</td>
       <td><span class="pc-status${category.status==='off'?' off':''}">${category.status==='on'?'启用':'停用'}</span></td>
       <td>${category.updated}</td>
       <td><a class="pc-link" href="product-category-detail.html?id=${encodeURIComponent(category.id)}">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=${encodeURIComponent(category.id)}">编辑</a></td>
@@ -81,7 +79,7 @@ function render(){
   }).join('');
 
   if(!filtered.length){
-    rows.innerHTML='<tr><td colspan="10" style="text-align:center;color:#97a3b3;padding:36px 16px">暂无符合条件的类目</td></tr>';
+    rows.innerHTML='<tr><td colspan="8" style="text-align:center;color:#97a3b3;padding:36px 16px">暂无符合条件的类目</td></tr>';
   }
   count.textContent=filtered.length;
   rangeText.textContent=`显示 ${filtered.length}，共 ${filtered.length} 条`;
