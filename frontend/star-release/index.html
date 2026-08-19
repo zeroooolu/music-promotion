@@ -6,75 +6,45 @@
   <title>星球发行 · 音乐推广</title>
   <style>
     :root {
-      --brand: #2448ff;
-      --brand-hover: #1839e8;
-      --brand-soft: #e9edff;
-      --page-bg: #f4f6f9;
-      --surface: #ffffff;
-      --text: #30343a;
-      --text-strong: #20232a;
-      --text-secondary: #666b75;
-      --text-tertiary: #9aa0aa;
-      --border: #e5e8ee;
-      --border-strong: #d9dde5;
-      --sidebar-width: 244px;
-      --topbar-height: 88px;
-      --radius: 4px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      --brand:#2448ff;--brand-hover:#1839e8;--brand-soft:#e9edff;--page-bg:#f4f6f9;--surface:#fff;
+      --text:#30343a;--text-strong:#20232a;--text-secondary:#666b75;--text-tertiary:#9aa0aa;
+      --border:#e5e8ee;--border-strong:#d9dde5;--sidebar-width:244px;--topbar-height:88px;--radius:4px;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
     }
-    * { box-sizing: border-box; }
-    html, body { width: 100%; min-width: 1100px; min-height: 100%; margin: 0; color: var(--text); background: var(--page-bg); font-size: 14px; }
-    button, input, textarea, select { font: inherit; }
-    button { cursor: pointer; }
-    svg { display: block; }
-    .app-shell { min-height: 100vh; background: var(--page-bg); }
-    .sidebar { position: fixed; inset: 0 auto 0 0; z-index: 20; width: var(--sidebar-width); min-height: 100vh; background: #fff; border-right: 1px solid var(--border); }
-    .brand { height: var(--topbar-height); display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid var(--border); }
-    .brand-logo { width: 120px; height: 30px; display: flex; align-items: center; }
-    .brand-logo img { display: block; width: 120px; height: auto; object-fit: contain; object-position: left center; }
-    .nav { padding: 6px 12px 24px; }
-    .nav-item { height: 54px; display: flex; align-items: center; gap: 12px; padding: 0 20px; color: #30343a; text-decoration: none; border-radius: 2px; transition: background-color .15s ease, color .15s ease; user-select: none; }
-    .nav-item:hover { background: #f6f7fa; }
-    .nav-item.active { color: var(--brand); background: var(--brand-soft); font-weight: 500; }
-    .nav-icon { width: 20px; height: 20px; flex: 0 0 20px; color: currentColor; }
-    .nav-label { font-size: 16px; line-height: 1; white-space: nowrap; }
-    .topbar { position: fixed; top: 0; right: 0; left: var(--sidebar-width); z-index: 15; height: var(--topbar-height); display: flex; align-items: center; justify-content: flex-end; padding: 0 26px; background: var(--page-bg); }
-    .topbar-actions { display: flex; align-items: center; gap: 28px; color: #30343a; }
-    .topbar-action { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; color: inherit; text-decoration: none; white-space: nowrap; }
-    .topbar-action .icon { width: 20px; height: 20px; color: #25282d; }
-    .caret { width: 10px; height: 10px; margin-left: 1px; }
-    .workspace { min-height: 100vh; margin-left: var(--sidebar-width); padding-top: var(--topbar-height); background: var(--page-bg); }
-    .page-content { width: 100%; min-height: calc(100vh - var(--topbar-height)); padding: 0 22px 28px; }
-    #promotion-root { width: 100%; min-height: calc(100vh - var(--topbar-height) - 28px); }
-    .page-card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius); box-shadow: 0 1px 2px rgba(31,35,48,.02); }
-    .page-card + .page-card { margin-top: 16px; }
-    .page-card-header { min-height: 56px; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid var(--border); color: var(--text-strong); font-size: 16px; font-weight: 600; }
-    .page-card-body { padding: 24px 20px; }
-    .section-title { margin: 0 0 18px; color: var(--text-strong); font-size: 16px; font-weight: 600; }
-    .form-row { display: flex; align-items: flex-start; margin-bottom: 22px; }
-    .form-label { width: 110px; flex: 0 0 110px; padding: 8px 16px 0 0; color: #5c616b; text-align: right; line-height: 20px; }
-    .form-label.required::before { content: "*"; margin-right: 4px; color: var(--brand); }
-    .form-control, .select-control, .textarea-control { width: 400px; min-height: 34px; padding: 6px 10px; color: var(--text); background: #fff; border: 1px solid #d8dde7; border-radius: 4px; outline: none; transition: border-color .15s ease, box-shadow .15s ease; }
-    .textarea-control { min-height: 88px; resize: vertical; }
-    .form-control::placeholder, .textarea-control::placeholder { color: #b2b7c0; }
-    .form-control:focus, .select-control:focus, .textarea-control:focus { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(36,72,255,.08); }
-    .btn { height: 34px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0 16px; border: 1px solid transparent; border-radius: 4px; font-weight: 400; transition: background-color .15s ease, border-color .15s ease; }
-    .btn-primary { color: #fff; background: var(--brand); border-color: var(--brand); }
-    .btn-primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
-    .btn-default { color: #434750; background: #fff; border-color: #d7dce5; }
-    .btn-default:hover { color: var(--brand); border-color: var(--brand); }
-    .muted { color: var(--text-tertiary); }
-    @media (max-width: 1180px) { :root { --sidebar-width: 224px; } .topbar-actions { gap: 20px; } .page-content { padding-left: 18px; padding-right: 18px; } }
+    *{box-sizing:border-box} html,body{width:100%;min-width:1100px;min-height:100%;margin:0;color:var(--text);background:var(--page-bg);font-size:14px}
+    button,input{font:inherit} button{cursor:pointer} svg{display:block} a{color:inherit}
+    .app-shell{min-height:100vh;background:var(--page-bg)}
+    .sidebar{position:fixed;inset:0 auto 0 0;z-index:20;width:var(--sidebar-width);min-height:100vh;background:#fff;border-right:1px solid var(--border)}
+    .brand{height:var(--topbar-height);display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--border)}
+    .brand-logo{width:120px;height:30px;display:flex;align-items:center}.brand-logo img{display:block;width:120px;height:auto;object-fit:contain;object-position:left center}
+    .nav{padding:6px 12px 24px}.nav-item{height:54px;display:flex;align-items:center;gap:12px;padding:0 20px;color:#30343a;text-decoration:none;border-radius:2px;transition:.15s;user-select:none}
+    .nav-item:hover{background:#f6f7fa}.nav-item.active{color:var(--brand);background:var(--brand-soft);font-weight:500}.nav-icon{width:20px;height:20px;flex:0 0 20px;color:currentColor}.nav-label{font-size:16px;line-height:1;white-space:nowrap}
+    .topbar{position:fixed;top:0;right:0;left:var(--sidebar-width);z-index:15;height:var(--topbar-height);display:flex;align-items:center;justify-content:flex-end;padding:0 26px;background:var(--page-bg)}
+    .topbar-actions{display:flex;align-items:center;gap:28px;color:#30343a}.topbar-action{display:inline-flex;align-items:center;gap:7px;min-height:32px;color:inherit;text-decoration:none;white-space:nowrap}.topbar-action .icon{width:20px;height:20px;color:#25282d}.caret{width:10px;height:10px;margin-left:1px}
+    .workspace{min-height:100vh;margin-left:var(--sidebar-width);padding-top:var(--topbar-height);background:var(--page-bg)}.page-content{width:100%;min-height:calc(100vh - var(--topbar-height));padding:0 22px 28px}
+
+    .page-card{background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius);box-shadow:0 1px 2px rgba(31,35,48,.02)}
+    .page-card+.page-card{margin-top:16px}.page-card-header{min-height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--border)}
+    .card-title{font-size:16px;font-weight:600;color:var(--text-strong)}.card-meta{font-size:13px;color:var(--text-tertiary);margin-left:8px;font-weight:400}.text-link{color:var(--brand);text-decoration:none;font-weight:400}.text-link:hover{text-decoration:underline}
+
+    .search-card{padding:28px 28px 30px}.search-heading{margin:0 0 8px;font-size:20px;line-height:28px;color:var(--text-strong);font-weight:600}.search-desc{margin:0 0 22px;color:var(--text-secondary);line-height:22px}
+    .search-line{display:flex;align-items:stretch;gap:12px}.search-wrap{position:relative;flex:1;max-width:760px}.search-box{height:46px;display:flex;align-items:center;width:100%;background:#fff;border:1px solid #d8dde7;border-radius:4px;transition:.15s}.search-box:focus-within{border-color:var(--brand);box-shadow:0 0 0 2px rgba(36,72,255,.08)}
+    .search-icon{width:18px;height:18px;margin-left:14px;color:#8d939d;flex:none}.song-search{flex:1;height:44px;padding:0 12px;border:0;outline:0;color:var(--text);background:transparent}.song-search::placeholder{color:#b0b5bf}
+    .selected-song{display:none;align-items:center;gap:10px;flex:1;min-width:0;padding:4px 10px}.selected-song.show{display:flex}.selected-cover,.song-cover{width:38px;height:38px;border-radius:3px;object-fit:cover;background:linear-gradient(145deg,#dee5ff,#b8c7ff);flex:none}.selected-cover{width:34px;height:34px}.selected-copy{min-width:0}.selected-name{font-size:14px;color:var(--text-strong);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.selected-artist{margin-top:2px;font-size:12px;color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clear-song{width:28px;height:28px;border:0;background:transparent;color:#999;font-size:20px;line-height:28px;padding:0;margin-right:5px;border-radius:3px}.clear-song:hover{background:#f2f3f6;color:#555}
+    .continue-btn{height:46px;min-width:112px;padding:0 24px;border:1px solid var(--brand);border-radius:4px;background:var(--brand);color:#fff}.continue-btn:hover:not(:disabled){background:var(--brand-hover);border-color:var(--brand-hover)}.continue-btn:disabled{cursor:not-allowed;background:#bcc7ff;border-color:#bcc7ff;color:#fff}
+    .search-dropdown{position:absolute;top:52px;left:0;right:0;z-index:30;display:none;padding:6px 0;background:#fff;border:1px solid #dcdfe6;border-radius:4px;box-shadow:0 6px 18px rgba(31,35,48,.10)}.search-dropdown.show{display:block}.search-result{display:flex;align-items:center;gap:12px;padding:10px 14px;cursor:pointer}.search-result:hover{background:#f6f8ff}.result-cover{width:42px;height:42px;border-radius:3px;background:linear-gradient(145deg,#dbe3ff,#aebfff);flex:none}.result-main{min-width:0;flex:1}.result-name{color:var(--text-strong);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.result-sub{margin-top:5px;font-size:12px;color:var(--text-tertiary)}.result-tag{font-size:12px;color:#52a36c;background:#f1faf4;padding:2px 7px;border-radius:2px}.search-empty{padding:22px;text-align:center;color:var(--text-tertiary)}
+
+    .song-table{width:100%;border-collapse:collapse;table-layout:fixed}.song-table thead th{height:46px;padding:0 18px;text-align:left;background:#fafbfc;border-bottom:1px solid var(--border);color:#787e87;font-weight:400;font-size:13px}.song-table tbody td{height:72px;padding:10px 18px;border-bottom:1px solid #edf0f4;vertical-align:middle}.song-table tbody tr:last-child td{border-bottom:0}.song-table tbody tr:hover{background:#fafbff}
+    .song-cell{display:flex;align-items:center;gap:12px;min-width:0}.song-info{min-width:0}.song-name{color:var(--text-strong);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song-code{margin-top:5px;color:var(--text-tertiary);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cell-muted{color:#6f747d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.action-link{border:0;background:transparent;padding:5px 0;color:var(--brand)}.action-link:hover{text-decoration:underline}.eligibility{display:inline-flex;align-items:center;gap:5px;color:#52a36c}.eligibility::before{content:"";width:6px;height:6px;border-radius:50%;background:#52a36c}
+    .table-footer{height:52px;display:flex;align-items:center;justify-content:flex-end;padding:0 18px;border-top:1px solid var(--border);color:var(--text-tertiary);font-size:13px}.pager{display:flex;align-items:center;gap:6px;margin-left:14px}.page-btn{width:28px;height:28px;border:1px solid #dfe3ea;border-radius:3px;background:#fff;color:#626872}.page-btn.active{border-color:var(--brand);color:var(--brand)}
+    .toast{position:fixed;left:50%;top:30px;z-index:100;transform:translateX(-50%);display:none;padding:10px 18px;border-radius:4px;background:#30343a;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15)}.toast.show{display:block}
+    @media(max-width:1180px){:root{--sidebar-width:224px}.topbar-actions{gap:20px}.page-content{padding-left:18px;padding-right:18px}}
   </style>
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" aria-label="星球发行主导航">
-      <div class="brand">
-        <div class="brand-logo">
-          <img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行" />
-        </div>
-      </div>
+      <div class="brand"><div class="brand-logo"><img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行" /></div></div>
       <nav class="nav">
         <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M3 10.6 12 3l9 7.6V21h-6v-6H9v6H3V10.6Z"/></svg><span class="nav-label">主页</span></a>
         <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="currentColor"/><circle cx="12" cy="12" r="2.3" fill="#fff"/><circle cx="16.3" cy="8.2" r="1.1" fill="#fff" opacity=".85"/></svg><span class="nav-label">专辑列表</span></a>
@@ -86,14 +56,91 @@
         <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/><path d="M6.5 15.8 10 12.3l2.5 2.2 5-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label">销售分析</span></a>
       </nav>
     </aside>
-    <header class="topbar">
-      <div class="topbar-actions">
-        <a class="topbar-action" href="#"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9.8 9.2a2.4 2.4 0 1 1 4.6 1c-.35.8-1.1 1.2-1.7 1.7-.5.4-.7.9-.7 1.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="17.1" r="1" fill="currentColor"/></svg><span>帮助中心</span></a>
-        <a class="topbar-action" href="#"><span>简体中文</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
-        <a class="topbar-action" href="#"><span>环环</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
+    <header class="topbar"><div class="topbar-actions">
+      <a class="topbar-action" href="#"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9.8 9.2a2.4 2.4 0 1 1 4.6 1c-.35.8-1.1 1.2-1.7 1.7-.5.4-.7.9-.7 1.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="17.1" r="1" fill="currentColor"/></svg><span>帮助中心</span></a>
+      <a class="topbar-action" href="#"><span>简体中文</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
+      <a class="topbar-action" href="#"><span>环环</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
+    </div></header>
+
+    <main class="workspace">
+      <div class="page-content">
+        <section class="page-card search-card">
+          <h1 class="search-heading">搜索选择歌曲开始推广</h1>
+          <p class="search-desc">从你已在星球发行的歌曲中选择一首，开始创建推广。</p>
+          <div class="search-line">
+            <div class="search-wrap" id="searchWrap">
+              <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.4 4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <input id="songSearch" class="song-search" placeholder="搜索歌曲名称、艺人或专辑" autocomplete="off" />
+                <div id="selectedSong" class="selected-song">
+                  <div class="selected-cover"></div>
+                  <div class="selected-copy"><div class="selected-name" id="selectedName"></div><div class="selected-artist" id="selectedArtist"></div></div>
+                  <button class="clear-song" id="clearSong" aria-label="清除已选歌曲">×</button>
+                </div>
+              </div>
+              <div class="search-dropdown" id="searchDropdown"></div>
+            </div>
+            <button id="continueBtn" class="continue-btn" disabled>开始推广</button>
+          </div>
+        </section>
+
+        <section class="page-card">
+          <div class="page-card-header">
+            <div><span class="card-title">可推广的歌曲</span><span class="card-meta">共 12 首</span></div>
+            <a href="#" class="text-link" id="historyLink">查看推广历史</a>
+          </div>
+          <table class="song-table">
+            <colgroup><col style="width:38%"><col style="width:18%"><col style="width:22%"><col style="width:12%"><col style="width:10%"></colgroup>
+            <thead><tr><th>歌曲</th><th>艺人</th><th>专辑</th><th>状态</th><th>操作</th></tr></thead>
+            <tbody id="songTableBody"></tbody>
+          </table>
+          <div class="table-footer">共 12 条<div class="pager"><button class="page-btn active">1</button><button class="page-btn">2</button></div></div>
+        </section>
       </div>
-    </header>
-    <main class="workspace"><div class="page-content"><div id="promotion-root" aria-label="音乐推广内容区域"></div></div></main>
+    </main>
   </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const songs = [
+      {id:'KJ20260819001',name:'等风来',artist:'环环',album:'等风来',eligible:true},
+      {id:'KJ20260812008',name:'Summer Night',artist:'Luna',album:'Midnight Blue',eligible:true},
+      {id:'KJ20260803016',name:'星光落在你肩上',artist:'白昼乐队',album:'星光落在你肩上',eligible:true},
+      {id:'KJ20260728021',name:'After Rain',artist:'Mori',album:'Slow Motion',eligible:true},
+      {id:'KJ20260717005',name:'回到海边',artist:'南岛',album:'夏日回声',eligible:true},
+      {id:'KJ20260709013',name:'城市漫游',artist:'周末计划',album:'城市漫游',eligible:true}
+    ];
+    let selected = null;
+    const input = document.getElementById('songSearch');
+    const dropdown = document.getElementById('searchDropdown');
+    const selectedBox = document.getElementById('selectedSong');
+    const continueBtn = document.getElementById('continueBtn');
+    const toast = document.getElementById('toast');
+
+    function showToast(text){ toast.textContent=text; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1600); }
+    function renderDropdown(list){
+      if(!list.length){ dropdown.innerHTML='<div class="search-empty">没有找到可推广的歌曲</div>'; dropdown.classList.add('show'); return; }
+      dropdown.innerHTML=list.map(s=>`<div class="search-result" data-id="${s.id}"><div class="result-cover"></div><div class="result-main"><div class="result-name">${s.name}</div><div class="result-sub">${s.artist} · ${s.album}</div></div><span class="result-tag">可推广</span></div>`).join('');
+      dropdown.classList.add('show');
+      dropdown.querySelectorAll('.search-result').forEach(el=>el.addEventListener('click',()=>selectSong(el.dataset.id)));
+    }
+    function selectSong(id){
+      selected=songs.find(s=>s.id===id); if(!selected)return;
+      input.style.display='none'; document.querySelector('.search-icon').style.display='none'; selectedBox.classList.add('show');
+      document.getElementById('selectedName').textContent=selected.name; document.getElementById('selectedArtist').textContent=`${selected.artist} · ${selected.album}`;
+      dropdown.classList.remove('show'); continueBtn.disabled=false; continueBtn.textContent='继续';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function clearSelection(){ selected=null; selectedBox.classList.remove('show'); input.style.display='block'; document.querySelector('.search-icon').style.display='block'; input.value=''; continueBtn.disabled=true; continueBtn.textContent='开始推广'; input.focus(); }
+    input.addEventListener('focus',()=>renderDropdown(songs.slice(0,5)));
+    input.addEventListener('input',()=>{ const q=input.value.trim().toLowerCase(); renderDropdown(songs.filter(s=>`${s.name} ${s.artist} ${s.album}`.toLowerCase().includes(q)).slice(0,6)); });
+    document.getElementById('clearSong').addEventListener('click',clearSelection);
+    document.addEventListener('click',e=>{ if(!document.getElementById('searchWrap').contains(e.target)) dropdown.classList.remove('show'); });
+    continueBtn.addEventListener('click',()=>{ if(selected) showToast(`已选择「${selected.name}」，下一步进入推广目标选择`); });
+    document.getElementById('historyLink').addEventListener('click',e=>{e.preventDefault();showToast('推广历史 / 订单入口');});
+
+    document.getElementById('songTableBody').innerHTML=songs.map(s=>`<tr><td><div class="song-cell"><div class="song-cover"></div><div class="song-info"><div class="song-name">${s.name}</div><div class="song-code">${s.id}</div></div></div></td><td class="cell-muted">${s.artist}</td><td class="cell-muted">${s.album}</td><td><span class="eligibility">可推广</span></td><td><button class="action-link" data-id="${s.id}">推广</button></td></tr>`).join('');
+    document.querySelectorAll('.action-link').forEach(btn=>btn.addEventListener('click',()=>selectSong(btn.dataset.id)));
+  </script>
 </body>
 </html>
