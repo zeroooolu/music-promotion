@@ -6,270 +6,95 @@
 <title>新增 / 编辑产品｜星球发行 · 音乐推广 Admin</title>
 <link rel="stylesheet" href="../assets/css/admin-common.css">
 <link rel="stylesheet" href="../assets/css/products.css">
-<style>[hidden]{display:none!important}.pd-goal-choice.locked{cursor:default}.pd-goal-choice.locked:after{content:'主';display:inline-grid;place-items:center;width:16px;height:16px;margin-left:6px;border-radius:50%;background:#dfe5ff;color:#2448ff;font-size:9px}.pd-result-type{min-width:118px}.pd-package-editor th:nth-child(1){width:180px}.pd-package-editor th:nth-child(2){width:140px}.pd-package-editor th:nth-child(3){min-width:230px}.pd-package-editor th:nth-child(4){width:150px}.pd-package-editor th:last-child{width:54px}</style>
+<style>
+[hidden]{display:none!important}.pd-form-layout{grid-template-columns:minmax(0,1fr)!important}.pd-sale-mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.pd-sale-mode-card{min-height:84px;border:1px solid #d8dde5;background:#fff;border-radius:6px;padding:16px;text-align:left}.pd-sale-mode-card:hover{border-color:#9cacff}.pd-sale-mode-card.active{border-color:#2448ff;background:#f5f7ff;box-shadow:0 0 0 1px rgba(36,72,255,.08)}.pd-sale-mode-card strong{display:block;font-size:14px;color:#303b4a;margin-bottom:7px}.pd-sale-mode-card small{font-size:12px;color:#7b8796}.pd-card-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.pd-package-table-wrap{overflow:auto;border:1px solid #e1e5ea;border-radius:5px}.pd-package-editor{width:100%;border-collapse:collapse;min-width:720px}.pd-package-editor th{height:42px;background:#f2f3f5;border-bottom:1px solid #e2e5e9;padding:0 10px;text-align:left;font-size:12px;color:#4d5662}.pd-package-editor td{padding:9px 10px;border-bottom:1px solid #eceff2}.pd-package-editor tr:last-child td{border-bottom:0}.pd-package-editor input{width:100%;height:34px;border:1px solid #d5dbe2;border-radius:4px;padding:0 9px;outline:none}.pd-package-editor input:focus{border-color:#2448ff;box-shadow:0 0 0 2px rgba(36,72,255,.07)}.pd-row-remove{border:0;background:transparent;color:#d65252}.pd-row-remove:disabled{color:#c1c7cf}.pd-config-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}.pd-config-field label{display:block;font-size:12px;color:#52637a;margin-bottom:7px}.pd-config-field input{width:100%;height:38px;border:1px solid #d5dbe2;border-radius:4px;padding:0 10px;outline:none}.pd-config-field input:focus{border-color:#2448ff;box-shadow:0 0 0 2px rgba(36,72,255,.07)}.pd-inline-unit{display:grid;grid-template-columns:34px 1fr}.pd-inline-unit span{height:38px;display:grid;place-items:center;border:1px solid #d5dbe2;border-right:0;background:#f7f8fa;border-radius:4px 0 0 4px;color:#7c8794}.pd-inline-unit input{border-radius:0 4px 4px 0}.pd-select-wrap,.pd-platform-picker,.pd-mini-select{position:relative;max-width:520px}.pd-select-box,.pd-platform-trigger,.pd-mini-trigger{width:100%;height:38px;border:1px solid #d5dbe2;border-radius:4px;background:#fff;padding:0 36px 0 11px;text-align:left;color:#394b60;position:relative}.pd-select-box:after,.pd-platform-trigger:after,.pd-mini-trigger:after{content:'⌄';position:absolute;right:12px;top:8px;color:#8b97a5}.placeholder{color:#a3acb7!important}.pd-select-wrap.open .pd-select-menu,.pd-platform-picker.open .pd-platform-dropdown,.pd-mini-select.open .pd-mini-menu{display:block}.pd-select-menu,.pd-platform-dropdown,.pd-mini-menu{display:none;position:absolute;z-index:40;left:0;right:0;top:44px;background:#fff;border:1px solid #d8dde5;border-radius:5px;box-shadow:0 10px 28px rgba(36,50,70,.14);overflow:hidden}.pd-select-option,.pd-mini-option{padding:10px 12px;font-size:13px;color:#42546b;cursor:pointer}.pd-select-option:hover,.pd-mini-option:hover{background:#f5f7ff;color:#2448ff}.pd-platform-source{display:flex;gap:8px;margin-bottom:10px}.pd-source-choice{height:34px;padding:0 13px;border:1px solid #d8dde5;background:#fff;border-radius:4px;color:#66758a}.pd-source-choice.active{border-color:#2448ff;color:#2448ff;background:#f5f7ff}.pd-platform-dropdown{top:44px}.pd-platform-search{padding:10px;border-bottom:1px solid #edf0f3}.pd-platform-search input{width:100%;height:34px;border:1px solid #d5dbe2;border-radius:4px;padding:0 10px;outline:none}.pd-platform-results{max-height:250px;overflow:auto}.pd-platform-option{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer}.pd-platform-option:hover{background:#f6f8ff}.pd-platform-option-icon{width:30px;height:30px;border-radius:6px;background:#eef1f5;display:grid;place-items:center;font-size:11px;font-weight:700}.pd-platform-option strong{display:block;font-size:13px}.pd-platform-option small{display:block;margin-top:2px;color:#99a3af;font-size:11px}.pd-other-platform{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:10px;max-width:520px}.pd-other-platform input[type=text]{width:100%;height:38px;border:1px solid #d5dbe2;border-radius:4px;padding:0 10px}.pd-icon-upload{height:38px;border:1px dashed #cfd5de;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#66758a;font-size:12px;cursor:pointer}.pd-icon-upload input{display:none}.pd-goal-grid{display:flex;flex-wrap:wrap;gap:8px}.pd-goal-choice{height:32px;border:1px solid #d8dde5;border-radius:4px;background:#fff;padding:0 11px;color:#607187}.pd-goal-choice.active{border-color:#2448ff;background:#f5f7ff;color:#2448ff}.pd-goal-choice.locked:after{content:'主';display:inline-grid;place-items:center;width:16px;height:16px;margin-left:6px;border-radius:50%;background:#dfe5ff;color:#2448ff;font-size:9px}.pd-mini-select{max-width:none}.pd-mini-trigger{height:34px}.pd-mini-menu{top:40px}.pd-money{display:grid;grid-template-columns:28px 1fr}.pd-money span{height:34px;display:grid;place-items:center;border:1px solid #d5dbe2;border-right:0;background:#f7f8fa;border-radius:4px 0 0 4px;color:#7b8795}.pd-money input{height:34px;border-radius:0 4px 4px 0}.pd-form-actions{z-index:10}@media(max-width:800px){.pd-sale-mode-grid,.pd-config-grid{grid-template-columns:1fr}.pd-other-platform{grid-template-columns:1fr}}
+</style>
 </head>
 <body data-admin-page="products" data-page-title="产品列表 / 新增">
 <div id="admin-shell"></div>
 <template id="page-content">
   <div class="pd-breadcrumb"><a href="products.html">产品列表</a><span>/</span><b id="crumbText">新增产品</b></div>
   <div class="page-header"><div><h1 id="formTitle">新增产品</h1></div></div>
+  <div class="pd-form-layout"><div>
+    <section class="pd-form-card"><div class="pd-form-card-head"><h2>基本信息</h2></div><div class="pd-form-body">
+      <div class="pd-form-row"><div class="pd-form-label pd-required">产品名称</div><div class="pd-form-control"><input id="name" placeholder="例如：网易云音乐播放推广"></div></div>
+      <div class="pd-form-row"><div class="pd-form-label pd-required">所属类目</div><div class="pd-form-control"><div class="pd-select-wrap" id="categorySelect"><button class="pd-select-box placeholder" type="button">请选择产品类目</button><div class="pd-select-menu"></div></div></div></div>
+      <div class="pd-form-row"><div class="pd-form-label pd-required">适用推广目标</div><div class="pd-form-control"><div class="pd-goal-grid" id="goalGrid"></div></div></div>
+      <div class="pd-form-row"><div class="pd-form-label pd-required">平台</div><div class="pd-form-control">
+        <div class="pd-platform-source"><button class="pd-source-choice active" type="button" data-source="dsp">DSP 平台</button><button class="pd-source-choice" type="button" data-source="other">其他平台</button></div>
+        <div id="dspPlatformPanel"><div class="pd-platform-picker" id="platformPicker"><button class="pd-platform-trigger placeholder" type="button" id="platformTrigger">搜索并选择 DSP 平台</button><div class="pd-platform-dropdown"><div class="pd-platform-search"><input id="platformSearch" placeholder="输入平台名称或关键词"></div><div class="pd-platform-results" id="platformResults"></div></div></div></div>
+        <div id="otherPlatformPanel" hidden><div class="pd-other-platform"><input id="otherPlatformName" type="text" placeholder="平台名称，例如：小红书、哔哩哔哩"><label class="pd-icon-upload"><span id="iconUploadText">＋ 上传平台图标</span><input id="otherPlatformIcon" type="file" accept="image/*"></label></div></div>
+      </div></div>
+      <div class="pd-form-row"><div class="pd-form-label">内部备注</div><div class="pd-form-control"><textarea id="internalNote" placeholder="仅后台可见"></textarea></div></div>
+    </div></section>
 
-  <div class="pd-form-layout" style="grid-template-columns:minmax(0,1fr)">
-    <div>
-      <section class="pd-form-card">
-        <div class="pd-form-card-head"><h2>基本信息</h2></div>
-        <div class="pd-form-body">
-          <div class="pd-form-row"><div class="pd-form-label pd-required">产品名称</div><div class="pd-form-control"><input id="name" placeholder="例如：网易云音乐播放推广"></div></div>
-          <div class="pd-form-row">
-            <div class="pd-form-label pd-required">所属类目</div>
-            <div class="pd-form-control">
-              <div class="pd-select-wrap" id="categorySelect"><button class="pd-select-box placeholder" type="button">请选择产品类目</button><div class="pd-select-menu"></div></div>
-            </div>
-          </div>
-          <div class="pd-form-row">
-            <div class="pd-form-label pd-required">适用推广目标</div>
-            <div class="pd-form-control"><div class="pd-goal-grid" id="goalGrid"></div></div>
-          </div>
-          <div class="pd-form-row">
-            <div class="pd-form-label pd-required">平台</div>
-            <div class="pd-form-control">
-              <div class="pd-platform-source" id="platformSource">
-                <button class="pd-source-choice active" type="button" data-source="dsp">DSP 平台</button>
-                <button class="pd-source-choice" type="button" data-source="other">其他平台</button>
-              </div>
-              <div id="dspPlatformPanel">
-                <div class="pd-platform-picker" id="platformPicker">
-                  <button class="pd-platform-trigger placeholder" type="button" id="platformTrigger">搜索并选择 DSP 平台</button>
-                  <div class="pd-platform-dropdown">
-                    <div class="pd-platform-search"><input id="platformSearch" placeholder="输入平台名称或关键词"></div>
-                    <div class="pd-platform-results" id="platformResults"></div>
-                  </div>
-                </div>
-              </div>
-              <div id="otherPlatformPanel" hidden>
-                <div class="pd-other-platform">
-                  <div><input id="otherPlatformName" placeholder="平台名称，例如：小红书、哔哩哔哩"></div>
-                  <label class="pd-icon-upload" id="iconUpload"><span id="iconUploadText">＋ 上传平台图标</span><input id="otherPlatformIcon" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pd-form-row"><div class="pd-form-label">内部备注</div><div class="pd-form-control"><textarea id="internalNote" placeholder="仅后台可见"></textarea></div></div>
-        </div>
-      </section>
+    <section class="pd-form-card"><div class="pd-form-card-head"><h2>售卖方式</h2></div><div class="pd-form-body"><div class="pd-sale-mode-grid" id="saleModeGrid">
+      <button class="pd-sale-mode-card active" type="button" data-sale-mode="fixed"><strong>固定套餐</strong><small>一个或多个固定价格档位</small></button>
+      <button class="pd-sale-mode-card" type="button" data-sale-mode="quantity"><strong>按数量购买</strong><small>按份数或数量计算价格</small></button>
+      <button class="pd-sale-mode-card" type="button" data-sale-mode="budget"><strong>按预算投放</strong><small>用户输入投放预算</small></button>
+    </div><input type="hidden" id="saleMode" value="fixed"></div></section>
 
-      <section class="pd-form-card">
-        <div class="pd-form-card-head"><h2>售卖方式</h2></div>
-        <div class="pd-form-body">
-          <div class="pd-sale-mode-grid" id="saleModeGrid">
-            <button class="pd-sale-mode-card active" type="button" data-sale-mode="fixed"><strong>固定套餐</strong><small>一个或多个固定价格档位</small></button>
-            <button class="pd-sale-mode-card" type="button" data-sale-mode="quantity"><strong>按数量购买</strong><small>按份数或数量计算价格</small></button>
-            <button class="pd-sale-mode-card" type="button" data-sale-mode="budget"><strong>按预算投放</strong><small>用户输入投放预算</small></button>
-            <button class="pd-sale-mode-card" type="button" data-sale-mode="quote"><strong>询价</strong><small>最终价格人工确认</small></button>
-          </div>
-          <input type="hidden" id="saleMode" value="fixed">
-        </div>
-      </section>
+    <section class="pd-form-card pd-sale-config" id="fixedConfig"><div class="pd-form-card-head"><div class="pd-card-title-row"><h2>固定套餐</h2><button class="pd-btn pd-btn-secondary" id="addPackageBtn" type="button">＋ 添加套餐</button></div></div><div class="pd-form-body"><div class="pd-package-table-wrap"><table class="pd-package-editor"><thead><tr><th>套餐名称</th><th>结果类型</th><th>服务结果</th><th>售价</th><th></th></tr></thead><tbody id="packageRows"></tbody></table></div></div></section>
 
-      <section class="pd-form-card pd-sale-config" id="fixedConfig">
-        <div class="pd-form-card-head"><div class="pd-card-title-row"><h2>固定套餐</h2><button class="pd-btn pd-btn-secondary" id="addPackageBtn" type="button">＋ 添加套餐</button></div></div>
-        <div class="pd-form-body">
-          <div class="pd-package-table-wrap"><table class="pd-package-editor"><thead><tr><th>套餐名称</th><th>结果类型</th><th>服务结果</th><th>售价</th><th></th></tr></thead><tbody id="packageRows"></tbody></table></div>
-        </div>
-      </section>
+    <section class="pd-form-card pd-sale-config" id="quantityConfig" hidden><div class="pd-form-card-head"><h2>按数量购买</h2></div><div class="pd-form-body"><div class="pd-config-grid">
+      <div class="pd-config-field"><label>每份数量</label><input id="quantityPerUnit" type="number" min="1" value="10"></div>
+      <div class="pd-config-field"><label>数量单位</label><div class="pd-mini-select" id="quantityUnitSelect"><button class="pd-mini-trigger" type="button">个账号</button><div class="pd-mini-menu"></div></div></div>
+      <div class="pd-config-field"><label>每份售价</label><div class="pd-inline-unit"><span>¥</span><input id="quantityPrice" type="number" min="0" value="600"></div></div>
+      <div class="pd-config-field"><label>最低购买份数</label><input id="quantityMin" type="number" min="1" value="1"></div>
+      <div class="pd-config-field"><label>最高购买份数</label><input id="quantityMax" type="number" min="1" placeholder="不填则不限制"></div>
+    </div></div></section>
 
-      <section class="pd-form-card pd-sale-config" id="quantityConfig" hidden>
-        <div class="pd-form-card-head"><h2>按数量购买</h2></div>
-        <div class="pd-form-body"><div class="pd-config-grid">
-          <div class="pd-config-field"><label>每份数量</label><input id="quantityPerUnit" type="number" min="1" value="10"></div>
-          <div class="pd-config-field"><label>数量单位</label><div class="pd-native-select-wrap"><select class="pd-native-select" id="quantityUnit"><option>个账号</option><option>条</option><option>次</option><option>播放</option><option>收藏</option></select></div></div>
-          <div class="pd-config-field"><label>每份售价</label><div class="pd-inline-unit"><span>¥</span><input id="quantityPrice" type="number" min="0" value="600"></div></div>
-          <div class="pd-config-field"><label>最低购买份数</label><input id="quantityMin" type="number" min="1" value="1"></div>
-          <div class="pd-config-field"><label>每次增加</label><input id="quantityStep" type="number" min="1" value="1"></div>
-          <div class="pd-config-field"><label>最大购买份数</label><input id="quantityMax" type="number" min="1" placeholder="不限制"></div>
-          <div class="pd-config-field"><label>结果类型</label><div class="pd-native-select-wrap"><select class="pd-native-select" id="quantityResultType"><option value="fixed">固定结果</option><option value="guaranteed">保底结果</option><option value="estimated">预估结果</option><option value="none">不承诺结果</option></select></div></div>
-          <div class="pd-config-field"><label>每份服务结果</label><input id="quantityResult" value="10 个账号发布"></div>
-        </div><div class="pd-sale-preview" id="quantityPreview"></div></div>
-      </section>
+    <section class="pd-form-card pd-sale-config" id="budgetConfig" hidden><div class="pd-form-card-head"><h2>按预算投放</h2></div><div class="pd-form-body"><div class="pd-config-grid">
+      <div class="pd-config-field"><label>币种</label><div class="pd-mini-select" id="budgetCurrencySelect"><button class="pd-mini-trigger" type="button">USD 美元</button><div class="pd-mini-menu"></div></div></div>
+      <div class="pd-config-field"><label>最低预算</label><input id="budgetMin" type="number" min="0" value="250"></div>
+      <div class="pd-config-field"><label>预算步长</label><input id="budgetStep" type="number" min="1" value="50"></div>
+    </div></div></section>
 
-      <section class="pd-form-card pd-sale-config" id="budgetConfig" hidden>
-        <div class="pd-form-card-head"><h2>按预算投放</h2></div>
-        <div class="pd-form-body"><div class="pd-config-grid">
-          <div class="pd-config-field"><label>结算币种</label><div class="pd-native-select-wrap"><select class="pd-native-select" id="budgetCurrency"><option value="USD">USD 美元</option><option value="CNY">CNY 人民币</option></select></div></div>
-          <div class="pd-config-field"><label>最低预算</label><input id="budgetMin" type="number" min="0" value="250"></div>
-          <div class="pd-config-field"><label>预算步长</label><input id="budgetStep" type="number" min="1" value="50"></div>
-          <div class="pd-config-field"><label>计费指标</label><input id="billingMetric" placeholder="例如：CPV / CPC" value="CPV"></div>
-          <div class="pd-config-field full"><label>支持市场 / 地区</label><input id="budgetMarkets" value="欧美、东南亚、拉美"></div>
-          <div class="pd-config-field"><label>参考预算</label><input id="budgetReference" type="number" min="1" value="1000"></div>
-          <div class="pd-config-field"><label>预估结果单位</label><input id="budgetResultUnit" value="有效播放"></div>
-          <div class="pd-config-field full"><label>参考预算对应的预估结果</label><div class="pd-range-inputs"><input id="budgetResultMin" type="number" value="1800"><span>–</span><input id="budgetResultMax" type="number" value="2500"></div></div>
-        </div></div>
-      </section>
+    <section class="pd-form-card"><div class="pd-form-card-head"><h2>履约与销售</h2></div><div class="pd-form-body">
+      <div class="pd-form-row"><div class="pd-form-label">履约周期</div><div class="pd-form-control"><div style="display:flex;gap:10px;max-width:420px"><div class="pd-mini-select" id="deliveryTypeSelect" style="width:180px"><button class="pd-mini-trigger" type="button">单次</button><div class="pd-mini-menu"></div></div><div id="deliveryPeriod" hidden style="display:flex;gap:8px"><input id="deliveryDuration" type="number" min="1" value="30" style="width:100px"><div class="pd-mini-select" id="deliveryUnitSelect" style="width:100px"><button class="pd-mini-trigger" type="button">天</button><div class="pd-mini-menu"></div></div></div></div></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">允许追加购买</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="repeatSwitch" type="button"></button><span id="repeatText">是</span></div></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">允许单独购买</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="directSwitch" type="button"></button><span id="directText">是</span></div></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">可用于推广方案</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="planSwitch" type="button"></button><span id="planText">是</span></div></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">排序</div><div class="pd-form-control"><input id="sort" type="number" min="0" value="10"></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">状态</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="statusSwitch" type="button"></button><span id="statusText">上架</span></div></div></div>
+    </div></section>
 
-      <section class="pd-form-card pd-sale-config" id="quoteConfig" hidden>
-        <div class="pd-form-card-head"><h2>询价设置</h2></div>
-        <div class="pd-form-body"><div class="pd-config-grid">
-          <div class="pd-config-field"><label>价格展示</label><div class="pd-native-select-wrap"><select class="pd-native-select" id="quoteDisplay"><option value="range">显示价格区间</option><option value="from">显示起售价</option><option value="quote">仅显示“询价”</option></select></div></div>
-          <div class="pd-config-field"><label>计价单位</label><input id="quoteUnit" value="条"></div>
-          <div class="pd-config-field" id="quoteMinPriceField"><label>最低参考价</label><div class="pd-inline-unit"><span>¥</span><input id="quoteMinPrice" type="number" value="2000"></div></div>
-          <div class="pd-config-field" id="quoteMaxPriceField"><label>最高参考价</label><div class="pd-inline-unit"><span>¥</span><input id="quoteMaxPrice" type="number" value="6000"></div></div>
-          <div class="pd-config-field"><label>最低起投数量</label><input id="quoteMinQuantity" type="number" min="1" value="1"></div>
-          <div class="pd-config-field"><label>结果类型</label><div class="pd-native-select-wrap"><select class="pd-native-select" id="quoteResultType"><option value="fixed">固定结果</option><option value="guaranteed">保底结果</option><option value="estimated">预估结果</option><option value="none" selected>不承诺结果</option></select></div></div>
-          <div class="pd-config-field full"><label>服务内容</label><input id="quoteResult" value="根据账号量级与内容形式确认"></div>
-        </div></div>
-      </section>
-
-      <section class="pd-form-card">
-        <div class="pd-form-card-head"><h2>履约与销售</h2></div>
-        <div class="pd-form-body">
-          <div class="pd-form-row"><div class="pd-form-label">履约周期</div><div class="pd-form-control"><div style="display:flex;gap:10px"><div class="pd-native-select-wrap" style="width:170px"><select class="pd-native-select" id="deliveryType"><option value="single">单次</option><option value="period">固定周期</option></select></div><div id="deliveryPeriod" style="display:none;gap:8px"><input id="deliveryDuration" type="number" min="1" value="30" style="width:100px"><div class="pd-native-select-wrap" style="width:100px"><select class="pd-native-select" id="deliveryUnit"><option>天</option><option>周</option><option>个月</option></select></div></div></div></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">允许追加购买</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="repeatSwitch" type="button"></button><span id="repeatText">是</span></div></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">允许单独购买</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="directSwitch" type="button"></button><span id="directText">是</span></div></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">可用于推广方案</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="planSwitch" type="button"></button><span id="planText">是</span></div></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">排序</div><div class="pd-form-control"><input id="sort" type="number" min="0" value="10"></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">状态</div><div class="pd-form-control"><div class="pd-switch-row"><button class="pd-switch" id="statusSwitch" type="button"></button><span id="statusText">上架</span></div></div></div>
-        </div>
-      </section>
-
-      <section class="pd-form-card">
-        <div class="pd-form-card-head"><h2>前台内容</h2></div>
-        <div class="pd-form-body">
-          <div class="pd-language-tabs"><button class="pd-language-tab active" data-lang="zh" type="button">简体中文</button><button class="pd-language-tab" data-lang="en" type="button">English</button><button class="pd-language-tab" data-lang="ja" type="button">日本語</button><button class="pd-language-tab" data-lang="zh-Hant" type="button">繁體中文</button></div>
-          <div class="pd-form-row" id="translatedNameRow" hidden><div class="pd-form-label">产品名称</div><div class="pd-form-control"><input id="translatedName"></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">一句话介绍</div><div class="pd-form-control"><input id="summary" placeholder="用于产品卡片"></div></div>
-          <div class="pd-form-row"><div class="pd-form-label">产品说明</div><div class="pd-form-control"><textarea id="description" placeholder="用于用户侧了解服务内容"></textarea></div></div>
-        </div>
-      </section>
-    </div>
-  </div>
-
+    <section class="pd-form-card"><div class="pd-form-card-head"><h2>前台内容</h2></div><div class="pd-form-body">
+      <div class="pd-language-tabs"><button class="pd-language-tab active" data-lang="zh" type="button">简体中文</button><button class="pd-language-tab" data-lang="en" type="button">English</button><button class="pd-language-tab" data-lang="ja" type="button">日本語</button><button class="pd-language-tab" data-lang="zh-Hant" type="button">繁體中文</button></div>
+      <div class="pd-form-row" id="translatedNameRow" hidden><div class="pd-form-label">产品名称</div><div class="pd-form-control"><input id="translatedName"></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">一句话介绍</div><div class="pd-form-control"><input id="summary" placeholder="用于产品卡片"></div></div>
+      <div class="pd-form-row"><div class="pd-form-label">产品说明</div><div class="pd-form-control"><textarea id="description" placeholder="用于用户侧了解服务内容"></textarea></div></div>
+    </div></section>
+  </div></div>
   <div class="pd-form-actions"><a class="pd-btn pd-btn-secondary" id="cancelBtn" href="products.html">取消</a><button class="pd-btn pd-btn-primary" id="saveBtn" type="button">保存产品</button></div>
 </template>
 <script src="../assets/js/admin-shell.js"></script>
 <script src="../assets/js/product-category-data.js"></script>
 <script src="../assets/js/product-platform-data.js"></script>
 <script>
-const $=id=>document.getElementById(id);
-const params=new URLSearchParams(location.search);
-const editing=params.get('mode')==='edit';
-const productId=params.get('id')||'';
-const resultTypes={fixed:'固定结果',guaranteed:'保底结果',estimated:'预估结果',none:'不承诺结果'};
-let selectedCategory='';
-let selectedGoals=[];
-let platformSource='dsp';
-let selectedPlatform=null;
-let otherIconData='';
-let packages=[{name:'标准套餐',resultType:'guaranteed',result:'',price:''}];
-let currentLang='zh';
-const langData={zh:{name:'',summary:'',desc:''},en:{name:'',summary:'',desc:''},ja:{name:'',summary:'',desc:''},'zh-Hant':{name:'',summary:'',desc:''}};
-
-function selectCategory(categoryId){
-  const category=PRODUCT_CATEGORIES.find(item=>item.id===categoryId);if(!category)return;
-  selectedCategory=categoryId;
-  const box=$('categorySelect').querySelector('.pd-select-box');box.textContent=category.names.zhCN;box.classList.remove('placeholder');
-  $('categorySelect').querySelectorAll('.pd-select-option').forEach(x=>x.classList.toggle('active',x.dataset.value===categoryId));
-  if(!selectedGoals.includes(category.goalId))selectedGoals.push(category.goalId);
-  renderGoals();
-}
-function initCategorySelect(){
-  const root=$('categorySelect'),menu=root.querySelector('.pd-select-menu');
-  menu.innerHTML=PRODUCT_CATEGORIES.filter(x=>x.status==='on'||editing).map(item=>`<div class="pd-select-option" data-value="${item.id}"><span>${item.names.zhCN}</span><small>${getPromotionGoal(item.goalId)?.name||''}</small></div>`).join('');
-  root.querySelector('.pd-select-box').onclick=e=>{e.stopPropagation();root.classList.toggle('open');};
-  menu.querySelectorAll('.pd-select-option').forEach(option=>option.onclick=()=>{selectCategory(option.dataset.value);root.classList.remove('open');});
-}
-function renderGoals(){
-  const mainGoal=PRODUCT_CATEGORIES.find(x=>x.id===selectedCategory)?.goalId||'';
-  $('goalGrid').innerHTML=PROMOTION_GOALS.map(goal=>`<button class="pd-goal-choice${selectedGoals.includes(goal.id)?' active':''}${goal.id===mainGoal?' locked':''}" type="button" data-goal="${goal.id}">${goal.name}</button>`).join('');
-  $('goalGrid').querySelectorAll('[data-goal]').forEach(btn=>btn.onclick=()=>{
-    const id=btn.dataset.goal;if(id===mainGoal)return;
-    selectedGoals=selectedGoals.includes(id)?selectedGoals.filter(x=>x!==id):[...selectedGoals,id];renderGoals();
-  });
-}
-
-function platformOptionHtml(item){return `<div class="pd-platform-option" data-platform="${item.id}"><div class="pd-platform-icon">${item.icon}</div><div><strong>${item.name}</strong><small>${item.code}</small></div></div>`;}
-function renderPlatformResults(q=''){
-  const keyword=q.trim().toLowerCase();
-  const results=PRODUCT_PLATFORM_LIBRARY.filter(item=>!keyword||[item.name,item.code,...(item.keywords||[])].join(' ').toLowerCase().includes(keyword));
-  $('platformResults').innerHTML=results.length?results.map(platformOptionHtml).join(''):'<div class="pd-platform-empty">没有匹配的平台</div>';
-  $('platformResults').querySelectorAll('[data-platform]').forEach(option=>option.onclick=()=>{selectedPlatform=getProductPlatform(option.dataset.platform);renderPlatformTrigger();$('platformPicker').classList.remove('open');});
-}
-function renderPlatformTrigger(){
-  const trigger=$('platformTrigger');
-  if(!selectedPlatform){trigger.className='pd-platform-trigger placeholder';trigger.innerHTML='搜索并选择 DSP 平台';return;}
-  trigger.className='pd-platform-trigger';trigger.innerHTML=`<div class="pd-platform-icon">${selectedPlatform.icon}</div><div><strong>${selectedPlatform.name}</strong><small>${selectedPlatform.code}</small></div>`;
-}
-function setPlatformSource(source){
-  platformSource=source;document.querySelectorAll('[data-source]').forEach(btn=>btn.classList.toggle('active',btn.dataset.source===source));
-  $('dspPlatformPanel').hidden=source!=='dsp';$('otherPlatformPanel').hidden=source!=='other';
-}
-function initPlatform(){
-  renderPlatformResults();
-  $('platformTrigger').onclick=e=>{e.stopPropagation();$('platformPicker').classList.toggle('open');if($('platformPicker').classList.contains('open'))setTimeout(()=>$('platformSearch').focus(),0);};
-  $('platformSearch').oninput=()=>renderPlatformResults($('platformSearch').value);
-  document.querySelectorAll('[data-source]').forEach(btn=>btn.onclick=()=>setPlatformSource(btn.dataset.source));
-  $('otherPlatformIcon').onchange=()=>{const file=$('otherPlatformIcon').files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{otherIconData=reader.result;$('iconUpload').innerHTML=`<img src="${otherIconData}" alt=""><span>更换图标</span><input id="otherPlatformIconReplacement" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">`;const input=$('otherPlatformIconReplacement');input.onchange=()=>{const next=input.files?.[0];if(!next)return;const r=new FileReader();r.onload=()=>{otherIconData=r.result;$('iconUpload').querySelector('img').src=otherIconData};r.readAsDataURL(next);};};reader.readAsDataURL(file);};
-}
-
-function resultTypeSelect(value,index){return `<div class="pd-native-select-wrap pd-result-type"><select class="pd-native-select" data-package="${index}" data-field="resultType">${Object.entries(resultTypes).map(([key,label])=>`<option value="${key}"${key===value?' selected':''}>${label}</option>`).join('')}</select></div>`;}
-function renderPackages(){
-  $('packageRows').innerHTML=packages.map((item,index)=>`<tr><td><input data-package="${index}" data-field="name" value="${item.name}" placeholder="例如：基础套餐"></td><td>${resultTypeSelect(item.resultType,index)}</td><td><input data-package="${index}" data-field="result" value="${item.result}" placeholder="例如：保底 20 万播放"></td><td><div class="pd-table-money"><span>¥</span><input data-package="${index}" data-field="price" type="number" min="0" value="${item.price}"></div></td><td><button class="pd-row-remove" type="button" data-remove="${index}" ${packages.length===1?'disabled':''}>删除</button></td></tr>`).join('');
-  $('packageRows').querySelectorAll('[data-package]').forEach(input=>input.oninput=()=>{packages[Number(input.dataset.package)][input.dataset.field]=input.value;});
-  $('packageRows').querySelectorAll('[data-remove]').forEach(btn=>btn.onclick=()=>{if(packages.length===1)return;packages.splice(Number(btn.dataset.remove),1);renderPackages();});
-}
-function setSaleMode(mode){
-  $('saleMode').value=mode;document.querySelectorAll('[data-sale-mode]').forEach(card=>card.classList.toggle('active',card.dataset.saleMode===mode));
-  ['fixed','quantity','budget','quote'].forEach(key=>$(key+'Config').hidden=key!==mode);updateQuantityPreview();
-}
-function updateQuantityPreview(){if($('saleMode').value!=='quantity')return;const count=Number($('quantityPerUnit').value||0),min=Number($('quantityMin').value||1),price=Number($('quantityPrice').value||0);$('quantityPreview').innerHTML=`<span>最低购买</span><strong>${(count*min).toLocaleString('zh-CN')} ${$('quantityUnit').value}</strong><span>最低价格</span><strong>¥${(price*min).toLocaleString('zh-CN')}</strong>`;}
-function bindSwitch(id,textId,onText,offText){let on=true;const sw=$(id),text=$(textId);sw.onclick=()=>{on=!on;sw.classList.toggle('off',!on);text.textContent=on?onText:offText;};return()=>on;}
-
-function saveCurrentLanguage(){langData[currentLang].summary=$('summary').value;langData[currentLang].desc=$('description').value;if(currentLang!=='zh')langData[currentLang].name=$('translatedName').value;else langData.zh.name=$('name').value;}
-function loadLanguage(lang){currentLang=lang;document.querySelectorAll('.pd-language-tab').forEach(x=>x.classList.toggle('active',x.dataset.lang===lang));$('translatedNameRow').hidden=lang==='zh';$('translatedName').value=langData[lang].name||'';$('summary').value=langData[lang].summary||'';$('description').value=langData[lang].desc||'';}
-
-function loadEditDemo(){
-  $('formTitle').textContent='编辑产品';$('crumbText').textContent='编辑产品';document.querySelector('.admin-breadcrumb strong').textContent='产品列表 / 编辑';
-  $('name').value='网易云音乐播放推广';selectCategory('traffic');selectedGoals=['plays'];renderGoals();selectedPlatform=getProductPlatform('netease');renderPlatformTrigger();
-  $('internalNote').value='供应侧按套餐执行，可多次追加。';$('sort').value='10';
-  packages=[
-    {name:'600 播放',resultType:'guaranteed',result:'保底 600 次播放',price:'39'},
-    {name:'1,320 播放',resultType:'guaranteed',result:'保底 1,320 次播放',price:'69'},
-    {name:'1,980 播放',resultType:'guaranteed',result:'保底 1,980 次播放',price:'99'},
-    {name:'3,000 播放',resultType:'guaranteed',result:'保底 3,000 次播放',price:'159'},
-    {name:'4,000 播放',resultType:'guaranteed',result:'保底 4,000 次播放',price:'209'},
-    {name:'6,000 播放',resultType:'guaranteed',result:'保底 6,000 次播放',price:'309'},
-    {name:'10,000 播放',resultType:'guaranteed',result:'保底 10,000 次播放',price:'519'},
-    {name:'16,000 播放',resultType:'guaranteed',result:'保底 16,000 次播放',price:'819'},
-    {name:'24,000 播放',resultType:'guaranteed',result:'保底 24,000 次播放',price:'1219'},
-    {name:'32,000 播放',resultType:'guaranteed',result:'保底 32,000 次播放',price:'1619'},
-    {name:'40,000 播放',resultType:'guaranteed',result:'保底 40,000 次播放',price:'2019'},
-    {name:'49,980 播放',resultType:'guaranteed',result:'保底 49,980 次播放',price:'2509'}
-  ];renderPackages();setSaleMode('fixed');
-  langData.zh={name:'网易云音乐播放推广',summary:'选择固定套餐提升歌曲在网易云音乐内的播放量',desc:'选择推广套餐后，按对应档位执行网易云音乐播放推广。'};
-  langData.en={name:'NetEase Cloud Music Promotion',summary:'Choose a package to increase song plays',desc:'Select a promotion package for the released track.'};
-  langData.ja={name:'NetEase Cloud Music プロモーション',summary:'パッケージを選択して再生数を増やします',desc:'配信済み楽曲のプロモーションパッケージを選択します。'};
-  langData['zh-Hant']={name:'網易雲音樂播放推廣',summary:'選擇套餐提升歌曲播放量',desc:'選擇推廣套餐後，按對應檔位執行播放推廣。'};
-  loadLanguage('zh');$('cancelBtn').href='product-detail.html?id='+encodeURIComponent(productId||'netease-play');
-}
-
-initCategorySelect();renderGoals();initPlatform();renderPackages();
-document.querySelectorAll('[data-sale-mode]').forEach(card=>card.onclick=()=>setSaleMode(card.dataset.saleMode));
-$('addPackageBtn').onclick=()=>{packages.push({name:'',resultType:'guaranteed',result:'',price:''});renderPackages();};
-['quantityPerUnit','quantityUnit','quantityPrice','quantityMin'].forEach(id=>$(id).addEventListener('input',updateQuantityPreview));
-$('quoteDisplay').onchange=()=>{$('quoteMinPriceField').hidden=['quote'].includes($('quoteDisplay').value);$('quoteMaxPriceField').hidden=$('quoteDisplay').value!=='range';};
-$('deliveryType').onchange=()=>{$('deliveryPeriod').style.display=$('deliveryType').value==='period'?'flex':'none';};
-bindSwitch('repeatSwitch','repeatText','是','否');bindSwitch('directSwitch','directText','是','否');bindSwitch('planSwitch','planText','是','否');bindSwitch('statusSwitch','statusText','上架','下架');
-document.querySelectorAll('.pd-language-tab').forEach(tab=>tab.onclick=()=>{saveCurrentLanguage();loadLanguage(tab.dataset.lang);});
-document.addEventListener('click',e=>{if(!e.target.closest('#categorySelect'))$('categorySelect').classList.remove('open');if(!e.target.closest('#platformPicker'))$('platformPicker').classList.remove('open');});
-
-$('saveBtn').onclick=()=>{
-  saveCurrentLanguage();const name=$('name').value.trim();const category=PRODUCT_CATEGORIES.find(x=>x.id===selectedCategory);const platformName=platformSource==='dsp'?selectedPlatform?.name:$('otherPlatformName').value.trim();
-  if(!name||!selectedCategory||!platformName){alert('请填写产品名称、所属类目和平台');return;}
-  if(!selectedGoals.length||!selectedGoals.includes(category.goalId)){alert('适用推广目标需包含所属类目的推广目标');return;}
-  if($('saleMode').value==='fixed'&&packages.some(item=>!item.name||!item.result||!item.price)){alert('请完整填写套餐名称、服务结果和售价');return;}
-  alert(editing?'演示：产品已保存':'演示：产品已创建');location.href=editing?'product-detail.html?id='+encodeURIComponent(productId||'netease-play'):'products.html';
-};
-
-setSaleMode('fixed');updateQuantityPreview();if(editing)loadEditDemo();else loadLanguage('zh');
+const $=id=>document.getElementById(id);const params=new URLSearchParams(location.search);const editing=params.get('mode')==='edit';
+let selectedCategory='';let selectedGoals=[];let platformSource='dsp';let selectedPlatform=null;let quantityUnit='个账号';let budgetCurrency='USD';let deliveryType='single';let deliveryUnit='天';
+let packages=[{name:'标准套餐',type:'guaranteed',result:'',price:''}];
+const resultTypes=[{value:'fixed',label:'固定结果'},{value:'guaranteed',label:'保底结果'},{value:'estimated',label:'预估结果'},{value:'none',label:'不承诺结果'}];
+function closeAll(){document.querySelectorAll('.pd-select-wrap.open,.pd-platform-picker.open,.pd-mini-select.open').forEach(x=>x.classList.remove('open'))}
+document.addEventListener('click',closeAll);
+function setupSimpleSelect(id,options,getValue,setValue){const root=$(id),trigger=root.querySelector('button'),menu=root.querySelector('div');menu.innerHTML=options.map(o=>`<div class="pd-mini-option" data-value="${o.value}">${o.label}</div>`).join('');trigger.onclick=e=>{e.stopPropagation();closeAll();root.classList.toggle('open')};menu.querySelectorAll('[data-value]').forEach(el=>el.onclick=e=>{e.stopPropagation();setValue(el.dataset.value);trigger.textContent=el.textContent;root.classList.remove('open')})}
+function renderCategory(){const root=$('categorySelect'),trigger=root.querySelector('.pd-select-box'),menu=root.querySelector('.pd-select-menu');menu.innerHTML=PRODUCT_CATEGORIES.filter(c=>c.status==='on').map(c=>`<div class="pd-select-option" data-id="${c.id}">${c.names.zhCN}</div>`).join('');trigger.onclick=e=>{e.stopPropagation();closeAll();root.classList.toggle('open')};menu.querySelectorAll('[data-id]').forEach(el=>el.onclick=e=>{e.stopPropagation();selectedCategory=el.dataset.id;const c=getProductCategory(selectedCategory);trigger.textContent=c.names.zhCN;trigger.classList.remove('placeholder');root.classList.remove('open');if(!selectedGoals.includes(c.goalId))selectedGoals.unshift(c.goalId);renderGoals()})}
+function renderGoals(){const c=selectedCategory?getProductCategory(selectedCategory):null;const primary=c?.goalId;window.goalGrid.innerHTML=PROMOTION_GOALS.map(g=>`<button type="button" class="pd-goal-choice${selectedGoals.includes(g.id)?' active':''}${g.id===primary?' locked':''}" data-goal="${g.id}">${g.name}</button>`).join('');goalGrid.querySelectorAll('[data-goal]').forEach(btn=>btn.onclick=()=>{if(btn.dataset.goal===primary)return;selectedGoals=selectedGoals.includes(btn.dataset.goal)?selectedGoals.filter(x=>x!==btn.dataset.goal):[...selectedGoals,btn.dataset.goal];renderGoals()})}
+function renderPlatformResults(q=''){const key=q.trim().toLowerCase();const list=PRODUCT_PLATFORM_LIBRARY.filter(p=>!key||[p.name,p.code,...(p.keywords||[])].join(' ').toLowerCase().includes(key));$('platformResults').innerHTML=list.map(p=>`<div class="pd-platform-option" data-id="${p.id}"><div class="pd-platform-option-icon">${p.icon}</div><div><strong>${p.name}</strong><small>${p.code}</small></div></div>`).join('')||'<div style="padding:18px;color:#98a3af;text-align:center">没有找到平台</div>';$('platformResults').querySelectorAll('[data-id]').forEach(el=>el.onclick=e=>{e.stopPropagation();selectedPlatform=getProductPlatform(el.dataset.id);$('platformTrigger').textContent=selectedPlatform.name;$('platformTrigger').classList.remove('placeholder');$('platformPicker').classList.remove('open')})}
+$('platformTrigger').onclick=e=>{e.stopPropagation();closeAll();$('platformPicker').classList.toggle('open');if($('platformPicker').classList.contains('open'))setTimeout(()=>$('platformSearch').focus(),0)};$('platformSearch').oninput=e=>renderPlatformResults(e.target.value);renderPlatformResults();
+document.querySelectorAll('[data-source]').forEach(btn=>btn.onclick=()=>{platformSource=btn.dataset.source;document.querySelectorAll('[data-source]').forEach(x=>x.classList.toggle('active',x===btn));$('dspPlatformPanel').hidden=platformSource!=='dsp';$('otherPlatformPanel').hidden=platformSource!=='other'});
+$('otherPlatformIcon').onchange=e=>{$('iconUploadText').textContent=e.target.files?.[0]?.name||'＋ 上传平台图标'};
+function packageTypeSelect(index,value){return `<div class="pd-mini-select" data-package-select="${index}"><button class="pd-mini-trigger" type="button">${resultTypes.find(x=>x.value===value)?.label}</button><div class="pd-mini-menu">${resultTypes.map(x=>`<div class="pd-mini-option" data-value="${x.value}">${x.label}</div>`).join('')}</div></div>`}
+function renderPackages(){$('packageRows').innerHTML=packages.map((p,i)=>`<tr><td><input data-package="${i}" data-field="name" value="${p.name}" placeholder="例如：600 播放"></td><td>${packageTypeSelect(i,p.type)}</td><td><input data-package="${i}" data-field="result" value="${p.result}" placeholder="例如：保底 600 次播放"></td><td><div class="pd-money"><span>¥</span><input data-package="${i}" data-field="price" type="number" min="0" value="${p.price}"></div></td><td><button class="pd-row-remove" data-remove="${i}" type="button" ${packages.length===1?'disabled':''}>删除</button></td></tr>`).join('');document.querySelectorAll('[data-package]').forEach(input=>input.oninput=()=>packages[Number(input.dataset.package)][input.dataset.field]=input.value);document.querySelectorAll('[data-package-select]').forEach(root=>{const i=Number(root.dataset.packageSelect),trigger=root.querySelector('button');trigger.onclick=e=>{e.stopPropagation();closeAll();root.classList.toggle('open')};root.querySelectorAll('[data-value]').forEach(el=>el.onclick=e=>{e.stopPropagation();packages[i].type=el.dataset.value;trigger.textContent=el.textContent;root.classList.remove('open')})});document.querySelectorAll('[data-remove]').forEach(btn=>btn.onclick=()=>{if(packages.length===1)return;packages.splice(Number(btn.dataset.remove),1);renderPackages()})}
+$('addPackageBtn').onclick=()=>{packages.push({name:'',type:'guaranteed',result:'',price:''});renderPackages()};
+function setSaleMode(mode){$('saleMode').value=mode;document.querySelectorAll('[data-sale-mode]').forEach(x=>x.classList.toggle('active',x.dataset.saleMode===mode));['fixed','quantity','budget'].forEach(x=>$(x+'Config').hidden=x!==mode)}document.querySelectorAll('[data-sale-mode]').forEach(x=>x.onclick=()=>setSaleMode(x.dataset.saleMode));
+function bindSwitch(id,textId,onText='是',offText='否'){let on=true;$(id).onclick=()=>{on=!on;$(id).classList.toggle('off',!on);$(textId).textContent=on?onText:offText}}bindSwitch('repeatSwitch','repeatText');bindSwitch('directSwitch','directText');bindSwitch('planSwitch','planText');bindSwitch('statusSwitch','statusText','上架','下架');
+setupSimpleSelect('quantityUnitSelect',['个账号','条','次','播放','收藏'].map(x=>({value:x,label:x})),()=>quantityUnit,v=>quantityUnit=v);setupSimpleSelect('budgetCurrencySelect',[{value:'USD',label:'USD 美元'},{value:'CNY',label:'CNY 人民币'}],()=>budgetCurrency,v=>budgetCurrency=v);setupSimpleSelect('deliveryTypeSelect',[{value:'single',label:'单次'},{value:'period',label:'固定周期'}],()=>deliveryType,v=>{deliveryType=v;$('deliveryPeriod').hidden=v!=='period'});setupSimpleSelect('deliveryUnitSelect',['天','周','个月'].map(x=>({value:x,label:x})),()=>deliveryUnit,v=>deliveryUnit=v);
+const langData={zh:{summary:'',desc:''},en:{name:'',summary:'',desc:''},ja:{name:'',summary:'',desc:''},'zh-Hant':{name:'',summary:'',desc:''}};let currentLang='zh';document.querySelectorAll('[data-lang]').forEach(tab=>tab.onclick=()=>{langData[currentLang]={name:$('translatedName').value,summary:$('summary').value,desc:$('description').value};currentLang=tab.dataset.lang;document.querySelectorAll('[data-lang]').forEach(x=>x.classList.toggle('active',x===tab));$('translatedNameRow').hidden=currentLang==='zh';const d=langData[currentLang]||{};$('translatedName').value=d.name||'';$('summary').value=d.summary||'';$('description').value=d.desc||''});
+function loadEdit(){document.body.dataset.pageTitle='产品列表 / 编辑';$('formTitle').textContent='编辑产品';$('crumbText').textContent='编辑产品';$('name').value='网易云音乐播放推广';selectedCategory='traffic';const c=getProductCategory(selectedCategory);const trigger=$('categorySelect').querySelector('.pd-select-box');trigger.textContent=c.names.zhCN;trigger.classList.remove('placeholder');selectedGoals=['plays'];renderGoals();selectedPlatform=getProductPlatform('netease');$('platformTrigger').textContent=selectedPlatform.name;$('platformTrigger').classList.remove('placeholder');packages=[{name:'600 播放',type:'guaranteed',result:'保底 600 次播放',price:'39'},{name:'1,320 播放',type:'guaranteed',result:'保底 1,320 次播放',price:'69'},{name:'1,980 播放',type:'guaranteed',result:'保底 1,980 次播放',price:'99'},{name:'3,000 播放',type:'guaranteed',result:'保底 3,000 次播放',price:'159'},{name:'4,000 播放',type:'guaranteed',result:'保底 4,000 次播放',price:'209'},{name:'6,000 播放',type:'guaranteed',result:'保底 6,000 次播放',price:'309'},{name:'10,000 播放',type:'guaranteed',result:'保底 10,000 次播放',price:'519'},{name:'16,000 播放',type:'guaranteed',result:'保底 16,000 次播放',price:'819'},{name:'24,000 播放',type:'guaranteed',result:'保底 24,000 次播放',price:'1219'},{name:'32,000 播放',type:'guaranteed',result:'保底 32,000 次播放',price:'1619'},{name:'40,000 播放',type:'guaranteed',result:'保底 40,000 次播放',price:'2019'},{name:'49,980 播放',type:'guaranteed',result:'保底 49,980 次播放',price:'2509'}];renderPackages();$('summary').value='选择固定套餐提升歌曲在网易云音乐内的播放量';$('description').value='选择推广套餐后，按对应档位执行网易云音乐播放推广。';$('internalNote').value='供应侧按套餐执行，可多次追加。';$('cancelBtn').href='product-detail.html?id=netease-play'}
+renderCategory();renderGoals();renderPackages();if(editing)loadEdit();
+$('saveBtn').onclick=()=>{const name=$('name').value.trim();const platformOk=platformSource==='dsp'?!!selectedPlatform:!!$('otherPlatformName').value.trim();if(!name||!selectedCategory||!selectedGoals.length||!platformOk){alert('请填写产品名称、所属类目、推广目标和平台');return}if($('saleMode').value==='fixed'&&packages.some(x=>!x.name||!x.result||!x.price)){alert('请完整填写套餐名称、服务结果和售价');return}alert(editing?'演示：产品已保存':'演示：产品已创建');location.href=editing?'product-detail.html?id='+encodeURIComponent(params.get('id')||'product'):'products.html'};
 </script>
 </body>
 </html>
