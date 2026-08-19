@@ -30,8 +30,8 @@
     .app-shell { min-height: 100vh; background: var(--page-bg); }
     .sidebar { position: fixed; inset: 0 auto 0 0; z-index: 20; width: var(--sidebar-width); min-height: 100vh; background: #fff; border-right: 1px solid var(--border); }
     .brand { height: var(--topbar-height); display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid var(--border); }
-    .brand-logo { width: 120px; height: 30px; display: flex; align-items: center; color: var(--brand); }
-    .brand-logo svg { width: 120px; height: 30px; overflow: visible; }
+    .brand-logo { width: 120px; height: 30px; display: flex; align-items: center; }
+    .brand-logo img { display: block; width: 120px; height: auto; object-fit: contain; object-position: left center; }
     .nav { padding: 6px 12px 24px; }
     .nav-item { height: 54px; display: flex; align-items: center; gap: 12px; padding: 0 20px; color: #30343a; text-decoration: none; border-radius: 2px; transition: background-color .15s ease, color .15s ease; user-select: none; }
     .nav-item:hover { background: #f6f7fa; }
@@ -71,21 +71,8 @@
   <div class="app-shell">
     <aside class="sidebar" aria-label="星球发行主导航">
       <div class="brand">
-        <div class="brand-logo" aria-label="星球发行">
-          <svg viewBox="0 0 120 30" role="img" aria-hidden="true">
-            <g fill="currentColor">
-              <path d="M2.2 15.2c3.5-1.3 5.7-3.8 6.6-7.5 5.4-.5 9.7.8 12.8 3.8-1 5-4.1 8.2-9.3 9.8-3.6 1.1-6.7.3-9.2-2.5 1.4-1 2.2-2.4 2.5-4.2-1.2.5-2.3.7-3.4.6Z"/>
-              <path d="M8.4 8.2C13.6 2.1 20.7 1 28.6 4.9c-1.9 1.8-4.1 3.3-6.5 4.5-3.1-1.2-6.5-1.6-10.2-1.2-1.2.1-2.4.1-3.5 0Z" opacity=".94"/>
-              <circle cx="16.9" cy="10.2" r="1.25" fill="#fff"/>
-            </g>
-            <g fill="currentColor">
-              <path d="M32 7.2h5.6V5.1h2.7v2.1h5.8v2.3H32V7.2Zm1 3.6h12v7.4H33v-7.4Zm2.5 2.1v3.2h7v-3.2h-7Zm-4 7.1h15v2.4h-15V20Z"/>
-              <path d="M48.2 6h2.7v6.2h3.2V4.8h2.8v7.4h3.5v2.5h-3.5v10h-2.8v-10h-3.2c-.1 4.3-.9 7.5-2.5 9.7l-2.1-1.7c1.3-2 1.9-4.8 1.9-8.5V6Zm10.3 1.4h8.8v2.5h-6v3.3h5.4v2.4h-5.4v3.9h6.3V22h-9.1V7.4Z"/>
-              <path d="M69 5.8h5.8l.8-1.7 2.7.6-.6 1.1h6.5v2.3H69V5.8Zm1.3 3.6h12.6v6.9H70.3V9.4Zm2.6 2v2.9h7.4v-2.9h-7.4Zm-4 6.4h15.4v2.4h-6.2v4.5h-2.8v-4.5h-6.4v-2.4Z"/>
-              <path d="M86.2 5.2h2.7v3.7h3v2.4h-3v3.6l3.1-.8.3 2.4-3.4 1v4.3c0 1.8-.8 2.7-2.5 2.7h-2.1l-.5-2.5h1.5c.6 0 .9-.3.9-.8v-3l-3.1.8-.5-2.6 3.6-.8v-4.3h-3.3V8.9h3.3V5.2Zm6.8.6h8.2v2.4h-5.5v3.1h5v2.4h-5v3.2h5.8v2.5h-5.8v5.3H93V5.8Z"/>
-              <path d="M103.2 5.5h2.8v7.6c0 4.8-.8 8.6-2.5 11.4l-2.3-1.7c1.3-2.4 2-5.7 2-9.8V5.5Zm5.1.9h2.7v15.9h-2.7V6.4Zm5.2-1.1h2.8v19.4h-2.8V5.3Z"/>
-            </g>
-          </svg>
+        <div class="brand-logo">
+          <img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行" />
         </div>
       </div>
       <nav class="nav">
