@@ -93,7 +93,15 @@
     document.getElementById('changeSong').addEventListener('click',()=>location.href='index.html');document.getElementById('backBtn').addEventListener('click',()=>location.href='index.html');
     function toast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
     document.getElementById('expertBtn').addEventListener('click',()=>toast('下一步：进入专属音乐推广专家定制'));
-    nextBtn.addEventListener('click',()=>{if(goals.size)toast(`下一步：根据 ${goals.size} 个目标选择推广方案`)});sync();
+    nextBtn.addEventListener('click',()=>{
+      if(!goals.size)return;
+      const selected=[...goals];
+      const p=new URLSearchParams(song);
+      p.set('goals',selected.join(','));
+      p.set('goal',selected[0]);
+      location.href='promotion-step3.html?'+p.toString();
+    });
+    sync();
   </script>
 </body>
 </html>
