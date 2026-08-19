@@ -33,6 +33,7 @@
     <section class="pc-form-card" style="margin-top:16px">
       <div class="pc-form-card-head"><h2>基础设置</h2></div>
       <div class="pc-form-body">
+        <div class="pc-form-row"><div class="pc-form-label pc-required">推广目标</div><div class="pc-form-control"><select id="goal"><option value="">请选择推广目标</option></select><div class="pc-help">一个类目仅归属一个推广目标。</div></div></div>
         <div class="pc-form-row"><div class="pc-form-label pc-required">类目标识</div><div class="pc-form-control"><input id="code" placeholder="例如：traffic"><div class="pc-help">英文小写，可使用连字符。</div></div></div>
         <div class="pc-form-row"><div class="pc-form-label pc-required">排序</div><div class="pc-form-control"><input id="sort" type="number" min="0" value="10"><div class="pc-help">数字越小越靠前。</div></div></div>
         <div class="pc-form-row"><div class="pc-form-label">状态</div><div class="pc-form-control"><div class="pc-switch-row"><button type="button" class="pc-switch" id="statusSwitch" aria-label="启用类目"></button><span id="statusText" style="font-size:13px;color:#4b5e75">启用</span></div></div></div>
@@ -60,11 +61,14 @@ const descriptionFields={
   ja:document.getElementById('descriptionJa'),
   zhTW:document.getElementById('descriptionZhTW')
 };
+const goal=document.getElementById('goal');
 const code=document.getElementById('code');
 const sort=document.getElementById('sort');
 const statusSwitch=document.getElementById('statusSwitch');
 const statusText=document.getElementById('statusText');
 let enabled=true;
+
+goal.insertAdjacentHTML('beforeend',PROMOTION_GOALS.map(item=>`<option value="${item.id}">${item.name}</option>`).join(''));
 
 if(editing){
   document.querySelector('.admin-page-title').textContent='产品类目 / 编辑';
@@ -74,6 +78,7 @@ if(editing){
     nameFields[language.key].value=category.names[language.key]||'';
     descriptionFields[language.key].value=category.descriptions?.[language.key]||'';
   });
+  goal.value=category.goalId||'';
   code.value=category.id;
   code.readOnly=true;
   code.style.background='#f7f8fa';
@@ -93,8 +98,9 @@ statusSwitch.addEventListener('click',()=>{
 document.getElementById('saveBtn').addEventListener('click',()=>{
   const zhCN=nameFields.zhCN.value.trim();
   const categoryCode=code.value.trim();
-  if(!zhCN||!categoryCode){
-    alert('请填写简体中文名称和类目标识');
+  const goalId=goal.value;
+  if(!zhCN||!categoryCode||!goalId){
+    alert('请填写简体中文名称、推广目标和类目标识');
     return;
   }
   alert(editing?'演示：类目已保存':'演示：类目已创建');
