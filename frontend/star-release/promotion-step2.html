@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>选择推广目标 · 星球发行</title>
+  <style>
+    :root{
+      --brand:#2448ff;--brand-hover:#1839e8;--brand-soft:#e9edff;--brand-lighter:#f6f8ff;
+      --page-bg:#f4f6f9;--surface:#fff;--text:#30343a;--text-strong:#20232a;--text-secondary:#666b75;--text-tertiary:#9aa0aa;
+      --border:#e5e8ee;--border-strong:#d9dde5;--sidebar-width:244px;--topbar-height:88px;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+    }
+    *{box-sizing:border-box}html,body{width:100%;min-width:1100px;min-height:100%;margin:0;color:var(--text);background:var(--page-bg);font-size:14px}
+    button{font:inherit;cursor:pointer}svg{display:block}a{color:inherit;text-decoration:none}
+    .sidebar{position:fixed;inset:0 auto 0 0;z-index:20;width:var(--sidebar-width);min-height:100vh;background:#fff;border-right:1px solid var(--border)}
+    .brand{height:var(--topbar-height);display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--border)}
+    .brand-logo{width:120px;height:30px;display:flex;align-items:center}.brand-logo img{display:block;width:120px;height:auto;object-fit:contain}
+    .nav{padding:6px 12px 24px}.nav-item{height:54px;display:flex;align-items:center;gap:12px;padding:0 20px;color:#30343a;border-radius:2px;transition:.15s}
+    .nav-item:hover{background:#f6f7fa}.nav-item.active{color:var(--brand);background:var(--brand-soft);font-weight:500}.nav-icon{width:20px;height:20px;flex:0 0 20px}.nav-label{font-size:16px;line-height:1;white-space:nowrap}
+    .topbar{position:fixed;top:0;right:0;left:var(--sidebar-width);z-index:15;height:var(--topbar-height);display:flex;align-items:center;justify-content:flex-end;padding:0 26px;background:var(--page-bg)}
+    .topbar-actions{display:flex;align-items:center;gap:28px}.topbar-action{display:inline-flex;align-items:center;gap:7px;min-height:32px;white-space:nowrap}.topbar-action .icon{width:20px;height:20px}.caret{width:10px;height:10px}
+    .workspace{min-height:100vh;margin-left:var(--sidebar-width);padding-top:var(--topbar-height)}.page-content{padding:0 22px 34px;max-width:1500px;margin:0 auto}
+    .progress{height:64px;display:flex;align-items:center;gap:0;margin-bottom:16px}.progress-step{position:relative;flex:1;display:flex;align-items:center;gap:10px;color:#9ca2ad;font-size:13px}.progress-step:not(:last-child):after{content:"";height:1px;background:#dce1e9;flex:1;margin:0 16px}.progress-dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1px solid #d8dde7;background:#fff;color:#8f95a0;font-size:12px;font-weight:600}.progress-step.done{color:#646b76}.progress-step.done .progress-dot{background:#eef2ff;border-color:#cbd5ff;color:var(--brand)}.progress-step.active{color:var(--text-strong);font-weight:500}.progress-step.active .progress-dot{background:var(--brand);border-color:var(--brand);color:#fff}.progress-step.active:after{background:linear-gradient(90deg,#aebdff,#dce1e9)}
+    .card{background:#fff;border:1px solid var(--border-strong);border-radius:4px;box-shadow:0 1px 2px rgba(31,35,48,.02)}.card+.card{margin-top:16px}
+    .song-summary{min-height:96px;padding:18px 22px;display:flex;align-items:center;gap:15px}.song-cover{width:58px;height:58px;border-radius:4px;background:linear-gradient(145deg,#5468ff,#8d6af7);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:600}.song-copy{min-width:0;flex:1}.song-label{font-size:12px;color:#959ba6;margin-bottom:5px}.song-name{font-size:16px;font-weight:600;color:var(--text-strong)}.song-meta{margin-top:5px;color:#848a94;font-size:12px}.change-song{border:0;background:transparent;color:var(--brand);padding:8px 0}
+    .goal-card{padding:24px 22px 22px}.goal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:20px}.goal-head h1{margin:0 0 7px;font-size:22px;line-height:1.35;color:var(--text-strong);font-weight:600}.goal-head p{margin:0;color:var(--text-secondary);line-height:1.65}.multi-badge{height:28px;display:inline-flex;align-items:center;padding:0 10px;border-radius:3px;background:#eef2ff;color:var(--brand);font-size:12px;white-space:nowrap}
+    .goal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.goal{position:relative;min-height:142px;display:flex;gap:14px;padding:18px 50px 18px 18px;border:1px solid #e1e5ec;border-radius:4px;background:#fff;cursor:pointer;transition:.15s}.goal:hover{border-color:#bdc9ff;background:#fbfcff}.goal.selected{border-color:var(--brand);background:#f7f9ff;box-shadow:0 0 0 1px rgba(36,72,255,.04)}
+    .goal-check{position:absolute;right:16px;top:16px;width:21px;height:21px;border:1px solid #d5dae3;border-radius:4px;background:#fff;display:grid;place-items:center;color:transparent;font-size:12px;font-weight:700}.goal.selected .goal-check{border-color:var(--brand);background:var(--brand);color:#fff}.goal-icon{width:42px;height:42px;border-radius:4px;background:#f2f4f8;display:grid;place-items:center;font-size:19px;flex:none}.goal.selected .goal-icon{background:#e8edff}.goal-body h3{margin:1px 0 6px;color:var(--text-strong);font-size:16px;font-weight:600}.goal-body p{margin:0;color:#727985;line-height:1.6;font-size:13px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.tag{height:23px;display:inline-flex;align-items:center;padding:0 7px;border-radius:3px;background:#f5f6f8;color:#7a808a;font-size:11px}.goal.selected .tag{background:#edf1ff;color:#596bd8}
+    .selection-note{min-height:20px;margin-top:14px;color:#8d939d;font-size:12px}.selection-note strong{color:var(--brand);font-weight:500}
+    .expert{margin-top:18px;padding:18px 20px;border:1px solid #dce3ff;border-radius:4px;background:linear-gradient(100deg,#f8faff,#f1f5ff);display:flex;align-items:center;gap:20px}.expert-copy{min-width:0;flex:1}.expert-title{font-size:15px;font-weight:600;color:#29304a;margin-bottom:6px}.expert-desc{color:#71798b;font-size:13px;line-height:1.65;max-width:900px}.btn{height:36px;padding:0 17px;border-radius:4px;font-size:14px}.btn-primary{border:1px solid var(--brand);background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-hover)}.btn-default{border:1px solid #d7dce5;background:#fff;color:#454b55}.btn-default:hover{color:var(--brand);border-color:var(--brand)}
+    .actions-row{display:flex;align-items:center;justify-content:space-between;margin-top:20px}.next-wrap{display:flex;align-items:center;gap:12px}.selected-count{font-size:12px;color:#9298a2}.btn:disabled{cursor:not-allowed;background:#bcc7ff;border-color:#bcc7ff;color:#fff}
+    .toast{position:fixed;left:50%;top:30px;z-index:100;transform:translateX(-50%);display:none;padding:10px 18px;border-radius:4px;background:#30343a;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15)}.toast.show{display:block}
+    @media(max-width:1180px){:root{--sidebar-width:224px}.topbar-actions{gap:20px}.goal-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-logo"><img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行" /></div></div>
+    <nav class="nav">
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M3 10.6 12 3l9 7.6V21h-6v-6H9v6H3V10.6Z"/></svg><span class="nav-label">主页</span></a>
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="currentColor"/><circle cx="12" cy="12" r="2.3" fill="#fff"/></svg><span class="nav-label">专辑列表</span></a>
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="3.2" y="6.5" width="12.8" height="11" rx="1.5" fill="currentColor"/><path d="M16 9.7 21 7.4v9.2L16 14.3V9.7Z" fill="currentColor"/></svg><span class="nav-label">视频</span></a>
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4" fill="currentColor"/><path d="M2.8 20c.4-4.1 2.7-6.2 6.2-6.2 3.4 0 5.8 2.1 6.2 6.2H2.8Z" fill="currentColor"/></svg><span class="nav-label">艺人</span></a>
+      <a class="nav-item active" href="index.html"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M2.7 13.1c2.8-1.2 4.4-3.4 5.1-6.4 4.9-.3 8.7 1 11.5 4-1 4.7-4 7.6-8.9 8.8-2.8.7-5.3-.1-7.2-2.5 1.1-.9 1.8-2.2 2-3.8-.9.3-1.7.3-2.5-.1Z" fill="currentColor"/><circle cx="14.6" cy="10.2" r="1.2" fill="#fff"/></svg><span class="nav-label">音乐推广</span></a>
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="3" fill="currentColor"/></svg><span class="nav-label">我的版税</span></a>
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M5 2.8h10l4 4V21H5V2.8Z" fill="currentColor"/></svg><span class="nav-label">我的合同</span></a>
+      <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/></svg><span class="nav-label">销售分析</span></a>
+    </nav>
+  </aside>
+  <header class="topbar"><div class="topbar-actions">
+    <a class="topbar-action" href="#"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9.8 9.2a2.4 2.4 0 1 1 4.6 1c-.35.8-1.1 1.2-1.7 1.7-.5.4-.7.9-.7 1.7" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="17.1" r="1" fill="currentColor"/></svg><span>帮助中心</span></a>
+    <a class="topbar-action" href="#"><span>简体中文</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
+    <a class="topbar-action" href="#"><span>环环</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
+  </div></header>
+  <main class="workspace"><div class="page-content">
+    <div class="progress">
+      <div class="progress-step done"><span class="progress-dot">✓</span><span>选择歌曲</span></div>
+      <div class="progress-step active"><span class="progress-dot">2</span><span>选择推广目标</span></div>
+      <div class="progress-step"><span class="progress-dot">3</span><span>选择方案与预算</span></div>
+    </div>
+    <section class="card song-summary">
+      <div class="song-cover" id="songCover">♪</div>
+      <div class="song-copy"><div class="song-label">正在推广</div><div class="song-name" id="songName">歌曲</div><div class="song-meta" id="songMeta">歌曲信息</div></div>
+      <button class="change-song" id="changeSong">重新选择歌曲</button>
+    </section>
+    <section class="card goal-card">
+      <div class="goal-head"><div><h1>选择推广目标</h1><p>可以选择一个或多个目标。下一步会根据你的目标组合展示适合的推广服务和预算方案。</p></div><span class="multi-badge" id="selectionBadge">可多选</span></div>
+      <div class="goal-grid">
+        <article class="goal" data-goal="plays"><span class="goal-check">✓</span><div class="goal-icon">🎧</div><div class="goal-body"><h3>增加歌曲播放</h3><p>适合新歌起量，或让已有歌曲继续扩大播放和平台曝光。</p><div class="tags"><span class="tag">网易云</span><span class="tag">QQ / 酷狗 / 酷我</span></div></div></article>
+        <article class="goal" data-goal="playlist"><span class="goal-check">✓</span><div class="goal-icon">♫</div><div class="goal-body"><h3>进入更多歌单</h3><p>通过歌单推广获得持续曝光，让歌曲进入更多真实收听场景。</p><div class="tags"><span class="tag">QQ音乐</span><span class="tag">网易云</span><span class="tag">酷狗</span></div></div></article>
+        <article class="goal" data-goal="social"><span class="goal-check">✓</span><div class="goal-icon">📱</div><div class="goal-body"><h3>做短视频 / 内容传播</h3><p>让歌曲进入抖音、小红书等内容场景，获得达人和 UGC 传播。</p><div class="tags"><span class="tag">抖音</span><span class="tag">小红书</span></div></div></article>
+        <article class="goal" data-goal="global"><span class="goal-check">✓</span><div class="goal-icon">🌍</div><div class="goal-body"><h3>推广到海外</h3><p>通过 Spotify、YouTube 等推广能力触达更多真实海外听众。</p><div class="tags"><span class="tag">Spotify</span><span class="tag">YouTube</span></div></div></article>
+        <article class="goal" data-goal="chart"><span class="goal-check">✓</span><div class="goal-icon">🏆</div><div class="goal-body"><h3>提升热度 / 冲榜</h3><p>适合已有一定数据基础的重点歌曲，组合播放、歌单和平台资源推进。</p><div class="tags"><span class="tag">组合推广</span><span class="tag">重点歌曲</span></div></div></article>
+        <article class="goal" data-goal="ktv"><span class="goal-check">✓</span><div class="goal-icon">🎤</div><div class="goal-body"><h3>上架到 KTV</h3><p>将歌曲制作并上架至合作 KTV 曲库，增加线下点唱和长期曝光机会。</p><div class="tags"><span class="tag">KTV 曲库</span><span class="tag">制作上架</span></div></div></article>
+      </div>
+      <div class="selection-note" id="selectionNote">请选择至少一个推广目标。</div>
+      <div class="expert">
+        <div class="expert-copy"><div class="expert-title">重点新歌或预算较高，我不知道怎么选？</div><div class="expert-desc">不确定该选哪些目标，或需要多平台组合推广时，可以让专属音乐推广专家结合歌曲阶段、目标市场、预算和推广诉求，直接设计更合适的组合推广方案。</div></div>
+        <button class="btn btn-default" id="expertBtn">选择专家定制</button>
+      </div>
+    </section>
+    <div class="actions-row"><button class="btn btn-default" id="backBtn">← 返回</button><div class="next-wrap"><span class="selected-count" id="selectedCount"></span><button class="btn btn-primary" id="nextBtn" disabled>下一步：选择推广方案</button></div></div>
+  </div></main>
+  <div class="toast" id="toast"></div>
+  <script>
+    const params=new URLSearchParams(location.search);
+    const song={id:params.get('id')||'',title:params.get('title')||'晚风来信',artist:params.get('artist')||'林屿',album:params.get('album')||'城市漫游',cover:params.get('cover')||'夜'};
+    document.getElementById('songName').textContent=song.title;document.getElementById('songMeta').textContent=[song.artist,song.album].filter(Boolean).join(' · ');document.getElementById('songCover').textContent=song.cover;
+    const goals=new Set(),nextBtn=document.getElementById('nextBtn'),badge=document.getElementById('selectionBadge'),note=document.getElementById('selectionNote'),countEl=document.getElementById('selectedCount');
+    function sync(){const n=goals.size;nextBtn.disabled=n===0;badge.textContent=n?`已选 ${n} 项`:'可多选';note.innerHTML=n?`已选择 <strong>${n}</strong> 个推广目标，可继续添加或取消。`:'请选择至少一个推广目标。';countEl.textContent=n?`已选 ${n} 项`:''}
+    document.querySelectorAll('.goal').forEach(el=>el.addEventListener('click',()=>{const v=el.dataset.goal;if(goals.has(v)){goals.delete(v);el.classList.remove('selected')}else{goals.add(v);el.classList.add('selected')}sync()}));
+    document.getElementById('changeSong').addEventListener('click',()=>location.href='index.html');document.getElementById('backBtn').addEventListener('click',()=>location.href='index.html');
+    function toast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+    document.getElementById('expertBtn').addEventListener('click',()=>toast('下一步：进入专属音乐推广专家定制'));
+    nextBtn.addEventListener('click',()=>{if(goals.size)toast(`下一步：根据 ${goals.size} 个目标选择推广方案`)});sync();
+  </script>
+</body>
+</html>
