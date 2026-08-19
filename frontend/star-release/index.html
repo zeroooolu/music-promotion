@@ -13,8 +13,6 @@
     }
     *{box-sizing:border-box}html,body{width:100%;min-width:1100px;min-height:100%;margin:0;color:var(--text);background:var(--page-bg);font-size:14px}
     button,input{font:inherit}button{cursor:pointer}svg{display:block}a{color:inherit}.app-shell{min-height:100vh;background:var(--page-bg)}
-
-    /* shell */
     .sidebar{position:fixed;inset:0 auto 0 0;z-index:20;width:var(--sidebar-width);min-height:100vh;background:#fff;border-right:1px solid var(--border)}
     .brand{height:var(--topbar-height);display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--border)}
     .brand-logo{width:120px;height:30px;display:flex;align-items:center}.brand-logo img{display:block;width:120px;height:auto;object-fit:contain;object-position:left center}
@@ -23,15 +21,11 @@
     .topbar{position:fixed;top:0;right:0;left:var(--sidebar-width);z-index:15;height:var(--topbar-height);display:flex;align-items:center;justify-content:flex-end;padding:0 26px;background:var(--page-bg)}
     .topbar-actions{display:flex;align-items:center;gap:28px;color:#30343a}.topbar-action{display:inline-flex;align-items:center;gap:7px;min-height:32px;color:inherit;text-decoration:none;white-space:nowrap}.topbar-action .icon{width:20px;height:20px;color:#25282d}.caret{width:10px;height:10px;margin-left:1px}
     .workspace{min-height:100vh;margin-left:var(--sidebar-width);padding-top:var(--topbar-height);background:var(--page-bg)}.page-content{width:100%;min-height:calc(100vh - var(--topbar-height));padding:0 22px 28px}
-
-    /* general */
     .page-card{background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius);box-shadow:0 1px 2px rgba(31,35,48,.02)}
     .page-card+.page-card{margin-top:16px}.text-link{color:var(--brand);text-decoration:none}.text-link:hover{text-decoration:underline}
     .btn-primary,.btn-default{height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0 18px;border-radius:4px;font-size:14px;transition:.15s}
     .btn-primary{border:1px solid var(--brand);background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-hover);border-color:var(--brand-hover)}
     .btn-default{border:1px solid #d8dde7;background:#fff;color:#454a53}.btn-default:hover{color:var(--brand);border-color:var(--brand)}
-
-    /* promotion starter */
     .starter-card{position:relative;overflow:visible;display:grid;grid-template-columns:minmax(0,1fr) 320px;min-height:236px;background:linear-gradient(105deg,#fff 0%,#fff 58%,#f4f7ff 100%)}
     .starter-main{padding:30px 32px 28px}.eyebrow{display:inline-flex;align-items:center;gap:7px;margin-bottom:10px;color:var(--brand);font-size:13px;font-weight:500}.eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(36,72,255,.10)}
     .starter-title{margin:0;font-size:22px;line-height:32px;color:var(--text-strong);font-weight:600}.starter-desc{margin:7px 0 20px;color:var(--text-secondary);line-height:22px}.starter-desc strong{color:#4a4f58;font-weight:500}
@@ -41,11 +35,8 @@
     .continue-btn{height:48px;min-width:116px;padding:0 24px;border:1px solid var(--brand);border-radius:4px;background:var(--brand);color:#fff}.continue-btn:hover:not(:disabled){background:var(--brand-hover);border-color:var(--brand-hover)}.continue-btn:disabled{cursor:not-allowed;background:#bcc7ff;border-color:#bcc7ff;color:#fff}
     .search-helper{display:flex;align-items:center;gap:18px;margin-top:14px;color:#8b919b;font-size:12px}.helper-item{display:flex;align-items:center;gap:6px}.helper-check{width:14px;height:14px;border-radius:50%;display:grid;place-items:center;background:#eef2ff;color:var(--brand);font-size:10px}
     .search-dropdown{position:absolute;top:54px;left:0;right:0;z-index:30;display:none;padding:6px 0;background:#fff;border:1px solid #dcdfe6;border-radius:4px;box-shadow:0 8px 20px rgba(31,35,48,.12)}.search-dropdown.show{display:block}.search-result{display:flex;align-items:center;gap:12px;padding:10px 14px;cursor:pointer}.search-result:hover{background:#f6f8ff}.result-cover{width:42px;height:42px;border-radius:3px;display:grid;place-items:center;color:#fff;font-weight:600;flex:none}.result-main{min-width:0;flex:1}.result-name{color:var(--text-strong);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.result-sub{margin-top:5px;font-size:12px;color:var(--text-tertiary)}.result-platforms{display:flex;gap:5px;margin-right:8px}.mini-dot{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:9px;font-weight:600}.result-tag{font-size:12px;color:var(--brand);background:#f1f4ff;padding:3px 7px;border-radius:2px}.search-empty{padding:22px;text-align:center;color:var(--text-tertiary)}
-
     .starter-side{position:relative;padding:26px 26px 24px;border-left:1px solid #e9edfa;background:rgba(245,248,255,.62)}.starter-side:before{content:"";position:absolute;right:-30px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(70,105,255,.13),rgba(70,105,255,0) 68%);pointer-events:none}.side-title{position:relative;margin-bottom:16px;color:#525866;font-size:13px;font-weight:500}.flow-step{position:relative;display:flex;align-items:center;gap:12px;min-height:46px}.flow-step:not(:last-child):after{content:"";position:absolute;left:15px;top:34px;width:1px;height:24px;background:#dbe2ff}.step-num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #d7defa;color:var(--brand);font-weight:600;box-shadow:0 1px 2px rgba(36,72,255,.05)}.step-copy strong{display:block;color:#343944;font-size:13px;font-weight:500}.step-copy span{display:block;margin-top:3px;color:#9a9faa;font-size:12px}
     .platform-preview{position:relative;display:flex;gap:6px;margin-top:18px;padding-top:14px;border-top:1px solid #e3e8f6}.preview-chip{height:26px;display:flex;align-items:center;gap:5px;padding:0 8px;background:#fff;border:1px solid #e2e6f0;border-radius:3px;color:#646a75;font-size:11px}.preview-logo{width:14px;height:14px;border-radius:3px;display:grid;place-items:center;color:#fff;font-size:8px;font-weight:700}
-
-    /* song opportunities */
     .songs-card{overflow:hidden}.songs-header{min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid var(--border)}.songs-title-wrap{display:flex;align-items:center}.songs-title{color:var(--text-strong);font-size:17px;font-weight:600}.history-link{display:inline-flex;align-items:center;gap:6px;color:var(--brand);text-decoration:none}.history-link:hover{text-decoration:underline}.history-icon{width:16px;height:16px}
     .opportunity-list{padding:0 20px}.song-row{display:grid;grid-template-columns:minmax(250px,.95fr) minmax(480px,2fr) 110px;gap:24px;align-items:center;min-height:112px;padding:16px 0;border-bottom:1px solid #edf0f4}.song-row:last-child{border-bottom:0}.song-row:hover{background:linear-gradient(90deg,transparent,#fbfcff 10%,#fbfcff 90%,transparent)}
     .song-main{display:flex;align-items:center;gap:13px;min-width:0}.song-cover{width:58px;height:58px;border-radius:4px;display:grid;place-items:center;color:#fff;font-size:20px;font-weight:600;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)}.song-info{min-width:0}.song-name{color:var(--text-strong);font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song-meta{margin-top:6px;color:#868c96;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.release-count{margin-top:7px;display:flex;align-items:center;gap:5px;color:#7c828d;font-size:12px}.release-count strong{color:#555b65;font-weight:500}
@@ -72,13 +63,11 @@
         <a class="nav-item" href="#"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/><path d="M6.5 15.8 10 12.3l2.5 2.2 5-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label">销售分析</span></a>
       </nav>
     </aside>
-
     <header class="topbar"><div class="topbar-actions">
       <a class="topbar-action" href="#"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9.8 9.2a2.4 2.4 0 1 1 4.6 1c-.35.8-1.1 1.2-1.7 1.7-.5.4-.7.9-.7 1.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="17.1" r="1" fill="currentColor"/></svg><span>帮助中心</span></a>
       <a class="topbar-action" href="#"><span>简体中文</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
       <a class="topbar-action" href="#"><span>环环</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a>
     </div></header>
-
     <main class="workspace">
       <div class="page-content">
         <section class="page-card starter-card">
@@ -110,7 +99,7 @@
           <aside class="starter-side">
             <div class="side-title">3 步开始推广</div>
             <div class="flow-step"><div class="step-num">1</div><div class="step-copy"><strong>选择歌曲</strong><span>从已发行作品中选择</span></div></div>
-            <div class="flow-step"><div class="step-num">2</div><div class="step-copy"><strong>选择推广目标</strong><span>播放提升、歌单、海外推广等</span></div></div>
+            <div class="flow-step"><div class="step-num">2</div><div class="step-copy"><strong>选择推广目标</strong><span>播放、歌单、内容、海外、KTV 等，可多选</span></div></div>
             <div class="flow-step"><div class="step-num">3</div><div class="step-copy"><strong>确认并开始推广</strong><span>下单后查看推广进度</span></div></div>
             <div class="platform-preview">
               <span class="preview-chip"><span class="preview-logo" style="background:#e94b3c">易</span>网易云</span>
@@ -119,7 +108,6 @@
             </div>
           </aside>
         </section>
-
         <section class="page-card songs-card">
           <div class="songs-header">
             <div class="songs-title-wrap"><div class="songs-title">可推广的歌曲</div></div>
@@ -135,7 +123,6 @@
     </main>
   </div>
   <div class="toast" id="toast">已选择歌曲</div>
-
   <script>
     const platformMap={
       '网易云':{short:'易',color:'#e94b3c'},'QQ音乐':{short:'Q',color:'#20a6ff'},'酷狗':{short:'酷',color:'#2d8cff'},'酷我':{short:'酷',color:'#ff8a2a'},
@@ -151,6 +138,10 @@
     const list=document.getElementById('opportunityList'),input=document.getElementById('songSearch'),dropdown=document.getElementById('searchDropdown'),selected=document.getElementById('selectedSong'),continueBtn=document.getElementById('continueBtn');
     let selectedId=null;
     function logo(name){const p=platformMap[name]||{short:name.slice(0,1),color:'#77808f'};return `<span class="token-logo" style="background:${p.color}">${p.short}</span>`}
+    function openStep2(song){
+      const p=new URLSearchParams({id:String(song.id),title:song.name,artist:song.artist,album:song.album,cover:song.cover});
+      location.href='promotion-step2.html?'+p.toString();
+    }
     function renderList(){
       list.innerHTML=songs.map(song=>{
         const promo=song.promo.slice(0,4).map(([p,k])=>`<span class="promo-option">${logo(p)}<strong>${p}</strong><span class="promo-kind">${k}</span></span>`).join('')+(song.promo.length>4?`<span class="promo-more">+${song.promo.length-4} 更多</span>`:'');
@@ -160,7 +151,7 @@
           <div class="row-action"><button class="btn-default promote-btn" data-id="${song.id}">立即推广</button><div class="opportunity-count">${song.promo.length} 个推广机会</div></div>
         </div>`
       }).join('');
-      document.querySelectorAll('.promote-btn').forEach(btn=>btn.addEventListener('click',()=>chooseSong(Number(btn.dataset.id),true)));
+      document.querySelectorAll('.promote-btn').forEach(btn=>btn.addEventListener('click',()=>{const song=songs.find(x=>x.id===Number(btn.dataset.id));if(song)openStep2(song)}));
     }
     function showResults(q=''){
       const keyword=q.trim().toLowerCase();
@@ -169,19 +160,18 @@
       dropdown.classList.add('show');
       dropdown.querySelectorAll('.search-result').forEach(el=>el.addEventListener('click',()=>chooseSong(Number(el.dataset.id))));
     }
-    function chooseSong(id,scrollTop=false){
+    function chooseSong(id){
       const s=songs.find(x=>x.id===id);if(!s)return;selectedId=id;
       document.getElementById('selectedCover').textContent=s.cover;document.getElementById('selectedCover').style.background=s.gradient;
       document.getElementById('selectedName').textContent=s.name;document.getElementById('selectedArtist').textContent=`${s.artist} · ${s.album}`;document.getElementById('selectedOpportunity').textContent=`${s.promo.length} 个平台可推广`;
       input.style.display='none';document.querySelector('.search-icon').style.display='none';selected.classList.add('show');dropdown.classList.remove('show');continueBtn.disabled=false;continueBtn.textContent='继续';
-      if(scrollTop){window.scrollTo({top:0,behavior:'smooth'});showToast(`已选择《${s.name}》`)}
     }
     function clearSong(){selectedId=null;selected.classList.remove('show');input.style.display='block';document.querySelector('.search-icon').style.display='block';input.value='';continueBtn.disabled=true;continueBtn.textContent='开始推广';input.focus()}
     function showToast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1400)}
     input.addEventListener('focus',()=>showResults(input.value));input.addEventListener('input',e=>showResults(e.target.value));
     document.getElementById('clearSong').addEventListener('click',clearSong);
     document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))dropdown.classList.remove('show')});
-    continueBtn.addEventListener('click',()=>{if(selectedId)showToast('下一步：选择推广目标')});
+    continueBtn.addEventListener('click',()=>{const song=songs.find(x=>x.id===selectedId);if(song)openStep2(song)});
     document.getElementById('historyLink').addEventListener('click',e=>{e.preventDefault();showToast('推广历史将在后续页面接入')});
     renderList();
   </script>
