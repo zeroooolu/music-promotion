@@ -17,7 +17,8 @@
 
   <div class="pc-toolbar">
     <div class="pc-filters">
-      <input class="pc-input" id="categorySearch" placeholder="搜索类目名称 / 描述 / 标识">
+      <input class="pc-input" id="categorySearch" placeholder="搜索类目名称 / 描述 / 标识 / 推广目标">
+      <select class="pc-select" id="goalFilter"><option value="all">全部推广目标</option></select>
       <select class="pc-select" id="statusFilter"><option value="all">全部状态</option><option value="on">启用</option><option value="off">停用</option></select>
       <button class="pc-btn pc-btn-secondary" id="resetBtn" type="button">重置</button>
     </div>
@@ -27,7 +28,7 @@
   <section class="pc-card">
     <div class="pc-table-wrap">
       <table class="pc-table" id="categoryTable">
-        <thead><tr><th style="width:200px">类目名称</th><th>描述</th><th style="width:170px">多语言</th><th style="width:80px">产品</th><th style="width:80px">方案</th><th style="width:80px">排序</th><th style="width:90px">状态</th><th style="width:150px">更新时间</th><th style="width:150px">操作</th></tr></thead>
+        <thead><tr><th style="width:190px">类目名称</th><th style="width:150px">推广目标</th><th>描述</th><th style="width:150px">多语言</th><th style="width:70px">产品</th><th style="width:70px">方案</th><th style="width:70px">排序</th><th style="width:80px">状态</th><th style="width:145px">更新时间</th><th style="width:140px">操作</th></tr></thead>
         <tbody id="categoryRows"></tbody>
       </table>
     </div>
@@ -38,10 +39,13 @@
 <script src="../assets/js/product-category-data.js"></script>
 <script>
 const search=document.getElementById('categorySearch');
+const goalFilter=document.getElementById('goalFilter');
 const status=document.getElementById('statusFilter');
 const rows=document.getElementById('categoryRows');
 const count=document.getElementById('categoryCount');
 const rangeText=document.getElementById('rangeText');
+
+goalFilter.insertAdjacentHTML('beforeend',PROMOTION_GOALS.map(goal=>`<option value="${goal.id}">${goal.name}</option>`).join(''));
 
 function languageSummary(category){
   const completed=PRODUCT_CATEGORY_LANGUAGES.filter(language=>category.names[language.key]||category.descriptions?.[language.key]).length;
@@ -51,15 +55,20 @@ function languageSummary(category){
 function render(){
   const q=(search.value||'').trim().toLowerCase();
   const filtered=PRODUCT_CATEGORIES.filter(category=>{
-    const searchable=[category.id,...Object.values(category.names),...Object.values(category.descriptions||{})].join(' ').toLowerCase();
+    const goal=getPromotionGoal(category.goalId);
+    const searchable=[category.id,goal?.name||'',...Object.values(category.names),...Object.values(category.descriptions||{})].join(' ').toLowerCase();
     const hit=!q||searchable.includes(q);
+    const goalHit=goalFilter.value==='all'||category.goalId===goalFilter.value;
     const statusHit=status.value==='all'||category.status===status.value;
-    return hit&&statusHit;
+    return hit&&goalHit&&statusHit;
   });
 
-  rows.innerHTML=filtered.map(category=>`
+  rows.innerHTML=filtered.map(category=>{
+    const goal=getPromotionGoal(category.goalId);
+    return `
     <tr>
       <td><div class="pc-name">${category.names.zhCN}</div><div class="pc-code">${category.id} · ${category.names.en}</div></td>
+      <td>${goal?`<span class="pc-goal-tag">${goal.name}</span>`:'—'}</td>
       <td><div class="pc-desc">${category.descriptions?.zhCN||'—'}</div></td>
       <td>${languageSummary(category)}</td>
       <td><span class="pc-count">${category.products}</span></td>
@@ -68,19 +77,20 @@ function render(){
       <td><span class="pc-status${category.status==='off'?' off':''}">${category.status==='on'?'启用':'停用'}</span></td>
       <td>${category.updated}</td>
       <td><a class="pc-link" href="product-category-detail.html?id=${encodeURIComponent(category.id)}">查看</a><a class="pc-link" href="product-category-form.html?mode=edit&id=${encodeURIComponent(category.id)}">编辑</a></td>
-    </tr>
-  `).join('');
+    </tr>`;
+  }).join('');
 
   if(!filtered.length){
-    rows.innerHTML='<tr><td colspan="9" style="text-align:center;color:#97a3b3;padding:36px 16px">暂无符合条件的类目</td></tr>';
+    rows.innerHTML='<tr><td colspan="10" style="text-align:center;color:#97a3b3;padding:36px 16px">暂无符合条件的类目</td></tr>';
   }
   count.textContent=filtered.length;
   rangeText.textContent=`显示 ${filtered.length}，共 ${filtered.length} 条`;
 }
 
 search.addEventListener('input',render);
+goalFilter.addEventListener('change',render);
 status.addEventListener('change',render);
-document.getElementById('resetBtn').addEventListener('click',()=>{search.value='';status.value='all';render();});
+document.getElementById('resetBtn').addEventListener('click',()=>{search.value='';goalFilter.value='all';status.value='all';render();});
 render();
 </script>
 </body>
