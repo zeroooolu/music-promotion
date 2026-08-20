@@ -1,91 +1,34 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>产品详情｜星球发行 · 音乐推广 Admin</title>
-<link rel="stylesheet" href="../assets/css/admin-common.css">
-<link rel="stylesheet" href="../assets/css/products.css">
+<link rel="stylesheet" href="../assets/css/admin-common.css"><link rel="stylesheet" href="../assets/css/products.css">
 </head>
 <body data-admin-page="products" data-page-title="产品列表 / 产品详情">
 <div id="admin-shell"></div>
 <template id="page-content">
   <div class="pd-breadcrumb"><a href="products.html">产品列表</a><span>/</span><b>网易云音乐播放推广</b></div>
-
   <section class="pd-detail-head">
-    <div class="pd-detail-main">
-      <div class="pd-detail-logo">云</div>
-      <div class="pd-detail-title">
-        <h1>网易云音乐播放推广</h1>
-        <div class="pd-detail-meta"><span class="pd-tag">播放推广</span><span class="pd-goal-tag">增加歌曲播放</span><span class="pd-tag">网易云音乐</span><span class="pd-tag" style="background:#f2f4f7">DSP 平台</span><span class="pd-tag" style="background:#eef8f2;color:#278259">上架</span></div>
-      </div>
-    </div>
-    <div class="pd-detail-actions"><a class="pd-btn pd-btn-secondary" href="product-form.html?mode=edit&id=netease-play">编辑产品</a><button class="pd-btn pd-btn-danger" type="button" onclick="alert('演示：产品已下架')">下架产品</button></div>
+    <div class="pd-detail-main"><div class="pd-detail-logo">云</div><div class="pd-detail-title"><h1>网易云音乐播放推广</h1><div class="pd-detail-meta"><span class="pd-tag">播放推广</span><span class="pd-tag blue">增加歌曲播放</span><span class="pd-tag">网易云音乐</span><span class="pd-tag">DSP 平台</span><span class="pd-tag" style="background:#eef8f2;color:#278259">上架</span></div></div></div>
+    <div class="pd-detail-actions"><a class="pd-btn pd-btn-secondary" href="product-form.html?mode=edit&id=netease-play">编辑产品</a></div>
   </section>
-
-  <section class="pd-section">
-    <div class="pd-section-head"><h2>基本信息</h2></div>
-    <div class="pd-section-body">
-      <div class="pd-info-grid">
-        <div class="pd-info-item"><label>产品名称</label><div>网易云音乐播放推广</div></div>
-        <div class="pd-info-item"><label>所属类目</label><div>播放推广</div></div>
-        <div class="pd-info-item"><label>适用推广目标</label><div><span class="pd-goal-tag">增加歌曲播放</span></div></div>
-        <div class="pd-info-item"><label>平台</label><div>网易云音乐 · DSP 平台</div></div>
-        <div class="pd-info-item"><label>售卖方式</label><div>固定套餐</div></div>
-        <div class="pd-info-item"><label>允许单独购买</label><div>是</div></div>
-        <div class="pd-info-item"><label>可用于推广方案</label><div>是</div></div>
-        <div class="pd-info-item"><label>状态</label><div>上架</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pd-section">
-    <div class="pd-section-head"><h2>固定套餐</h2><a class="pd-btn pd-btn-primary" href="product-form.html?mode=edit&id=netease-play">编辑套餐</a></div>
-    <div class="pd-table-wrap">
-      <table class="pd-spec-table"><thead><tr><th>套餐名称</th><th>结果类型</th><th>服务结果</th><th>售价</th></tr></thead><tbody id="specTableBody"></tbody></table>
-    </div>
-  </section>
-
-  <section class="pd-section">
-    <div class="pd-section-head"><h2>履约与销售</h2></div>
-    <div class="pd-section-body">
-      <div class="pd-info-grid">
-        <div class="pd-info-item"><label>履约周期</label><div>单次</div></div>
-        <div class="pd-info-item"><label>允许追加购买</label><div>是</div></div>
-        <div class="pd-info-item"><label>排序</label><div>10</div></div>
-        <div class="pd-info-item"><label>最后更新</label><div>2026-08-19 17:46</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pd-section">
-    <div class="pd-section-head"><h2>前台内容</h2></div>
-    <div class="pd-section-body">
-      <div class="pd-info-grid">
-        <div class="pd-info-item" style="grid-column:span 2"><label>一句话介绍</label><div>选择固定套餐提升歌曲在网易云音乐内的播放量</div></div>
-        <div class="pd-info-item" style="grid-column:span 2"><label>产品说明</label><div>选择推广套餐后，按对应档位执行网易云音乐播放推广。</div></div>
-      </div>
-    </div>
-  </section>
+  <section class="pd-section"><div class="pd-section-head"><h2>基本信息</h2></div><div class="pd-section-body"><div class="pd-info-grid">
+    <div class="pd-info-item"><label>产品名称</label><div>网易云音乐播放推广</div></div>
+    <div class="pd-info-item"><label>所属类目</label><div>播放推广</div></div>
+    <div class="pd-info-item"><label>适用推广目标</label><div><span class="pd-tag blue">增加歌曲播放</span></div></div>
+    <div class="pd-info-item"><label>平台</label><div>网易云音乐 · DSP 平台</div></div>
+    <div class="pd-info-item"><label>售卖方式</label><div>固定套餐</div></div>
+  </div></div></section>
+  <section class="pd-section"><div class="pd-section-head"><h2>固定套餐</h2><a class="pd-btn pd-btn-primary" href="product-form.html?mode=edit&id=netease-play">编辑套餐</a></div><div class="pd-table-wrap"><table class="pd-spec-table"><thead><tr><th>套餐名称</th><th>结果类型</th><th>服务结果</th><th>售价</th></tr></thead><tbody id="specTableBody"></tbody></table></div></section>
+  <section class="pd-section"><div class="pd-section-head"><h2>前台内容</h2></div><div class="pd-section-body"><div class="pd-info-grid">
+    <div class="pd-info-item" style="grid-column:span 2"><label>一句话介绍</label><div>选择固定套餐提升歌曲在网易云音乐内的播放量</div></div>
+    <div class="pd-info-item" style="grid-column:span 2"><label>产品说明</label><div>选择推广套餐后，按对应档位执行网易云音乐播放推广。</div></div>
+  </div></div></section>
 </template>
 <script src="../assets/js/admin-shell.js"></script>
 <script>
-const specs=[
-{name:'600 播放',type:'保底结果',result:'保底 600 次播放',price:39},
-{name:'1,320 播放',type:'保底结果',result:'保底 1,320 次播放',price:69},
-{name:'1,980 播放',type:'保底结果',result:'保底 1,980 次播放',price:99},
-{name:'3,000 播放',type:'保底结果',result:'保底 3,000 次播放',price:159},
-{name:'4,000 播放',type:'保底结果',result:'保底 4,000 次播放',price:209},
-{name:'6,000 播放',type:'保底结果',result:'保底 6,000 次播放',price:309},
-{name:'10,000 播放',type:'保底结果',result:'保底 10,000 次播放',price:519},
-{name:'16,000 播放',type:'保底结果',result:'保底 16,000 次播放',price:819},
-{name:'24,000 播放',type:'保底结果',result:'保底 24,000 次播放',price:1219},
-{name:'32,000 播放',type:'保底结果',result:'保底 32,000 次播放',price:1619},
-{name:'40,000 播放',type:'保底结果',result:'保底 40,000 次播放',price:2019},
-{name:'49,980 播放',type:'保底结果',result:'保底 49,980 次播放',price:2509}
-];
-const fmt=n=>Number(n||0).toLocaleString('zh-CN');
-document.getElementById('specTableBody').innerHTML=specs.map(item=>`<tr><td class="pd-spec-name">${item.name}</td><td><span class="pd-tag">${item.type}</span></td><td>${item.result}</td><td class="pd-price">¥${fmt(item.price)}</td></tr>`).join('');
+const specs=[['600 播放','保底结果','保底 600 次播放',39],['1,320 播放','保底结果','保底 1,320 次播放',69],['1,980 播放','保底结果','保底 1,980 次播放',99],['3,000 播放','保底结果','保底 3,000 次播放',159],['4,000 播放','保底结果','保底 4,000 次播放',209],['6,000 播放','保底结果','保底 6,000 次播放',309],['10,000 播放','保底结果','保底 10,000 次播放',519],['16,000 播放','保底结果','保底 16,000 次播放',819],['24,000 播放','保底结果','保底 24,000 次播放',1219],['32,000 播放','保底结果','保底 32,000 次播放',1619],['40,000 播放','保底结果','保底 40,000 次播放',2019],['49,980 播放','保底结果','保底 49,980 次播放',2509]];document.getElementById('specTableBody').innerHTML=specs.map(x=>`<tr><td class="pd-spec-name">${x[0]}</td><td><span class="pd-tag">${x[1]}</span></td><td>${x[2]}</td><td class="pd-price">¥${Number(x[3]).toLocaleString('zh-CN')}</td></tr>`).join('');
 </script>
 </body>
 </html>
