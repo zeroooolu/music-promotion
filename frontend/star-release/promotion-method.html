@@ -4,205 +4,67 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>选择推广方式 · 星球发行</title>
+<link rel="stylesheet" href="star-release-shell.css">
 <style>
-:root{
-  --brand:#2448ff;--brand-hover:#1839e8;--brand-soft:#e9edff;--brand-lighter:#f5f7ff;
-  --page:#f4f6f9;--surface:#fff;--text:#30343a;--strong:#20232a;--muted:#747b86;
-  --tertiary:#9aa0aa;--border:#e5e8ee;--border2:#d9dde5;--green:#168653;
-  --sidebar:244px;--topbar:88px;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
-}
-*{box-sizing:border-box}html,body{margin:0;min-width:1100px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}
-button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}svg{display:block}
-.sidebar{position:fixed;inset:0 auto 0 0;z-index:20;width:var(--sidebar);min-height:100vh;background:#fff;border-right:1px solid var(--border)}
-.brand{height:var(--topbar);display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--border)}
-.brand-logo img{display:block;width:120px;height:auto;object-fit:contain}
-.nav{padding:6px 12px 24px}.nav-item{height:54px;display:flex;align-items:center;gap:12px;padding:0 20px;border-radius:2px;color:#30343a}
-.nav-item:hover{background:#f6f7fa}.nav-item.active{color:var(--brand);background:var(--brand-soft);font-weight:500}
-.nav-icon{width:20px;height:20px;flex:none;color:currentColor}.nav-label{font-size:16px}
-.topbar{position:fixed;top:0;right:0;left:var(--sidebar);z-index:15;height:var(--topbar);display:flex;align-items:center;justify-content:flex-end;padding:0 26px;background:var(--page)}
-.topbar-actions{display:flex;align-items:center;gap:28px}.topbar-action{display:flex;align-items:center;gap:7px}.topbar-action svg{width:18px;height:18px}
-.workspace{min-height:100vh;margin-left:var(--sidebar);padding-top:var(--topbar)}
-.page{max-width:1500px;margin:0 auto;padding:0 22px 40px}
+:root{--brand:#2448ff;--brand-hover:#1839e8;--brand-soft:#e9edff;--page:#f4f6f9;--surface:#fff;--text:#30343a;--strong:#20232a;--muted:#747b86;--tertiary:#9aa0aa;--border:#e5e8ee;--border2:#d9dde5;--sidebar:244px;--topbar:88px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;min-width:1100px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
+.workspace{min-height:100vh;margin-left:var(--sidebar);padding-top:var(--topbar)}.page{max-width:1500px;margin:0 auto;padding:0 22px 40px}
 .breadcrumb{height:42px;display:flex;align-items:center;color:#8e95a0;font-size:12px}.breadcrumb a:hover{color:var(--brand)}
 .song-card{display:flex;align-items:center;gap:15px;min-height:94px;padding:16px 20px;background:#fff;border:1px solid var(--border2);border-radius:4px}
-.cover{width:60px;height:60px;border-radius:4px;background:linear-gradient(145deg,#586cf7,#9b78df);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:650;box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)}
-.song-copy{min-width:0;flex:1}.song-kicker{color:#999fa9;font-size:11px;margin-bottom:5px}.song-name{font-size:17px;color:var(--strong);font-weight:600}
-.song-meta{margin-top:5px;color:#858c97;font-size:12px}.change-song{height:32px;padding:0 11px;border:0;background:transparent;color:var(--brand)}
+.cover{width:60px;height:60px;border-radius:4px;background:linear-gradient(145deg,#586cf7,#9b78df);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:650;flex:none}
+.song-copy{min-width:0;flex:1}.song-kicker{color:#999fa9;font-size:11px;margin-bottom:5px}.song-name{font-size:17px;color:var(--strong);font-weight:600}.song-meta{margin-top:5px;color:#858c97;font-size:12px}.change-song{height:32px;padding:0 11px;border:0;background:transparent;color:var(--brand)}
 .page-title{margin:25px 0 6px;color:var(--strong);font-size:24px;line-height:34px;font-weight:650}.page-desc{margin:0 0 24px;color:#777f8b;line-height:22px}
-.section{background:#fff;border:1px solid var(--border2);border-radius:4px;overflow:hidden}
-.section+.section{margin-top:16px}.section-head{min-height:76px;padding:18px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.section{background:#fff;border:1px solid var(--border2);border-radius:4px;overflow:hidden}.section-head{min-height:76px;padding:18px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
 .section-title{margin:0;color:var(--strong);font-size:18px;font-weight:600}.section-sub{margin-top:6px;color:#8d949f;font-size:12px;line-height:19px}
 .head-actions{display:flex;align-items:center;gap:10px;flex:none}.all-link{color:var(--brand);font-size:13px;padding:8px 3px}.all-link:hover{text-decoration:underline}
-.arrow{width:34px;height:34px;border:1px solid #dbe0e8;border-radius:4px;background:#fff;color:#606774;display:grid;place-items:center}
-.arrow:hover{border-color:#bfc9ff;color:var(--brand);background:#f8faff}.arrow:disabled{opacity:.38;cursor:not-allowed}
-.slider-shell{position:relative;padding:0 20px 22px;overflow:hidden}
-.package-track{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;padding:2px 0 8px;scrollbar-width:none;cursor:grab}
-.package-track::-webkit-scrollbar{display:none}.package-track.dragging{cursor:grabbing;scroll-behavior:auto;user-select:none}
-.package-card{position:relative;flex:0 0 29.35%;min-width:252px;height:250px;padding:19px 18px 16px;border:1px solid #dfe3ea;border-radius:4px;background:#fff;scroll-snap-align:start;transition:.16s}
-.package-card:hover{border-color:#bcc8ff;box-shadow:0 6px 20px rgba(36,72,255,.07);transform:translateY(-1px)}
-.package-card.recommended{border-color:#9eafff;background:linear-gradient(180deg,#fbfcff 0%,#fff 50%)}
+.arrow{width:34px;height:34px;border:1px solid #dbe0e8;border-radius:4px;background:#fff;color:#606774;display:grid;place-items:center}.arrow:hover{border-color:#bfc9ff;color:var(--brand);background:#f8faff}.arrow:disabled{opacity:.38;cursor:not-allowed}
+.slider-shell{position:relative;padding:0 20px 22px;overflow:hidden}.package-track{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;padding:2px 0 8px;scrollbar-width:none;cursor:grab}.package-track::-webkit-scrollbar{display:none}.package-track.dragging{cursor:grabbing;scroll-behavior:auto;user-select:none}
+.package-card{position:relative;flex:0 0 29.35%;min-width:252px;height:252px;padding:19px 18px 16px;border:1px solid #dfe3ea;border-radius:4px;background:#fff;scroll-snap-align:start;transition:.16s}.package-card:hover{border-color:#bcc8ff;box-shadow:0 6px 20px rgba(36,72,255,.07);transform:translateY(-1px)}.package-card.recommended{border-color:#9eafff;background:linear-gradient(180deg,#fbfcff 0%,#fff 50%)}
 .badge{position:absolute;left:15px;top:-10px;height:21px;padding:0 8px;border-radius:3px;background:var(--brand);color:#fff;font-size:10px;display:flex;align-items:center}
-.package-name{margin-top:4px;color:var(--strong);font-size:16px;font-weight:600}.package-desc{height:42px;margin-top:8px;color:#7c838f;font-size:12px;line-height:20px}
-.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px;min-height:48px;align-content:flex-start}.tag{height:23px;padding:0 7px;display:flex;align-items:center;border-radius:3px;background:#f3f5f9;color:#646c78;font-size:10px}
-.effect{margin-top:9px;color:#8c939e;font-size:11px}.effect strong{color:#4d5563;font-weight:600}
-.package-foot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
-.price-label{color:#9aa0aa;font-size:10px}.price{margin-top:2px;color:var(--strong);font-size:20px;font-weight:650}.price small{font-size:11px;font-weight:400;color:#888f99}
-.choose{height:32px;padding:0 12px;border:1px solid var(--brand);border-radius:4px;background:#fff;color:var(--brand);font-size:12px}.choose:hover{background:var(--brand);color:#fff}
-.scroll-hint{display:flex;align-items:center;gap:7px;margin-top:5px;color:#a0a6af;font-size:10px}.scroll-hint:before{content:"";width:26px;height:2px;border-radius:3px;background:#c7d0ff;box-shadow:9px 0 0 #edf0f8}
-.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.option-card{min-height:154px;padding:22px 22px 20px;background:#fff;border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;gap:18px;transition:.15s}
-.option-card:hover{border-color:#bcc8ff;background:#fdfdff}
-.option-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#f0f3ff;color:var(--brand);flex:none}
-.option-icon svg{width:24px;height:24px}.option-main{flex:1}.option-title{color:var(--strong);font-size:16px;font-weight:600}.option-desc{max-width:540px;margin-top:7px;color:#858c97;font-size:12px;line-height:20px}
-.option-action{display:inline-flex;align-items:center;gap:5px;margin-top:13px;color:var(--brand);font-size:13px;font-weight:500}
-.expert .option-icon{background:#f5f2ff;color:#7359d8}.expert .option-action{color:#654bd1}
-.note{margin:18px 2px 0;color:#a0a6af;font-size:10px}
-.toast{position:fixed;left:50%;top:26px;z-index:80;display:none;transform:translateX(-50%);padding:10px 16px;border-radius:4px;background:#30343a;color:#fff;box-shadow:0 5px 16px rgba(0,0,0,.16)}
-.toast.show{display:block}
-@media(max-width:1260px){.package-card{flex-basis:31.5%}.option-card{padding-left:18px;padding-right:18px}}
-@media(max-width:1180px){:root{--sidebar:224px}.package-card{flex-basis:34%}}
+.package-name{margin-top:4px;color:var(--strong);font-size:16px;font-weight:600}.package-desc{height:43px;margin-top:8px;color:#7c838f;font-size:12px;line-height:20px;overflow:hidden}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px;min-height:48px;align-content:flex-start}.tag{height:23px;padding:0 7px;display:flex;align-items:center;border-radius:3px;background:#f3f5f9;color:#646c78;font-size:10px}.effect{margin-top:8px;color:#8c939e;font-size:11px}.effect strong{color:#4d5563;font-weight:600}
+.package-foot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}.price-label{color:#9aa0aa;font-size:10px}.price{margin-top:2px;color:var(--strong);font-size:20px;font-weight:650}.choose{height:32px;padding:0 12px;border:1px solid var(--brand);border-radius:4px;background:#fff;color:var(--brand);font-size:12px}.choose:hover{background:var(--brand);color:#fff}.scroll-hint{display:flex;align-items:center;gap:7px;margin-top:5px;color:#a0a6af;font-size:10px}.scroll-hint:before{content:"";width:26px;height:2px;border-radius:3px;background:#c7d0ff;box-shadow:9px 0 0 #edf0f8}
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.option-card{min-height:154px;padding:22px;background:#fff;border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;gap:18px;transition:.15s}.option-card:hover{border-color:#bcc8ff;background:#fdfdff}.option-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#f0f3ff;color:var(--brand);font-size:20px;flex:none}.option-main{flex:1}.option-title{color:var(--strong);font-size:16px;font-weight:600}.option-desc{max-width:540px;margin-top:7px;color:#858c97;font-size:12px;line-height:20px}.option-action{display:inline-flex;align-items:center;gap:5px;margin-top:13px;color:var(--brand);font-size:13px;font-weight:500}.expert .option-icon{background:#f5f2ff;color:#7359d8}.expert .option-action{color:#654bd1}
+.note{margin:18px 2px 0;color:#a0a6af;font-size:10px}@media(max-width:1260px){.package-card{flex-basis:31.5%}}@media(max-width:1180px){:root{--sidebar:224px}.package-card{flex-basis:34%}}
 </style>
-<link rel="stylesheet" href="star-release-shell.css">
 </head>
 <body>
-<aside class="sidebar"></aside>
-<header class="topbar"></header>
-
-<main class="workspace">
-  <div class="page">
-    <div class="breadcrumb"><a href="#">音乐推广</a><span>&nbsp;/&nbsp; 选择推广方式</span></div>
-
-    <section class="song-card">
-      <div class="cover" id="songCover">夜</div>
-      <div class="song-copy">
-        <div class="song-kicker">本次推广歌曲</div>
-        <div class="song-name" id="songName">晚风来信</div>
-        <div class="song-meta" id="songMeta">林屿 · 城市漫游</div>
-      </div>
-      <button class="change-song" onclick="location.href='index.html'">更换歌曲</button>
-    </section>
-
-    <h1 class="page-title">选择适合这首歌的推广方式</h1>
-    <p class="page-desc">可以直接选择官方组合好的推广套餐，也可以按目标自己组合，或由推广专家为你定制方案。</p>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">官方推广套餐</h2>
-          <div class="section-sub">根据常见推广目标组合好的标准方案，选择后即可继续下单。</div>
-        </div>
-        <div class="head-actions">
-          <button class="arrow" id="prevBtn" aria-label="向左滚动">←</button>
-          <button class="arrow" id="nextBtn" aria-label="向右滚动">→</button>
-          <a class="all-link" href="#" id="allPackagesLink">查看全部套餐 →</a>
-        </div>
-      </div>
-      <div class="slider-shell">
-        <div class="package-track" id="track">
-          <article class="package-card recommended">
-            <span class="badge">推荐</span>
-            <div class="package-name">新歌起量套餐</div>
-            <div class="package-desc">适合新歌发布初期，快速积累第一批播放和曝光。</div>
-            <div class="tags"><span class="tag">网易云音乐</span><span class="tag">QQ音乐</span><span class="tag">播放推广</span></div>
-            <div class="effect">适合：<strong>新歌首发 / 冷启动</strong></div>
-            <div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥1,999 <small>起</small></div></div><button class="choose" onclick="choosePackage('starter')">选择套餐</button></div>
-          </article>
-          <article class="package-card">
-            <div class="package-name">全平台曝光套餐</div>
-            <div class="package-desc">覆盖多个主流音乐平台，让歌曲获得更广泛的基础曝光。</div>
-            <div class="tags"><span class="tag">网易云音乐</span><span class="tag">QQ音乐</span><span class="tag">酷狗音乐</span></div>
-            <div class="effect">适合：<strong>增加歌曲曝光</strong></div>
-            <div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥4,999 <small>起</small></div></div><button class="choose" onclick="choosePackage('exposure')">选择套餐</button></div>
-          </article>
-          <article class="package-card">
-            <div class="package-name">歌单加速套餐</div>
-            <div class="package-desc">通过官方歌单与平台推广资源，集中提升歌曲播放与热度。</div>
-            <div class="tags"><span class="tag">QQ音乐</span><span class="tag">酷狗音乐</span><span class="tag">网易云音乐</span></div>
-            <div class="effect">适合：<strong>歌单曝光 / 热度提升</strong></div>
-            <div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥5,999 <small>起</small></div></div><button class="choose" onclick="choosePackage('playlist')">选择套餐</button></div>
-          </article>
-          <article class="package-card">
-            <div class="package-name">短视频传播套餐</div>
-            <div class="package-desc">用短视频内容、达人资源帮助歌曲进入更多内容场景。</div>
-            <div class="tags"><span class="tag">抖音</span><span class="tag">小红书</span><span class="tag">达人推广</span></div>
-            <div class="effect">适合：<strong>短视频传播</strong></div>
-            <div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥2,999 <small>起</small></div></div><button class="choose" onclick="choosePackage('social')">选择套餐</button></div>
-          </article>
-          <article class="package-card">
-            <div class="package-name">海外推广套餐</div>
-            <div class="package-desc">面向海外流媒体与视频平台，为歌曲拓展全球听众。</div>
-            <div class="tags"><span class="tag">Spotify</span><span class="tag">YouTube</span><span class="tag">海外广告</span></div>
-            <div class="effect">适合：<strong>海外发行 / 全球推广</strong></div>
-            <div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">$499 <small>起</small></div></div><button class="choose" onclick="choosePackage('global')">选择套餐</button></div>
-          </article>
-        </div>
-        <div class="scroll-hint">左右滑动查看更多官方套餐</div>
-      </div>
-    </section>
-
-    <div class="option-grid" style="margin-top:16px">
-      <a class="option-card" href="#" id="customLink">
-        <div class="option-icon"><svg viewBox="0 0 24 24"><path d="M5 6h14M8 12h8M10 18h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="6" r="2" fill="#fff" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="12" r="2" fill="#fff" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="18" r="2" fill="#fff" stroke="currentColor" stroke-width="1.5"/></svg></div>
-        <div class="option-main"><div class="option-title">想自己组合推广方式？</div><div class="option-desc">根据你的推广目标，自由选择平台、推广产品和预算，组合成自己的推广方案。</div><div class="option-action">自定义推广组合 <span>→</span></div></div>
-      </a>
-      <a class="option-card expert" href="#" id="expertLink">
-        <div class="option-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c.5-4.2 3-6.3 7-6.3s6.5 2.1 7 6.3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M18 4.5v4M16 6.5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <div class="option-main"><div class="option-title">不确定怎么推广？</div><div class="option-desc">告诉我们你的推广目标和预算，由音乐推广专家为这首歌定制更适合的推广方案。</div><div class="option-action">获取专家定制方案 <span>→</span></div></div>
-      </a>
-    </div>
-
-    <div class="note">本页面用于流程与视觉预览，套餐名称、价格与权益为演示数据。</div>
-  </div>
-</main>
-<div class="toast" id="toast"></div>
+<aside class="sidebar"></aside><header class="topbar"></header>
+<main class="workspace"><div class="page">
+<div class="breadcrumb"><a href="index.html">音乐推广</a><span>&nbsp;/&nbsp; 选择推广方式</span></div>
+<section class="song-card"><div class="cover" id="songCover">夜</div><div class="song-copy"><div class="song-kicker">本次推广歌曲</div><div class="song-name" id="songName"></div><div class="song-meta" id="songMeta"></div></div><button class="change-song" onclick="location.href='index.html'">更换歌曲</button></section>
+<h1 class="page-title">选择适合这首歌的推广方式</h1><p class="page-desc">可以直接选择官方组合好的推广套餐，也可以按目标自己组合，或由推广专家为你定制方案。</p>
+<section class="section">
+<div class="section-head"><div><h2 class="section-title">官方推广套餐</h2><div class="section-sub">按照常见宣发需求组合好的固定套餐，选择后直接确认套餐内容并下单。</div></div><div class="head-actions"><button class="arrow" id="prevBtn">←</button><button class="arrow" id="nextBtn">→</button><a class="all-link" id="allPackagesLink" href="#">查看全部套餐 →</a></div></div>
+<div class="slider-shell"><div class="package-track" id="track">
+<article class="package-card recommended"><span class="badge">推荐</span><div class="package-name">人气飙升包（一）</div><div class="package-desc">作品质量过关、想短期冲播放量榜单的音乐人。</div><div class="tags"><span class="tag">核心流量</span><span class="tag">官方歌单</span><span class="tag">抖音 / 小红书</span></div><div class="effect">适合：<strong>短期起量</strong></div><div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥799</div></div><button class="choose" onclick="choosePackage('popular-1')">选择套餐</button></div></article>
+<article class="package-card"><div class="package-name">人气飙升包（二）</div><div class="package-desc">作品质量过关、想用更高播放量配合歌单与互动资源冲榜。</div><div class="tags"><span class="tag">核心流量</span><span class="tag">官方歌单</span><span class="tag">内容 / 收藏</span></div><div class="effect">适合：<strong>加强冲量</strong></div><div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥2,199</div></div><button class="choose" onclick="choosePackage('popular-2')">选择套餐</button></div></article>
+<article class="package-card"><div class="package-name">全能打歌包（一）</div><div class="package-desc">需要歌单、资源位和真实内容传播，集中做一次完整打歌。</div><div class="tags"><span class="tag">播放投流</span><span class="tag">资源位</span><span class="tag">抖音混剪</span></div><div class="effect">适合：<strong>海量曝光</strong></div><div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥2,899</div></div><button class="choose" onclick="choosePackage('allround-1')">选择套餐</button></div></article>
+<article class="package-card"><div class="package-name">全能打歌包（二）</div><div class="package-desc">更高强度的播放、资源位和内容传播组合，适合重点作品。</div><div class="tags"><span class="tag">高播放量</span><span class="tag">资源位</span><span class="tag">种草 / 混剪</span></div><div class="effect">适合：<strong>重点打歌 / 破圈</strong></div><div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥6,600</div></div><button class="choose" onclick="choosePackage('allround-2')">选择套餐</button></div></article>
+<article class="package-card"><div class="package-name">冲榜选配包</div><div class="package-desc">面向已有打歌需求、希望集中冲击歌单与平台榜单的歌曲。</div><div class="tags"><span class="tag">网易歌单矩阵</span><span class="tag">QQ音乐歌单矩阵</span><span class="tag">酷狗冲榜</span></div><div class="effect">适合：<strong>破圈冲榜</strong></div><div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥8,600</div></div><button class="choose" onclick="choosePackage('chart-addon')">选择套餐</button></div></article>
+</div><div class="scroll-hint">左右滑动查看更多官方套餐</div></div>
+</section>
+<div class="option-grid">
+<a class="option-card" id="customLink" href="#"><div class="option-icon">☷</div><div class="option-main"><div class="option-title">想自己组合推广方式？</div><div class="option-desc">根据推广目标，自由选择平台、推广产品和预算，组合自己的推广方案。</div><div class="option-action">自定义推广组合 →</div></div></a>
+<a class="option-card expert" id="expertLink" href="#"><div class="option-icon">✦</div><div class="option-main"><div class="option-title">不确定怎么推广？</div><div class="option-desc">由音乐推广专家结合歌曲、目标和预算，为你定制推广方案。</div><div class="option-action">获取专家定制方案 →</div></div></a>
+</div>
+<div class="note">套餐价格与内容以当前页面展示为准，实际执行结果以订单确认信息为准。</div>
+</div></main>
 <script>
 const params=new URLSearchParams(location.search);
-const song={
-  id:params.get('id')||'',
-  title:params.get('title')||'晚风来信',
-  artist:params.get('artist')||'林屿',
-  album:params.get('album')||'城市漫游',
-  cover:params.get('cover')||'夜'
-};
-document.getElementById('songCover').textContent=song.cover;
-document.getElementById('songName').textContent=song.title;
-document.getElementById('songMeta').textContent=[song.artist,song.album].filter(Boolean).join(' · ');
-
-function songQuery(extra={}){
-  const q=new URLSearchParams({...song,...extra});
-  return q.toString();
-}
-document.getElementById('allPackagesLink').href='official-packages.html?'+songQuery();
-document.getElementById('customLink').href='promotion-step2.html?'+songQuery({mode:'custom'});
-document.getElementById('expertLink').href='../promotion-expert.html?'+songQuery({source:'star-release'});
-
+const song={id:params.get('id')||'',title:params.get('title')||'晚风来信',artist:params.get('artist')||'林屿',album:params.get('album')||'城市漫游',cover:params.get('cover')||'夜'};
+document.getElementById('songCover').textContent=song.cover;document.getElementById('songName').textContent=song.title;document.getElementById('songMeta').textContent=[song.artist,song.album].filter(Boolean).join(' · ');
+const query=(extra={})=>new URLSearchParams({...song,...extra}).toString();
+document.getElementById('allPackagesLink').href='official-packages.html?'+query();
+document.getElementById('customLink').href='promotion-step2.html?'+query({mode:'custom'});
+document.getElementById('expertLink').href='../promotion-expert.html?'+query({source:'star-release'});
+function choosePackage(id){location.href='order-confirm.html?'+query({mode:'package',package:id})}
 const track=document.getElementById('track'),prev=document.getElementById('prevBtn'),next=document.getElementById('nextBtn');
-function step(){const card=track.querySelector('.package-card');return card?card.getBoundingClientRect().width+14:300}
-function updateArrows(){prev.disabled=track.scrollLeft<4;next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4}
-prev.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));
-next.addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));
-track.addEventListener('scroll',updateArrows,{passive:true});
-track.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();track.scrollLeft+=e.deltaY}}, {passive:false});
-let down=false,startX=0,startScroll=0;
-track.addEventListener('pointerdown',e=>{down=true;startX=e.clientX;startScroll=track.scrollLeft;track.classList.add('dragging');track.setPointerCapture(e.pointerId)});
-track.addEventListener('pointermove',e=>{if(down)track.scrollLeft=startScroll-(e.clientX-startX)});
-function stop(){down=false;track.classList.remove('dragging')} track.addEventListener('pointerup',stop);track.addEventListener('pointercancel',stop);
-
-const packages={
-  starter:{name:'新歌起量套餐',goals:'plays',plan:0,budget:1999},
-  exposure:{name:'全平台曝光套餐',goals:'plays,playlist',plan:1,budget:4999},
-  playlist:{name:'歌单加速套餐',goals:'playlist,chart',plan:2,budget:5999},
-  social:{name:'短视频传播套餐',goals:'social',plan:1,budget:2999},
-  global:{name:'海外推广套餐',goals:'global',plan:1,budget:3999}
-};
-function choosePackage(id){
-  const pkg=packages[id]; if(!pkg)return;
-  location.href='order-confirm.html?'+songQuery({mode:'package',package:id,package_name:pkg.name,goals:pkg.goals,plan:String(pkg.plan),budget:String(pkg.budget)});
-}
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>el.classList.remove('show'),1500)}
-updateArrows();
+function step(){const c=track.querySelector('.package-card');return c?c.getBoundingClientRect().width+14:300}
+function syncArrows(){prev.disabled=track.scrollLeft<4;next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4}
+prev.onclick=()=>track.scrollBy({left:-step(),behavior:'smooth'});next.onclick=()=>track.scrollBy({left:step(),behavior:'smooth'});track.addEventListener('scroll',syncArrows,{passive:true});
+track.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();track.scrollLeft+=e.deltaY}},{passive:false});
+let down=false,x=0,s=0;track.addEventListener('pointerdown',e=>{down=true;x=e.clientX;s=track.scrollLeft;track.classList.add('dragging');track.setPointerCapture(e.pointerId)});track.addEventListener('pointermove',e=>{if(down)track.scrollLeft=s-(e.clientX-x)});['pointerup','pointercancel'].forEach(ev=>track.addEventListener(ev,()=>{down=false;track.classList.remove('dragging')}));
+syncArrows();
 </script>
 <script src="star-release-shell.js"></script>
-</body>
-</html>
+</body></html>
