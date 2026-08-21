@@ -1,19 +1,17 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Package｜星球发行 · 音乐推广 Admin</title>
-<link rel="stylesheet" href="../assets/css/admin-common.css">
-</head>
-<body data-admin-page="packages" data-page-title="Package">
-<div id="admin-shell"></div>
-<template id="page-content">
-  <div class="page-header">
-    <div><h1>Package</h1><p>音乐推广 Package 管理。</p></div>
-  </div>
-  <section class="placeholder-card"><div><strong>Package 页面待设计</strong><span>当前仅建立公共后台结构与页面入口。</span></div></section>
-</template>
-<script src="../assets/js/admin-shell.js"></script>
-</body>
-</html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>推广套餐｜星球发行 · 音乐推广 Admin</title><link rel="stylesheet" href="../assets/css/admin-common.css"><link rel="stylesheet" href="../assets/css/packages.css"></head>
+<body data-admin-page="packages" data-page-title="推广套餐"><div id="admin-shell"></div><template id="page-content">
+<div class="page-header"><div><h1>推广套餐</h1><p>将已有推广产品组合成面向用户售卖的官方套餐。</p></div><a class="pk-btn pk-btn-primary" href="package-form.html">＋ 新增套餐</a></div>
+<div class="pk-toolbar"><div class="pk-filters"><input class="pk-input" id="searchInput" placeholder="搜索套餐名称"><select class="pk-select" id="statusFilter"><option value="">全部状态</option><option>上架</option><option>下架</option></select><select class="pk-select" id="typeFilter"><option value="">全部结构</option><option value="fixed">仅固定项</option><option value="choice">包含选择组</option></select></div><span class="pk-muted" id="toolbarCount"></span></div>
+<section class="pk-card"><table class="pk-table"><thead><tr><th>套餐名称</th><th>套餐价格</th><th>套餐内容</th><th>前台亮点</th><th>当前版本</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead><tbody id="rows"></tbody></table><div class="pk-pagination"><span id="resultCount"></span><span>1 / 1</span></div></section>
+</template><script src="../assets/js/admin-shell.js"></script><script>
+const packages=[
+{id:'popular-1',name:'人气飙升包（一）',desc:'作品质量过关、想短期冲播放量榜单的音乐人。',price:799,items:3,choice:2,highlights:['10,000+ 播放','1 张官方歌单','内容传播'],version:'V1',status:'上架',updated:'今天 11:38'},
+{id:'popular-2',name:'人气飙升包（二）',desc:'更高播放量配合歌单和互动资源，适合加强冲量。',price:2199,items:3,choice:2,highlights:['24,000+ 播放','1 张官方歌单','内容 / 收藏'],version:'V1',status:'上架',updated:'今天 11:32'},
+{id:'allround-1',name:'全能打歌包（一）',desc:'歌单、资源位置扶持和真实内容传播的完整打歌组合。',price:2899,items:4,choice:1,highlights:['24,000+ 播放','5 个资源位','15 个账号'],version:'V2',status:'上架',updated:'昨天 18:20'},
+{id:'allround-2',name:'全能打歌包（二）',desc:'更高强度的播放与内容传播组合，适合重点作品破圈。',price:6600,items:5,choice:3,highlights:['40,000+ 播放','5 个资源位','内容 + 收藏'],version:'V3',status:'上架',updated:'昨天 17:42'},
+{id:'chart-addon',name:'冲榜选配包',desc:'集中冲击歌单矩阵与平台榜单。',price:8600,items:3,choice:1,highlights:['网易 18万/月','QQ 28万/月','酷狗冲榜'],version:'V1',status:'上架',updated:'08-20 15:06'}
+];
+const search=document.getElementById('searchInput'),status=document.getElementById('statusFilter'),type=document.getElementById('typeFilter');
+function render(){const q=search.value.trim().toLowerCase();const list=packages.filter(x=>(!q||(x.name+x.desc).toLowerCase().includes(q))&&(!status.value||x.status===status.value)&&(!type.value||(type.value==='choice'?x.choice>0:x.choice===0)));document.getElementById('rows').innerHTML=list.map(x=>`<tr><td><div class="pk-name">${x.name}</div><span class="pk-desc">${x.desc}</span></td><td class="pk-price">¥${x.price.toLocaleString('zh-CN')}</td><td>${x.items} 个项目${x.choice?` · ${x.choice} 个选择组`:''}</td><td>${x.highlights.map(h=>`<span class="pk-tag blue">${h}</span>`).join('')}</td><td><span class="pk-version">${x.version}</span></td><td><div class="pk-status"><button class="pk-switch${x.status==='下架'?' off':''}" data-toggle="${x.id}"></button><span>${x.status}</span></div></td><td class="pk-muted">${x.updated}</td><td><a class="pk-link" href="package-detail.html?id=${x.id}">查看</a><a class="pk-link" href="package-form.html?mode=edit&id=${x.id}">编辑</a><a class="pk-link" href="package-form.html?mode=copy&id=${x.id}">复制</a></td></tr>`).join('');document.getElementById('resultCount').textContent=`共 ${list.length} 个套餐`;document.getElementById('toolbarCount').textContent=`当前上架 ${packages.filter(x=>x.status==='上架').length} 个`;document.querySelectorAll('[data-toggle]').forEach(btn=>btn.onclick=()=>{const x=packages.find(i=>i.id===btn.dataset.toggle);x.status=x.status==='上架'?'下架':'上架';render()})}
+[search,status,type].forEach(x=>x.addEventListener(x===search?'input':'change',render));render();
+</script></body></html>

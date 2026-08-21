@@ -9,12 +9,14 @@
     home:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
     categories:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
     products:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5 12 4l7 3.5-7 3.5-7-3.5Zm0 0V16l7 4 7-4V7.5M12 11v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+    packages:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6.5h14v12H5v-12Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4h8v5H8V4Zm-3 7h14M9 14h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
     orders:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12a1 1 0 0 1 1 1v15l-3-2-4 2-4-2-3 2V5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 13h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'
   };
   const items=[
     {id:'home',label:'首页',href:root+'/index.html'},
     {id:'categories',label:'产品类目',href:root+'/pages/product-categories.html'},
     {id:'products',label:'产品列表',href:root+'/pages/products.html'},
+    {id:'packages',label:'推广套餐',href:root+'/pages/packages.html'},
     {id:'orders',label:'订单管理',href:root+'/pages/orders.html'}
   ];
   const shell=document.getElementById('admin-shell');
@@ -22,14 +24,9 @@
   shell.innerHTML=`
     <div class="admin-app">
       <aside class="admin-sidebar">
-        <a class="admin-brand" href="${root}/index.html" aria-label="星球发行首页">
-          <img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行" />
-        </a>
+        <a class="admin-brand" href="${root}/index.html" aria-label="星球发行首页"><img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行" /></a>
         <button class="admin-collapse" type="button" aria-label="收起菜单">‹</button>
-        <nav class="admin-nav">
-          <div class="admin-nav-label">音乐推广</div>
-          ${items.map(i=>`<a class="admin-nav-item${i.id===page?' active':''}" href="${i.href}"><span class="admin-nav-icon">${icons[i.id]}</span><span>${i.label}</span></a>`).join('')}
-        </nav>
+        <nav class="admin-nav"><div class="admin-nav-label">音乐推广</div>${items.map(i=>`<a class="admin-nav-item${i.id===page?' active':''}" href="${i.href}"><span class="admin-nav-icon">${icons[i.id]}</span><span>${i.label}</span></a>`).join('')}</nav>
       </aside>
       <header class="admin-topbar">
         <div class="admin-page-title"><div class="admin-breadcrumb"><span>音乐推广</span><i>›</i><strong>${title}</strong></div></div>
