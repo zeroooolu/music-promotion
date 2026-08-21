@@ -18,16 +18,16 @@ window.PRODUCT_CATEGORIES = [
       zhTW: '播放推廣'
     },
     descriptions: {
-      zhCN: '面向网易云音乐、QQ音乐、酷狗、酷我等平台的歌曲播放量推广服务。',
-      en: 'Promotion services for increasing song plays on NetEase Cloud Music, QQ Music, Kugou, Kuwo and other platforms.',
-      ja: 'NetEase Cloud Music、QQ Music、Kugou、Kuwo などで楽曲再生数を伸ばすプロモーションサービス。',
-      zhTW: '面向網易雲音樂、QQ音樂、酷狗、酷我等平台的歌曲播放量推廣服務。'
+      zhCN: '面向网易云音乐、QQ音乐、酷狗、酷我等平台的歌曲播放量与互动推广服务。',
+      en: 'Promotion services for increasing song plays and engagement on NetEase Cloud Music, QQ Music, Kugou, Kuwo and other platforms.',
+      ja: 'NetEase Cloud Music、QQ Music、Kugou、Kuwo などで楽曲再生数やエンゲージメントを伸ばすプロモーションサービス。',
+      zhTW: '面向網易雲音樂、QQ音樂、酷狗、酷我等平台的歌曲播放量與互動推廣服務。'
     },
-    products: 2,
-    plans: 24,
+    products: 3,
+    plans: 25,
     sort: 10,
     status: 'on',
-    updated: '2026-08-19 17:14'
+    updated: '2026-08-21 12:30'
   },
   {
     id: 'playlist',
@@ -44,11 +44,11 @@ window.PRODUCT_CATEGORIES = [
       ja: '音楽プラットフォームのプレイリスト、プレイリストネットワーク、関連リソースを活用したプロモーションサービス。',
       zhTW: '音樂平台歌單、歌單矩陣及相關歌單資源推廣服務。'
     },
-    products: 3,
-    plans: 12,
+    products: 2,
+    plans: 7,
     sort: 20,
     status: 'on',
-    updated: '2026-08-19 17:14'
+    updated: '2026-08-21 12:30'
   },
   {
     id: 'content',
@@ -60,16 +60,37 @@ window.PRODUCT_CATEGORIES = [
       zhTW: '內容推廣'
     },
     descriptions: {
-      zhCN: '面向抖音、小红书等内容平台的音乐内容传播与推广服务。',
-      en: 'Music content distribution and promotion services for Douyin, Xiaohongshu and other content platforms.',
-      ja: 'Douyin、RED（小紅書）などのコンテンツプラットフォーム向け音楽コンテンツ拡散・プロモーションサービス。',
-      zhTW: '面向抖音、小紅書等內容平台的音樂內容傳播與推廣服務。'
+      zhCN: '面向抖音、小红书等内容平台的音乐内容传播与达人推广服务。',
+      en: 'Music content distribution and creator promotion services for Douyin, Xiaohongshu and other content platforms.',
+      ja: 'Douyin、RED（小紅書）などのコンテンツプラットフォーム向け音楽コンテンツ拡散・クリエイタープロモーションサービス。',
+      zhTW: '面向抖音、小紅書等內容平台的音樂內容傳播與達人推廣服務。'
     },
     products: 2,
     plans: 13,
     sort: 30,
     status: 'on',
-    updated: '2026-08-19 17:14'
+    updated: '2026-08-21 12:30'
+  },
+  {
+    id: 'overseas',
+    goalId: 'global',
+    names: {
+      zhCN: '海外推广',
+      en: 'Global Promotion',
+      ja: '海外プロモーション',
+      zhTW: '海外推廣'
+    },
+    descriptions: {
+      zhCN: '面向 Spotify、YouTube 等海外平台的广告投放与听众增长服务。',
+      en: 'Advertising and audience-growth services for Spotify, YouTube and other global platforms.',
+      ja: 'Spotify、YouTube など海外プラットフォーム向けの広告配信・オーディエンス成長サービス。',
+      zhTW: '面向 Spotify、YouTube 等海外平台的廣告投放與聽眾增長服務。'
+    },
+    products: 2,
+    plans: 2,
+    sort: 40,
+    status: 'on',
+    updated: '2026-08-21 12:30'
   },
   {
     id: 'platform-resource',
@@ -87,10 +108,10 @@ window.PRODUCT_CATEGORIES = [
       zhTW: '平台推薦位申請、打榜及其他需要人工溝通確認的平台資源服務。'
     },
     products: 2,
-    plans: 10,
-    sort: 40,
+    plans: 4,
+    sort: 50,
     status: 'on',
-    updated: '2026-08-19 17:14'
+    updated: '2026-08-21 12:30'
   },
   {
     id: 'scene-service',
@@ -109,9 +130,9 @@ window.PRODUCT_CATEGORIES = [
     },
     products: 1,
     plans: 1,
-    sort: 50,
-    status: 'off',
-    updated: '2026-08-19 17:14'
+    sort: 60,
+    status: 'on',
+    updated: '2026-08-21 12:30'
   }
 ];
 
