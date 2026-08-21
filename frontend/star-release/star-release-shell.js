@@ -45,6 +45,14 @@
     }
   }
 
+  if(file==='promotion-method.html'){
+    const expertLink=document.getElementById('expertLink');
+    if(expertLink){
+      const p=new URLSearchParams(location.search);
+      expertLink.href='promotion-expert.html'+(p.toString()?'?'+p.toString():'');
+    }
+  }
+
   if(file==='order-confirm.html' && new URLSearchParams(location.search).get('mode')==='package'){
     const script=document.createElement('script');
     script.src='package-order-view.js';
