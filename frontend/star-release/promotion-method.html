@@ -7,24 +7,12 @@
 <link rel="stylesheet" href="star-release-shell.css">
 <style>
 :root{--brand:#2448ff;--brand-hover:#1839e8;--brand-soft:#e9edff;--page:#f4f6f9;--surface:#fff;--text:#30343a;--strong:#20232a;--muted:#747b86;--tertiary:#9aa0aa;--border:#e5e8ee;--border2:#d9dde5;--sidebar:244px;--topbar:88px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
-*{box-sizing:border-box}html,body{margin:0;min-width:1100px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
-.workspace{min-height:100vh;margin-left:var(--sidebar);padding-top:var(--topbar)}.page{max-width:1500px;margin:0 auto;padding:0 22px 40px}
-.breadcrumb{height:42px;display:flex;align-items:center;color:#8e95a0;font-size:12px}.breadcrumb a:hover{color:var(--brand)}
-.song-card{display:flex;align-items:center;gap:15px;min-height:94px;padding:16px 20px;background:#fff;border:1px solid var(--border2);border-radius:4px}
-.cover{width:60px;height:60px;border-radius:4px;background:linear-gradient(145deg,#586cf7,#9b78df);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:650;flex:none}
-.song-copy{min-width:0;flex:1}.song-kicker{color:#999fa9;font-size:11px;margin-bottom:5px}.song-name{font-size:17px;color:var(--strong);font-weight:600}.song-meta{margin-top:5px;color:#858c97;font-size:12px}.change-song{height:32px;padding:0 11px;border:0;background:transparent;color:var(--brand)}
-.page-title{margin:25px 0 6px;color:var(--strong);font-size:24px;line-height:34px;font-weight:650}.page-desc{margin:0 0 24px;color:#777f8b;line-height:22px}
-.section{background:#fff;border:1px solid var(--border2);border-radius:4px;overflow:hidden}.section-head{min-height:76px;padding:18px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
-.section-title{margin:0;color:var(--strong);font-size:18px;font-weight:600}.section-sub{margin-top:6px;color:#8d949f;font-size:12px;line-height:19px}
-.head-actions{display:flex;align-items:center;gap:10px;flex:none}.all-link{color:var(--brand);font-size:13px;padding:8px 3px}.all-link:hover{text-decoration:underline}
-.arrow{width:34px;height:34px;border:1px solid #dbe0e8;border-radius:4px;background:#fff;color:#606774;display:grid;place-items:center}.arrow:hover{border-color:#bfc9ff;color:var(--brand);background:#f8faff}.arrow:disabled{opacity:.38;cursor:not-allowed}
-.slider-shell{position:relative;padding:0 20px 22px;overflow:hidden}.package-track{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;padding:2px 0 8px;scrollbar-width:none;cursor:grab}.package-track::-webkit-scrollbar{display:none}.package-track.dragging{cursor:grabbing;scroll-behavior:auto;user-select:none}
-.package-card{position:relative;flex:0 0 29.35%;min-width:252px;height:252px;padding:19px 18px 16px;border:1px solid #dfe3ea;border-radius:4px;background:#fff;scroll-snap-align:start;transition:.16s}.package-card:hover{border-color:#bcc8ff;box-shadow:0 6px 20px rgba(36,72,255,.07);transform:translateY(-1px)}.package-card.recommended{border-color:#9eafff;background:linear-gradient(180deg,#fbfcff 0%,#fff 50%)}
-.badge{position:absolute;left:15px;top:-10px;height:21px;padding:0 8px;border-radius:3px;background:var(--brand);color:#fff;font-size:10px;display:flex;align-items:center}
-.package-name{margin-top:4px;color:var(--strong);font-size:16px;font-weight:600}.package-desc{height:43px;margin-top:8px;color:#7c838f;font-size:12px;line-height:20px;overflow:hidden}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px;min-height:48px;align-content:flex-start}.tag{height:23px;padding:0 7px;display:flex;align-items:center;border-radius:3px;background:#f3f5f9;color:#646c78;font-size:10px}.effect{margin-top:8px;color:#8c939e;font-size:11px}.effect strong{color:#4d5563;font-weight:600}
-.package-foot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}.price-label{color:#9aa0aa;font-size:10px}.price{margin-top:2px;color:var(--strong);font-size:20px;font-weight:650}.choose{height:32px;padding:0 12px;border:1px solid var(--brand);border-radius:4px;background:#fff;color:var(--brand);font-size:12px}.choose:hover{background:var(--brand);color:#fff}.scroll-hint{display:flex;align-items:center;gap:7px;margin-top:5px;color:#a0a6af;font-size:10px}.scroll-hint:before{content:"";width:26px;height:2px;border-radius:3px;background:#c7d0ff;box-shadow:9px 0 0 #edf0f8}
-.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.option-card{min-height:154px;padding:22px;background:#fff;border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;gap:18px;transition:.15s}.option-card:hover{border-color:#bcc8ff;background:#fdfdff}.option-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#f0f3ff;color:var(--brand);font-size:20px;flex:none}.option-main{flex:1}.option-title{color:var(--strong);font-size:16px;font-weight:600}.option-desc{max-width:540px;margin-top:7px;color:#858c97;font-size:12px;line-height:20px}.option-action{display:inline-flex;align-items:center;gap:5px;margin-top:13px;color:var(--brand);font-size:13px;font-weight:500}.expert .option-icon{background:#f5f2ff;color:#7359d8}.expert .option-action{color:#654bd1}
-.note{margin:18px 2px 0;color:#a0a6af;font-size:10px}@media(max-width:1260px){.package-card{flex-basis:31.5%}}@media(max-width:1180px){:root{--sidebar:224px}.package-card{flex-basis:34%}}
+*{box-sizing:border-box}html,body{margin:0;min-width:1100px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}.workspace{min-height:100vh;margin-left:var(--sidebar);padding-top:var(--topbar)}.page{max-width:1500px;margin:0 auto;padding:0 22px 40px}.breadcrumb{height:42px;display:flex;align-items:center;color:#8e95a0;font-size:12px}.breadcrumb a:hover{color:var(--brand)}
+.song-card{display:flex;align-items:center;gap:15px;min-height:94px;padding:16px 20px;background:#fff;border:1px solid var(--border2);border-radius:4px}.cover{width:60px;height:60px;border-radius:4px;background:linear-gradient(145deg,#586cf7,#9b78df);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:650;flex:none}.song-copy{min-width:0;flex:1}.song-kicker{color:#999fa9;font-size:11px;margin-bottom:5px}.song-name{font-size:17px;color:var(--strong);font-weight:600}.song-meta{margin-top:5px;color:#858c97;font-size:12px}.change-song{height:32px;padding:0 11px;border:0;background:transparent;color:var(--brand)}
+.page-title{margin:25px 0 6px;color:var(--strong);font-size:24px;line-height:34px;font-weight:650}.page-desc{margin:0 0 24px;color:#777f8b;line-height:22px}.section{background:#fff;border:1px solid var(--border2);border-radius:4px;overflow:hidden}.section+.section{margin-top:16px}.section-head{min-height:76px;padding:18px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.section-title{margin:0;color:var(--strong);font-size:18px;font-weight:600}.section-sub{margin-top:6px;color:#8d949f;font-size:12px;line-height:19px}.head-actions{display:flex;align-items:center;gap:10px;flex:none}.all-link{color:var(--brand);font-size:13px;padding:8px 3px}.all-link:hover{text-decoration:underline}
+.arrow{width:34px;height:34px;border:1px solid #dbe0e8;border-radius:4px;background:#fff;color:#606774;display:grid;place-items:center}.arrow:hover{border-color:#bfc9ff;color:var(--brand);background:#f8faff}.arrow:disabled{opacity:.38;cursor:not-allowed}.slider-shell{position:relative;padding:0 20px 22px;overflow:hidden}.package-track{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;padding:2px 0 8px;scrollbar-width:none;cursor:grab}.package-track::-webkit-scrollbar{display:none}.package-track.dragging{cursor:grabbing;scroll-behavior:auto;user-select:none}.package-card{position:relative;flex:0 0 29.35%;min-width:252px;height:252px;padding:19px 18px 16px;border:1px solid #dfe3ea;border-radius:4px;background:#fff;scroll-snap-align:start;transition:.16s}.package-card:hover{border-color:#bcc8ff;box-shadow:0 6px 20px rgba(36,72,255,.07);transform:translateY(-1px)}.package-card.recommended{border-color:#9eafff;background:linear-gradient(180deg,#fbfcff 0%,#fff 50%)}.badge{position:absolute;left:15px;top:-10px;height:21px;padding:0 8px;border-radius:3px;background:var(--brand);color:#fff;font-size:10px;display:flex;align-items:center}.package-name{margin-top:4px;color:var(--strong);font-size:16px;font-weight:600}.package-desc{height:43px;margin-top:8px;color:#7c838f;font-size:12px;line-height:20px;overflow:hidden}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px;min-height:48px;align-content:flex-start}.tag{height:23px;padding:0 7px;display:flex;align-items:center;border-radius:3px;background:#f3f5f9;color:#646c78;font-size:10px}.effect{margin-top:8px;color:#8c939e;font-size:11px}.effect strong{color:#4d5563;font-weight:600}.package-foot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}.price-label{color:#9aa0aa;font-size:10px}.price{margin-top:2px;color:var(--strong);font-size:20px;font-weight:650}.choose{height:32px;padding:0 12px;border:1px solid var(--brand);border-radius:4px;background:#fff;color:var(--brand);font-size:12px}.choose:hover{background:var(--brand);color:#fff}.scroll-hint{display:flex;align-items:center;gap:7px;margin-top:5px;color:#a0a6af;font-size:10px}.scroll-hint:before{content:"";width:26px;height:2px;border-radius:3px;background:#c7d0ff;box-shadow:9px 0 0 #edf0f8}
+.custom-head-right{height:28px;display:inline-flex;align-items:center;padding:0 10px;border-radius:3px;background:#eef2ff;color:var(--brand);font-size:12px;white-space:nowrap}.goal-wrap{padding:0 20px 20px}.goal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.goal{position:relative;min-height:116px;padding:15px 40px 14px 15px;border:1px solid #e1e5ec;border-radius:4px;background:#fff;cursor:pointer;transition:.15s}.goal:hover{border-color:#bdc9ff;background:#fbfcff}.goal.selected{border-color:var(--brand);background:#f7f9ff}.goal-check{position:absolute;right:13px;top:13px;width:20px;height:20px;border:1px solid #d5dae3;border-radius:4px;background:#fff;display:grid;place-items:center;color:transparent;font-size:11px}.goal.selected .goal-check{border-color:var(--brand);background:var(--brand);color:#fff}.goal-top{display:flex;align-items:center;gap:9px}.goal-icon{width:34px;height:34px;border-radius:4px;background:#f2f4f8;display:grid;place-items:center;font-size:16px;flex:none}.goal.selected .goal-icon{background:#e8edff}.goal h3{margin:0;color:var(--strong);font-size:14px;font-weight:600}.goal p{margin:9px 0 0;color:#7b828e;line-height:18px;font-size:11px}.custom-footer{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:14px;padding-top:14px;border-top:1px solid #edf0f4}.selection-state{font-size:12px;color:#8d939d}.selection-state strong{color:var(--brand);font-weight:500}.custom-actions{display:flex;align-items:center;gap:16px}.expert-link{color:#8b91a0;font-size:12px}.expert-link:hover{color:var(--brand);text-decoration:underline}.continue-btn{height:38px;padding:0 18px;border:1px solid var(--brand);border-radius:4px;background:var(--brand);color:#fff}.continue-btn:hover:not(:disabled){background:var(--brand-hover);border-color:var(--brand-hover)}.continue-btn:disabled{cursor:not-allowed;background:#bcc7ff;border-color:#bcc7ff}.note{margin:18px 2px 0;color:#a0a6af;font-size:10px}
+@media(max-width:1260px){.package-card{flex-basis:31.5%}.goal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:1180px){:root{--sidebar:224px}.package-card{flex-basis:34%}}
 </style>
 </head>
 <body>
@@ -32,7 +20,8 @@
 <main class="workspace"><div class="page">
 <div class="breadcrumb"><a href="index.html">音乐推广</a><span>&nbsp;/&nbsp; 选择推广方式</span></div>
 <section class="song-card"><div class="cover" id="songCover">夜</div><div class="song-copy"><div class="song-kicker">本次推广歌曲</div><div class="song-name" id="songName"></div><div class="song-meta" id="songMeta"></div></div><button class="change-song" onclick="location.href='index.html'">更换歌曲</button></section>
-<h1 class="page-title">选择适合这首歌的推广方式</h1><p class="page-desc">可以直接选择官方组合好的推广套餐，也可以按目标自己组合，或由推广专家为你定制方案。</p>
+<h1 class="page-title">选择适合这首歌的推广方式</h1><p class="page-desc">可以直接选择官方组合好的推广套餐，也可以按推广目标自己组合推广方式。</p>
+
 <section class="section">
 <div class="section-head"><div><h2 class="section-title">官方推广套餐</h2><div class="section-sub">按照常见宣发需求组合好的固定套餐，选择后直接确认套餐内容并下单。</div></div><div class="head-actions"><button class="arrow" id="prevBtn">←</button><button class="arrow" id="nextBtn">→</button><a class="all-link" id="allPackagesLink" href="#">查看全部套餐 →</a></div></div>
 <div class="slider-shell"><div class="package-track" id="track">
@@ -43,10 +32,21 @@
 <article class="package-card"><div class="package-name">冲榜选配包</div><div class="package-desc">面向已有打歌需求、希望集中冲击歌单与平台榜单的歌曲。</div><div class="tags"><span class="tag">网易歌单矩阵</span><span class="tag">QQ音乐歌单矩阵</span><span class="tag">酷狗冲榜</span></div><div class="effect">适合：<strong>破圈冲榜</strong></div><div class="package-foot"><div><div class="price-label">套餐价</div><div class="price">¥8,600</div></div><button class="choose" onclick="choosePackage('chart-addon')">选择套餐</button></div></article>
 </div><div class="scroll-hint">左右滑动查看更多官方套餐</div></div>
 </section>
-<div class="option-grid">
-<a class="option-card" id="customLink" href="#"><div class="option-icon">☷</div><div class="option-main"><div class="option-title">想自己组合推广方式？</div><div class="option-desc">根据推广目标，自由选择平台、推广产品和预算，组合自己的推广方案。</div><div class="option-action">自定义推广组合 →</div></div></a>
-<a class="option-card expert" id="expertLink" href="#"><div class="option-icon">✦</div><div class="option-main"><div class="option-title">不确定怎么推广？</div><div class="option-desc">由音乐推广专家结合歌曲、目标和预算，为你定制推广方案。</div><div class="option-action">获取专家定制方案 →</div></div></a>
+
+<section class="section" id="customSection">
+<div class="section-head"><div><h2 class="section-title">按推广目标自己组合</h2><div class="section-sub">选择一个或多个目标，下一步直接进入对应的推广产品和预算组合。</div></div><span class="custom-head-right" id="selectionBadge">可多选</span></div>
+<div class="goal-wrap">
+<div class="goal-grid">
+<article class="goal" data-goal="plays"><span class="goal-check">✓</span><div class="goal-top"><div class="goal-icon">🎧</div><h3>增加歌曲播放</h3></div><p>适合新歌起量，或让已有歌曲继续扩大播放和平台曝光。</p></article>
+<article class="goal" data-goal="playlist"><span class="goal-check">✓</span><div class="goal-top"><div class="goal-icon">♫</div><h3>进入更多歌单</h3></div><p>通过歌单推广获得持续曝光，让歌曲进入更多真实收听场景。</p></article>
+<article class="goal" data-goal="social"><span class="goal-check">✓</span><div class="goal-top"><div class="goal-icon">📱</div><h3>做短视频 / 内容传播</h3></div><p>让歌曲进入抖音、小红书等内容场景，获得达人和 UGC 传播。</p></article>
+<article class="goal" data-goal="global"><span class="goal-check">✓</span><div class="goal-top"><div class="goal-icon">🌍</div><h3>推广到海外</h3></div><p>通过 Spotify、YouTube 等推广能力触达更多真实海外听众。</p></article>
+<article class="goal" data-goal="chart"><span class="goal-check">✓</span><div class="goal-top"><div class="goal-icon">🏆</div><h3>提升热度 / 冲榜</h3></div><p>适合已有一定数据基础的重点歌曲，组合播放、歌单和平台资源推进。</p></article>
+<article class="goal" data-goal="ktv"><span class="goal-check">✓</span><div class="goal-top"><div class="goal-icon">🎤</div><h3>上架到 KTV</h3></div><p>将歌曲制作并上架至合作 KTV 曲库，增加线下点唱和长期曝光机会。</p></article>
 </div>
+<div class="custom-footer"><div class="selection-state" id="selectionState">请选择至少一个推广目标。</div><div class="custom-actions"><a class="expert-link" id="expertLink" href="#">不确定怎么选？让推广专家帮你制定方案 →</a><button class="continue-btn" id="continueBtn" disabled>下一步：自定义推广组合</button></div></div>
+</div>
+</section>
 <div class="note">套餐价格与内容以当前页面展示为准，实际执行结果以订单确认信息为准。</div>
 </div></main>
 <script>
@@ -55,9 +55,31 @@ const song={id:params.get('id')||'',title:params.get('title')||'晚风来信',ar
 document.getElementById('songCover').textContent=song.cover;document.getElementById('songName').textContent=song.title;document.getElementById('songMeta').textContent=[song.artist,song.album].filter(Boolean).join(' · ');
 const query=(extra={})=>new URLSearchParams({...song,...extra}).toString();
 document.getElementById('allPackagesLink').href='official-packages.html?'+query();
-document.getElementById('customLink').href='promotion-step2.html?'+query({mode:'custom'});
-document.getElementById('expertLink').href='../promotion-expert.html?'+query({source:'star-release'});
+document.getElementById('expertLink').href='promotion-expert.html?'+query();
 function choosePackage(id){location.href='order-confirm.html?'+query({mode:'package',package:id})}
+
+const goals=new Set();
+const continueBtn=document.getElementById('continueBtn'),selectionBadge=document.getElementById('selectionBadge'),selectionState=document.getElementById('selectionState');
+function syncGoals(){
+  const n=goals.size,onlyKtv=n===1&&goals.has('ktv');
+  continueBtn.disabled=n===0;
+  continueBtn.textContent=onlyKtv?'下一步：确认订单':'下一步：自定义推广组合';
+  selectionBadge.textContent=n?`已选 ${n} 项`:'可多选';
+  selectionState.innerHTML=n?`已选择 <strong>${n}</strong> 个推广目标，可继续添加或取消。`:'请选择至少一个推广目标。';
+}
+document.querySelectorAll('.goal').forEach(el=>el.addEventListener('click',()=>{
+  const v=el.dataset.goal;
+  if(goals.has(v)){goals.delete(v);el.classList.remove('selected')}else{goals.add(v);el.classList.add('selected')}
+  syncGoals();
+}));
+continueBtn.onclick=()=>{
+  if(!goals.size)return;
+  const selected=[...goals],p=new URLSearchParams(song);p.set('goals',selected.join(','));p.set('goal',selected[0]);
+  if(selected.length===1&&selected[0]==='ktv'){p.set('mode','ktv');location.href='order-confirm.html?'+p.toString();return}
+  location.href='custom-combination.html?'+p.toString();
+};
+syncGoals();
+
 const track=document.getElementById('track'),prev=document.getElementById('prevBtn'),next=document.getElementById('nextBtn');
 function step(){const c=track.querySelector('.package-card');return c?c.getBoundingClientRect().width+14:300}
 function syncArrows(){prev.disabled=track.scrollLeft<4;next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4}
