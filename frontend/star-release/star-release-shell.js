@@ -16,4 +16,32 @@
   sidebar.setAttribute('aria-label','星球发行主导航');
   sidebar.innerHTML=`<div class="brand"><div class="brand-logo"><img src="https://star.kanjian.com/app/release/images/star-logo.png" alt="星球发行"></div></div><nav class="nav">${nav.map(([id,href,icon,label])=>`<a class="nav-item${id===active?' active':''}" href="${href}"${id===active?' aria-current="page"':''}><svg class="nav-icon" viewBox="0 0 24 24">${icon}</svg><span class="nav-label">${label}</span></a>`).join('')}</nav>`;
   topbar.innerHTML=`<div class="topbar-actions"><a class="topbar-action" href="#"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9.8 9.2a2.4 2.4 0 1 1 4.6 1c-.35.8-1.1 1.2-1.7 1.7-.5.4-.7.9-.7 1.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="17.1" r="1" fill="currentColor"/></svg><span>帮助中心</span></a><a class="topbar-action" href="#"><span>简体中文</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a><a class="topbar-action" href="#"><span>环环</span><svg class="caret" viewBox="0 0 12 12"><path d="m2 4 4 4 4-4H2Z" fill="currentColor"/></svg></a></div>`;
+
+  if(file==='index.html' && typeof openStep2==='function'){
+    openStep2=function(song){
+      const p=new URLSearchParams({id:String(song.id||''),title:song.name||song.title||'',artist:song.artist||'',album:song.album||'',cover:song.cover||'♪'});
+      location.href='promotion-method.html?'+p.toString();
+    };
+  }
+
+  if(file==='promotion-step2.html'){
+    const thirdLabel=document.querySelector('.progress-step:last-child span:last-child');
+    if(thirdLabel)thirdLabel.textContent='自定义推广组合';
+    const next=document.getElementById('nextBtn');
+    const normalizeNextLabel=()=>{
+      if(next && !next.disabled)next.textContent='下一步：自定义推广组合';
+    };
+    document.querySelectorAll('.goal').forEach(el=>el.addEventListener('click',()=>setTimeout(normalizeNextLabel,0)));
+    normalizeNextLabel();
+    if(next && typeof goals!=='undefined' && typeof song!=='undefined'){
+      next.onclick=()=>{
+        if(!goals.size)return;
+        const selected=[...goals];
+        const p=new URLSearchParams(song);
+        p.set('goals',selected.join(','));
+        p.set('goal',selected[0]);
+        location.href='custom-combination.html?'+p.toString();
+      };
+    }
+  }
 })();
