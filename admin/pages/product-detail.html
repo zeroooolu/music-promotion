@@ -13,10 +13,7 @@
 <body data-admin-page="products" data-page-title="产品详情">
 <div id="admin-shell"></div>
 <template id="page-content">
-  <div class="pd-object-breadcrumb">
-    <a href="products.html">产品列表</a><span class="arrow"></span><strong id="breadcrumbName">产品详情</strong>
-  </div>
-
+  <div class="pd-object-breadcrumb"><a href="products.html">产品列表</a><span class="arrow"></span><strong id="breadcrumbName">产品详情</strong></div>
   <div class="pd-object-header">
     <div class="pd-object-title">
       <h1 id="title">抖音投放</h1>
@@ -30,64 +27,40 @@
     </div>
     <div class="pd-object-actions"><a class="pd-btn pd-btn-primary" id="editLink" href="product-form.html?mode=edit&id=douyin-promotion">编辑</a></div>
   </div>
-
   <div class="pd-object-tabs" role="tablist">
     <button class="pd-object-tab active" type="button" data-tab="basic">基本信息</button>
     <button class="pd-object-tab" type="button" data-tab="sales">售卖配置</button>
     <button class="pd-object-tab" type="button" data-tab="front">前台展示</button>
   </div>
-
   <div class="pd-tab-panel active" data-panel="basic">
-    <section class="pd-object-card">
-      <div class="pd-object-card-body">
-        <div class="pd-object-info-grid">
-          <div class="pd-object-field"><label>产品名称</label><div class="value" id="name"></div></div>
-          <div class="pd-object-field"><label>所属类目</label><div class="value" id="category"></div></div>
-          <div class="pd-object-field"><label>平台</label><div class="value pd-platform-value"><span class="pd-platform-icon" id="platformLogo"></span><span id="platform"></span></div></div>
-          <div class="pd-object-field"><label>平台来源</label><div class="value" id="platformSource"></div></div>
-          <div class="pd-object-field"><label>主要效果指标</label><div class="value" id="metric"></div></div>
-          <div class="pd-object-field"><label>排序</label><div class="value" id="sort"></div></div>
-          <div class="pd-object-field full"><label>适用推广目标</label><div class="value pd-object-goals" id="goals"></div></div>
-          <div class="pd-object-field"><label>状态</label><div class="value"><span class="pd-status-inline" id="status">上架</span></div></div>
-          <div class="pd-object-field"><label>更新时间</label><div class="value normal" id="updated"></div></div>
-        </div>
-      </div>
-    </section>
+    <section class="pd-object-card"><div class="pd-object-card-body"><div class="pd-object-info-grid">
+      <div class="pd-object-field"><label>产品名称</label><div class="value" id="name"></div></div>
+      <div class="pd-object-field"><label>所属类目</label><div class="value" id="category"></div></div>
+      <div class="pd-object-field"><label>平台</label><div class="value pd-platform-value"><span class="pd-platform-icon" id="platformLogo"></span><span id="platform"></span></div></div>
+      <div class="pd-object-field"><label>平台来源</label><div class="value" id="platformSource"></div></div>
+      <div class="pd-object-field"><label>主要效果指标</label><div class="value" id="metric"></div></div>
+      <div class="pd-object-field"><label>排序</label><div class="value" id="sort"></div></div>
+      <div class="pd-object-field full"><label>适用推广目标</label><div class="value pd-object-goals" id="goals"></div></div>
+      <div class="pd-object-field"><label>状态</label><div class="value"><span class="pd-status-inline" id="status">上架</span></div></div>
+      <div class="pd-object-field"><label>更新时间</label><div class="value normal" id="updated"></div></div>
+    </div></div></section>
   </div>
-
   <div class="pd-tab-panel" data-panel="sales">
     <section class="pd-object-card">
-      <div class="pd-summary-strip">
-        <div class="pd-summary-item"><span>售卖方式</span><strong id="saleMode"></strong></div>
-        <div class="pd-summary-item"><span>主要效果指标</span><strong id="saleMetric"></strong></div>
-        <div class="pd-summary-item"><span>售卖规格</span><strong id="specCount"></strong></div>
-      </div>
+      <div class="pd-summary-strip"><div class="pd-summary-item"><span>售卖方式</span><strong id="saleMode"></strong></div><div class="pd-summary-item"><span>主要效果指标</span><strong id="saleMetric"></strong></div><div class="pd-summary-item"><span>售卖规格</span><strong id="specCount"></strong></div></div>
       <div class="pd-object-card-head"><h2>售卖规格</h2></div>
-      <div class="pd-detail-table-wrap">
-        <table class="pd-detail-table">
-          <thead><tr><th>规格名称</th><th>结果 / 每份包含</th><th>结果类型 / 价格模式</th><th>价格</th></tr></thead>
-          <tbody id="specRows"></tbody>
-        </table>
-      </div>
+      <div class="pd-detail-table-wrap"><table class="pd-detail-table"><thead><tr><th>规格名称</th><th>结果 / 每份包含</th><th>结果类型 / 价格模式</th><th>价格</th></tr></thead><tbody id="specRows"></tbody></table></div>
     </section>
   </div>
-
   <div class="pd-tab-panel" data-panel="front">
     <section class="pd-object-card">
       <div class="pd-object-card-head"><h2>前台展示信息</h2></div>
-      <div class="pd-object-card-body">
-        <div class="pd-object-info-grid">
-          <div class="pd-object-field"><label>前台名称</label><div class="value" id="frontName"></div></div>
-          <div class="pd-object-field"><label>展示平台</label><div class="value" id="frontPlatform"></div></div>
-          <div class="pd-object-field full"><label>一句话说明</label><div class="value normal" id="summary"></div></div>
-          <div class="pd-object-field full"><label>产品说明</label><div class="value normal" id="description"></div></div>
-        </div>
-        <div class="pd-front-preview">
-          <h3 id="previewName"></h3>
-          <p class="summary" id="previewSummary"></p>
-          <p class="description" id="previewDescription"></p>
-        </div>
-      </div>
+      <div class="pd-object-card-body"><div class="pd-object-info-grid">
+        <div class="pd-object-field"><label>前台名称</label><div class="value" id="frontName"></div></div>
+        <div class="pd-object-field"><label>展示平台</label><div class="value" id="frontPlatform"></div></div>
+        <div class="pd-object-field full"><label>一句话说明</label><div class="value normal" id="summary"></div></div>
+        <div class="pd-object-field full"><label>产品说明</label><div class="value normal" id="description"></div></div>
+      </div><div class="pd-front-preview"><h3 id="previewName"></h3><p class="summary" id="previewSummary"></p><p class="description" id="previewDescription"></p></div></div>
     </section>
   </div>
 </template>
@@ -95,21 +68,20 @@
 <script>
 const goalNames={plays:'增加歌曲播放',playlist:'进入更多歌单',social:'短视频 / 内容传播',global:'推广到海外',chart:'提升热度 / 冲榜',ktv:'上架到 KTV'};
 const data={
-  'netease-play':{logo:'云',name:'网易云音乐播放推广',category:'播放推广',platform:'网易云音乐',platformSource:'DSP 平台',goals:['plays'],metric:'播放 · 次',mode:'固定套餐',sort:10,status:'上架',updated:'2026-08-21 12:20',summary:'选择固定档位提升歌曲播放量',description:'按固定推广档位执行网易云音乐播放推广，用户可根据目标播放量选择适合的规格。',specs:[['体验套餐','保底新增播放 1,980 次','保底结果','¥99'],['起量套餐','保底新增播放 4,000 次','保底结果','¥209'],['加强套餐','保底新增播放 10,000 次','保底结果','¥509']]},
-  'tme-play':{logo:'T',name:'TME 播放推广',category:'播放推广',platform:'TME',platformSource:'DSP 平台',goals:['plays'],metric:'播放 · 次',mode:'固定套餐',sort:20,status:'上架',updated:'2026-08-21 12:18',summary:'面向 TME 音乐平台的固定播放推广档位',description:'通过固定套餐购买播放推广，根据所选规格执行对应推广量级。',specs:[['基础档','固定播放推广量','保底结果','¥39 起'],['进阶档','固定播放推广量','保底结果','按规格定价'],['加强档','固定播放推广量','保底结果','最高 ¥2,509']]},
-  'netease-favorites':{logo:'心',name:'网易云音乐红心收藏',category:'播放推广',platform:'网易云音乐',platformSource:'DSP 平台',goals:['plays'],metric:'红心收藏 · 份',mode:'按数量购买',sort:30,status:'上架',updated:'2026-08-21 12:15',summary:'按购买份数执行网易云音乐红心收藏推广',description:'用户选择购买份数后执行对应数量的红心收藏推广服务。',specs:[['红心收藏推广','按购买份数执行','固定单价','¥95 / 份']]},
-  'netease-playlist':{logo:'云',name:'网易云歌单矩阵',category:'歌单推广',platform:'网易云音乐',platformSource:'DSP 平台',goals:['playlist','chart'],metric:'保底播放 · 次',mode:'固定套餐',sort:40,status:'上架',updated:'2026-08-21 12:12',summary:'网易云音乐官方私人歌单打榜服务',description:'按照不同播放目标选择固定档位，用于歌曲歌单推广及热度提升。',specs:[['基础','保底播放 12 万','保底结果','¥6,000'],['进阶','保底播放 25 万','保底结果','¥12,000'],['高级','保底播放 38 万','保底结果','¥18,000']]},
-  'qq-playlist-chart':{logo:'Q',name:'QQ 音乐官方歌单打榜',category:'平台资源',platform:'QQ音乐',platformSource:'DSP 平台',goals:['chart','playlist'],metric:'保底播放 · 次',mode:'固定套餐',sort:50,status:'上架',updated:'2026-08-21 12:10',summary:'QQ 音乐官方私人歌单打榜服务',description:'根据不同保底播放量选择基础、中级或高级打榜档位。',specs:[['基础打榜','保底播放 20 万','保底结果','¥10,000'],['中级打榜','保底播放 30 万','保底结果','¥15,000'],['高级打榜','保底播放 40 万','保底结果','¥20,000']]},
-  'kugou-chart':{logo:'酷',name:'酷狗音乐官方冲榜',category:'平台资源',platform:'酷狗音乐',platformSource:'DSP 平台',goals:['chart','playlist'],metric:'保底播放 · 次',mode:'固定套餐',sort:60,status:'上架',updated:'2026-08-21 12:08',summary:'酷狗音乐官方私人歌单打榜与热度提升',description:'按目标播放量选择固定冲榜档位，用于歌曲热度及榜单表现提升。',specs:[['基础','保底播放 10 万','保底结果','¥6,000'],['进阶','保底播放 20 万','保底结果','¥12,000'],['高级','保底播放 40 万','保底结果','¥24,000']]},
-  'resource-apply':{logo:'资',name:'平台资源位代申请',category:'平台资源',platform:'多平台',platformSource:'自定义平台',goals:['chart'],metric:'资源申请 · 次',mode:'固定套餐',sort:70,status:'上架',updated:'2026-08-21 12:06',summary:'代申请多个音乐平台的编辑与运营资源位',description:'面向支持的平台提供一次性资源位申请服务，由运营团队统一提交和跟进。',specs:[['资源位申请服务','1 次服务','固定服务','¥2,000']]},
-  'douyin-promotion':{logo:'抖',name:'抖音投放',category:'内容推广',platform:'抖音',platformSource:'自定义平台',goals:['social'],metric:'参与账号 / 达人 · 个账号',mode:'按数量购买',sort:80,status:'上架',updated:'2026-08-21 12:04',summary:'7 种账号规格，可组合购买',description:'通过抖音不同类型账号参与音乐内容传播，可按账号规格和购买份数组合下单。',specs:[['素人号','每份 2,000 个账号','固定价','¥3,600 / 份'],['手势舞号','每份 10 个账号','固定价','¥600 / 份'],['对口型号','每份 10 个账号','固定价','¥600 / 份']]},
-  'xiaohongshu-promotion':{logo:'红',name:'小红书投放',category:'内容推广',platform:'小红书',platformSource:'自定义平台',goals:['social'],metric:'参与账号 / 达人 · 个',mode:'按数量购买',sort:90,status:'上架',updated:'2026-08-21 12:02',summary:'6 种达人规格，可组合购买',description:'按达人层级选择小红书投放规格，部分 KOL 规格支持价格区间。',specs:[['素人投放（粉丝 1–5k）','每份 1 位达人','固定价','¥600 / 份'],['KOC 投放（粉丝 1–3w）','每份 1 位达人','固定价','¥1,600 / 份'],['KOL 投放（粉丝 5–10w）','每份 1 条内容','价格区间','¥2,000–¥6,000 / 份']]},
-  'spotify-ads':{logo:'S',name:'Spotify 广告投放',category:'海外推广',platform:'Spotify',platformSource:'DSP 平台',goals:['global','plays'],metric:'播放 · 次',mode:'按预算投放',sort:100,status:'上架',updated:'2026-08-21 12:00',summary:'最低 ¥250 起投，可按预算选择投放金额',description:'按预算执行 Spotify 广告投放，并根据参考预算展示预计效果。',specs:[['预算投放','¥250–¥2,000 · 步长 ¥50','预算自定义','¥250 起']]},
-  'youtube-views':{logo:'YT',name:'YouTube 有效播放推广',category:'海外推广',platform:'YouTube',platformSource:'DSP 平台',goals:['global'],metric:'有效播放 · 次',mode:'按预算投放',sort:110,status:'上架',updated:'2026-08-21 11:58',summary:'按预算推广 YouTube 音乐视频有效播放',description:'根据预算执行 YouTube 广告投放，以有效观看作为主要推广结果指标。',specs:[['预算投放','¥1,000–¥20,000','预算自定义','¥1,000 起']]},
-  'ktv-publish':{logo:'KTV',name:'KTV 制作上架',category:'场景服务',platform:'KTV',platformSource:'自定义平台',goals:['ktv'],metric:'上架歌曲 · 首',mode:'固定套餐',sort:120,status:'上架',updated:'2026-08-21 11:56',summary:'完成 1 首歌曲 KTV 渠道制作与上架',description:'一次性完成歌曲制作和合作 KTV 曲库上架。',specs:[['固定服务','1 首歌曲制作并上架','固定结果','¥2,000']]}
+'netease-play':{logo:'云',name:'网易云音乐播放推广',category:'播放推广',platform:'网易云音乐',platformSource:'DSP 平台',goals:['plays'],metric:'播放 · 次',mode:'固定套餐',sort:10,status:'上架',updated:'2026-08-21 12:20',summary:'选择固定档位提升歌曲播放量',description:'按固定推广档位执行网易云音乐播放推广，用户可根据目标播放量选择适合的规格。',specs:[['体验套餐','保底新增播放 1,980 次','保底结果','¥99'],['起量套餐','保底新增播放 4,000 次','保底结果','¥209'],['加强套餐','保底新增播放 10,000 次','保底结果','¥509']]},
+'tme-play':{logo:'T',name:'TME 播放推广',category:'播放推广',platform:'TME',platformSource:'DSP 平台',goals:['plays'],metric:'播放 · 次',mode:'固定套餐',sort:20,status:'上架',updated:'2026-08-21 12:18',summary:'面向 TME 音乐平台的固定播放推广档位',description:'通过固定套餐购买播放推广，根据所选规格执行对应推广量级。',specs:[['基础档','固定播放推广量','保底结果','¥39 起'],['进阶档','固定播放推广量','保底结果','按规格定价'],['加强档','固定播放推广量','保底结果','最高 ¥2,509']]},
+'netease-favorites':{logo:'心',name:'网易云音乐红心收藏',category:'播放推广',platform:'网易云音乐',platformSource:'DSP 平台',goals:['plays'],metric:'红心收藏 · 份',mode:'按数量购买',sort:30,status:'上架',updated:'2026-08-21 12:15',summary:'按购买份数执行网易云音乐红心收藏推广',description:'用户选择购买份数后执行对应数量的红心收藏推广服务。',specs:[['红心收藏推广','按购买份数执行','固定单价','¥95 / 份']]},
+'netease-playlist':{logo:'云',name:'网易云歌单矩阵',category:'歌单推广',platform:'网易云音乐',platformSource:'DSP 平台',goals:['playlist','chart'],metric:'保底播放 · 次',mode:'固定套餐',sort:40,status:'上架',updated:'2026-08-21 12:12',summary:'网易云音乐官方私人歌单打榜服务',description:'按照不同播放目标选择固定档位，用于歌曲歌单推广及热度提升。',specs:[['基础','保底播放 12 万','保底结果','¥6,000'],['进阶','保底播放 25 万','保底结果','¥12,000'],['高级','保底播放 38 万','保底结果','¥18,000']]},
+'qq-playlist-chart':{logo:'Q',name:'QQ 音乐官方歌单打榜',category:'平台资源',platform:'QQ音乐',platformSource:'DSP 平台',goals:['chart','playlist'],metric:'保底播放 · 次',mode:'固定套餐',sort:50,status:'上架',updated:'2026-08-21 12:10',summary:'QQ 音乐官方私人歌单打榜服务',description:'根据不同保底播放量选择基础、中级或高级打榜档位。',specs:[['基础打榜','保底播放 20 万','保底结果','¥10,000'],['中级打榜','保底播放 30 万','保底结果','¥15,000'],['高级打榜','保底播放 40 万','保底结果','¥20,000']]},
+'kugou-chart':{logo:'酷',name:'酷狗音乐官方冲榜',category:'平台资源',platform:'酷狗音乐',platformSource:'DSP 平台',goals:['chart','playlist'],metric:'保底播放 · 次',mode:'固定套餐',sort:60,status:'上架',updated:'2026-08-21 12:08',summary:'酷狗音乐官方私人歌单打榜与热度提升',description:'按目标播放量选择固定冲榜档位，用于歌曲热度及榜单表现提升。',specs:[['基础','保底播放 10 万','保底结果','¥6,000'],['进阶','保底播放 20 万','保底结果','¥12,000'],['高级','保底播放 40 万','保底结果','¥24,000']]},
+'resource-apply':{logo:'资',name:'平台资源位代申请',category:'平台资源',platform:'多平台',platformSource:'自定义平台',goals:['chart'],metric:'资源申请 · 次',mode:'固定套餐',sort:70,status:'上架',updated:'2026-08-21 12:06',summary:'代申请多个音乐平台的编辑与运营资源位',description:'面向支持的平台提供一次性资源位申请服务，由运营团队统一提交和跟进。',specs:[['资源位申请服务','1 次服务','固定服务','¥2,000']]},
+'douyin-promotion':{logo:'抖',name:'抖音投放',category:'内容推广',platform:'抖音',platformSource:'自定义平台',goals:['social'],metric:'参与账号 / 达人 · 个账号',mode:'按数量购买',sort:80,status:'上架',updated:'2026-08-21 12:04',summary:'7 种账号规格，可组合购买',description:'通过抖音不同类型账号参与音乐内容传播，可按账号规格和购买份数组合下单。',specs:[['素人号','每份 2,000 个账号','固定价','¥3,600 / 份'],['手势舞号','每份 10 个账号','固定价','¥600 / 份'],['对口型号','每份 10 个账号','固定价','¥600 / 份']]},
+'xiaohongshu-promotion':{logo:'红',name:'小红书投放',category:'内容推广',platform:'小红书',platformSource:'自定义平台',goals:['social'],metric:'参与账号 / 达人 · 个',mode:'按数量购买',sort:90,status:'上架',updated:'2026-08-21 12:02',summary:'6 种达人规格，可组合购买',description:'按达人层级选择小红书投放规格，部分 KOL 规格支持价格区间。',specs:[['素人投放（粉丝 1–5k）','每份 1 位达人','固定价','¥600 / 份'],['KOC 投放（粉丝 1–3w）','每份 1 位达人','固定价','¥1,600 / 份'],['KOL 投放（粉丝 5–10w）','每份 1 条内容','价格区间','¥2,000–¥6,000 / 份']]},
+'spotify-ads':{logo:'S',name:'Spotify 广告投放',category:'海外推广',platform:'Spotify',platformSource:'DSP 平台',goals:['global','plays'],metric:'播放 · 次',mode:'按预算投放',sort:100,status:'上架',updated:'2026-08-21 12:00',summary:'最低 ¥250 起投，可按预算选择投放金额',description:'按预算执行 Spotify 广告投放，并根据参考预算展示预计效果。',specs:[['预算投放','¥250–¥2,000 · 步长 ¥50','预算自定义','¥250 起']]},
+'youtube-views':{logo:'YT',name:'YouTube 有效播放推广',category:'海外推广',platform:'YouTube',platformSource:'DSP 平台',goals:['global'],metric:'有效播放 · 次',mode:'按预算投放',sort:110,status:'上架',updated:'2026-08-21 11:58',summary:'按预算推广 YouTube 音乐视频有效播放',description:'根据预算执行 YouTube 广告投放，以有效观看作为主要推广结果指标。',specs:[['预算投放','¥1,000–¥20,000','预算自定义','¥1,000 起']]},
+'ktv-publish':{logo:'KTV',name:'KTV 制作上架',category:'场景服务',platform:'KTV',platformSource:'自定义平台',goals:['ktv'],metric:'上架歌曲 · 首',mode:'固定套餐',sort:120,status:'上架',updated:'2026-08-21 11:56',summary:'完成 1 首歌曲 KTV 渠道制作与上架',description:'一次性完成歌曲制作和合作 KTV 曲库上架。',specs:[['固定服务','1 首歌曲制作并上架','固定结果','¥2,000']]}
 };
-const id=new URLSearchParams(location.search).get('id')||'douyin-promotion';
-const p=data[id]||data['douyin-promotion'];
+const id=new URLSearchParams(location.search).get('id')||'douyin-promotion',p=data[id]||data['douyin-promotion'];
 const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
 set('title',p.name);set('breadcrumbName',p.name);set('metaCategory',p.category);set('metaPlatform',p.platform);set('metaMode',p.mode);set('metaStatus',p.status);set('metaUpdated',p.updated);set('name',p.name);set('category',p.category);set('platformLogo',p.logo);set('platform',p.platform);set('platformSource',p.platformSource);set('metric',p.metric);set('sort',p.sort);set('status',p.status);set('updated',p.updated);set('saleMode',p.mode);set('saleMetric',p.metric);set('specCount',`${p.specs.length} 个规格`);set('frontName',p.name);set('frontPlatform',p.platform);set('summary',p.summary);set('description',p.description);set('previewName',p.name);set('previewSummary',p.summary);set('previewDescription',p.description);
 document.getElementById('editLink').href=`product-form.html?mode=edit&id=${id}`;
