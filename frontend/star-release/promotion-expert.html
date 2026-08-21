@@ -15,315 +15,109 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-width:1100px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
 .workspace{min-height:100vh;margin-left:var(--sidebar);padding-top:var(--topbar)}
 .page{max-width:1500px;margin:0 auto;padding:0 22px 40px}
-.breadcrumb{height:42px;display:flex;align-items:center;color:#8e95a0;font-size:12px}
-.breadcrumb a:hover{color:var(--brand)}
+.breadcrumb{height:42px;display:flex;align-items:center;color:#8e95a0;font-size:12px}.breadcrumb a:hover{color:var(--brand)}
 .song-card{display:flex;align-items:center;gap:15px;min-height:94px;padding:16px 20px;background:#fff;border:1px solid var(--border2);border-radius:4px}
 .cover{width:60px;height:60px;border-radius:4px;background:linear-gradient(145deg,#586cf7,#9b78df);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:650;flex:none}
-.song-copy{min-width:0;flex:1}
-.song-kicker{color:#999fa9;font-size:11px;margin-bottom:5px}
-.song-name{font-size:17px;color:var(--strong);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song-meta{margin-top:5px;color:#858c97;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song-actions{display:flex;gap:8px;align-items:center}
-.text-btn{height:32px;padding:0 10px;border:0;background:transparent;color:var(--brand)}
-.text-btn:hover{text-decoration:underline}
-.page-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin:24px 0 18px}
-.page-title{margin:0;color:var(--strong);font-size:24px;line-height:34px;font-weight:650}
-.page-desc{margin:6px 0 0;color:#777f8b;line-height:22px}
-.expert-pill{display:flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border:1px solid #d9d0ff;border-radius:4px;background:#f8f6ff;color:#654bd1;font-size:12px;white-space:nowrap}
-.expert-dot{width:7px;height:7px;border-radius:50%;background:#7359d8;box-shadow:0 0 0 4px rgba(115,89,216,.08)}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px;align-items:start}
-.panel{background:#fff;border:1px solid var(--border2);border-radius:4px;padding:20px}
-.panel+.panel{margin-top:16px}
-.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:17px}
-.panel-title{margin:0;color:var(--strong);font-size:17px;font-weight:600}
-.panel-sub{margin-top:5px;color:#8b929d;font-size:12px;line-height:19px}
-.step-tag{height:24px;display:inline-flex;align-items:center;padding:0 8px;border-radius:3px;background:#f1f4ff;color:var(--brand);font-size:11px;white-space:nowrap}
-.goal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.goal-option{min-height:82px;padding:13px 14px;border:1px solid #e0e4eb;border-radius:4px;background:#fff;display:flex;align-items:flex-start;gap:11px;cursor:pointer;transition:.15s}
-.goal-option:hover{border-color:#bdc8ff;background:#fbfcff}
-.goal-option.selected{border-color:#9eafff;background:#f6f8ff;box-shadow:inset 0 0 0 1px rgba(36,72,255,.04)}
-.goal-icon{width:34px;height:34px;border-radius:4px;background:#f0f3ff;color:var(--brand);display:grid;place-items:center;font-size:12px;font-weight:650;flex:none}
-.goal-option strong{display:block;color:#343943;font-size:13px;font-weight:600;margin-bottom:4px}
-.goal-option span{display:block;color:#858c97;font-size:11px;line-height:17px}
-.field-group{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field label{display:block;margin-bottom:7px;color:#4b515c;font-size:12px;font-weight:500}
-.field input,.field select,.field textarea{width:100%;border:1px solid #dce1e9;border-radius:4px;background:#fff;color:#30343a;outline:none;transition:.15s}
-.field input,.field select{height:40px;padding:0 11px}
-.field textarea{min-height:92px;padding:10px 11px;resize:vertical;line-height:20px}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#9eafff;box-shadow:0 0 0 2px rgba(36,72,255,.06)}
-.field small{display:block;margin-top:6px;color:#a0a6af;font-size:10px;line-height:16px}
-.choice-label{margin-bottom:8px;color:#4b515c;font-size:12px;font-weight:500}
-.choice-list{display:flex;gap:8px;flex-wrap:wrap}
-.choice-chip{height:34px;padding:0 11px;border:1px solid #dce1e9;border-radius:4px;background:#fff;color:#5f6672;font-size:12px}
-.choice-chip:hover{border-color:#bdc8ff;color:var(--brand)}
-.choice-chip.selected{border-color:#9eafff;background:#f1f4ff;color:var(--brand);font-weight:500}
-.spacer{height:16px}
-.side-card{position:sticky;top:104px;background:#fff;border:1px solid var(--border2);border-radius:4px;overflow:hidden}
-.side-head{padding:18px 18px 14px;border-bottom:1px solid var(--border)}
-.side-title{color:var(--strong);font-size:16px;font-weight:600}
-.side-sub{margin-top:5px;color:#969ca6;font-size:11px;line-height:17px}
-.side-body{padding:10px 18px 18px}
-.summary-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #edf0f4;font-size:12px}
-.summary-row span{color:#8b929d}
-.summary-row strong{max-width:170px;color:#3a404a;text-align:right;font-size:12px;font-weight:500}
-.promise{margin:15px 0;padding:11px 12px;border:1px solid #e3e7f4;border-radius:4px;background:#f8f9fd;color:#747c89;font-size:10px;line-height:17px}
-.primary,.secondary{width:100%;height:40px;border-radius:4px;font-size:13px}
-.primary{border:1px solid var(--brand);background:var(--brand);color:#fff}
-.primary:hover{background:var(--brand-hover);border-color:var(--brand-hover)}
-.secondary{margin-top:8px;border:1px solid #d8dde7;background:#fff;color:#505660}
-.secondary:hover{border-color:#b8c3ff;color:var(--brand)}
-.helper{margin-top:9px;color:#a2a8b1;font-size:10px;line-height:16px}
-.success-card{display:none;min-height:360px;padding:72px 24px;background:#fff;border:1px solid var(--border2);border-radius:4px;text-align:center}
-.success-card.show{display:block}
-.success-icon{width:54px;height:54px;margin:0 auto 17px;border-radius:50%;background:#eaf7f2;color:var(--success);display:grid;place-items:center;font-size:26px}
-.success-title{margin:0;color:var(--strong);font-size:22px;font-weight:650}
-.success-desc{max-width:650px;margin:9px auto 23px;color:#757c87;line-height:22px}
-.success-actions{display:flex;justify-content:center;gap:10px}
-.success-actions .primary,.success-actions .secondary{width:auto;min-width:130px;padding:0 18px;margin:0}
-@media(max-width:1240px){.layout{grid-template-columns:minmax(0,1fr) 285px}}
-@media(max-width:1180px){:root{--sidebar:224px}.field-group{grid-template-columns:1fr}.goal-grid{grid-template-columns:1fr 1fr}}
+.song-copy{min-width:0;flex:1}.song-kicker{color:#999fa9;font-size:11px;margin-bottom:5px}.song-name{font-size:17px;color:var(--strong);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song-meta{margin-top:5px;color:#858c97;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-actions{display:flex;gap:8px;align-items:center}.text-btn{height:32px;padding:0 10px;border:0;background:transparent;color:var(--brand)}.text-btn:hover{text-decoration:underline}
+.page-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin:24px 0 18px}.page-title{margin:0;color:var(--strong);font-size:24px;line-height:34px;font-weight:650}.page-desc{margin:6px 0 0;color:#777f8b;line-height:22px}
+.expert-pill{display:flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border:1px solid #d9d0ff;border-radius:4px;background:#f8f6ff;color:#654bd1;font-size:12px;white-space:nowrap}.expert-dot{width:7px;height:7px;border-radius:50%;background:#7359d8;box-shadow:0 0 0 4px rgba(115,89,216,.08)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px;align-items:start}.panel{background:#fff;border:1px solid var(--border2);border-radius:4px;padding:20px}.panel+.panel{margin-top:16px}
+.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:17px}.panel-title{margin:0;color:var(--strong);font-size:17px;font-weight:600}.panel-sub{margin-top:5px;color:#8b929d;font-size:12px;line-height:19px}.step-tag{height:24px;display:inline-flex;align-items:center;padding:0 8px;border-radius:3px;background:#f1f4ff;color:var(--brand);font-size:11px;white-space:nowrap}
+.goal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.goal-option{min-height:82px;padding:13px 14px;border:1px solid #e0e4eb;border-radius:4px;background:#fff;display:flex;align-items:flex-start;gap:11px;cursor:pointer;transition:.15s}.goal-option:hover{border-color:#bdc8ff;background:#fbfcff}.goal-option.selected{border-color:#9eafff;background:#f6f8ff;box-shadow:inset 0 0 0 1px rgba(36,72,255,.04)}
+.goal-icon{width:34px;height:34px;border-radius:4px;background:#f0f3ff;color:var(--brand);display:grid;place-items:center;font-size:12px;font-weight:650;flex:none}.goal-option strong{display:block;color:#343943;font-size:13px;font-weight:600;margin-bottom:4px}.goal-option span{display:block;color:#858c97;font-size:11px;line-height:17px}
+.field-group{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;margin-bottom:7px;color:#4b515c;font-size:12px;font-weight:500}.field input,.field select,.field textarea{width:100%;border:1px solid #dce1e9;border-radius:4px;background:#fff;color:#30343a;outline:none;transition:.15s}.field input,.field select{height:40px;padding:0 11px}.field textarea{min-height:92px;padding:10px 11px;resize:vertical;line-height:20px}.field input:focus,.field select:focus,.field textarea:focus{border-color:#9eafff;box-shadow:0 0 0 2px rgba(36,72,255,.06)}.field small{display:block;margin-top:6px;color:#a0a6af;font-size:10px;line-height:16px}
+.choice-label{margin-bottom:8px;color:#4b515c;font-size:12px;font-weight:500}.choice-list{display:flex;gap:8px;flex-wrap:wrap}.choice-chip{height:34px;padding:0 11px;border:1px solid #dce1e9;border-radius:4px;background:#fff;color:#5f6672;font-size:12px}.choice-chip:hover{border-color:#bdc8ff;color:var(--brand)}.choice-chip.selected{border-color:#9eafff;background:#f1f4ff;color:var(--brand);font-weight:500}.spacer{height:16px}
+.side-card{position:sticky;top:104px;background:#fff;border:1px solid var(--border2);border-radius:4px;overflow:hidden}.side-head{padding:18px 18px 14px;border-bottom:1px solid var(--border)}.side-title{color:var(--strong);font-size:16px;font-weight:600}.side-sub{margin-top:5px;color:#969ca6;font-size:11px;line-height:17px}.side-body{padding:10px 18px 18px}
+.summary-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #edf0f4;font-size:12px}.summary-row span{color:#8b929d}.summary-row strong{max-width:170px;color:#3a404a;text-align:right;font-size:12px;font-weight:500}
+.promise{margin:15px 0;padding:11px 12px;border:1px solid #e3e7f4;border-radius:4px;background:#f8f9fd;color:#747c89;font-size:10px;line-height:17px}.primary,.secondary{width:100%;height:40px;border-radius:4px;font-size:13px}.primary{border:1px solid var(--brand);background:var(--brand);color:#fff}.primary:hover{background:var(--brand-hover);border-color:var(--brand-hover)}.secondary{margin-top:8px;border:1px solid #d8dde7;background:#fff;color:#505660}.secondary:hover{border-color:#b8c3ff;color:var(--brand)}.helper{margin-top:9px;color:#a2a8b1;font-size:10px;line-height:16px}
+.success-card{display:none;min-height:360px;padding:72px 24px;background:#fff;border:1px solid var(--border2);border-radius:4px;text-align:center}.success-card.show{display:block}.success-icon{width:54px;height:54px;margin:0 auto 17px;border-radius:50%;background:#eaf7f2;color:var(--success);display:grid;place-items:center;font-size:26px}.success-title{margin:0;color:var(--strong);font-size:22px;font-weight:650}.success-desc{max-width:650px;margin:9px auto 23px;color:#757c87;line-height:22px}.success-actions{display:flex;justify-content:center;gap:10px}.success-actions .primary,.success-actions .secondary{width:auto;min-width:130px;padding:0 18px;margin:0}
+@media(max-width:1240px){.layout{grid-template-columns:minmax(0,1fr) 285px}}@media(max-width:1180px){:root{--sidebar:224px}.field-group{grid-template-columns:1fr}.goal-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<aside class="sidebar"></aside>
-<header class="topbar"></header>
-<main class="workspace">
-  <div class="page">
-    <div class="breadcrumb">
-      <a href="index.html">音乐推广</a>
-      <span>&nbsp;/&nbsp;</span>
-      <a id="methodCrumb" href="promotion-method.html">选择推广方式</a>
-      <span>&nbsp;/&nbsp; 专属推广方案</span>
-    </div>
+<aside class="sidebar"></aside><header class="topbar"></header>
+<main class="workspace"><div class="page">
+  <div class="breadcrumb"><a href="index.html">音乐推广</a><span>&nbsp;/&nbsp;</span><a id="methodCrumb" href="promotion-method.html">选择推广方式</a><span>&nbsp;/&nbsp; 专属推广方案</span></div>
 
-    <section class="song-card">
-      <div class="cover" id="songCover">夜</div>
-      <div class="song-copy">
-        <div class="song-kicker">本次推广歌曲</div>
-        <div class="song-name" id="songName">晚风来信</div>
-        <div class="song-meta" id="songMeta">林屿 · 城市漫游</div>
-      </div>
-      <div class="song-actions">
-        <button class="text-btn" id="backMethodTop">返回选择推广方式</button>
-        <button class="text-btn" onclick="location.href='index.html'">更换歌曲</button>
-      </div>
-    </section>
+  <section class="song-card">
+    <div class="cover" id="songCover">夜</div>
+    <div class="song-copy"><div class="song-kicker">本次推广歌曲</div><div class="song-name" id="songName">晚风来信</div><div class="song-meta" id="songMeta">林屿 · 城市漫游</div></div>
+    <div class="song-actions"><button class="text-btn" id="backMethodTop">返回选择推广方式</button><button class="text-btn" onclick="location.href='index.html'">更换歌曲</button></div>
+  </section>
 
-    <div class="page-heading">
-      <div>
-        <h1 class="page-title">获取专属推广方案</h1>
-        <p class="page-desc">不确定该选播放推广、歌单、短视频还是海外投放？告诉我们你的主要目标和预算，推广专家会结合歌曲情况给出更合适的组合建议。</p>
-      </div>
-      <div class="expert-pill"><span class="expert-dot"></span>专属音乐推广专家</div>
-    </div>
-
-    <div id="formArea" class="layout">
-      <section>
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2 class="panel-title">你最希望这次推广解决什么？</h2>
-              <div class="panel-sub">先选择一个最重要的目标，专家会再根据歌曲情况组合其他推广方式。</div>
-            </div>
-            <span class="step-tag">推广目标</span>
-          </div>
-          <div class="goal-grid" id="goalGrid">
-            <div class="goal-option selected" data-value="增加歌曲播放"><div class="goal-icon">播放</div><div><strong>增加歌曲播放</strong><span>新歌起量，持续增加平台播放和曝光</span></div></div>
-            <div class="goal-option" data-value="进入更多歌单"><div class="goal-icon">歌单</div><div><strong>进入更多歌单</strong><span>通过歌单矩阵获得持续曝光与收听机会</span></div></div>
-            <div class="goal-option" data-value="短视频 / 内容传播"><div class="goal-icon">内容</div><div><strong>短视频 / 内容传播</strong><span>通过短视频、达人和 UGC 内容扩大传播</span></div></div>
-            <div class="goal-option" data-value="海外推广"><div class="goal-icon">海外</div><div><strong>海外推广</strong><span>面向 Spotify、YouTube 等海外渠道推广</span></div></div>
-            <div class="goal-option" data-value="提升热度 / 冲榜"><div class="goal-icon">冲榜</div><div><strong>提升热度 / 冲榜</strong><span>已有基础数据，希望进一步放大歌曲表现</span></div></div>
-            <div class="goal-option" data-value="还不确定"><div class="goal-icon">判断</div><div><strong>还不确定</strong><span>让推广专家先根据歌曲帮你判断优先方向</span></div></div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2 class="panel-title">告诉我们预算和推广市场</h2>
-              <div class="panel-sub">不需要非常精确，先给一个大致范围即可。</div>
-            </div>
-            <span class="step-tag">推广条件</span>
-          </div>
-          <div class="choice-label">本次推广预算</div>
-          <div class="choice-list" id="budgetList">
-            <button type="button" class="choice-chip" data-value="¥1,000 以下">¥1,000 以下</button>
-            <button type="button" class="choice-chip selected" data-value="¥1,000 - 5,000">¥1,000 - 5,000</button>
-            <button type="button" class="choice-chip" data-value="¥5,000 - 20,000">¥5,000 - 20,000</button>
-            <button type="button" class="choice-chip" data-value="¥20,000 以上">¥20,000 以上</button>
-            <button type="button" class="choice-chip" data-value="暂不确定">暂不确定</button>
-          </div>
-          <div class="spacer"></div>
-          <div class="choice-label">主要推广市场</div>
-          <div class="choice-list" id="marketList">
-            <button type="button" class="choice-chip selected" data-value="中国大陆">中国大陆</button>
-            <button type="button" class="choice-chip" data-value="港澳台">港澳台</button>
-            <button type="button" class="choice-chip" data-value="东南亚">东南亚</button>
-            <button type="button" class="choice-chip" data-value="欧美">欧美</button>
-            <button type="button" class="choice-chip" data-value="全球">全球</button>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2 class="panel-title">再告诉我们一点歌曲情况</h2>
-              <div class="panel-sub">这些信息能帮助专家判断推广节奏和优先渠道，不清楚的内容可以留空。</div>
-            </div>
-            <span class="step-tag">歌曲情况</span>
-          </div>
-          <div class="field-group">
-            <div class="field">
-              <label for="releaseStage">歌曲发行阶段</label>
-              <select id="releaseStage">
-                <option>准备发行</option>
-                <option selected>刚发行 7 天内</option>
-                <option>发行 1 个月内</option>
-                <option>已发行较长时间</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="musicStyle">歌曲风格</label>
-              <input id="musicStyle" placeholder="例如：流行 / 说唱 / 民谣 / 电子">
-            </div>
-            <div class="field">
-              <label for="currentData">当前数据情况</label>
-              <input id="currentData" placeholder="例如：网易云 2 万播放，已有少量收藏">
-              <small>不清楚可以留空。</small>
-            </div>
-            <div class="field">
-              <label for="releaseDate">预计 / 实际发行时间</label>
-              <input id="releaseDate" type="date">
-            </div>
-          </div>
-          <div class="field" style="margin-top:14px">
-            <label for="notes">还有什么希望专家知道？</label>
-            <textarea id="notes" placeholder="例如：这首歌准备重点推广，希望先做短视频内容传播，再带动网易云和 QQ 音乐播放。"></textarea>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2 class="panel-title">留下联系方式</h2>
-              <div class="panel-sub">推广专家会通过你选择的方式联系你，进一步确认具体方案。</div>
-            </div>
-            <span class="step-tag">联系方式</span>
-          </div>
-          <div class="field-group">
-            <div class="field">
-              <label for="contactName">怎么称呼你</label>
-              <input id="contactName" placeholder="姓名 / 艺名">
-            </div>
-            <div class="field">
-              <label for="contactType">联系偏好</label>
-              <select id="contactType">
-                <option>微信</option>
-                <option>手机号</option>
-                <option>邮箱</option>
-              </select>
-            </div>
-            <div class="field" style="grid-column:1/-1">
-              <label for="contactValue">联系方式</label>
-              <input id="contactValue" placeholder="微信号 / 手机号 / 邮箱">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <aside class="side-card">
-        <div class="side-head">
-          <div class="side-title">你的推广需求</div>
-          <div class="side-sub">提交前可以在这里确认主要信息。</div>
-        </div>
-        <div class="side-body">
-          <div class="summary-row"><span>歌曲</span><strong id="sumSong">晚风来信</strong></div>
-          <div class="summary-row"><span>主要目标</span><strong id="sumGoal">增加歌曲播放</strong></div>
-          <div class="summary-row"><span>预算</span><strong id="sumBudget">¥1,000 - 5,000</strong></div>
-          <div class="summary-row"><span>市场</span><strong id="sumMarket">中国大陆</strong></div>
-          <div class="summary-row"><span>方案类型</span><strong>专属专家定制</strong></div>
-          <div class="promise">提交后不会立即产生订单。推广专家会先根据歌曲、目标和预算整理建议，再与你确认具体平台、执行节奏和费用。</div>
-          <button type="button" class="primary" id="submitBtn">提交推广需求</button>
-          <button type="button" class="secondary" id="backBtn">返回选择推广方式</button>
-          <div class="helper">Demo 页面仅演示产品流程，不会真实提交任何信息。</div>
-        </div>
-      </aside>
-    </div>
-
-    <section class="success-card" id="success">
-      <div class="success-icon">✓</div>
-      <h2 class="success-title">推广需求已提交</h2>
-      <p class="success-desc">我们已经记录了这首歌曲的推广目标、预算和市场。下一步由专属音乐推广专家整理推广建议，再与你确认具体方案。</p>
-      <div class="success-actions">
-        <button class="primary" onclick="location.href='index.html'">返回音乐推广</button>
-        <button class="secondary" id="successBack">返回这首歌的推广方式</button>
-      </div>
-    </section>
+  <div class="page-heading">
+    <div><h1 class="page-title">获取专属推广方案</h1><p class="page-desc">不确定该选哪种推广方式？告诉我们你的主要目标和预算，推广专家会结合歌曲数据和推广诉求给出更合适的组合建议。</p></div>
+    <div class="expert-pill"><span class="expert-dot"></span>专属音乐推广专家</div>
   </div>
-</main>
+
+  <div id="formArea" class="layout"><section>
+    <div class="panel">
+      <div class="panel-head"><div><h2 class="panel-title">你最希望这次推广解决什么？</h2><div class="panel-sub">与自助下单保持一致，先选择一个最主要的推广目标。</div></div><span class="step-tag">推广目标</span></div>
+      <div class="goal-grid" id="goalGrid">
+        <div class="goal-option selected" data-value="增加歌曲播放"><div class="goal-icon">播放</div><div><strong>增加歌曲播放</strong><span>适合新歌起量，或让已有歌曲继续扩大播放和平台曝光。</span></div></div>
+        <div class="goal-option" data-value="进入更多歌单"><div class="goal-icon">歌单</div><div><strong>进入更多歌单</strong><span>通过歌单推广获得持续曝光，让歌曲进入更多真实收听场景。</span></div></div>
+        <div class="goal-option" data-value="做短视频 / 内容传播"><div class="goal-icon">内容</div><div><strong>做短视频 / 内容传播</strong><span>让歌曲进入抖音、小红书等内容场景，获得达人和 UGC 传播。</span></div></div>
+        <div class="goal-option" data-value="推广到海外"><div class="goal-icon">海外</div><div><strong>推广到海外</strong><span>通过 Spotify、YouTube 等推广能力触达更多真实海外听众。</span></div></div>
+        <div class="goal-option" data-value="提升热度 / 冲榜"><div class="goal-icon">冲榜</div><div><strong>提升热度 / 冲榜</strong><span>适合已有一定数据基础的重点歌曲，组合播放、歌单和平台资源推进。</span></div></div>
+        <div class="goal-option" data-value="上架到 KTV"><div class="goal-icon">KTV</div><div><strong>上架到 KTV</strong><span>将歌曲制作并上架至合作 KTV 曲库，增加线下点唱和长期曝光机会。</span></div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><div><h2 class="panel-title">告诉我们预算和推广市场</h2><div class="panel-sub">不需要非常精确，先给一个大致范围即可。</div></div><span class="step-tag">推广条件</span></div>
+      <div class="choice-label">本次推广预算</div>
+      <div class="choice-list" id="budgetList">
+        <button type="button" class="choice-chip" data-value="¥1,000 以下">¥1,000 以下</button><button type="button" class="choice-chip selected" data-value="¥1,000 - 5,000">¥1,000 - 5,000</button><button type="button" class="choice-chip" data-value="¥5,000 - 20,000">¥5,000 - 20,000</button><button type="button" class="choice-chip" data-value="¥20,000 以上">¥20,000 以上</button><button type="button" class="choice-chip" data-value="暂不确定">暂不确定</button>
+      </div>
+      <div class="spacer"></div>
+      <div class="choice-label">主要推广市场</div>
+      <div class="choice-list" id="marketList">
+        <button type="button" class="choice-chip selected" data-value="中国大陆">中国大陆</button><button type="button" class="choice-chip" data-value="港澳台">港澳台</button><button type="button" class="choice-chip" data-value="东南亚">东南亚</button><button type="button" class="choice-chip" data-value="欧美">欧美</button><button type="button" class="choice-chip" data-value="全球">全球</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><div><h2 class="panel-title">再告诉我们一点歌曲情况</h2><div class="panel-sub">歌曲基础信息已经从星球发行读取，只需要补充当前数据和需要专家额外了解的情况。</div></div><span class="step-tag">歌曲情况</span></div>
+      <div class="field"><label for="currentData">当前数据情况</label><input id="currentData" placeholder="例如：网易云 2 万播放，已有少量收藏"><small>不清楚可以留空。</small></div>
+      <div class="field" style="margin-top:14px"><label for="notes">还有什么希望专家知道？</label><textarea id="notes" placeholder="例如：这首歌准备重点推广，希望先做短视频内容传播，再带动网易云和 QQ 音乐播放。"></textarea></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><div><h2 class="panel-title">留下联系方式</h2><div class="panel-sub">推广专家会通过你选择的方式联系你，进一步确认具体方案。</div></div><span class="step-tag">联系方式</span></div>
+      <div class="field-group">
+        <div class="field"><label for="contactName">怎么称呼你</label><input id="contactName" placeholder="姓名 / 艺名"></div>
+        <div class="field"><label for="contactType">联系偏好</label><select id="contactType"><option>微信</option><option>手机号</option><option>邮箱</option></select></div>
+        <div class="field" style="grid-column:1/-1"><label for="contactValue">联系方式</label><input id="contactValue" placeholder="微信号 / 手机号 / 邮箱"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="side-card">
+    <div class="side-head"><div class="side-title">你的推广需求</div><div class="side-sub">提交前可以在这里确认主要信息。</div></div>
+    <div class="side-body">
+      <div class="summary-row"><span>歌曲</span><strong id="sumSong">晚风来信</strong></div><div class="summary-row"><span>主要目标</span><strong id="sumGoal">增加歌曲播放</strong></div><div class="summary-row"><span>预算</span><strong id="sumBudget">¥1,000 - 5,000</strong></div><div class="summary-row"><span>市场</span><strong id="sumMarket">中国大陆</strong></div><div class="summary-row"><span>方案类型</span><strong>专属专家定制</strong></div>
+      <div class="promise">提交后不会立即产生订单。推广专家会先根据歌曲、目标和预算整理建议，再与你确认具体平台、执行节奏和费用。</div>
+      <button type="button" class="primary" id="submitBtn">提交推广需求</button><button type="button" class="secondary" id="backBtn">返回选择推广方式</button><div class="helper">Demo 页面仅演示产品流程，不会真实提交任何信息。</div>
+    </div>
+  </aside></div>
+
+  <section class="success-card" id="success"><div class="success-icon">✓</div><h2 class="success-title">推广需求已提交</h2><p class="success-desc">我们已经记录了这首歌曲的推广目标、预算和市场。下一步由专属音乐推广专家整理推广建议，再与你确认具体方案。</p><div class="success-actions"><button class="primary" onclick="location.href='index.html'">返回音乐推广</button><button class="secondary" id="successBack">返回这首歌的推广方式</button></div></section>
+</div></main>
 
 <script>
 const params=new URLSearchParams(location.search);
-const song={
-  id:params.get('id')||'',
-  title:params.get('title')||'晚风来信',
-  artist:params.get('artist')||'林屿',
-  album:params.get('album')||'城市漫游',
-  cover:params.get('cover')||'夜'
-};
-const songQuery=new URLSearchParams(song).toString();
-const methodUrl='promotion-method.html?'+songQuery;
-
-document.getElementById('songCover').textContent=song.cover;
-document.getElementById('songName').textContent=song.title;
-document.getElementById('songMeta').textContent=[song.artist,song.album].filter(Boolean).join(' · ');
-document.getElementById('sumSong').textContent=song.title;
-document.getElementById('methodCrumb').href=methodUrl;
-document.getElementById('backMethodTop').onclick=()=>location.href=methodUrl;
-document.getElementById('backBtn').onclick=()=>location.href=methodUrl;
-document.getElementById('successBack').onclick=()=>location.href=methodUrl;
-
-let selectedGoal='增加歌曲播放';
-let selectedBudget='¥1,000 - 5,000';
-let selectedMarket='中国大陆';
-
-document.querySelectorAll('.goal-option').forEach(el=>el.addEventListener('click',()=>{
-  document.querySelectorAll('.goal-option').forEach(x=>x.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedGoal=el.dataset.value;
-  document.getElementById('sumGoal').textContent=selectedGoal;
-}));
-
-document.querySelectorAll('#budgetList .choice-chip').forEach(el=>el.addEventListener('click',()=>{
-  document.querySelectorAll('#budgetList .choice-chip').forEach(x=>x.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedBudget=el.dataset.value;
-  document.getElementById('sumBudget').textContent=selectedBudget;
-}));
-
-document.querySelectorAll('#marketList .choice-chip').forEach(el=>el.addEventListener('click',()=>{
-  document.querySelectorAll('#marketList .choice-chip').forEach(x=>x.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedMarket=el.dataset.value;
-  document.getElementById('sumMarket').textContent=selectedMarket;
-}));
-
-document.getElementById('submitBtn').addEventListener('click',()=>{
-  const contact=document.getElementById('contactValue').value.trim();
-  if(!contact){
-    alert('请先填写联系方式，方便推广专家与你沟通。');
-    document.getElementById('contactValue').focus();
-    return;
-  }
-  document.getElementById('formArea').style.display='none';
-  document.getElementById('success').classList.add('show');
-  window.scrollTo({top:0,behavior:'smooth'});
-});
+const song={id:params.get('id')||'',title:params.get('title')||'晚风来信',artist:params.get('artist')||'林屿',album:params.get('album')||'城市漫游',cover:params.get('cover')||'夜'};
+const songQuery=new URLSearchParams(song).toString(),methodUrl='promotion-method.html?'+songQuery;
+document.getElementById('songCover').textContent=song.cover;document.getElementById('songName').textContent=song.title;document.getElementById('songMeta').textContent=[song.artist,song.album].filter(Boolean).join(' · ');document.getElementById('sumSong').textContent=song.title;document.getElementById('methodCrumb').href=methodUrl;document.getElementById('backMethodTop').onclick=()=>location.href=methodUrl;document.getElementById('backBtn').onclick=()=>location.href=methodUrl;document.getElementById('successBack').onclick=()=>location.href=methodUrl;
+let selectedGoal='增加歌曲播放',selectedBudget='¥1,000 - 5,000',selectedMarket='中国大陆';
+document.querySelectorAll('.goal-option').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.goal-option').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedGoal=el.dataset.value;document.getElementById('sumGoal').textContent=selectedGoal;}));
+document.querySelectorAll('#budgetList .choice-chip').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('#budgetList .choice-chip').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedBudget=el.dataset.value;document.getElementById('sumBudget').textContent=selectedBudget;}));
+document.querySelectorAll('#marketList .choice-chip').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('#marketList .choice-chip').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedMarket=el.dataset.value;document.getElementById('sumMarket').textContent=selectedMarket;}));
+document.getElementById('submitBtn').addEventListener('click',()=>{const contact=document.getElementById('contactValue').value.trim();if(!contact){alert('请先填写联系方式，方便推广专家与你沟通。');document.getElementById('contactValue').focus();return;}document.getElementById('formArea').style.display='none';document.getElementById('success').classList.add('show');window.scrollTo({top:0,behavior:'smooth'});});
 </script>
 <script src="star-release-shell.js"></script>
 </body>
