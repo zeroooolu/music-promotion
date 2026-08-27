@@ -50,6 +50,74 @@
         products.plays.push(resource);
       }
       if(typeof productMap!=='undefined')productMap[resource.id]=resource;
+
+      const cartStyle=document.createElement('style');
+      cartStyle.textContent=`
+        .cart .cart-head{padding-bottom:15px}
+        .cart .cart-head p{font-size:11px}
+        .cart .coverage-list{padding-bottom:10px}
+        .cart .coverage-row{padding:4px 0}
+        .cart .cart-items{margin-top:8px}
+        .cart .cart-item{padding:12px 0}
+        .cart .cart-item-top{align-items:center}
+        .cart .cart-item-main{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
+        .cart .cart-platform{width:22px;height:22px;border-radius:4px;display:grid;place-items:center;color:#fff;font-size:8px;font-weight:700;flex:none}
+        .cart .cart-title{min-width:0;color:var(--strong);font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .cart .cart-item-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 22px 0 30px}
+        .cart .cart-summary{min-width:0;color:#7f8792;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .cart .cart-price{margin:0;color:#3f4650;font-size:12px;font-weight:650;white-space:nowrap;flex:none}
+        .cart .remove-item{line-height:1;color:#a3a9b2}
+        .cart .cart-empty{padding:24px 6px}
+        .cart .coverage-warning{margin-top:10px}
+        .cart .cart-note{display:none!important}
+      `;
+      document.head.appendChild(cartStyle);
+
+      function compactCartSummary(item){
+        const p=productMap[item.id];
+        const state=selected[item.id]||{};
+        if(!p)return item.result||'';
+        if(p.quantitySpecs){
+          const parts=String(item.key||'').split('::');
+          const index=Number(parts[1]);
+          const spec=p.quantitySpecs[index];
+          const count=Number(state.specs?.[index]||1);
+          if(!spec)return item.result||'';
+          const total=Number(spec.quantity||0)*count;
+          return `${spec.name} × ${count} 份 · ${total.toLocaleString('zh-CN')} ${spec.unit||''}`.trim();
+        }
+        if(p.skus){
+          const sku=p.skus[state.sku||0];
+          return sku?[sku[0],sku[2]].filter(Boolean).join(' · '):(item.result||'');
+        }
+        if(p.budget)return item.result||'';
+        if(p.single)return p.single.result||item.result||'';
+        return item.result||'';
+      }
+
+      window.renderCart=function(){
+        const items=cart();
+        const coverage=document.getElementById('coverageList');
+        coverage.innerHTML=goals.map(g=>`<div class="coverage-row"><span>${goalNames[g]}</span><strong class="coverage-state ${covered(g)?'done':''}">${covered(g)?'✓ 已选':'未选'}</strong></div>`).join('');
+        document.getElementById('cartSub').textContent=`已选 ${items.length} 项`;
+        document.getElementById('cartItems').innerHTML=items.length?items.map(i=>{
+          const summary=compactCartSummary(i);
+          return `<div class="cart-item"><div class="cart-item-top"><div class="cart-item-main"><span class="cart-platform" style="background:${colors[i.platform]||'#667180'}">${short(i.platform)}</span><div class="cart-title">${i.product}</div></div><button class="remove-item" data-remove="${i.key}" aria-label="移除">×</button></div><div class="cart-item-bottom"><div class="cart-summary">${summary}</div><div class="cart-price">${i.priceText}</div></div></div>`;
+        }).join(''):'<div class="cart-empty">还没有添加推广项目<br>从左侧选择推广产品和规格</div>';
+        document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>removeItem(b.dataset.remove));
+        const min=items.reduce((s,i)=>s+Number(i.priceMin||0),0),max=items.reduce((s,i)=>s+Number(i.priceMax||0),0),coveredCount=goals.filter(covered).length;
+        document.getElementById('cartTotal').textContent=min===max?money(min):`${money(min)}–${money(max)}`;
+        const w=document.getElementById('coverageWarning');
+        if(items.length&&coveredCount<goals.length){
+          w.hidden=false;
+          w.textContent=`还有 ${goals.length-coveredCount} 个推广目标未选择，仍可直接下单`;
+          w.className='coverage-warning';
+        }else{
+          w.hidden=true;
+        }
+        document.getElementById('confirmBtn').disabled=!items.length;
+      };
+
       if(typeof renderAll==='function')renderAll();
     }catch(e){console.warn('promotion product patch failed',e)}
   }
