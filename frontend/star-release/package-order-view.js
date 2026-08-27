@@ -29,6 +29,14 @@
     .package-result-mode .package-choice-status{height:20px;display:inline-flex;align-items:center;padding:0 7px;border-radius:10px;background:#e8edff;color:var(--brand);font-size:9px;font-weight:600;opacity:0}
     .package-result-mode .choice.selected .package-choice-status{opacity:1}
     .package-result-mode .choice-detail{margin:7px 9px 2px;color:#929aa5;font-size:10px;line-height:1.6}
+    .package-result-mode .package-proof{padding:13px 15px;background:#fff;border:1px solid var(--border2);border-radius:4px}
+    .package-result-mode .package-proof-kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--brand);font-size:11px;font-weight:600;line-height:1.5}
+    .package-result-mode .package-proof-demo{flex:none;height:19px;display:inline-flex;align-items:center;padding:0 6px;border-radius:10px;background:#f3f5f8;color:#9aa0aa;font-size:9px;font-weight:400}
+    .package-result-mode .package-proof-list{margin-top:9px;padding-top:8px;border-top:1px solid #edf0f4}
+    .package-result-mode .package-proof-case{padding:6px 0;color:#5e6672;font-size:10px;line-height:1.65}
+    .package-result-mode .package-proof-case strong{color:#3f4650;font-size:10.5px;font-weight:600}
+    .package-result-mode .package-proof-case b{color:var(--brand);font-weight:600}
+    .package-result-mode .package-proof-disclaimer{margin-top:7px;padding-top:8px;border-top:1px solid #edf0f4;color:#a0a6af;font-size:9px;line-height:1.55}
   `;
   document.head.appendChild(style);
 
@@ -55,7 +63,20 @@
   }
 
   const proofCard=document.getElementById('packageProof');
-  if(proofCard)proofCard.hidden=true;
+  if(proofCard){
+    proofCard.hidden=false;
+    proofCard.innerHTML=`
+      <div class="package-proof-kicker">
+        <span>已有音乐人用推广套餐获得阶段性增长 →</span>
+        <span class="package-proof-demo">示例案例</span>
+      </div>
+      <div class="package-proof-list">
+        <div class="package-proof-case"><strong>音乐人 W** ·《XXXX》</strong> 使用<b>【养歌加强包】</b>推广后，连续 3 期登上 QQ 音乐飙升榜 TOP 20</div>
+        <div class="package-proof-case"><strong>音乐人 L** ·《XXXX》</strong> 使用<b>【破圈套餐】</b>推广后，网易云播放量 7 天内突破 10 万</div>
+      </div>
+      <div class="package-proof-disclaimer">＊效果因歌曲类型、发行时间及市场情况不同而有所差异，不构成效果承诺。<br>当前为文案示例，正式上线前需替换为经音乐人授权的真实案例数据，并对人名、歌名做脱敏处理。</div>
+    `;
+  }
 
   if(typeof window.renderItems==='function'){
     const baseRender=window.renderItems;
