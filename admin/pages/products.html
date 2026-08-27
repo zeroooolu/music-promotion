@@ -16,21 +16,24 @@
 </template>
 <script src="../assets/js/admin-shell.js"></script><script>
 const products=[
-['netease-play','网易云音乐播放推广','云','播放推广',['plays'],'网易云音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',10,'上架','今天 11:40'],
-['qq-play','QQ 音乐播放推广','Q','播放推广',['plays'],'QQ音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',20,'上架','今天 11:39'],
-['kugou-play','酷狗音乐播放推广','酷','播放推广',['plays'],'酷狗音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',30,'上架','今天 11:38'],
-['kuwo-play','酷我音乐播放推广','我','播放推广',['plays'],'酷我音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',40,'上架','今天 11:37'],
-['netease-favorites','网易云音乐红心收藏','心','播放推广',['plays'],'网易云音乐','DSP 平台','按数量购买','quantity','数量规格','1 个规格','¥95 / 份',50,'上架','今天 11:30'],
-['netease-playlist','网易云歌单矩阵','云','歌单推广',['playlist'],'网易云音乐','DSP 平台','固定套餐','fixed','固定规格','3 个规格','¥6,000 – ¥18,000',60,'上架','今天 11:20'],
-['qq-playlist-chart','QQ 音乐歌单矩阵','Q','歌单推广',['playlist'],'QQ音乐','DSP 平台','固定套餐','fixed','固定规格','3 个规格','¥10,000 – ¥20,000',70,'上架','今天 11:18'],
-['qq-chart-sprint','QQ音乐热度冲刺','Q','平台资源',['chart'],'QQ音乐','DSP 平台','固定套餐','fixed','热度冲刺档位','3 个规格','¥14,500 – ¥28,600',80,'上架','今天 14:05'],
-['netease-chart-sprint','网易云音乐热度冲刺','云','平台资源',['chart'],'网易云音乐','DSP 平台','固定套餐','fixed','热度冲刺档位','3 个规格','¥8,600 – ¥25,800',90,'上架','今天 14:04'],
-['kugou-chart-sprint','酷狗音乐热度冲刺','酷','平台资源',['chart'],'酷狗音乐','DSP 平台','固定套餐','fixed','热度冲刺档位','3 个规格','¥8,600 – ¥34,300',100,'上架','今天 14:03'],
-['douyin-promotion','抖音投放','抖','内容推广',['social'],'抖音','自定义平台','按数量购买','quantity','数量规格','7 个规格','¥600 起',110,'上架','今天 11:10'],
-['xiaohongshu-promotion','小红书投放','红','内容推广',['social'],'小红书','自定义平台','按数量购买','quantity','数量规格','6 个规格','¥400 起',120,'上架','今天 11:08'],
-['spotify-ads','Spotify 播放推广','S','海外推广',['global'],'Spotify','DSP 平台','按预算投放','budget','连续预算','¥250–¥2,000 · 步长 ¥50','¥250 起',130,'上架','今天 11:05'],
-['youtube-views','YouTube 播放推广','YT','海外推广',['global'],'YouTube','DSP 平台','按预算投放','budget','连续预算','¥1,000–¥20,000 · 步长 ¥500','¥1,000 起',140,'上架','今天 11:02'],
-['ktv-publish','KTV 制作上架','KTV','场景服务',['ktv'],'KTV','自定义平台','固定套餐','fixed','固定服务','1 个规格','¥2,000',150,'上架','今天 11:00']
+['netease-play','网易云音乐播放推广','云','播放推广',['plays'],'网易云音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',10,'上架','今天 14:20'],
+['qq-play','QQ 音乐播放推广','Q','播放推广',['plays'],'QQ音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',20,'上架','今天 14:20'],
+['kugou-play','酷狗音乐播放推广','酷','播放推广',['plays'],'酷狗音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',30,'上架','今天 14:20'],
+['kuwo-play','酷我音乐播放推广','我','播放推广',['plays'],'酷我音乐','DSP 平台','按预算投放','budget','固定预算档位','13 个档位','¥45 – ¥3,570',40,'上架','今天 14:20'],
+['netease-favorites','网易云音乐红心收藏','心','播放推广',['plays'],'网易云音乐','DSP 平台','按数量购买','quantity','数量规格','1 个规格','¥95 / 份',50,'上架','今天 14:20'],
+['qq-official-playlist-new','QQ音乐官方歌单推荐','Q','歌单推广',['playlist'],'QQ音乐','DSP 平台','固定套餐','fixed','固定规格','1 个规格 · 新供应商','¥580',60,'上架','今天 14:20'],
+['qq-playlist-chart','QQ 音乐歌单矩阵','Q','歌单推广',['playlist'],'QQ音乐','DSP 平台','固定套餐','fixed','固定规格','4 个规格','¥750 – ¥14,500',70,'上架','今天 14:20'],
+['netease-playlist-new','网易云歌单推荐','云','歌单推广',['playlist'],'网易云音乐','DSP 平台','固定套餐','fixed','固定规格','1 个规格 · 新供应商','¥500',80,'上架','今天 14:20'],
+['netease-playlist','网易云歌单矩阵','云','歌单推广',['playlist'],'网易云音乐','DSP 平台','固定套餐','fixed','固定规格','5 个规格','¥750 – ¥25,800',90,'上架','今天 14:20'],
+['kugou-playlist','酷狗歌单矩阵','酷','歌单推广',['playlist'],'酷狗音乐','DSP 平台','固定套餐','fixed','固定规格','3 个规格 · 无单张投放','¥2,600 – ¥17,000',100,'上架','今天 14:20'],
+['qq-chart-sprint','QQ音乐热度冲刺','Q','平台资源',['chart'],'QQ音乐','DSP 平台','固定套餐','fixed','热度冲刺档位','3 个规格','¥14,500 – ¥28,600',110,'上架','今天 14:20'],
+['netease-chart-sprint','网易云音乐热度冲刺','云','平台资源',['chart'],'网易云音乐','DSP 平台','固定套餐','fixed','热度冲刺档位','3 个规格','¥8,600 – ¥25,800',120,'上架','今天 14:20'],
+['kugou-chart-sprint','酷狗音乐热度冲刺','酷','平台资源',['chart'],'酷狗音乐','DSP 平台','固定套餐','fixed','热度冲刺档位','3 个规格','¥8,600 – ¥34,300',130,'上架','今天 14:20'],
+['douyin-promotion','抖音投放','抖','内容推广',['social'],'抖音','自定义平台','按数量购买','quantity','数量规格','7 个规格','¥600 起',140,'上架','今天 14:20'],
+['xiaohongshu-promotion','小红书投放','红','内容推广',['social'],'小红书','自定义平台','按数量购买','quantity','数量规格','6 个规格','¥400 起',150,'上架','今天 14:20'],
+['spotify-ads','Spotify 播放推广','S','海外推广',['global'],'Spotify','DSP 平台','按预算投放','budget','连续预算','¥250–¥2,000 · 步长 ¥50','¥250 起',160,'上架','今天 14:20'],
+['youtube-views','YouTube 播放推广','YT','海外推广',['global'],'YouTube','DSP 平台','按预算投放','budget','连续预算','¥1,000–¥20,000 · 步长 ¥500','¥1,000 起',170,'上架','今天 14:20'],
+['ktv-publish','KTV 制作上架','KTV','场景服务',['ktv'],'KTV','自定义平台','固定套餐','fixed','固定服务','1 个规格','¥2,000',180,'上架','今天 14:20']
 ].map(x=>({id:x[0],name:x[1],logo:x[2],category:x[3],goals:x[4],platform:x[5],source:x[6],mode:x[7],modeKey:x[8],configMode:x[9],config:x[10],price:x[11],sort:x[12],status:x[13],updated:x[14]}));
 const filters={goal:'',category:'',platform:'',mode:'',status:''},search=document.getElementById('searchInput'),uniq=k=>[...new Set(products.map(p=>p[k]))];const options={goal:[['','全部推广目标'],['plays','提升播放曝光'],['playlist','进入更多歌单'],['social','短视频 / 内容传播'],['global','推广到海外'],['chart','头部热度冲刺'],['ktv','上架到 KTV']],category:[['','全部类目'],...uniq('category').map(x=>[x,x])],platform:[['','全部平台'],...uniq('platform').map(x=>[x,x])],mode:[['','全部售卖方式'],['固定套餐','固定套餐'],['按数量购买','按数量购买'],['按预算投放','按预算投放']],status:[['','全部状态'],['上架','上架'],['下架','下架']]};
 function render(){const q=search.value.trim().toLowerCase(),list=products.slice().sort((a,b)=>a.sort-b.sort).filter(p=>(!q||[p.name,p.platform,p.category].join(' ').toLowerCase().includes(q))&&(!filters.goal||p.goals.includes(filters.goal))&&(!filters.category||p.category===filters.category)&&(!filters.platform||p.platform===filters.platform)&&(!filters.mode||p.mode===filters.mode)&&(!filters.status||p.status===filters.status));document.getElementById('productRows').innerHTML=list.map(p=>`<tr><td><div class="pd-product"><div class="pd-logo">${p.logo}</div><div><a class="pd-name pd-name-link" href="product-detail.html?id=${p.id}">${p.name}</a></div></div></td><td>${p.category}</td><td>${p.goals.map(g=>`<span class="pd-goal-tag">${options.goal.find(x=>x[0]===g)?.[1]||g}</span>`).join('')}</td><td><div class="pd-platform-cell"><div class="pd-platform-icon">${p.logo}</div><div><strong>${p.platform}</strong><small>${p.source}</small></div></div></td><td><span class="pd-sale-badge ${p.modeKey}">${p.mode}</span></td><td><span class="pd-config">${p.configMode}<small>${p.config}</small></span></td><td class="pd-price">${p.price}</td><td><input class="pd-sort-input" value="${p.sort}" type="number" min="0" data-sort="${p.id}"></td><td><div class="pd-status-control"><button class="pd-status-switch${p.status==='下架'?' off':''}" type="button" data-toggle="${p.id}"></button><span class="pd-status-text">${p.status}</span></div></td><td class="pd-muted">${p.updated}</td><td><a class="pd-link" href="product-form.html?mode=edit&id=${p.id}">编辑</a></td></tr>`).join('');document.getElementById('resultCount').textContent=`共 ${list.length} 个产品`;document.querySelectorAll('[data-toggle]').forEach(btn=>btn.onclick=()=>{const p=products.find(x=>x.id===btn.dataset.toggle);p.status=p.status==='上架'?'下架':'上架';render()});document.querySelectorAll('[data-sort]').forEach(input=>input.onchange=()=>{products.find(x=>x.id===input.dataset.sort).sort=Number(input.value||0);render()})}
