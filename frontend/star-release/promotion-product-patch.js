@@ -206,6 +206,21 @@
   if(file==='order-confirm.html'){
     try{
       if(typeof packages!=='undefined'){
+        const packageContentMap={
+          'popular-1':['网易云 1 万 / QQ音乐、酷狗、酷我 1.25 万真实播放','垂类歌单推荐 1 张','抖音投放 / 小红书 KOC'],
+          'popular-2':['网易云 2.4 万 / QQ音乐、酷狗、酷我 3 万真实播放','垂类歌单推荐 1 张','抖音 / 小红书 / 红心收藏'],
+          'allround-1':['网易云 2.4 万 / QQ音乐、酷狗、酷我 3 万真实播放','垂类歌单推荐 1 张','保底获得 5 个音乐平台推荐资源位','15 个万粉抖音混剪账号参与传播'],
+          'allround-2':['网易云 4 万 / QQ音乐、酷狗、酷我 5 万真实播放','垂类歌单推荐 1 张','保底获得 5 个音乐平台推荐资源位','小红书种草 / 抖音混剪','红心收藏'],
+          'chart-addon':['网易云歌单矩阵 · 18 万 / 月','QQ 音乐歌单矩阵 · 28 万 / 月','酷狗音乐热度冲刺']
+        };
+        Object.entries(packageContentMap).forEach(([id,titles])=>{
+          const pkg=packages[id];if(!pkg)return;
+          pkg.items.forEach((item,index)=>{
+            if(titles[index])item.title=titles[index];
+            item.desc='';
+          });
+        });
+
         const trafficMap={
           'popular-1':[['netease','网易云音乐 10,000 次真实播放'],['qq','QQ音乐 12,500 次真实播放'],['kugou','酷狗音乐 12,500 次真实播放'],['kuwo','酷我音乐 12,500 次真实播放']],
           'popular-2':[['netease','网易云音乐 24,000 次真实播放'],['qq','QQ音乐 30,000 次真实播放'],['kugou','酷狗音乐 30,000 次真实播放'],['kuwo','酷我音乐 30,000 次真实播放']],
