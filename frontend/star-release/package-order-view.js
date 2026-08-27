@@ -10,8 +10,6 @@
   const style=document.createElement('style');
   style.textContent=`
     .package-result-mode .items-card{padding:20px}
-    .package-result-mode .package-summary{margin-bottom:8px;padding:12px 15px}
-    .package-result-mode .package-summary span{display:none}
     .package-result-mode .item{padding:16px 2px}
     .package-result-mode .item-main{align-items:center}
     .package-result-mode .result{font-size:18px;line-height:1.35;color:var(--brand);font-weight:650}
@@ -30,7 +28,6 @@
     .package-result-mode .package-choice-result strong{color:var(--brand);font-size:18px;font-weight:650}
     .package-result-mode .package-choice-meta{display:block;margin-top:3px;color:#929aa5;font-size:10px;line-height:1.45}
     .package-result-mode .choice-detail{margin:7px 9px 2px;color:#929aa5;font-size:10px;line-height:1.6}
-    .package-result-mode .package-fixed-label{display:block;color:#444b55;font-size:13px;font-weight:600}
     .package-result-mode .package-fixed-result{color:var(--brand);font-size:18px;font-weight:650}
     .package-result-mode .checkout-column{display:grid;gap:12px;align-self:start}
     .package-result-mode .checkout-column .checkout{position:sticky;top:16px}
@@ -52,7 +49,6 @@
 
   const fixedResults={
     '官方歌单推荐':{result:'1 张官方垂类歌单推荐',meta:'QQ音乐 / 网易云音乐'},
-    '资源位代申请':{result:'保底获得 5 个音乐平台推荐资源位',meta:'覆盖主流国内及海外音乐平台，由服务团队统筹匹配'},
     '音乐平台推荐资源位':{result:'保底获得 5 个音乐平台推荐资源位',meta:'覆盖主流国内及海外音乐平台，由服务团队统筹匹配'},
     '抖音混剪':{result:'15 个万粉账号参与传播',meta:'抖音混剪 · 万粉高互动优质账号'},
     '网易云歌单矩阵':{result:'18 万 / 月总播放',meta:'网易云歌单矩阵 · 执行 1 个月'},
