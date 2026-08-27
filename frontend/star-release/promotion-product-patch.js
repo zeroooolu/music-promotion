@@ -3,32 +3,97 @@
 
   if(file==='custom-combination.html'){
     try{
-      const xhs=products.social.find(p=>p.id==='xiaohongshu-promotion');
+      const byId=(list,id)=>list.find(p=>p.id===id);
+
+      ['netease-play','qq-play','kugou-play','kuwo-play'].forEach(id=>{
+        const p=byId(products.plays,id);
+        if(p)p.meta='来源真实用户点击';
+      });
+
+      const qqOfficialPlaylist=byId(products.playlist,'qq-official-playlist-new');
+      if(qqOfficialPlaylist){
+        qqOfficialPlaylist.meta='将歌曲加入 QQ 音乐高质量歌单资源位，持续获得自然曝光';
+        qqOfficialPlaylist.hint='1 个官方歌单资源位';
+        qqOfficialPlaylist.skus=[['单次投放',580,'1 个官方歌单资源位']];
+      }
+      const qqPlaylist=byId(products.playlist,'qq-playlist-chart');
+      if(qqPlaylist){
+        qqPlaylist.name='QQ 音乐歌单矩阵';
+        qqPlaylist.meta='将歌曲加入 QQ 音乐高质量歌单资源位，持续获得自然曝光';
+        qqPlaylist.hint='1 张高质量歌单资源位起';
+        qqPlaylist.skus=[
+          ['单张歌单',750,'1 张高质量歌单资源位'],
+          ['基础资源组合',5800,'基础歌单资源组合'],
+          ['进阶资源组合',8600,'进阶歌单资源组合'],
+          ['高级资源组合',14500,'高级歌单资源组合']
+        ];
+      }
+      const neteasePlaylistNew=byId(products.playlist,'netease-playlist-new');
+      if(neteasePlaylistNew){
+        neteasePlaylistNew.meta='网易云高质量歌单资源位，歌单内位置前三';
+        neteasePlaylistNew.hint='1 张高质量歌单资源位';
+        neteasePlaylistNew.skus=[['单张歌单',500,'1 张高质量歌单资源位','歌单内位置前三']];
+      }
+      const neteasePlaylist=byId(products.playlist,'netease-playlist');
+      if(neteasePlaylist){
+        neteasePlaylist.name='网易云歌单矩阵';
+        neteasePlaylist.meta='将歌曲加入网易云高质量歌单资源位，持续获得自然曝光';
+        neteasePlaylist.hint='1 张高质量歌单资源位起';
+        neteasePlaylist.skus=[
+          ['单张歌单',750,'1 张高质量歌单资源位'],
+          ['基础资源组合',1500,'基础歌单资源组合'],
+          ['进阶资源组合',4300,'进阶歌单资源组合'],
+          ['高级资源组合',8600,'高级歌单资源组合'],
+          ['旗舰资源组合',25800,'旗舰歌单资源组合']
+        ];
+      }
+      const kugouPlaylist=byId(products.playlist,'kugou-playlist');
+      if(kugouPlaylist){
+        kugouPlaylist.meta='将歌曲加入酷狗音乐高质量歌单资源位，持续获得自然曝光';
+        kugouPlaylist.hint='基础歌单资源组合起';
+        kugouPlaylist.skus=[
+          ['基础资源组合',2600,'基础歌单资源组合'],
+          ['进阶资源组合',7300,'进阶歌单资源组合'],
+          ['高级资源组合',17000,'高级歌单资源组合']
+        ];
+      }
+
+      const douyin=byId(products.social,'douyin-promotion');
+      if(douyin){
+        douyin.meta='达人内容合作，素人号到万粉号可自由组合购买';
+        douyin.hint='7 种账号规格，可组合购买';
+      }
+      const xhs=byId(products.social,'xiaohongshu-promotion');
       if(xhs){
-        xhs.quantitySpecs=xhs.quantitySpecs.filter(s=>!s.name.includes('5–10w')&&!s.name.includes('20w+')).slice(0,4);
-        xhs.hint='4 种达人规格，可组合购买';
+        xhs.meta='达人种草传播，素人到头部 KOL 可自由组合购买';
+        xhs.hint='6 种达人规格，可组合购买';
         xhs.priceHint='¥300 起';
       }
 
-      ['netease-play','qq-play','kugou-play','kuwo-play'].forEach(id=>{
-        const p=products.plays.find(x=>x.id===id);
-        if(p)p.meta='';
+      const spotify=byId(products.global,'spotify-ads');
+      if(spotify){
+        spotify.name='Spotify 播放推广';
+        spotify.meta='通过 Spotify 官方广告系统精准触达海外听众';
+        spotify.hint='预计新增真实播放 4,500 次起';
+        if(spotify.budget)spotify.budget.resultPrefix='预计新增真实播放';
+      }
+      const youtube=byId(products.global,'youtube-views');
+      if(youtube){
+        youtube.name='YouTube 播放推广';
+        youtube.meta='通过 YouTube 官方广告系统提升视频播放';
+        youtube.hint='预计新增真实播放 12,000 次起';
+        if(youtube.budget)youtube.budget.resultPrefix='预计新增真实播放';
+      }
+
+      ['qq-chart-sprint','netease-chart-sprint','kugou-chart-sprint'].forEach(id=>{
+        const p=byId(products.chart,id);
+        if(p)p.meta='提升歌曲热度声量·助力登上官方榜单';
       });
 
-      const qq=products.chart.find(p=>p.id==='qq-chart-sprint');
-      if(qq){
-        qq.meta='QQ音乐官方 · 私人歌单打榜服务';
-        qq.skus=[['基础打榜',14500,'保底新增真实播放 20 万次','未登榜保底实际播放 20 万'],['中级打榜',21500,'保底新增真实播放 30 万次','未登榜保底实际播放 30 万'],['高级打榜',28600,'保底新增真实播放 40 万次','未登榜保底实际播放 40 万']];
-      }
-      const netease=products.chart.find(p=>p.id==='netease-chart-sprint');
-      if(netease){
-        netease.meta='网易云音乐官方 · 私人歌单打榜服务';
-        netease.skus=[['基础',8600,'保底新增真实播放 12 万次'],['进阶',17200,'保底新增真实播放 25 万次'],['高级',25800,'保底新增真实播放 38 万次']];
-      }
-      const kugou=products.chart.find(p=>p.id==='kugou-chart-sprint');
-      if(kugou){
-        kugou.meta='酷狗音乐官方 · 私人歌单打榜服务';
-        kugou.skus=[['基础',8600,'保底新增真实播放 10 万次','冲飙升榜、内地榜（排名参考 40–60 名）'],['进阶',17200,'保底新增真实播放 20 万次','冲飙升榜、新歌榜、内地榜（排名参考 20–30 名）'],['高级',34300,'保底新增真实播放 40 万次','冲飙升榜、新歌榜、内地榜等（排名参考 5–20 名）']];
+      const ktv=byId(products.ktv,'ktv-publish');
+      if(ktv){
+        ktv.meta='覆盖全国主流合作 KTV 曲库渠道';
+        ktv.hint='完成 1 首歌曲 KTV 渠道上架';
       }
 
       let resource=products.plays.find(p=>p.id==='platform-recommendation-resource');
