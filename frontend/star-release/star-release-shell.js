@@ -3,6 +3,26 @@
   if(!sidebar||!topbar)return;
 
   const file=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  const currentParams=new URLSearchParams(location.search);
+  const url=(target,omit=[])=>{
+    const p=new URLSearchParams(currentParams);
+    omit.forEach(k=>p.delete(k));
+    const q=p.toString();
+    return target+(q?'?'+q:'');
+  };
+  const cleanSongTarget=target=>url(target,['mode','package','custom']);
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+  const hide=s=>$$(s).forEach(el=>el.style.display='none');
+  const setText=(s,t)=>{const el=$(s);if(el)el.textContent=t};
+
+  document.body.classList.add('star-page-'+file.replace(/\.html$/,''));
+
+  if(file==='promotion-step3.html'){
+    location.replace(cleanSongTarget('promotion-method.html'));
+    return;
+  }
+
   const active=file==='album-list.html'?'albums':file==='royalty-withdrawal.html'?'royalty':'promotion';
   const nav=[
     ['home','#','<path fill="currentColor" d="M3 10.6 12 3l9 7.6V21h-6v-6H9v6H3V10.6Z"/>','主页'],
@@ -14,16 +34,6 @@
     ['contract','#','<path d="M5 2.8h10l4 4V21H5V2.8Z" fill="currentColor"/><path d="M15 2.8v4h4M8 11h8M8 15h8" stroke="#fff" stroke-width="1.4"/>','我的合同'],
     ['analysis','#','<rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/><path d="M6.5 15.8 10 12.3l2.5 2.2 5-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>','销售分析']
   ];
-
-  const currentParams=new URLSearchParams(location.search);
-  const url=(target,omit=[])=>{
-    const p=new URLSearchParams(currentParams);
-    omit.forEach(k=>p.delete(k));
-    const q=p.toString();
-    return target+(q?'?'+q:'');
-  };
-  const cleanSongTarget=target=>url(target,['mode','package','custom']);
-  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
   let context=null;
   if(file==='promotion-method.html'){
@@ -43,8 +53,6 @@
     context={back,crumbs:[['音乐推广','index.html'],[parentLabel,back],['确认推广订单']],hide:['#backBtn']};
   }else if(file==='promotion-order-detail.html'){
     context={back:'promotion-history.html',crumbs:[['音乐推广','index.html'],['推广历史','promotion-history.html'],['推广订单详情']],hide:['.back-link']};
-  }else if(file==='promotion-step3.html'){
-    context={back:cleanSongTarget('promotion-method.html'),crumbs:[['音乐推广','index.html'],['选择推广方式',cleanSongTarget('promotion-method.html')],['推广组合']],hide:['#backBtn']};
   }
 
   sidebar.setAttribute('aria-label','星球发行主导航');
@@ -57,6 +65,99 @@
   if(context){
     document.body.classList.add('star-has-context-nav');
     (context.hide||[]).forEach(selector=>document.querySelectorAll(selector).forEach(el=>el.classList.add('shell-return-migrated')));
+  }
+
+  function cleanupIndex(){
+    const sideNote=$('.side-note');if(sideNote)sideNote.textContent=sideNote.textContent.replace('歌曲名称已脱敏展示 · ','');
+    hide('.songs-subtitle');
+    $$('.promo-title').forEach(el=>el.textContent='可推广');
+    $$('.opportunity-count').forEach(el=>{const m=el.textContent.match(/\d+/);if(m)el.textContent=`${m[0]} 种推广方式`});
+  }
+
+  function cleanupMethod(){
+    hide('.page-desc,.section-sub,.scroll-hint,.note');
+  }
+
+  function cleanupOfficialPackages(){
+    hide('.head p,.include-title,.disclaimer');
+    $$('.card').forEach(card=>{if(card.querySelector('.title')?.textContent.trim()==='冲榜助推包'){const fit=card.querySelector('.fit');if(fit)fit.innerHTML='适合：<strong>重点冲榜</strong>'}});
+  }
+
+  function cleanupExpert(){
+    const title=$('.page-title');if(title)title.textContent='获取专属推广方案';
+    const desc=$('.page-desc');if(desc)desc.textContent='告诉我们推广目标和预算，专属音乐推广专家会为这首歌制定更合适的推广建议。';
+    hide('.step-tag');
+    const panels=$$('.panel');
+    const titles=['选择主要推广目标','预算和推广市场','补充歌曲情况（选填）','联系方式'];
+    panels.forEach((panel,i)=>{const t=panel.querySelector('.panel-title');if(t&&titles[i])t.textContent=titles[i];const sub=panel.querySelector('.panel-sub');if(sub)sub.style.display='none'});
+    $$('.goal-option').forEach(el=>{
+      const strong=el.querySelector('strong');if(!strong)return;
+      if(strong.textContent.trim()==='增加歌曲播放'){strong.textContent='提升播放曝光';el.dataset.value='提升播放曝光'}
+      if(strong.textContent.trim()==='提升热度 / 冲榜'){strong.textContent='头部热度冲刺';el.dataset.value='头部热度冲刺'}
+    });
+    $$('.summary-row').forEach(row=>{if(row.querySelector('span')?.textContent.trim()==='方案类型')row.style.display='none'});
+    const promise=$('.promise');if(promise)promise.textContent='提交需求不会产生订单，专家与你确认方案和费用后再下单。';
+    hide('.helper');
+    const successDesc=$('.success-desc');if(successDesc)successDesc.textContent='推广需求已记录，专属音乐推广专家会整理建议并与你确认具体方案。';
+  }
+
+  function cleanupCustom(){
+    hide('.progress,.cart-note');
+    $$('.product-meta').forEach(el=>{if(el.textContent.trim()==='来源真实用户点击')el.style.display='none'});
+    const empty=$('.cart-empty');if(empty&&/还没有选择|尚未选择/.test(empty.textContent)){empty.innerHTML='还没有添加推广项目<br><span style="color:#b0b5bd">从左侧选择适合的推广方式</span>'}
+  }
+
+  function cleanupOrder(){
+    hide('.progress,.footnote,.warning');
+    const desc=$('.balance-desc');if(desc)desc.textContent='余额不足时，仅支付剩余差额。';
+    const modalP=$('.modal-head p');if(modalP)modalP.style.display='none';
+    const pageDesc=$('#pageDesc');if(pageDesc)pageDesc.style.display='none';
+    const itemsDesc=$('#itemsDesc');if(itemsDesc){
+      if(currentParams.get('mode')==='package')itemsDesc.textContent='请确认套餐内的可选执行方式。';
+      else itemsDesc.style.display='none';
+    }
+    const resultNote=$('#resultNote');if(resultNote)resultNote.style.display='none';
+  }
+
+  function cleanupHistory(){
+    const headP=$('.head-copy p');if(headP)headP.style.display='none';
+    const head=$('.orders-head span:nth-child(2)');if(head)head.textContent='推广结果';
+    try{
+      if(typeof orders!=='undefined'){
+        const planMap={'均衡推广':'自定义推广组合','起步推广':'养歌启动包','加强推广':'养歌加强包'};
+        orders.forEach(o=>{if(planMap[o.plan])o.plan=planMap[o.plan]});
+      }
+    }catch(e){}
+    const applyRows=()=>{
+      $$('.order').forEach(row=>{
+        const status=row.querySelector('.status');const label=status?.classList.contains('done')?'实际结果':status?.classList.contains('running')?'当前结果':'预计结果';
+        row.querySelectorAll('.effect-label').forEach(el=>el.textContent=label);
+      });
+      const countText=$('#countText')?.textContent||'';const n=Number((countText.match(/\d+/)||[])[0]||0);if(n<=10)hide('.footer .pager');
+    };
+    applyRows();
+    const ordersEl=$('#orders');if(ordersEl&&!ordersEl.dataset.cleanObserver){ordersEl.dataset.cleanObserver='1';new MutationObserver(applyRows).observe(ordersEl,{childList:true,subtree:true})}
+  }
+
+  function cleanupOrderDetail(){
+    const desc=$('.section-head p');if(desc)desc.style.display='none';
+    $$('.info-row').forEach(row=>{const v=row.querySelector('strong')?.textContent.trim();if(!v||v==='—'||v==='-')row.style.display='none'});
+  }
+
+  function cleanupAlbumList(){
+    $$('.promote-link').forEach(el=>{if(!el.classList.contains('disabled'))el.textContent='选择歌曲推广'});
+  }
+
+  function cleanup(){
+    if(file==='index.html')cleanupIndex();
+    if(file==='promotion-method.html')cleanupMethod();
+    if(file==='official-packages.html')cleanupOfficialPackages();
+    if(file==='promotion-expert.html')cleanupExpert();
+    if(file==='custom-combination.html')cleanupCustom();
+    if(file==='order-confirm.html')cleanupOrder();
+    if(file==='promotion-history.html')cleanupHistory();
+    if(file==='promotion-order-detail.html')cleanupOrderDetail();
+    if(file==='album-list.html')cleanupAlbumList();
   }
 
   if(file==='index.html' && typeof openStep2==='function'){
@@ -100,9 +201,12 @@
     },0);
   }
 
-  if(['index.html','custom-combination.html','order-confirm.html','promotion-order-detail.html','promotion-step3.html','promotion-method.html','official-packages.html'].includes(file)){
+  if(['index.html','custom-combination.html','order-confirm.html','promotion-order-detail.html','promotion-method.html','official-packages.html'].includes(file)){
     const script=document.createElement('script');
     script.src='platform-logos.js';
     document.body.appendChild(script);
   }
+
+  cleanup();
+  setTimeout(cleanup,180);
 })();
