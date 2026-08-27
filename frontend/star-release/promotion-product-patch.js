@@ -11,6 +11,68 @@
     while((node=walker.nextNode())){let text=node.nodeValue;replacements.forEach(([from,to])=>{text=text.split(from).join(to)});if(text!==node.nodeValue)node.nodeValue=text}
   };
 
+  const splitPackageDescription=text=>String(text||'').split(/\s+\+\s+/).map(x=>x.trim()).filter(Boolean);
+  const formatPackageDetail=text=>{
+    const escaped=String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return escaped.replace(/（(二选一|三选一)）/g,' <span class="include-choice">$1</span>');
+  };
+  const normalizePackageCards=()=>{
+    if(file==='promotion-method.html'){
+      document.querySelectorAll('.package-card').forEach(card=>{
+        if(card.dataset.copyMerged==='1')return;
+        const desc=card.querySelector('.package-desc'),list=card.querySelector('.include-list');
+        if(!desc||!list)return;
+        const details=splitPackageDescription(desc.textContent);
+        if(details.length){
+          list.innerHTML=details.map(item=>`<div class="include-item"><span class="include-check">✓</span><span class="include-copy">${formatPackageDetail(item)}</span></div>`).join('');
+          desc.remove();
+          card.classList.add('package-copy-merged');
+          card.dataset.copyMerged='1';
+        }
+        card.querySelectorAll('.case-entry').forEach(el=>el.remove());
+      });
+    }
+    if(file==='official-packages.html'){
+      document.querySelectorAll('.card').forEach(card=>{
+        if(card.dataset.copyMerged==='1')return;
+        const desc=card.querySelector('.desc');
+        if(!desc)return;
+        const details=splitPackageDescription(desc.textContent);
+        const title=card.querySelector('.title');
+        if(details.length&&title){
+          const block=document.createElement('div');
+          block.className='package-detail-block';
+          block.innerHTML=`<div class="package-detail-title">套餐包含</div><div class="package-detail-list">${details.map(item=>`<div class="package-detail-item"><span>✓</span><div>${formatPackageDetail(item)}</div></div>`).join('')}</div>`;
+          title.insertAdjacentElement('afterend',block);
+        }
+        desc.remove();
+        card.querySelectorAll('.tags,.line,.row,.case-entry').forEach(el=>el.remove());
+        card.classList.add('package-copy-merged');
+        card.dataset.copyMerged='1';
+      });
+    }
+  };
+  const installPackageCardStyle=()=>{
+    if(document.getElementById('package-copy-merged-style'))return;
+    const style=document.createElement('style');style.id='package-copy-merged-style';
+    style.textContent=`
+      .package-card.package-copy-merged{height:408px}
+      .package-card.package-copy-merged .include-title{margin-top:18px}
+      .package-card.package-copy-merged .include-list{gap:7px;margin-top:9px}
+      .package-card.package-copy-merged .include-item{align-items:flex-start;line-height:16px}
+      .package-card.package-copy-merged .include-check{margin-top:1px}
+      .package-card.package-copy-merged .include-copy{white-space:normal;overflow:visible;text-overflow:clip;font-size:10.5px;line-height:16px}
+      .package-card.package-copy-merged .effect{margin-top:12px}
+      .card.package-copy-merged{min-height:390px;padding-bottom:76px}
+      .package-detail-block{margin-top:18px}
+      .package-detail-title{color:#999fa9;font-size:10px;margin-bottom:8px}
+      .package-detail-list{display:grid;gap:8px}
+      .package-detail-item{display:grid;grid-template-columns:16px minmax(0,1fr);gap:7px;align-items:flex-start;color:#515966;font-size:11px;line-height:17px}
+      .package-detail-item>span{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#eef2ff;color:var(--brand);font-size:9px;font-weight:700}
+      .package-detail-item .include-choice{margin-left:4px}
+    `;document.head.appendChild(style);
+  };
+
   if(file==='custom-combination.html'){
     try{
       const xhs=products.social.find(p=>p.id==='xiaohongshu-promotion');
@@ -32,6 +94,8 @@
   }
 
   if(['promotion-method.html','official-packages.html','order-confirm.html'].includes(file)){
-    replacePackageCopy();let count=0;const timer=setInterval(()=>{replacePackageCopy();if(++count>=10)clearInterval(timer)},120);
+    replacePackageCopy();
+    if(file!=='order-confirm.html'){installPackageCardStyle();normalizePackageCards()}
+    let count=0;const timer=setInterval(()=>{replacePackageCopy();if(file!=='order-confirm.html')normalizePackageCards();if(++count>=10)clearInterval(timer)},120);
   }
 })();
