@@ -1,9 +1,9 @@
 window.PROMOTION_GOALS = [
-  { id: 'plays', name: '增加歌曲播放' },
+  { id: 'plays', name: '提升播放曝光' },
   { id: 'playlist', name: '进入更多歌单' },
   { id: 'social', name: '短视频 / 内容传播' },
   { id: 'global', name: '推广到海外' },
-  { id: 'chart', name: '提升热度 / 冲榜' },
+  { id: 'chart', name: '头部热度冲刺' },
   { id: 'ktv', name: '上架到 KTV' }
 ];
 
@@ -18,7 +18,7 @@ window.PRODUCT_CATEGORIES = [
       ja: 'NetEase Cloud Music、QQ Music、Kugou、Kuwo などで楽曲再生数やエンゲージメントを伸ばすプロモーションサービス。',
       zhTW: '面向網易雲音樂、QQ音樂、酷狗、酷我等平台的歌曲播放量與互動推廣服務。'
     },
-    products: 3, plans: 25, sort: 10, status: 'on', updated: '2026-08-21 12:30'
+    products: 5, plans: 53, sort: 10, status: 'on', updated: '2026-08-27 14:08'
   },
   {
     id: 'playlist',
@@ -30,7 +30,7 @@ window.PRODUCT_CATEGORIES = [
       ja: '音楽プラットフォームのプレイリスト、プレイリストネットワーク、関連リソースを活用したプロモーションサービス。',
       zhTW: '音樂平台歌單、歌單矩陣及相關歌單資源推廣服務。'
     },
-    products: 1, plans: 3, sort: 20, status: 'on', updated: '2026-08-21 12:30'
+    products: 2, plans: 6, sort: 20, status: 'on', updated: '2026-08-27 14:08'
   },
   {
     id: 'content',
@@ -42,7 +42,7 @@ window.PRODUCT_CATEGORIES = [
       ja: 'Douyin、RED（小紅書）などのコンテンツプラットフォーム向け音楽コンテンツ拡散・クリエイタープロモーションサービス。',
       zhTW: '面向抖音、小紅書等內容平台的音樂內容傳播與達人推廣服務。'
     },
-    products: 2, plans: 13, sort: 30, status: 'on', updated: '2026-08-21 12:30'
+    products: 2, plans: 13, sort: 30, status: 'on', updated: '2026-08-27 14:08'
   },
   {
     id: 'overseas',
@@ -54,7 +54,7 @@ window.PRODUCT_CATEGORIES = [
       ja: 'Spotify、YouTube など海外プラットフォーム向けの広告配信・オーディエンス成長サービス。',
       zhTW: '面向 Spotify、YouTube 等海外平台的廣告投放與聽眾增長服務。'
     },
-    products: 2, plans: 2, sort: 40, status: 'on', updated: '2026-08-21 12:30'
+    products: 2, plans: 2, sort: 40, status: 'on', updated: '2026-08-27 14:08'
   },
   {
     id: 'platform-resource',
@@ -66,7 +66,7 @@ window.PRODUCT_CATEGORIES = [
       ja: 'レコメンド枠の申請、チャート施策、その他個別調整が必要なプラットフォームリソースサービス。',
       zhTW: '平台推薦位申請、打榜及其他需要人工溝通確認的平台資源服務。'
     },
-    products: 3, plans: 7, sort: 50, status: 'on', updated: '2026-08-21 12:30'
+    products: 3, plans: 9, sort: 50, status: 'on', updated: '2026-08-27 14:08'
   },
   {
     id: 'scene-service',
@@ -78,7 +78,7 @@ window.PRODUCT_CATEGORIES = [
       ja: 'KTV向け制作・配信など、特定の音楽利用シーンに対応する単発納品サービス。',
       zhTW: 'KTV 製作上架等面向特定音樂使用場景的一次性交付服務。'
     },
-    products: 1, plans: 1, sort: 60, status: 'on', updated: '2026-08-21 12:30'
+    products: 1, plans: 1, sort: 60, status: 'on', updated: '2026-08-27 14:08'
   }
 ];
 
