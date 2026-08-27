@@ -99,4 +99,10 @@
       document.body.appendChild(script);
     },0);
   }
+
+  if(['index.html','custom-combination.html','order-confirm.html','promotion-order-detail.html','promotion-step3.html','promotion-method.html','official-packages.html'].includes(file)){
+    const script=document.createElement('script');
+    script.src='platform-logos.js';
+    document.body.appendChild(script);
+  }
 })();
