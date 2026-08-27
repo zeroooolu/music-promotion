@@ -38,30 +38,30 @@ const isPackage=p.get('mode')==='package',packageId=p.get('package')||'popular-1
 const rawSong={id:p.get('id')||'',title:p.get('title')||'晚风来信',artist:p.get('artist')||'林屿',album:p.get('album')||'城市漫游',cover:p.get('cover')||'夜'};
 const song=isCustom?customData.song:rawSong,balance=2680,money=n=>'¥'+Math.max(0,Math.round(Number(n)||0)).toLocaleString('zh-CN');
 const packages={
-'popular-1':{name:'人气飙升包（一）',price:799,desc:'作品质量过关、想短期冲播放量榜单的音乐人。',items:[
+'popular-1':{name:'养歌启动包',price:799,desc:'作品质量过关、想短期冲播放量榜单的音乐人。',items:[
 {p:'核心流量',title:'播放投流（二选一）',desc:'选择本次套餐的核心播放投流平台。',choice:{key:'traffic',options:[['netease','网易云音乐 10,000 次播放'],['tme','TME 12,500 次播放']]}},
 {p:'官方歌单',title:'官方歌单推荐',desc:'QQ音乐 / 网易云音乐垂类歌单推荐 1 张。'},
 {p:'内容传播',title:'抖音投放 / 小红书垂直 KOC（二选一）',desc:'选择一种内容传播方式。',choice:{key:'content',options:[['douyin-hand','抖音 · 手势舞号 10 条'],['douyin-fit','抖音 · 对口型号 10 条'],['xhs','小红书 · 素人投放 3 个（粉丝 1–5k）']]}}
 ]},
-'popular-2':{name:'人气飙升包（二）',price:2199,desc:'作品质量过关、想用更高播放量配合歌单和互动资源冲榜。',items:[
+'popular-2':{name:'养歌加强包',price:2199,desc:'作品质量过关、想用更高播放量配合歌单和互动资源冲榜。',items:[
 {p:'核心流量',title:'播放投流（二选一）',desc:'选择本次套餐的核心播放投流平台。',choice:{key:'traffic',options:[['netease','网易云音乐 24,000 次播放'],['tme','TME 30,000 次播放']]}},
 {p:'官方歌单',title:'官方歌单推荐',desc:'QQ音乐 / 网易云音乐垂类歌单推荐 1 张。'},
 {p:'加配资源',title:'内容传播 / 红心收藏（三选一）',desc:'抖音、小红书或红心收藏选择一类执行资源。',choice:{key:'extra',options:[['douyin-hand','抖音 · 手势舞号 10 条'],['douyin-fit','抖音 · 对口型号 10 条'],['xhs','小红书 · 素人投放 3 个（粉丝 1–5k）'],['fav-qq','QQ音乐收藏 1,000 个'],['fav-netease','网易云音乐红心收藏 1,000 个']]}}
 ]},
-'allround-1':{name:'全能打歌包（一）',price:2899,desc:'有打歌需求，急需歌单 / 资源位置扶持和真实内容传播的音乐人。',items:[
+'allround-1':{name:'全能破圈包',price:2899,desc:'有打歌需求，急需歌单 / 资源位置扶持和真实内容传播的音乐人。',items:[
 {p:'核心流量',title:'播放投流（二选一）',desc:'选择本次套餐的核心播放投流平台。',choice:{key:'traffic',options:[['netease','网易云音乐 24,000 次播放'],['tme','TME 30,000 次播放']]}},
 {p:'官方歌单',title:'官方歌单推荐',desc:'QQ音乐 / 网易云音乐垂类歌单推荐 1 张。'},
 {p:'资源位',title:'资源位代申请',desc:'保底 5 个，可申请 QQ音乐、网易云、酷狗、酷我、咪咕、Apple Music、Spotify、JOOX、KKBOX、Friday、MOOV、九太音乐等平台。'},
 {p:'抖音',title:'抖音混剪',desc:'15 个起万粉高互动优质账号参与传播。'}
 ]},
-'allround-2':{name:'全能打歌包（二）',price:6600,desc:'更高强度的播放、资源位和内容传播组合，适合重点作品形成破圈效应。',items:[
+'allround-2':{name:'深度爆发包',price:6600,desc:'更高强度的播放、资源位和内容传播组合，适合重点作品形成破圈效应。',items:[
 {p:'核心流量',title:'播放投流（二选一）',desc:'选择本次套餐的核心播放投流平台。',choice:{key:'traffic',options:[['netease','网易云音乐 40,000 次播放'],['tme','TME 50,000 次播放']]}},
 {p:'官方歌单',title:'官方歌单推荐',desc:'QQ音乐 / 网易云音乐垂类歌单推荐 1 张。'},
 {p:'资源位',title:'资源位代申请',desc:'保底 5 个，可申请 QQ音乐、网易云、酷狗、酷我、咪咕、Apple Music、Spotify、JOOX、KKBOX、Friday、MOOV、九太音乐等平台。'},
 {p:'内容传播',title:'小红书种草 / 抖音混剪（二选一）',desc:'选择一种重点内容传播资源。',choice:{key:'content',options:[['xhs-seed','小红书 · KOC 1 个（粉丝 1–3w）+ 素人 3 个（1–5k）'],['douyin-mix','抖音混剪 · 15 个起万粉高互动优质账号']]}},
 {p:'收藏',title:'红心收藏（二选一）',desc:'选择一个平台执行收藏资源。',choice:{key:'favorite',options:[['fav-netease','网易云音乐红心收藏 1,000 个'],['fav-qq','QQ音乐收藏 1,000 个']]}}
 ]},
-'chart-addon':{name:'冲榜选配包',price:8600,desc:'有打歌需求、希望集中形成破圈冲榜效应的音乐人。',items:[
+'chart-addon':{name:'冲榜助推包',price:8600,desc:'有打歌需求、希望集中形成破圈冲榜效应的音乐人。',items:[
 {p:'网易云',title:'网易云歌单矩阵',desc:'执行 1 个月，18 万 / 月总播放。'},
 {p:'QQ音乐',title:'QQ音乐歌单矩阵',desc:'执行 1 个月，28 万 / 月总播放。'},
 {p:'酷狗',title:'酷狗音乐官方冲榜',desc:'选择本次冲榜执行档位。',choice:{key:'kugou',options:[['basic','基础 · 保底 10 万播放，排名参考 40–60 名'],['advanced','进阶 · 保底 20 万播放，排名参考 20–30 名'],['premium','高级 · 保底 40 万播放，排名参考 5–20 名']]}}
@@ -94,4 +94,4 @@ function savePackageOrder(){if(isPackage)sessionStorage.setItem('starPromotionPa
 function goPay(deduct,due){savePackageOrder();const q=new URLSearchParams({source:'star-release',order_no:orderNo,title:'音乐推广订单',plan_name:planLabel,order_total:String(total),balance_deduct:String(deduct),amount:String(due)});location.href='../payment-center-checkout.html?'+q.toString()}
 document.getElementById('balanceToggle').onclick=()=>{useBalance=!useBalance;sync()};document.getElementById('backBtn').onclick=()=>history.back();document.getElementById('submitBtn').onclick=()=>{const deduct=useBalance?Math.min(balance,total):0,due=total-deduct;if(deduct>0){document.getElementById('mTotal').textContent=money(total);document.getElementById('mBalance').textContent=money(balance);document.getElementById('mDeduct').textContent='- '+money(deduct);document.getElementById('mDue').textContent=money(due);document.getElementById('modalMask').classList.add('show')}else goPay(0,total)};
 document.getElementById('cancelModal').onclick=()=>document.getElementById('modalMask').classList.remove('show');document.getElementById('confirmBalance').onclick=()=>{const deduct=Math.min(balance,total),due=total-deduct;savePackageOrder();if(due>0)goPay(deduct,due);else{const q=new URLSearchParams({status:'success',source:'star-release',order_no:orderNo,title:'音乐推广订单',plan_name:planLabel,order_total:String(total),balance_deduct:String(deduct),paid_amount:'0',method:'可提现余额抵扣'});location.href='../payment-success.html?'+q.toString()}};sync();
-</script><script src="star-release-shell.js"></script></body></html>
+</script><script src="package-order-view.js"></script><script src="star-release-shell.js"></script></body></html>
