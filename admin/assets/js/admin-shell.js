@@ -42,4 +42,9 @@
   const template=document.getElementById('page-content');
   const target=document.getElementById('admin-content');
   if(template&&target)target.appendChild(template.content.cloneNode(true));
+  setTimeout(()=>{
+    const script=document.createElement('script');
+    script.src=root+'/assets/js/promotion-product-patch.js';
+    document.body.appendChild(script);
+  },0);
 })();
