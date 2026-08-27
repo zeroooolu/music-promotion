@@ -2,10 +2,10 @@
   const file=(location.pathname.split('/').pop()||'').toLowerCase();
   const replacePackageCopy=()=>{
     const replacements=[
-      ['5个平台资源位代申请','保底获得 5 个平台推荐资源位'],
-      ['5 个平台资源位代申请','保底获得 5 个平台推荐资源位'],
-      ['5个平台资源位','保底 5 个推荐资源位'],
-      ['5 个平台资源位','保底 5 个推荐资源位']
+      ['5个平台资源位代申请','保底获得 5 个音乐平台推荐资源位'],
+      ['5 个平台资源位代申请','保底获得 5 个音乐平台推荐资源位'],
+      ['5个平台资源位','保底 5 个音乐平台推荐资源位'],
+      ['5 个平台资源位','保底 5 个音乐平台推荐资源位']
     ];
     const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
     let node;
@@ -29,13 +29,13 @@
           id:'platform-recommendation-resource',
           platform:'音乐平台',
           name:'音乐平台推荐资源位推广',
-          meta:'覆盖主流音乐平台推荐资源，由服务团队统筹匹配与申请',
+          meta:'覆盖 QQ音乐、网易云音乐、酷狗、酷我、咪咕、Apple Music、Spotify 等主流音乐平台',
           hint:'保底获得 5 个推荐资源位',
           priceHint:'¥2,000',
           single:{
             result:'保底获得 5 个推荐资源位',
             price:2000,
-            label:'覆盖 QQ音乐、网易云音乐、酷狗音乐、酷我音乐、咪咕音乐、Apple Music、Spotify、JOOX、KKBOX、Friday、MOOV、九太音乐等平台'
+            label:'覆盖 QQ音乐、网易云音乐、酷狗音乐、酷我音乐、咪咕音乐、Apple Music、Spotify、JOOX、KKBOX、Friday、MOOV、九太音乐等平台；由服务团队统筹匹配与申请'
           },
           covers:['plays']
         });
