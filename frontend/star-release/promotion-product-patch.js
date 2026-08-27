@@ -10,6 +10,11 @@
         xhs.priceHint='¥300 起';
       }
 
+      ['netease-play','qq-play','kugou-play','kuwo-play'].forEach(id=>{
+        const p=products.plays.find(x=>x.id===id);
+        if(p)p.meta='';
+      });
+
       const qq=products.chart.find(p=>p.id==='qq-chart-sprint');
       if(qq){
         qq.meta='QQ音乐官方 · 私人歌单打榜服务';
@@ -50,6 +55,24 @@
   }
 
   if(file==='order-confirm.html'){
+    try{
+      if(typeof packages!=='undefined'){
+        const trafficMap={
+          'popular-1':[['netease','网易云音乐 10,000 次真实播放'],['qq','QQ音乐 12,500 次真实播放'],['kugou','酷狗音乐 12,500 次真实播放'],['kuwo','酷我音乐 12,500 次真实播放']],
+          'popular-2':[['netease','网易云音乐 24,000 次真实播放'],['qq','QQ音乐 30,000 次真实播放'],['kugou','酷狗音乐 30,000 次真实播放'],['kuwo','酷我音乐 30,000 次真实播放']],
+          'allround-1':[['netease','网易云音乐 24,000 次真实播放'],['qq','QQ音乐 30,000 次真实播放'],['kugou','酷狗音乐 30,000 次真实播放'],['kuwo','酷我音乐 30,000 次真实播放']],
+          'allround-2':[['netease','网易云音乐 40,000 次真实播放'],['qq','QQ音乐 50,000 次真实播放'],['kugou','酷狗音乐 50,000 次真实播放'],['kuwo','酷我音乐 50,000 次真实播放']]
+        };
+        Object.entries(trafficMap).forEach(([id,options])=>{
+          const pkg=packages[id];if(!pkg)return;
+          const item=pkg.items.find(x=>x.choice&&x.choice.key==='traffic');
+          if(item)item.choice.options=options;
+        });
+        if(typeof selections!=='undefined'&&selections.traffic==='tme')selections.traffic='qq';
+        if(typeof currentPackage!=='undefined'&&typeof renderItems==='function')renderItems();
+      }
+    }catch(e){console.warn('package traffic patch failed',e)}
+
     const replacements=[
       ['5个平台资源位代申请','保底获得 5 个音乐平台推荐资源位'],
       ['5 个平台资源位代申请','保底获得 5 个音乐平台推荐资源位'],
