@@ -67,7 +67,7 @@
     proofCard.hidden=false;
     proofCard.innerHTML=`
       <div class="package-proof-kicker">
-        <span>已有音乐人用推广套餐获得阶段性增长 →</span>
+        <span>已有音乐人用它连续登上飙升榜 →</span>
         <span class="package-proof-demo">示例案例</span>
       </div>
       <div class="package-proof-list">
