@@ -111,6 +111,20 @@
   else enhance();
 
   const file=(location.pathname.split('/').pop()||'').toLowerCase();
+  if(file==='index.html'){
+    const applySongListCopy=()=>{
+      const title=document.querySelector('.songs-title');
+      const subtitle=document.querySelector('.songs-subtitle');
+      if(title)title.textContent='选择一首歌曲开始推广';
+      if(subtitle){
+        subtitle.textContent='歌曲按发布时间从新到旧排序';
+        subtitle.style.display='block';
+      }
+    };
+    applySongListCopy();
+    setTimeout(applySongListCopy,250);
+    setTimeout(applySongListCopy,500);
+  }
   if(file==='promotion-order-detail.html'&&!document.querySelector('script[data-promotion-orders-polish]')){
     const script=document.createElement('script');
     script.src='promotion-orders-polish.js';
