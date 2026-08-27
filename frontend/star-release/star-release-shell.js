@@ -68,18 +68,28 @@
   }
 
   function cleanupGoalLabels(){
-    const next='提升热度、互动量或冲榜';
-    const legacy=new Set(['提升热度 / 冲榜','提升热度/冲榜','提升热度 /冲榜','提升热度/ 冲榜','头部热度冲刺']);
-    try{if(typeof goalNames!=='undefined'&&goalNames&&goalNames.chart)goalNames.chart=next}catch(e){}
+    const chartNext='提升热度、互动量或冲榜';
+    const socialNext='短视频·内容传播';
+    const chartLegacy=new Set(['提升热度 / 冲榜','提升热度/冲榜','提升热度 /冲榜','提升热度/ 冲榜','提升热度·冲榜','头部热度冲刺']);
+    const socialLegacy=new Set(['做短视频 / 内容传播','短视频 / 内容传播','做短视频·内容传播']);
+    try{
+      if(typeof goalNames!=='undefined'&&goalNames){
+        if(goalNames.chart)goalNames.chart=chartNext;
+        if(goalNames.social)goalNames.social=socialNext;
+      }
+    }catch(e){}
     const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
     let node;
     while((node=walker.nextNode())){
       const value=node.nodeValue.trim();
-      if(legacy.has(value))node.nodeValue=node.nodeValue.replace(value,next);
+      if(chartLegacy.has(value))node.nodeValue=node.nodeValue.replace(value,chartNext);
+      if(socialLegacy.has(value))node.nodeValue=node.nodeValue.replace(value,socialNext);
     }
     $$('.goal-option').forEach(el=>{
       const strong=el.querySelector('strong');
-      if(strong&&strong.textContent.trim()===next)el.dataset.value=next;
+      if(!strong)return;
+      if(strong.textContent.trim()===chartNext)el.dataset.value=chartNext;
+      if(strong.textContent.trim()===socialNext)el.dataset.value=socialNext;
     });
   }
 
@@ -109,7 +119,8 @@
     $$('.goal-option').forEach(el=>{
       const strong=el.querySelector('strong');if(!strong)return;
       if(strong.textContent.trim()==='增加歌曲播放'){strong.textContent='提升播放曝光';el.dataset.value='提升播放曝光'}
-      if(['提升热度 / 冲榜','提升热度/冲榜','提升热度 /冲榜','提升热度/ 冲榜','头部热度冲刺'].includes(strong.textContent.trim())){strong.textContent='提升热度、互动量或冲榜';el.dataset.value='提升热度、互动量或冲榜'}
+      if(strong.textContent.trim()==='短视频·内容传播')el.dataset.value='短视频·内容传播';
+      if(strong.textContent.trim()==='提升热度、互动量或冲榜')el.dataset.value='提升热度、互动量或冲榜';
     });
     $$('.summary-row').forEach(row=>{if(row.querySelector('span')?.textContent.trim()==='方案类型')row.style.display='none'});
     const promise=$('.promise');if(promise)promise.textContent='提交需求不会产生订单，专家与你确认方案和费用后再下单。';
@@ -119,7 +130,6 @@
 
   function cleanupCustom(){
     hide('.progress,.cart-note');
-    $$('.product-meta').forEach(el=>{if(el.textContent.trim()==='来源真实用户点击')el.style.display='none'});
     const empty=$('.cart-empty');if(empty&&/还没有选择|尚未选择/.test(empty.textContent)){empty.innerHTML='还没有添加推广项目<br><span style="color:#b0b5bd">从左侧选择适合的推广方式</span>'}
   }
 
