@@ -91,4 +91,12 @@
   if(file==='order-confirm.html' && currentParams.get('mode')==='package'){
     const script=document.createElement('script');script.src='package-order-view.js';document.body.appendChild(script);
   }
+
+  if(['custom-combination.html','promotion-method.html','official-packages.html','order-confirm.html'].includes(file)){
+    setTimeout(()=>{
+      const script=document.createElement('script');
+      script.src='promotion-product-patch.js';
+      document.body.appendChild(script);
+    },0);
+  }
 })();
