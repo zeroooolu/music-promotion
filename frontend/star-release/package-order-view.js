@@ -33,8 +33,8 @@
 
   const fixedResults={
     '官方歌单推荐':{result:'1 张官方垂类歌单推荐',meta:'QQ音乐 / 网易云音乐'},
-    '资源位代申请':{result:'保底 5 个资源位申请',meta:'覆盖主流国内及海外音乐平台'},
-    '抖音混剪':{result:'15 个优质账号参与传播',meta:'抖音混剪 · 万粉高互动优质账号'},
+    '资源位代申请':{result:'5 个平台资源位申请',meta:'覆盖主流国内及海外音乐平台'},
+    '抖音混剪':{result:'15 个万粉账号参与传播',meta:'抖音混剪 · 万粉高互动优质账号'},
     '网易云歌单矩阵':{result:'18 万 / 月总播放',meta:'网易云歌单矩阵 · 执行 1 个月'},
     'QQ音乐歌单矩阵':{result:'28 万 / 月总播放',meta:'QQ音乐歌单矩阵 · 执行 1 个月'},
     '歌曲制作并上架':{result:'1 首歌曲制作并上架',meta:'合作 KTV 曲库'}
@@ -47,13 +47,14 @@
   function parseChoice(text){
     const raw=text.trim();
     let m;
-    if((m=raw.match(/([\d,]+)\s*次播放/))){
-      return {result:`<strong>${m[1]}</strong> 次播放`,meta:stripSeparators(raw.replace(m[0],''))};
+    if((m=raw.match(/([\d,]+)\s*次(?:真实)?播放/))){
+      return {result:`<strong>${m[1]}</strong> 次真实播放`,meta:stripSeparators(raw.replace(m[0],''))};
     }
     if((m=raw.match(/保底\s*(\d+)\s*万播放/))){
-      const rank=(raw.match(/排名参考\s*([^，]+(?:名)?)/)||[])[1];
+      const rank=(raw.match(/排名参考\s*([^，·]+(?:名)?)/)||[])[1];
+      const priceNote=(raw.match(/(套餐已含|补差\s*\+?¥[\d,]+)/)||[])[1];
       const level=(raw.split('·')[0]||'').trim();
-      return {result:`保底 <strong>${m[1]} 万</strong>播放`,meta:[level,rank?`排名参考 ${rank}`:''].filter(Boolean).join(' · ')};
+      return {result:`保底 <strong>${m[1]} 万</strong>播放`,meta:[level,rank?`排名参考 ${rank}`:'',priceNote||''].filter(Boolean).join(' · ')};
     }
     if(/KOC\s*1\s*个/.test(raw)&&/素人\s*3\s*个/.test(raw)){
       return {result:'<strong>4 个</strong>账号参与传播',meta:'小红书 · 1 个 KOC + 3 个素人账号'};
