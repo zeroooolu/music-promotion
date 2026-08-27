@@ -21,7 +21,12 @@
       if(netease){netease.meta='网易云音乐官方 · 私人歌单打榜服务';netease.skus=[['基础',8600,'保底新增真实播放 12 万次'],['进阶',17200,'保底新增真实播放 25 万次'],['高级',25800,'保底新增真实播放 38 万次']]}
       const kugou=products.chart.find(p=>p.id==='kugou-chart-sprint');
       if(kugou){kugou.meta='酷狗音乐官方 · 私人歌单打榜服务';kugou.skus=[['基础',8600,'保底新增真实播放 10 万次','冲飙升榜、内地榜（排名参考 40–60 名）'],['进阶',17200,'保底新增真实播放 20 万次','冲飙升榜、新歌榜、内地榜（排名参考 20–30 名）'],['高级',34300,'保底新增真实播放 40 万次','冲飙升榜、新歌榜、内地榜等（排名参考 5–20 名）']]}
-      if(!products.plays.some(p=>p.id==='platform-recommendation-resource'))products.plays.push({id:'platform-recommendation-resource',platform:'音乐平台',name:'音乐平台推荐资源位推广',meta:'覆盖 QQ音乐、网易云音乐、酷狗、酷我、咪咕、Apple Music、Spotify 等主流音乐平台',hint:'保底获得 5 个推荐资源位',priceHint:'¥2,000',single:{result:'保底获得 5 个推荐资源位',price:2000,label:'覆盖 QQ音乐、网易云音乐、酷狗音乐、酷我音乐、咪咕音乐、Apple Music、Spotify、JOOX、KKBOX、Friday、MOOV、九太音乐等平台；由服务团队统筹匹配与申请'},covers:['plays']});
+      let resource=products.plays.find(p=>p.id==='platform-recommendation-resource');
+      if(!resource){
+        resource={id:'platform-recommendation-resource',platform:'音乐平台',name:'音乐平台推荐资源位推广',meta:'覆盖 QQ音乐、网易云音乐、酷狗、酷我、咪咕、Apple Music、Spotify 等主流音乐平台',hint:'保底获得 5 个推荐资源位',priceHint:'¥2,000',single:{result:'保底获得 5 个推荐资源位',price:2000,label:'覆盖 QQ音乐、网易云音乐、酷狗音乐、酷我音乐、咪咕音乐、Apple Music、Spotify、JOOX、KKBOX、Friday、MOOV、九太音乐等平台；由服务团队统筹匹配与申请'},covers:['plays']};
+        products.plays.push(resource);
+      }
+      if(typeof productMap!=='undefined')productMap[resource.id]=resource;
       if(typeof renderAll==='function')renderAll();
     }catch(e){console.warn('promotion product patch failed',e)}
   }
