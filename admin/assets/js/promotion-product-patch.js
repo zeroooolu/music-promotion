@@ -22,6 +22,7 @@
     if(content){content.products=2;content.plans=11;content.updated='2026-08-27 14:45'}
     const resources=window.PRODUCT_CATEGORIES.find(c=>c.id==='platform-resource');
     if(resources){resources.products=4;resources.plans=10;resources.updated='2026-08-27 14:45'}
+    if(file==='product-categories.html'&&typeof render==='function')render();
   }
 
   if(file==='products.html'){
