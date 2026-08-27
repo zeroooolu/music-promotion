@@ -54,6 +54,24 @@
     }catch(e){console.warn('promotion product patch failed',e)}
   }
 
+  if(file==='promotion-method.html'||file==='official-packages.html'){
+    const replacements=[
+      ['网易云 1 万 / TME 1.25 万真实播放','网易云 1 万 / QQ音乐、酷狗、酷我 1.25 万真实播放'],
+      ['网易云 2.4 万 / TME 3 万真实播放','网易云 2.4 万 / QQ音乐、酷狗、酷我 3 万真实播放'],
+      ['网易云 4 万 / TME 5 万真实播放','网易云 4 万 / QQ音乐、酷狗、酷我 5 万真实播放']
+    ];
+    document.querySelectorAll('.include-item').forEach(item=>{
+      let touched=false;
+      const walker=document.createTreeWalker(item,NodeFilter.SHOW_TEXT);let node;
+      while((node=walker.nextNode())){
+        let text=node.nodeValue;
+        replacements.forEach(([from,to])=>{if(text.includes(from)){text=text.split(from).join(to);touched=true}});
+        node.nodeValue=text;
+      }
+      if(touched){const choice=item.querySelector('.include-choice,.choice');if(choice)choice.textContent='四选一'}
+    });
+  }
+
   if(file==='order-confirm.html'){
     try{
       if(typeof packages!=='undefined'){
