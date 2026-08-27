@@ -6,12 +6,20 @@
   document.body.classList.add('package-result-mode');
 
   const packageId=params.get('package')||'popular-1';
+  const packageTags={
+    'popular-1':['四选一','', '二选一'],
+    'popular-2':['四选一','', '三选一'],
+    'allround-1':['四选一','','',''],
+    'allround-2':['四选一','','','二选一','二选一'],
+    'chart-addon':['','','基础档已含']
+  };
   const style=document.createElement('style');
   style.textContent=`
     .package-result-mode .items-card{padding:20px}
     .package-result-mode .item{padding:17px 2px}
     .package-result-mode .item-main{align-items:center}
-    .package-result-mode .result{font-size:15px;line-height:1.4;color:var(--strong);font-weight:600}
+    .package-result-mode .result{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:15px;line-height:1.4;color:var(--strong);font-weight:600}
+    .package-result-mode .package-content-tag{height:18px;display:inline-flex;align-items:center;padding:0 6px;border-radius:9px;background:#eef2ff;color:var(--brand);font-size:9px;line-height:18px;font-weight:500;white-space:nowrap}
     .package-result-mode .service{margin-top:5px;color:#858c97;font-size:11px;line-height:1.55}
     .package-result-mode .choice-wrap{margin:12px 0 0 48px;padding:5px 0 4px 17px;border:0;border-left:2px solid #e3e7ef;border-radius:0;background:transparent}
     .package-result-mode .choice-label{padding:5px 9px 7px;margin:0;color:#8f96a1;font-size:11px}
@@ -62,6 +70,19 @@
     });
   }
 
+  function enhanceItemTags(){
+    const tags=packageTags[packageId]||[];
+    document.querySelectorAll('#items .item .result').forEach((result,index)=>{
+      result.querySelectorAll('.package-content-tag').forEach(tag=>tag.remove());
+      const text=tags[index];
+      if(!text)return;
+      const tag=document.createElement('span');
+      tag.className='package-content-tag';
+      tag.textContent=text;
+      result.appendChild(tag);
+    });
+  }
+
   const proofCard=document.getElementById('packageProof');
   if(proofCard){
     proofCard.hidden=false;
@@ -80,7 +101,8 @@
 
   if(typeof window.renderItems==='function'){
     const baseRender=window.renderItems;
-    window.renderItems=function(){baseRender();enhanceChoices()};
+    window.renderItems=function(){baseRender();enhanceChoices();enhanceItemTags()};
   }
   enhanceChoices();
+  enhanceItemTags();
 })();
