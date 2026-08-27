@@ -67,6 +67,22 @@
     (context.hide||[]).forEach(selector=>document.querySelectorAll(selector).forEach(el=>el.classList.add('shell-return-migrated')));
   }
 
+  function cleanupGoalLabels(){
+    const next='提升热度、互动量或冲榜';
+    const legacy=new Set(['提升热度 / 冲榜','提升热度/冲榜','提升热度 /冲榜','提升热度/ 冲榜','头部热度冲刺']);
+    try{if(typeof goalNames!=='undefined'&&goalNames&&goalNames.chart)goalNames.chart=next}catch(e){}
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+    let node;
+    while((node=walker.nextNode())){
+      const value=node.nodeValue.trim();
+      if(legacy.has(value))node.nodeValue=node.nodeValue.replace(value,next);
+    }
+    $$('.goal-option').forEach(el=>{
+      const strong=el.querySelector('strong');
+      if(strong&&strong.textContent.trim()===next)el.dataset.value=next;
+    });
+  }
+
   function cleanupIndex(){
     const sideNote=$('.side-note');if(sideNote)sideNote.textContent=sideNote.textContent.replace('歌曲名称已脱敏展示 · ','');
     hide('.songs-subtitle');
@@ -93,7 +109,7 @@
     $$('.goal-option').forEach(el=>{
       const strong=el.querySelector('strong');if(!strong)return;
       if(strong.textContent.trim()==='增加歌曲播放'){strong.textContent='提升播放曝光';el.dataset.value='提升播放曝光'}
-      if(strong.textContent.trim()==='提升热度 / 冲榜'){strong.textContent='头部热度冲刺';el.dataset.value='头部热度冲刺'}
+      if(['提升热度 / 冲榜','提升热度/冲榜','提升热度 /冲榜','提升热度/ 冲榜','头部热度冲刺'].includes(strong.textContent.trim())){strong.textContent='提升热度、互动量或冲榜';el.dataset.value='提升热度、互动量或冲榜'}
     });
     $$('.summary-row').forEach(row=>{if(row.querySelector('span')?.textContent.trim()==='方案类型')row.style.display='none'});
     const promise=$('.promise');if(promise)promise.textContent='提交需求不会产生订单，专家与你确认方案和费用后再下单。';
@@ -149,6 +165,7 @@
   }
 
   function cleanup(){
+    cleanupGoalLabels();
     if(file==='index.html')cleanupIndex();
     if(file==='promotion-method.html')cleanupMethod();
     if(file==='official-packages.html')cleanupOfficialPackages();
