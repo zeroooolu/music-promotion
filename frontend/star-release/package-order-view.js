@@ -32,21 +32,6 @@
   `;
   document.head.appendChild(style);
 
-  const proofData={
-    'popular-2':{
-      packageName:'养歌加强包',
-      platform:'QQ 音乐',
-      result:'连续 3 期进入 QQ 音乐飙升榜 <b>TOP 20</b>',
-      detail:'QQ 音乐飙升榜案例：已有音乐人连续 3 期进入 QQ 音乐飙升榜 TOP 20。'
-    },
-    'allround-1':{
-      packageName:'全能破圈包',
-      platform:'网易云音乐',
-      result:'网易云播放量在 7 天内突破 <b>10 万</b>',
-      detail:'网易云破圈案例：已有音乐人推广后网易云播放量在 7 天内突破 10 万。'
-    }
-  };
-
   function stripSeparators(text){return text.replace(/^[·\s]+|[·\s]+$/g,'').replace(/\s{2,}/g,' ').trim()}
   function parseChoice(text){
     const raw=text.trim();let m;
@@ -69,22 +54,12 @@
     });
   }
 
-  function fillProofCard(){
-    const card=document.getElementById('packageProof');
-    if(!card)return;
-    const proof=proofData[packageId];
-    if(!proof){card.hidden=true;return}
-    document.getElementById('packageProofTitle').textContent=`近期有音乐人选择了「${proof.packageName}」`;
-    document.getElementById('packageProofMeta').textContent=`近期推广案例 · ${proof.platform}`;
-    document.getElementById('packageProofResult').innerHTML=proof.result;
-    document.getElementById('packageProofBtn').onclick=()=>alert(`${proof.detail}\n\n案例为历史推广结果，仅供参考，不代表或承诺未来推广效果。实际效果受作品内容、投放周期、平台规则等因素影响。`);
-    card.hidden=false;
-  }
+  const proofCard=document.getElementById('packageProof');
+  if(proofCard)proofCard.hidden=true;
 
   if(typeof window.renderItems==='function'){
     const baseRender=window.renderItems;
     window.renderItems=function(){baseRender();enhanceChoices()};
   }
   enhanceChoices();
-  fillProofCard();
 })();
