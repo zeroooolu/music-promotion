@@ -109,4 +109,12 @@
   if(document.body)observer.observe(document.body,{childList:true,subtree:true});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enhance);
   else enhance();
+
+  const file=(location.pathname.split('/').pop()||'').toLowerCase();
+  if(file==='promotion-order-detail.html'&&!document.querySelector('script[data-promotion-orders-polish]')){
+    const script=document.createElement('script');
+    script.src='promotion-orders-polish.js';
+    script.dataset.promotionOrdersPolish='1';
+    document.body.appendChild(script);
+  }
 })();
