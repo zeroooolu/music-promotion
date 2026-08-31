@@ -17,6 +17,7 @@
         qqPlaylist.name='QQ 音乐歌单矩阵';
         qqPlaylist.meta='将歌曲加入 QQ 音乐高质量歌单资源位，持续获得自然曝光';
         qqPlaylist.hint='12万/月总播';
+        qqPlaylist.priceHint='¥5,800 起';
         qqPlaylist.skus=[
           ['12万/月总播',5800,'12万/月总播'],
           ['18万/月总播',8600,'18万/月总播'],
@@ -28,6 +29,7 @@
         neteasePlaylist.name='网易云歌单矩阵';
         neteasePlaylist.meta='将歌曲加入网易云高质量歌单资源位，持续获得自然曝光';
         neteasePlaylist.hint='4万/月总播（约3张歌单）';
+        neteasePlaylist.priceHint='¥1,500 起';
         neteasePlaylist.skus=[
           ['4万/月总播（约3张歌单）',1500,'4万/月总播（约3张歌单）'],
           ['13万/月总播',4300,'13万/月总播'],
@@ -39,6 +41,7 @@
       if(kugouPlaylist){
         kugouPlaylist.meta='将歌曲加入酷狗音乐高质量歌单资源位，持续获得自然曝光';
         kugouPlaylist.hint='10万/日播';
+        kugouPlaylist.priceHint='¥2,600 起';
         kugouPlaylist.skus=[
           ['10万/日播',2600,'10万/日播'],
           ['30万/日播',7300,'30万/日播'],
