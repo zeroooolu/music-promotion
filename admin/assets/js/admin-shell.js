@@ -45,6 +45,11 @@
   setTimeout(()=>{
     const script=document.createElement('script');
     script.src=root+'/assets/js/promotion-product-patch.js';
+    script.onload=()=>{
+      const pricingPatch=document.createElement('script');
+      pricingPatch.src=root+'/assets/js/product-form-pricing-patch.js';
+      document.body.appendChild(pricingPatch);
+    };
     document.body.appendChild(script);
   },0);
 })();
