@@ -10,34 +10,24 @@
         if(p)p.meta='来源真实用户点击';
       });
 
-      const qqOfficialPlaylist=byId(products.playlist,'qq-official-playlist-new');
-      if(qqOfficialPlaylist){
-        qqOfficialPlaylist.meta='将歌曲加入 QQ 音乐高质量歌单资源位，持续获得自然曝光';
-        qqOfficialPlaylist.hint='1 个官方歌单资源位';
-        qqOfficialPlaylist.skus=[['单次投放',580,'1 个官方歌单资源位']];
-      }
+      products.playlist=products.playlist.filter(p=>!['qq-official-playlist-new','netease-playlist-new'].includes(p.id));
+
       const qqPlaylist=byId(products.playlist,'qq-playlist-chart');
       if(qqPlaylist){
         qqPlaylist.name='QQ 音乐歌单矩阵';
         qqPlaylist.meta='将歌曲加入 QQ 音乐高质量歌单资源位，持续获得自然曝光';
-        qqPlaylist.hint='1 张高质量歌单资源位起';
+        qqPlaylist.hint='12万/月总播';
         qqPlaylist.skus=[
           ['12万/月总播',5800,'12万/月总播'],
           ['18万/月总播',8600,'18万/月总播'],
           ['30万/月总播',14500,'30万/月总播']
         ];
       }
-      const neteasePlaylistNew=byId(products.playlist,'netease-playlist-new');
-      if(neteasePlaylistNew){
-        neteasePlaylistNew.meta='网易云高质量歌单资源位，歌单内位置前三';
-        neteasePlaylistNew.hint='1 张高质量歌单资源位';
-        neteasePlaylistNew.skus=[['单张歌单',500,'1 张高质量歌单资源位','歌单内位置前三']];
-      }
       const neteasePlaylist=byId(products.playlist,'netease-playlist');
       if(neteasePlaylist){
         neteasePlaylist.name='网易云歌单矩阵';
         neteasePlaylist.meta='将歌曲加入网易云高质量歌单资源位，持续获得自然曝光';
-        neteasePlaylist.hint='1 张高质量歌单资源位起';
+        neteasePlaylist.hint='4万/月总播（约3张歌单）';
         neteasePlaylist.skus=[
           ['4万/月总播（约3张歌单）',1500,'4万/月总播（约3张歌单）'],
           ['13万/月总播',4300,'13万/月总播'],
@@ -48,7 +38,7 @@
       const kugouPlaylist=byId(products.playlist,'kugou-playlist');
       if(kugouPlaylist){
         kugouPlaylist.meta='将歌曲加入酷狗音乐高质量歌单资源位，持续获得自然曝光';
-        kugouPlaylist.hint='基础歌单资源组合起';
+        kugouPlaylist.hint='10万/日播';
         kugouPlaylist.skus=[
           ['10万/日播',2600,'10万/日播'],
           ['30万/日播',7300,'30万/日播'],
