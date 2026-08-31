@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>创作服务 · 星球发行</title>
+<link rel="stylesheet" href="star-release-shell.css">
+<style>
+:root{--brand:#2448ff;--page:#f4f6f9;--text:#30343a;--strong:#252a31;--muted:#7d8490;--card:#eaf2ff;--border:#e6eaf1;--sidebar:244px;--topbar:88px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;min-width:1100px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}button{font:inherit}.workspace{min-height:100vh;margin-left:var(--sidebar);padding-top:var(--topbar)}.page{max-width:1500px;margin:0 auto;padding:8px 22px 42px}.section-title{margin:0 0 24px;color:var(--strong);font-size:24px;line-height:34px;font-weight:650}.service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.service-card{min-height:366px;padding:25px 24px 24px;border-radius:5px;background:linear-gradient(145deg,#edf5ff,#e4efff);box-shadow:0 5px 18px rgba(45,93,167,.05);display:flex;flex-direction:column;align-items:center}.profile-card{align-items:flex-start;padding:34px 26px 24px}.avatar-wrap{width:100%;display:flex;justify-content:center;position:relative}.avatar{width:96px;height:96px;border-radius:50%;background:#fff;border:1px solid rgba(45,71,122,.08);display:grid;place-items:center;color:#b9c8dd;font-size:30px;font-weight:600}.verified{position:absolute;left:calc(50% + 28px);top:-16px;height:40px;padding:0 14px;display:flex;align-items:center;gap:7px;background:#fff;color:#3d424a;font-size:13px;white-space:nowrap}.verified-dot{width:19px;height:19px;border-radius:50%;background:#27c857;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700}.profile-name{width:100%;margin-top:15px;text-align:center;color:var(--strong);font-size:17px;font-weight:650}.profile-label{margin:18px 0 0 14px;color:#7a818d;line-height:1.7}.genre{margin:8px 0 0 14px;height:29px;padding:0 10px;border-radius:3px;background:#fff;color:var(--brand);display:inline-flex;align-items:center}.card-icon{width:49px;height:49px;margin-top:15px;border-radius:50%;background:#fff;color:var(--brand);display:grid;place-items:center}.card-icon svg{width:28px;height:28px}.service-name{margin-top:16px;color:var(--strong);font-size:17px;font-weight:650;text-align:center}.service-copy{width:100%;margin-top:14px;color:#747c89;font-size:13px;line-height:1.85}.service-copy ul{margin:0;padding:0;list-style:none}.service-copy li{position:relative;padding-left:17px}.service-copy li+li{margin-top:12px}.service-copy li:before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:1px;background:var(--brand)}.demo-btn{margin-top:auto;height:38px;padding:0 20px;border:0;border-radius:4px;background:var(--brand);color:#fff;cursor:default;font-size:13px}.profile-card .demo-btn{align-self:center}.tools{margin-top:42px}.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.tool-card{position:relative;min-height:226px;padding:37px 36px;border-radius:5px;overflow:hidden;background:linear-gradient(110deg,#d8f3ff 0%,#f5f1ff 43%,#dce7ff 100%);box-shadow:0 5px 18px rgba(45,93,167,.05)}.tool-tag{height:24px;display:inline-flex;align-items:center;gap:6px;padding:0 8px;border-radius:2px;background:#3c3f43;color:#fff;font-size:11px}.tool-title{margin-top:15px;color:var(--strong);font-size:25px;font-weight:650}.tool-desc{max-width:58%;margin-top:10px;color:#727b88;font-size:13px;line-height:1.8}.tool-card .demo-btn{margin-top:22px}.lyric-demo{position:absolute;right:0;top:24px;width:49%;height:178px;background:#fff;border-radius:3px 0 0 3px;box-shadow:0 10px 25px rgba(68,89,145,.12);overflow:hidden}.demo-top{height:22px;background:#2448ff}.demo-body{display:grid;grid-template-columns:32% 68%;height:156px}.demo-panel{padding:13px;background:#f8faff;border-right:1px solid #edf0f5}.demo-line{height:7px;margin-bottom:9px;border-radius:4px;background:#dfe6f8}.demo-stage{position:relative;display:grid;place-items:center;background:linear-gradient(135deg,#f7f9ff,#edf2ff)}.demo-circle{width:82px;height:82px;border-radius:50%;border:12px solid #dce5ff;box-shadow:inset 0 0 0 1px #c9d5ff;display:grid;place-items:center;color:var(--brand);font-size:19px;font-weight:700}.demo-wave{position:absolute;left:12px;right:12px;bottom:15px;height:18px;background:repeating-linear-gradient(90deg,#9eb3ff 0 2px,transparent 2px 5px);opacity:.75}.qr-demo{position:absolute;right:36px;top:59px;width:142px;height:142px;border-radius:50%;background:#fff;box-shadow:0 8px 24px rgba(76,89,141,.15);display:grid;place-items:center}.qr-ring{width:103px;height:103px;border-radius:50%;background:repeating-conic-gradient(#111 0 4deg,transparent 4deg 9deg);mask:radial-gradient(circle,#0000 0 40%,#000 41% 58%,#0000 59%);-webkit-mask:radial-gradient(circle,#0000 0 40%,#000 41% 58%,#0000 59%)}.qr-logo{position:absolute;width:48px;height:48px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:700}.mini-program{position:absolute;right:12px;bottom:17px;width:27px;height:27px;border-radius:50%;background:#20c66a;color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}@media(max-width:1280px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tools-grid{grid-template-columns:1fr}.service-card{min-height:330px}}@media(max-width:1180px){:root{--sidebar:224px}}
+</style>
+</head>
+<body>
+<aside class="sidebar"></aside><header class="topbar"></header>
+<main class="workspace"><div class="page">
+<section>
+<h1 class="section-title">创作服务</h1>
+<div class="service-grid">
+<article class="service-card profile-card">
+<div class="avatar-wrap"><div class="avatar">♪</div><div class="verified"><span class="verified-dot">✓</span>已认证</div></div>
+<div class="profile-name">林嘻嘻</div>
+<div class="profile-label">创作环节：</div><span class="genre">流行</span>
+<button class="demo-btn" type="button">资料管理</button>
+</article>
+<article class="service-card">
+<div class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 23 4 11l7 5 5-9 5 9 7-5-2 12H6Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 26h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+<div class="service-name">创作者专属权益</div>
+<div class="service-copy"><ul><li>创作者服务专享正版采样包四选一</li><li>库音满减优惠券：10张（满100减50，Cool曲库和采样可用）</li></ul></div>
+<button class="demo-btn" type="button">前往领取</button>
+</article>
+<article class="service-card">
+<div class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="6" width="16" height="21" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 4h8v5h-8zM12 14h8M12 19h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<div class="service-name">制作经纪服务</div>
+<div class="service-copy">成为认证创作者后，可签约经纪代理服务，非独家、非排他、来去自由。可拓展更多制作、经纪机会，如配乐制作、艺人合制创作、现场表演、教学、品牌代言等商业活动。</div>
+<button class="demo-btn" type="button">下载协议</button>
+</article>
+<article class="service-card">
+<div class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="17" r="10" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 7v10l6-3M22 6l3 2M26 10l2 1M25 15l3 .5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+<div class="service-name">作品商用分成比例 +5%</div>
+<div class="service-copy">认证创作者并签约制作经纪服务，作品通过星球发行上传至商用授权渠道，所获得的商用授权收益，将在原有的分成比例基础上增加5%。</div>
+<button class="demo-btn" type="button">立即上传</button>
+</article>
+</div>
+</section>
+<section class="tools">
+<h2 class="section-title">创作者工具</h2>
+<div class="tools-grid">
+<article class="tool-card">
+<span class="tool-tag">▣&nbsp; 在线制作</span>
+<div class="tool-title">歌词制作工具</div>
+<div class="tool-desc">免费在线制作 LRC 歌词格式文件</div>
+<button class="demo-btn" type="button">免费使用</button>
+<div class="lyric-demo" aria-hidden="true"><div class="demo-top"></div><div class="demo-body"><div class="demo-panel"><div class="demo-line"></div><div class="demo-line"></div><div class="demo-line"></div><div class="demo-line"></div></div><div class="demo-stage"><div class="demo-circle">57</div><div class="demo-wave"></div></div></div></div>
+</article>
+<article class="tool-card">
+<span class="tool-tag">◈&nbsp; 快速测算</span>
+<div class="tool-title">版税收益测算</div>
+<div class="tool-desc">通过播放数据快速测算你应得的版税收益，微信扫描右侧小程序码测算你的版税收入</div>
+<div class="qr-demo" aria-hidden="true"><div class="qr-ring"></div><div class="qr-logo">↗</div><div class="mini-program">S</div></div>
+</article>
+</div>
+</section>
+</div></main>
+<script src="star-release-shell.js"></script>
+</body>
+</html>
