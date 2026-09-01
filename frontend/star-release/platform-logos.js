@@ -89,6 +89,12 @@
     el.innerHTML=img(key);
   }
   function appendStrip(el){
+    const product=el.closest?.('.product');
+    if(product?.querySelector('[data-toggle="platform-recommendation-resource"]')){
+      el.querySelector('.platform-logo-strip')?.remove();
+      el.dataset.logoStripApplied='1';
+      return;
+    }
     if(el.dataset.logoStripApplied==='1'||el.querySelector('.platform-logo-strip'))return;
     const names=namesIn(el.textContent||'');
     if(names.length<2)return;
