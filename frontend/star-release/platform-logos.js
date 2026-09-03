@@ -105,6 +105,8 @@
       body[data-star-page="order-confirm"] .item .platform.has-real-logo{border:0!important;border-radius:0;background:transparent!important;overflow:visible;box-shadow:none!important}
       body[data-star-page="order-confirm"] .item .platform.has-real-logo>.platform-logo-img{object-fit:contain;border-radius:0}
       body[data-star-page="order-confirm"] .item .platform.has-real-logo>.platform-logo-inline{width:31px;height:31px}
+      body[data-star-page="order-confirm"] .item-price span{display:none!important}
+      body[data-star-page="order-confirm"] #basePriceRow,body[data-star-page="order-confirm"] #upgradeRow{display:none!important}
     `;
     document.head.appendChild(style);
   }
