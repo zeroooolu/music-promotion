@@ -94,6 +94,9 @@
       body[data-star-page="custom-combination"] .cart-platform-icon{width:27px;height:27px;display:grid;place-items:center;flex:none;margin-top:1px;color:#657085}
       body[data-star-page="custom-combination"] .cart-platform-icon>.platform-logo-img{object-fit:contain;border-radius:0}
       body[data-star-page="custom-combination"] .cart-platform-icon>.platform-logo-inline{width:25px;height:25px}
+      body.star-page-order-confirm .item .platform.has-real-logo{width:36px;height:36px;border:0!important;border-radius:0;background:transparent!important;overflow:visible;box-shadow:none!important}
+      body.star-page-order-confirm .item .platform.has-real-logo>.platform-logo-img{object-fit:contain;border-radius:0}
+      body.star-page-order-confirm .item .platform.has-real-logo>.platform-logo-inline{width:31px;height:31px}
     `;
     document.head.appendChild(style);
   }
