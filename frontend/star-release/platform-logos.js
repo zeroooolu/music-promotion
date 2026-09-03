@@ -36,6 +36,14 @@
     Y:'YouTube Music',
     抖:'抖音'
   };
+  const goalLabels={
+    plays:'提升播放曝光',
+    playlist:'进入更多歌单',
+    social:'短视频·内容传播',
+    global:'推广到海外',
+    chart:'提升热度、互动量或冲榜',
+    ktv:'上架到 KTV'
+  };
   const orderedNames=['QQ音乐','网易云音乐','酷狗音乐','酷我音乐','Apple Music','Spotify','YouTube Music','抖音','汽水音乐','TikTok','小红书','KTV','JOOX','KKBOX','MOOV','华为音乐','Amazon Music'];
   function normalize(name){
     const raw=String(name||'').trim();
@@ -94,9 +102,9 @@
       body[data-star-page="custom-combination"] .cart-platform-icon{width:27px;height:27px;display:grid;place-items:center;flex:none;margin-top:1px;color:#657085}
       body[data-star-page="custom-combination"] .cart-platform-icon>.platform-logo-img{object-fit:contain;border-radius:0}
       body[data-star-page="custom-combination"] .cart-platform-icon>.platform-logo-inline{width:25px;height:25px}
-      body.star-page-order-confirm .item .platform.has-real-logo{width:36px;height:36px;border:0!important;border-radius:0;background:transparent!important;overflow:visible;box-shadow:none!important}
-      body.star-page-order-confirm .item .platform.has-real-logo>.platform-logo-img{object-fit:contain;border-radius:0}
-      body.star-page-order-confirm .item .platform.has-real-logo>.platform-logo-inline{width:31px;height:31px}
+      body[data-star-page="order-confirm"] .item .platform.has-real-logo{border:0!important;border-radius:0;background:transparent!important;overflow:visible;box-shadow:none!important}
+      body[data-star-page="order-confirm"] .item .platform.has-real-logo>.platform-logo-img{object-fit:contain;border-radius:0}
+      body[data-star-page="order-confirm"] .item .platform.has-real-logo>.platform-logo-inline{width:31px;height:31px}
     `;
     document.head.appendChild(style);
   }
@@ -153,11 +161,26 @@
       item.dataset.platformIconApplied='1';
     });
   }
+  function enhanceOrderGoalLabels(){
+    if((location.pathname.split('/').pop()||'').toLowerCase()!=='order-confirm.html')return;
+    document.body.dataset.starPage='order-confirm';
+    document.querySelectorAll('.goal-tag').forEach(tag=>{
+      const value=(tag.textContent||'').trim();
+      const next=goalLabels[value]||({
+        '短视频 / 内容传播':'短视频·内容传播',
+        '做短视频 / 内容传播':'短视频·内容传播',
+        '头部热度冲刺':'提升热度、互动量或冲榜',
+        '提升热度·冲榜':'提升热度、互动量或冲榜'
+      })[value];
+      if(next)tag.textContent=next;
+    });
+  }
   function enhance(){
     ensureStyle();
     document.querySelectorAll('.platform,.platform-logo,.token-logo').forEach(replaceBadge);
     document.querySelectorAll('.service,.product-meta,.cart-service,.package-desc,.package-detail-item div,.package-proof-copy span').forEach(appendStrip);
     enhanceCustomCombinationCart();
+    enhanceOrderGoalLabels();
   }
   window.platformLogoHtml=(name,className)=>img(name,className);
   window.enhancePlatformLogos=enhance;
