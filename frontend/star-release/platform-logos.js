@@ -21,6 +21,10 @@
     '华为音乐':'huawei-music.jpg',
     'Amazon Music':'amazon-music.png'
   };
+  const inlineIcons={
+    '小红书':'<svg viewBox="0 0 28 28" aria-hidden="true"><path d="M7.1 5.7h13.8a2.4 2.4 0 0 1 2.4 2.4v11.8a2.4 2.4 0 0 1-2.4 2.4H7.1a2.4 2.4 0 0 1-2.4-2.4V8.1a2.4 2.4 0 0 1 2.4-2.4Z"></path><path d="M9 10.2h10M9 14h6.2M9 17.8h8.3"></path></svg>',
+    'KTV':'<svg viewBox="0 0 28 28" aria-hidden="true"><rect x="10" y="4" width="8" height="13" rx="4"></rect><path d="M7 13a7 7 0 0 0 14 0M14 20v4M10.5 24h7"></path></svg>'
+  };
   const aliases={
     Q:'QQ音乐',
     易:'网易云音乐',
@@ -32,10 +36,10 @@
     Y:'YouTube Music',
     抖:'抖音'
   };
-  const orderedNames=['QQ音乐','网易云音乐','酷狗音乐','酷我音乐','Apple Music','Spotify','YouTube Music','抖音','汽水音乐','TikTok','JOOX','KKBOX','MOOV','华为音乐','Amazon Music'];
+  const orderedNames=['QQ音乐','网易云音乐','酷狗音乐','酷我音乐','Apple Music','Spotify','YouTube Music','抖音','汽水音乐','TikTok','小红书','KTV','JOOX','KKBOX','MOOV','华为音乐','Amazon Music'];
   function normalize(name){
     const raw=String(name||'').trim();
-    if(logos[raw])return raw;
+    if(logos[raw]||inlineIcons[raw])return raw;
     if(aliases[raw])return aliases[raw];
     if(/网易云/.test(raw))return '网易云音乐';
     if(/QQ/.test(raw))return 'QQ音乐';
@@ -45,12 +49,16 @@
     if(/Apple/.test(raw))return 'Apple Music';
     if(/Spotify/i.test(raw))return 'Spotify';
     if(/抖音|汽水/.test(raw))return '抖音';
+    if(/小红书/.test(raw))return '小红书';
+    if(/KTV/i.test(raw))return 'KTV';
     return '';
   }
   function img(name,className='platform-logo-img'){
     const key=normalize(name);
-    if(!key||!logos[key])return '';
-    return `<img class="${className}" src="${base}${logos[key]}" alt="${key}">`;
+    if(!key)return '';
+    if(logos[key])return `<img class="${className}" src="${base}${logos[key]}" alt="${key}">`;
+    if(inlineIcons[key])return `<span class="${className} platform-logo-inline platform-logo-inline-${key==='KTV'?'ktv':'xiaohongshu'}" role="img" aria-label="${key}">${inlineIcons[key]}</span>`;
+    return '';
   }
   function namesIn(text){
     const found=[];
@@ -69,11 +77,23 @@
     style.id='platform-logo-style';
     style.textContent=`
       .platform-logo-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+      .platform-logo-inline{display:grid!important;place-items:center;width:100%;height:100%;background:transparent!important}
+      .platform-logo-inline svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      .platform-logo-inline-xiaohongshu{color:#ff2442!important}
+      .platform-logo-inline-ktv{color:#7655d9!important}
       .platform.has-real-logo,.platform-logo.has-real-logo,.token-logo.has-real-logo{background:#fff!important;color:transparent;border:1px solid #e1e5ec;overflow:hidden}
       .token-logo.has-real-logo{box-shadow:0 1px 2px rgba(30,35,45,.06)}
       .platform-logo-strip{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:7px}
       .platform-logo-chip{width:22px;height:22px;border:1px solid #e1e5ec;border-radius:5px;background:#fff;overflow:hidden;display:grid;place-items:center}
       .platform-logo-chip img{width:100%;height:100%;object-fit:cover}
+      body[data-star-page="custom-combination"] .product .platform.has-real-logo{width:30px;height:30px;border:0!important;border-radius:0;background:transparent!important;overflow:visible;box-shadow:none!important}
+      body[data-star-page="custom-combination"] .product .platform.has-real-logo>.platform-logo-img{object-fit:contain;border-radius:0}
+      body[data-star-page="custom-combination"] .product .platform.has-real-logo>.platform-logo-inline{width:27px;height:27px}
+      body[data-star-page="custom-combination"] .cart-item-main{display:flex;align-items:flex-start;gap:9px;min-width:0;flex:1}
+      body[data-star-page="custom-combination"] .cart-platform-copy{min-width:0;flex:1}
+      body[data-star-page="custom-combination"] .cart-platform-icon{width:27px;height:27px;display:grid;place-items:center;flex:none;margin-top:1px;color:#657085}
+      body[data-star-page="custom-combination"] .cart-platform-icon>.platform-logo-img{object-fit:contain;border-radius:0}
+      body[data-star-page="custom-combination"] .cart-platform-icon>.platform-logo-inline{width:25px;height:25px}
     `;
     document.head.appendChild(style);
   }
@@ -104,10 +124,37 @@
     el.appendChild(strip);
     el.dataset.logoStripApplied='1';
   }
+  function enhanceCustomCombinationCart(){
+    if((location.pathname.split('/').pop()||'').toLowerCase()!=='custom-combination.html')return;
+    document.body.dataset.starPage='custom-combination';
+    document.querySelectorAll('.cart-item').forEach(item=>{
+      if(item.dataset.platformIconApplied==='1')return;
+      const top=item.querySelector('.cart-item-top');
+      const service=item.querySelector('.cart-service');
+      const info=top?.firstElementChild;
+      if(!top||!service||!info||info.classList.contains('cart-item-main'))return;
+      const platform=(service.textContent||'').split('·')[0].trim();
+      const iconHtml=img(platform);
+      if(!iconHtml)return;
+      const main=document.createElement('div');
+      main.className='cart-item-main';
+      const icon=document.createElement('span');
+      icon.className='cart-platform-icon';
+      icon.setAttribute('aria-hidden','true');
+      icon.innerHTML=iconHtml;
+      const copy=document.createElement('div');
+      copy.className='cart-platform-copy';
+      while(info.firstChild)copy.appendChild(info.firstChild);
+      main.append(icon,copy);
+      info.replaceWith(main);
+      item.dataset.platformIconApplied='1';
+    });
+  }
   function enhance(){
     ensureStyle();
     document.querySelectorAll('.platform,.platform-logo,.token-logo').forEach(replaceBadge);
     document.querySelectorAll('.service,.product-meta,.cart-service,.package-desc,.package-detail-item div,.package-proof-copy span').forEach(appendStrip);
+    enhanceCustomCombinationCart();
   }
   window.platformLogoHtml=(name,className)=>img(name,className);
   window.enhancePlatformLogos=enhance;
