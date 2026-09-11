@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>合作方案 · 星球发行</title>
+<link rel="stylesheet" href="star-release-shell.css">
+<style>
+:root{--brand:#2448ff;--brand-2:#1839e8;--brand-soft:#eef2ff;--page:#f4f6f9;--surface:#fff;--strong:#20232a;--text:#30343a;--muted:#737a86;--tertiary:#9aa0aa;--border:#e4e7ed;--border-strong:#d8dde6;--good:#21a363;--warn:#d38a20;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;min-width:1120px;min-height:100%;background:var(--page);color:var(--text);font-size:14px}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}.page{padding:0 24px 42px}.stack{display:flex;flex-direction:column;gap:16px}.card{background:var(--surface);border:1px solid var(--border);border-radius:6px;box-shadow:0 1px 2px rgba(24,34,56,.02)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 360px;min-height:230px;overflow:hidden}.hero-main{padding:28px 30px}.hero-kicker{display:flex;align-items:center;gap:10px;color:#697183;font-size:13px}.hero-kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px rgba(33,163,99,.1)}.hero-title-row{display:flex;align-items:center;gap:12px;margin-top:16px}.hero-title{margin:0;color:var(--strong);font-size:28px;line-height:38px;font-weight:680;letter-spacing:-.3px}.tier-badge{display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1px solid #c9d3ff;border-radius:999px;background:#eef2ff;color:var(--brand);font-size:13px;font-weight:650}.hero-desc{max-width:760px;margin:10px 0 0;color:#636b78;line-height:22px}.hero-meta{display:flex;gap:26px;margin-top:24px}.hero-meta-item span{display:block;color:#9aa0aa;font-size:11px}.hero-meta-item strong{display:block;margin-top:5px;color:#3b424d;font-size:13px;font-weight:600}.hero-actions{display:flex;align-items:center;gap:10px;margin-top:25px}.btn-primary,.btn-default{height:38px;padding:0 16px;border-radius:4px;font-size:13px}.btn-primary{border:1px solid var(--brand);background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-2)}.btn-default{border:1px solid #d4d9e2;background:#fff;color:#454b56}.btn-default:hover{border-color:#aebdff;color:var(--brand)}.hero-side{position:relative;padding:26px 26px 22px;border-left:1px solid #e5e9f7;background:#f8faff}.hero-side:after{content:"";position:absolute;right:-64px;top:-72px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(36,72,255,.16),rgba(36,72,255,0) 68%)}.side-title{position:relative;color:#4a5260;font-size:13px;font-weight:650}.side-score{position:relative;margin-top:14px;display:flex;align-items:flex-end;gap:9px}.side-score strong{color:#202b55;font-size:34px;line-height:36px}.side-score span{padding-bottom:3px;color:#848b98;font-size:12px}.side-bar{position:relative;height:7px;margin-top:15px;border-radius:999px;background:#e7ebf7;overflow:hidden}.side-bar i{display:block;width:74%;height:100%;border-radius:inherit;background:#526fff}.side-copy{position:relative;margin-top:12px;color:#717987;font-size:12px;line-height:19px}.side-next{position:relative;margin-top:18px;padding-top:16px;border-top:1px solid #e1e6f2}.side-next span{display:block;color:#9399a4;font-size:11px}.side-next strong{display:block;margin-top:5px;color:#3c4554;font-size:13px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;padding:20px 22px 14px}.section-head h2{margin:0;color:var(--strong);font-size:17px;font-weight:650}.section-head p{margin:5px 0 0;color:#8b919b;font-size:12px}.section-link{color:var(--brand);font-size:12px}.usage-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}.usage{padding:18px 20px 20px;border-right:1px solid var(--border)}.usage:last-child{border-right:0}.usage-label{display:flex;align-items:center;justify-content:space-between;color:#6d7480;font-size:12px}.usage-label .soft{color:#9aa0aa}.usage-value{margin-top:11px;display:flex;align-items:baseline;gap:5px}.usage-value strong{color:#252b34;font-size:23px;line-height:28px;font-weight:680}.usage-value span{color:#8f95a0;font-size:12px}.progress{height:6px;margin-top:14px;border-radius:999px;background:#eef0f4;overflow:hidden}.progress i{display:block;height:100%;border-radius:999px;background:#5a73ff}.usage-foot{display:flex;justify-content:space-between;margin-top:8px;color:#9aa0aa;font-size:10px}.grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.benefit-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 18px;padding:0 22px 18px}.benefit{display:flex;gap:11px;padding:14px 0;border-top:1px solid #edf0f4}.benefit-icon{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;flex:none;background:#eef2ff;color:var(--brand)}.benefit-icon svg{width:16px;height:16px}.benefit strong{display:block;color:#353b45;font-size:13px;font-weight:620}.benefit span{display:block;margin-top:4px;color:#8d939e;font-size:11px;line-height:17px}.sla{padding:0 22px 20px}.sla-primary{display:flex;align-items:center;justify-content:space-between;padding:15px 16px;border:1px solid #d9e0ff;border-radius:5px;background:#f7f9ff}.sla-primary strong{display:block;color:#2d3650;font-size:14px}.sla-primary span{display:block;margin-top:3px;color:#7d8492;font-size:11px}.sla-time{color:var(--brand);font-size:16px;font-weight:700}.sla-list{margin-top:8px}.sla-row{display:flex;align-items:center;justify-content:space-between;padding:11px 2px;border-bottom:1px solid #edf0f4;color:#5b626d;font-size:12px}.sla-row:last-child{border-bottom:0}.sla-row b{font-weight:600;color:#353c47}.evaluation{padding:0 22px 22px}.eval-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.eval-item{padding:13px;border:1px solid #e5e8ee;border-radius:5px;background:#fafbfc}.eval-item span{display:block;color:#9aa0aa;font-size:10px}.eval-item strong{display:block;margin-top:5px;color:#4b5360;font-size:12px;font-weight:600}.notice{display:flex;gap:9px;margin-top:14px;padding:11px 13px;border-radius:4px;background:#fff9ec;color:#7b6538;font-size:11px;line-height:18px}.notice svg{width:16px;height:16px;flex:none;margin-top:1px}.compare-wrap{overflow:auto;border-top:1px solid var(--border)}.compare{width:100%;border-collapse:collapse;min-width:880px}.compare th,.compare td{padding:14px 16px;border-bottom:1px solid #eaedf2;text-align:left;vertical-align:middle}.compare th{background:#fafbfc;color:#6f7681;font-size:11px;font-weight:600}.compare th:first-child,.compare td:first-child{width:25%;padding-left:22px}.compare td{color:#555d68;font-size:12px}.compare td strong{color:#303741}.compare .current-col{background:#f8faff}.current-pill{display:inline-flex;height:22px;align-items:center;padding:0 8px;margin-left:6px;border-radius:999px;background:#e9eeff;color:var(--brand);font-size:10px}.check{color:var(--good);font-weight:700}.muted{color:#a0a5ad}.addons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 22px 22px}.addon{padding:16px;border:1px solid #e3e7ee;border-radius:5px}.addon-top{display:flex;align-items:center;justify-content:space-between}.addon-title{color:#353c46;font-weight:620}.addon-price{color:#222a35;font-size:17px;font-weight:700}.addon-price small{color:#8e95a0;font-size:10px;font-weight:400}.addon p{margin:8px 0 14px;color:#8a909b;font-size:11px;line-height:17px}.addon button{height:32px;padding:0 12px;border:1px solid #d2d8e4;border-radius:4px;background:#fff;color:#49515d;font-size:12px}.addon button:hover{border-color:#aab9ff;color:var(--brand)}.modal-mask{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(17,25,40,.34)}.modal-mask.show{display:flex}.modal{width:460px;border-radius:8px;background:#fff;box-shadow:0 20px 50px rgba(15,24,41,.2)}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #e8ebf0}.modal-head strong{font-size:15px}.modal-close{border:0;background:transparent;color:#8d949f;font-size:22px;line-height:1}.modal-body{padding:18px 20px}.modal-body p{margin:0;color:#6f7783;line-height:21px}.modal-options{margin-top:14px}.modal-option{display:flex;align-items:center;justify-content:space-between;padding:12px 13px;border:1px solid #e3e7ee;border-radius:5px;margin-top:8px}.modal-option:first-child{margin-top:0}.modal-option strong{display:block;color:#3a414b;font-size:12px}.modal-option span{color:#8f95a0;font-size:11px}.modal-foot{display:flex;justify-content:flex-end;gap:9px;padding:14px 20px;border-top:1px solid #e8ebf0}
+@media(max-width:1240px){.hero{grid-template-columns:minmax(0,1fr) 320px}.usage-grid{grid-template-columns:repeat(2,1fr)}.usage:nth-child(2){border-right:0}.usage:nth-child(-n+2){border-bottom:1px solid var(--border)}.grid-2{grid-template-columns:1fr}.eval-strip{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<aside class="sidebar"></aside><header class="topbar"></header>
+<main class="workspace">
+  <div class="page">
+    <div class="stack">
+      <section class="card hero">
+        <div class="hero-main">
+          <div class="hero-kicker">合作状态正常</div>
+          <div class="hero-title-row"><h1 class="hero-title">我的合作方案</h1><span class="tier-badge">Professional 专业版</span></div>
+          <p class="hero-desc">面向持续发行的音乐人、厂牌与版权公司，提供更高容量、完整批量能力和优先服务。合作等级决定资源额度和服务方式，不自动改变你当前合同中的分成政策。</p>
+          <div class="hero-meta">
+            <div class="hero-meta-item"><span>当前合作主体</span><strong>看见音乐示例厂牌</strong></div>
+            <div class="hero-meta-item"><span>方案生效时间</span><strong>2026.09.01</strong></div>
+            <div class="hero-meta-item"><span>当前合同</span><strong>沿用现行有效合同</strong></div>
+          </div>
+          <div class="hero-actions"><button class="btn-primary" data-modal="addon">申请扩容</button><button class="btn-default" data-modal="plus">申请合作评估</button></div>
+        </div>
+        <aside class="hero-side">
+          <div class="side-title">本周期资源使用概览</div>
+          <div class="side-score"><strong>74%</strong><span>综合使用程度</span></div>
+          <div class="side-bar"><i></i></div>
+          <div class="side-copy">当前核心额度仍充足。年度新增 Track 使用较快，建议提前关注下一周期发行计划。</div>
+          <div class="side-next"><span>下一次合作评估</span><strong>2027 年 03 月</strong></div>
+        </aside>
+      </section>
+
+      <section class="card">
+        <div class="section-head"><div><h2>资源额度</h2><p>额度用于控制平台资源成本，不影响已在 DSP 上线内容的持续发行。</p></div><a class="section-link" href="#compare">查看方案差异</a></div>
+        <div class="usage-grid">
+          <div class="usage"><div class="usage-label"><span>有效托管曲库</span><span class="soft">Professional</span></div><div class="usage-value"><strong>12,460</strong><span>/ 50,000 首</span></div><div class="progress"><i style="width:25%"></i></div><div class="usage-foot"><span>剩余 37,540 首</span><span>25%</span></div></div>
+          <div class="usage"><div class="usage-label"><span>年度新增 Track</span><span class="soft">2026 周期</span></div><div class="usage-value"><strong>2,214</strong><span>/ 3,000 首</span></div><div class="progress"><i style="width:74%"></i></div><div class="usage-foot"><span>剩余 786 首</span><span>74%</span></div></div>
+          <div class="usage"><div class="usage-label"><span>年度新增 Release</span><span class="soft">2026 周期</span></div><div class="usage-value"><strong>412</strong><span>/ 1,000 个</span></div><div class="progress"><i style="width:41%"></i></div><div class="usage-foot"><span>剩余 588 个</span><span>41%</span></div></div>
+          <div class="usage"><div class="usage-label"><span>活跃主要艺人</span><span class="soft">观察中</span></div><div class="usage-value"><strong>42</strong><span>/ 100 个</span></div><div class="progress"><i style="width:42%"></i></div><div class="usage-foot"><span>首期仅展示，不阻断</span><span>42%</span></div></div>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="card">
+          <div class="section-head"><div><h2>当前方案权益</h2><p>Professional 保持标准化，但提供更高效率与容量。</p></div></div>
+          <div class="benefit-list">
+            <div class="benefit"><div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 4h8v3H8z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></div><div><strong>标准数字发行</strong><span>覆盖现有标准合作 DSP，支持歌曲、专辑与 MV 发行。</span></div></div>
+            <div class="benefit"><div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 9h8M8 13h8" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></div><div><strong>完整批量能力</strong><span>适合稳定厂牌与版权公司进行常规批量发行管理。</span></div></div>
+            <div class="benefit"><div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M4 18V8l8-4 8 4v10M8 18v-5h8v5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></div><div><strong>月度报表与结算</strong><span>沿用星球发行现有报表、收益与提现能力。</span></div></div>
+            <div class="benefit"><div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8h14M5 16h14" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></div><div><strong>特殊项目可评估</strong><span>可根据项目价值评估特殊渠道、批量与商务合作。</span></div></div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="section-head"><div><h2>服务等级</h2><p>仅承诺看见侧响应与处理动作，不承诺 DSP 最终完成时间。</p></div></div>
+          <div class="sla">
+            <div class="sla-primary"><div><strong>优先服务</strong><span>Professional 服务通道</span></div><div class="sla-time">1 个工作日内</div></div>
+            <div class="sla-list">
+              <div class="sla-row"><span>改单 / 下架申请</span><b>优先队列</b></div>
+              <div class="sla-row"><span>版权问题</span><b>优先协调</b></div>
+              <div class="sla-row"><span>财务 / 提现问题</span><b>优先处理</b></div>
+              <div class="sla-row"><span>批量 / 特殊事务</span><b>支持</b></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="card">
+        <div class="section-head"><div><h2>合作评估</h2><p>合作等级不是付费会员。系统基于业务价值与资源效率形成建议，再由业务与运营复核。</p></div><a class="section-link" href="#">了解评估规则</a></div>
+        <div class="evaluation">
+          <div class="eval-strip">
+            <div class="eval-item"><span>01</span><strong>Rolling 12M 收益</strong></div><div class="eval-item"><span>02</span><strong>曲库与新增发行</strong></div><div class="eval-item"><span>03</span><strong>资源使用效率</strong></div><div class="eval-item"><span>04</span><strong>合规与版权质量</strong></div><div class="eval-item"><span>05</span><strong>战略合作价值</strong></div>
+          </div>
+          <div class="notice"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 10v6M12 7.2v.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>升级为更高合作等级不会自动改变现行分成比例。更优商务条件只会在存在独家、长期承诺、核心目录迁移、预付或其他明确商业对价时另行约定。</span></div>
+        </div>
+      </section>
+
+      <section class="card" id="compare">
+        <div class="section-head"><div><h2>三档合作方案</h2><p>Basic 保证完整标准发行能力，Professional 面向稳定业务客户，Plus 为邀请 / 评审制深度合作。</p></div></div>
+        <div class="compare-wrap"><table class="compare"><thead><tr><th>合作能力</th><th>Basic 基础版</th><th class="current-col">Professional 专业版 <span class="current-pill">当前</span></th><th>Plus</th></tr></thead><tbody>
+          <tr><td>标准数字发行</td><td class="check">支持</td><td class="current-col check">支持</td><td class="check">支持</td></tr>
+          <tr><td>有效托管曲库</td><td><strong>500 首</strong></td><td class="current-col"><strong>50,000 首</strong></td><td>定制</td></tr>
+          <tr><td>年度新增 Track</td><td><strong>100 首</strong></td><td class="current-col"><strong>3,000 首</strong></td><td>定制</td></tr>
+          <tr><td>年度新增 Release</td><td><strong>50 个</strong></td><td class="current-col"><strong>1,000 个</strong></td><td>定制</td></tr>
+          <tr><td>活跃主要艺人</td><td>5 个候选值</td><td class="current-col">100 个候选值</td><td>定制</td></tr>
+          <tr><td>批量能力</td><td>标准模板</td><td class="current-col">完整批量能力</td><td>专项 / 大批量支持</td></tr>
+          <tr><td>服务方式</td><td>标准工单</td><td class="current-col"><strong>优先服务</strong></td><td><strong>专属运营 / 对接群</strong></td></tr>
+          <tr><td>首次响应目标</td><td>3 个工作日内</td><td class="current-col"><strong>1 个工作日内</strong></td><td>重点事项 4 工作小时内</td></tr>
+          <tr><td>商务政策</td><td>标准合同</td><td class="current-col">标准合同 + 特殊项目评估</td><td>一户一议</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head"><div><h2>扩容与增值</h2><p>资源使用超过当前免费额度时，可购买扩容；使用量本身不会自动触发等级升级。</p></div></div>
+        <div class="addons">
+          <div class="addon"><div class="addon-top"><div class="addon-title">曲库托管扩容</div><div class="addon-price">¥399 <small>/ 年</small></div></div><p>增加 1,000 首有效 Track 托管容量，按年度续费。</p><button data-modal="addon">申请扩容</button></div>
+          <div class="addon"><div class="addon-top"><div class="addon-title">年度发行扩容</div><div class="addon-price">¥299 <small>/ 年</small></div></div><p>增加当年度 100 首新增 Track 额度，并同步增加所需编码额度。</p><button data-modal="addon">申请扩容</button></div>
+          <div class="addon"><div class="addon-top"><div class="addon-title">大批量曲库迁移</div><div class="addon-price">¥1,999 <small>起</small></div></div><p>适合历史目录迁移、批量 Metadata 整理与特殊履约项目。</p><button data-modal="project">联系运营</button></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="modal-mask" id="modalMask"><div class="modal"><div class="modal-head"><strong id="modalTitle">申请扩容</strong><button class="modal-close" id="modalClose">×</button></div><div class="modal-body" id="modalBody"></div><div class="modal-foot"><button class="btn-default" id="modalCancel">取消</button><button class="btn-primary" id="modalConfirm">提交申请</button></div></div></div>
+<script src="star-release-shell.js"></script>
+<script>
+(()=>{
+  const nav=document.querySelector('.sidebar .nav');
+  if(nav){
+    nav.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+    const first=nav.querySelector('.nav-item');
+    const icon='<svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 5h16v14H4z" fill="currentColor"/><path d="M8 9h8M8 13h5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg>';
+    const item=document.createElement('a');item.className='nav-item active';item.href='cooperation-plan.html';item.setAttribute('aria-current','page');item.innerHTML=icon+'<span class="nav-label">合作方案</span>';
+    if(first&&first.nextSibling)nav.insertBefore(item,first.nextSibling);else nav.prepend(item);
+  }
+  const topbar=document.querySelector('.topbar');
+  if(topbar){topbar.classList.add('tier-topbar');const actions=topbar.querySelector('.topbar-actions');if(actions){const badge=document.createElement('a');badge.href='cooperation-plan.html';badge.className='topbar-action';badge.innerHTML='<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#e9eeff;color:#2448ff;font-size:11px;font-weight:600">Professional</span>';actions.insertBefore(badge,actions.lastElementChild)}}
+  const mask=document.getElementById('modalMask'),title=document.getElementById('modalTitle'),body=document.getElementById('modalBody'),confirm=document.getElementById('modalConfirm');
+  const open=type=>{mask.classList.add('show');if(type==='plus'){title.textContent='申请合作评估';body.innerHTML='<p>Plus 不是可直接购买的会员。提交后将结合 Rolling 12M 收益、资源效率、版权质量、服务成本和战略合作价值进行评估。</p><div class="modal-options"><div class="modal-option"><div><strong>当前方案</strong><span>Professional 专业版</span></div><b>正常</b></div><div class="modal-option"><div><strong>申请方向</strong><span>Plus 深度合作 Partnership</span></div><b>评审制</b></div></div>';confirm.textContent='提交评估申请'}else if(type==='project'){title.textContent='联系运营';body.innerHTML='<p>大批量迁移、特殊渠道、复杂 Metadata 整理等采用项目制。提交需求后由运营评估范围和报价。</p>';confirm.textContent='提交需求'}else{title.textContent='申请扩容';body.innerHTML='<p>扩容不会改变你的合作等级。选择所需资源后，由系统生成扩容申请并进入确认流程。</p><div class="modal-options"><div class="modal-option"><div><strong>曲库托管 +1,000 首</strong><span>每年续费</span></div><b>¥399 / 年</b></div><div class="modal-option"><div><strong>年度新增 Track +100 首</strong><span>当周期有效</span></div><b>¥299 / 年</b></div></div>';confirm.textContent='提交申请'}};
+  document.querySelectorAll('[data-modal]').forEach(b=>b.onclick=()=>open(b.dataset.modal));
+  const close=()=>mask.classList.remove('show');document.getElementById('modalClose').onclick=close;document.getElementById('modalCancel').onclick=close;mask.onclick=e=>{if(e.target===mask)close()};confirm.onclick=()=>{confirm.textContent='已提交';confirm.disabled=true;setTimeout(()=>{close();confirm.disabled=false;confirm.textContent='提交申请'},700)};
+})();
+</script>
+</body>
+</html>
